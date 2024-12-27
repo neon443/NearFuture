@@ -25,9 +25,9 @@ Near Future is a SwiftUI App to help people to track upcoming events - Holidays,
 ### Prerequisites
 - **Xcode 15+**
 - **iOS 17+** (if planning to install to a physical device)
-1. Clone the repository and open the `.xcodeproj`:
+1. Fork and Clone the repository and open the `.xcodeproj`:
    ```bash
-   git clone https://github.com/your-repo/NearFuture.git
+   git clone https://github.com/your-username/NearFuture.git
    cd NearFuture
    open NearFuture.xcodeproj
    ```
