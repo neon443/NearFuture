@@ -52,7 +52,6 @@ struct AddEventView: View {
 						MagicClearButton(text: $eventName)
 					}
 				}
-				Text(eventColor.description)
 				
 				// dscription
 				ZStack {
