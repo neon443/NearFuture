@@ -70,6 +70,15 @@ struct ContentView: View {
 	@StateObject private var viewModel = EventViewModel()
 	@State private var eventName = ""
 	@State private var eventSymbol = "star"
+	@State private var eventColor: Color = [
+		Color.red,
+		Color.orange,
+		Color.yellow,
+		Color.green,
+		Color.blue,
+		Color.indigo,
+		Color.purple
+	].randomElement() ?? Color.red
 	@State private var eventDescription = ""
 	@State private var eventDate = Date()
 	@State private var eventRecurrence: Event.RecurrenceType = .none
@@ -85,52 +94,87 @@ struct ContentView: View {
 			}
 		}
 	}
+	@Environment(\.colorScheme) var appearance
+	private var backgroundGradient: LinearGradient {
+		switch appearance {
+		case .light:
+			return LinearGradient(
+				gradient: Gradient(colors: [.gray.opacity(0.2), .white]),
+				startPoint: .top,
+				endPoint: .bottom
+			)
+		case .dark:
+			return LinearGradient(
+				gradient: Gradient(colors: [.gray.opacity(0.2), .black]),
+				startPoint: .top,
+				endPoint: .bottom)
+		@unknown default:
+			//red bg gradient for uknown appearance
+			return LinearGradient(
+				gradient: Gradient(colors: [.red, .black]),
+				startPoint: .bottom,
+				endPoint: .top
+			)
+		}
+	}
 	
 	var body: some View {
 		NavigationView {
-			VStack {
-				ZStack {
-					TextField(
-						"\(Image(systemName: "magnifyingglass")) Search",
-						text: $searchInput
-					)
-					.padding(.trailing, searchInput.isEmpty ? 0 : 30)
-					.animation(.spring, value: searchInput)
-					.textFieldStyle(RoundedBorderTextFieldStyle())
-					MagicClearButton(text: $searchInput)
-				}
-				.padding(.horizontal)
-				List {
-					ForEach(filteredEvents) { event in
-						EventListView(event: event)
+			ZStack {
+				backgroundGradient
+					.ignoresSafeArea(.all)
+				VStack {
+					ZStack {
+						TextField(
+							"\(Image(systemName: "magnifyingglass")) Search",
+							text: $searchInput
+						)
+						.padding(.trailing, searchInput.isEmpty ? 0 : 30)
+						.animation(.spring, value: searchInput)
+						.textFieldStyle(RoundedBorderTextFieldStyle())
+						MagicClearButton(text: $searchInput)
 					}
-					.onDelete(perform: viewModel.removeEvent)
+					.padding(.horizontal)
+					List {
+						ForEach(filteredEvents) { event in
+							var eventBackgroundGradient: LinearGradient {
+								return LinearGradient(
+									colors: [
+										event.color.color,
+										Color.black
+									],
+									startPoint: .leading,
+									endPoint: .trailing
+								)
+							}
+							EventListView(event: event)
+						}
+						.onDelete(perform: viewModel.removeEvent)
+					}
 				}
-			}
-			.navigationTitle("Near Future")
-//			.navigationTitle() {
-//				Text("hi")
-//			}
-			.navigationBarTitleDisplayMode(.inline)
-			.sheet(isPresented: $showingAddEventView) {
-				AddEventView(
-					viewModel: viewModel,
-					eventName: $eventName,
-					eventSymbol: $eventSymbol,
-					eventDescription: $eventDescription,
-					eventDate: $eventDate,
-					eventRecurrence: $eventRecurrence,
-					isPresented: $showingAddEventView
-				)
-			}
-			.toolbar {
-				ToolbarItem(placement: .topBarTrailing) {
-					Button(action: {
-						showingAddEventView.toggle()
-					}) {
-						Image(systemName: "plus.circle")
-							.resizable()
-							.scaledToFit()
+				.navigationTitle("Near Future")
+				.navigationBarTitleDisplayMode(.inline)
+				.sheet(isPresented: $showingAddEventView) {
+					AddEventView(
+						viewModel: viewModel,
+						eventName: $eventName,
+						eventSymbol: $eventSymbol,
+						eventColor: $eventColor,
+						eventDescription: $eventDescription,
+						eventDate: $eventDate,
+						eventRecurrence: $eventRecurrence,
+						isPresented: $showingAddEventView
+					)
+				}
+				.toolbar {
+					ToolbarItem(placement: .topBarTrailing) {
+						Button(action: {
+							showingAddEventView.toggle()
+						}) {
+							Image(systemName: "plus.circle")
+								.resizable()
+								.scaledToFit()
+						}
 					}
 				}
 			}
@@ -143,35 +187,45 @@ struct EventListView: View {
 	@State var event: Event
 	
 	var body: some View {
-		HStack {
-			VStack(alignment: .leading) {
-				HStack {
-					Image(systemName: event.symbol)
-					Text(event.name)
-						.font(.headline)
-						.padding(.bottom, 2)
-				}
-				Text(event.description)
-					.font(.subheadline)
-					.foregroundColor(.gray)
-				Text("Recurring: \(event.recurrence.rawValue.capitalized)")
+//		var testColor = Color.red
+//		var codableColor = ColorCodable(testColor)
+//		Text("\(codableColor.red), \(codableColor.green), \(codableColor.blue), \(codableColor.alpha)")
+		ZStack {
+			HStack {
+				RoundedRectangle(cornerRadius: 5)
+					.frame(width: 5)
+					.foregroundStyle(event.color.color)
+					.padding(.leading, -5)
+				VStack(alignment: .leading) {
+					HStack {
+						Image(systemName: event.symbol)
+						Text(event.name)
+							.font(.headline)
+							.padding(.bottom, 2)
+					}
+					Text(event.description)
+						.font(.subheadline)
+						.foregroundColor(.gray)
+					if event.recurrence != .none {
+						Text("Recurring: \(event.recurrence.rawValue.capitalized)")
+							.font(.subheadline)
+							.foregroundColor(.blue)
+					}
+					Text(event.date.formatted(date: .long, time: .omitted))
 						.font(.subheadline)
 						.foregroundColor(.blue)
-				Text("In \(daysUntilEvent(event.date))")
+				}
+				
+				Spacer()
+				
+				Text("\(daysUntilEvent(event.date))")
 					.font(.subheadline)
 					.foregroundColor(.gray)
 			}
-			
-			Spacer()
-			
-			Text(event.date.formatted(date: .long, time: .omitted))
-			.font(.subheadline)
-			.foregroundColor(.blue)
+			.padding(.vertical, 8)
 		}
-		.padding(.vertical, 8)
 	}
 }
-
 #Preview {
 	ContentView()
 }

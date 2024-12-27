@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,21 +34,9 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A9B4BFCA2D1AE66000212CE2 /* NearFuture */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NearFuture;
-			sourceTree = "<group>";
-		};
-		A9B4BFDE2D1AE66700212CE2 /* NearFutureTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NearFutureTests;
-			sourceTree = "<group>";
-		};
-		A9B4BFE82D1AE66700212CE2 /* NearFutureUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NearFutureUITests;
-			sourceTree = "<group>";
-		};
+		A9B4BFCA2D1AE66000212CE2 /* NearFuture */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NearFuture; sourceTree = "<group>"; };
+		A9B4BFDE2D1AE66700212CE2 /* NearFutureTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NearFutureTests; sourceTree = "<group>"; };
+		A9B4BFE82D1AE66700212CE2 /* NearFutureUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NearFutureUITests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +181,7 @@
 				};
 			};
 			buildConfigurationList = A9B4BFC32D1AE66000212CE2 /* Build configuration list for PBXProject "NearFuture" */;
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -204,7 +193,6 @@
 			packageReferences = (
 				A91288572D1C7E3000912B3C /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */,
 			);
-			preferredProjectObjectVersion = 77;
 			productRefGroup = A9B4BFC92D1AE66000212CE2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -313,6 +301,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -374,6 +363,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -403,7 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NearFuture/Preview Content\"";
-				DEVELOPMENT_TEAM = 85Q9QG6DN7;
+				DEVELOPMENT_TEAM = P6PV2R9443;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -422,7 +412,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hack.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = auto;
@@ -444,7 +434,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"NearFuture/Preview Content\"";
-				DEVELOPMENT_TEAM = 85Q9QG6DN7;
+				DEVELOPMENT_TEAM = P6PV2R9443;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -463,7 +453,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hack.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -480,12 +470,12 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8626DL2GW3;
+				DEVELOPMENT_TEAM = 85Q9QG6DN7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				MACOSX_DEPLOYMENT_TARGET = 14;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFutureTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -493,7 +483,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NearFuture.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NearFuture";
-				XROS_DEPLOYMENT_TARGET = 2.2;
+				XROS_DEPLOYMENT_TARGET = 1;
 			};
 			name = Debug;
 		};
@@ -503,12 +493,12 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8626DL2GW3;
+				DEVELOPMENT_TEAM = 85Q9QG6DN7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				MACOSX_DEPLOYMENT_TARGET = 14;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFutureTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -516,7 +506,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NearFuture.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NearFuture";
-				XROS_DEPLOYMENT_TARGET = 2.2;
+				XROS_DEPLOYMENT_TARGET = 1;
 			};
 			name = Release;
 		};
@@ -525,12 +515,12 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8626DL2GW3;
+				DEVELOPMENT_TEAM = 85Q9QG6DN7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				MACOSX_DEPLOYMENT_TARGET = 14;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFutureUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -538,7 +528,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_TARGET_NAME = NearFuture;
-				XROS_DEPLOYMENT_TARGET = 2.2;
+				XROS_DEPLOYMENT_TARGET = 1;
 			};
 			name = Debug;
 		};
@@ -547,12 +537,12 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8626DL2GW3;
+				DEVELOPMENT_TEAM = 85Q9QG6DN7;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
-				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 17;
+				MACOSX_DEPLOYMENT_TARGET = 14;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFutureUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
@@ -560,7 +550,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 				TEST_TARGET_NAME = NearFuture;
-				XROS_DEPLOYMENT_TARGET = 2.2;
+				XROS_DEPLOYMENT_TARGET = 1;
 			};
 			name = Release;
 		};

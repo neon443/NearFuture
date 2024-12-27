@@ -12,6 +12,7 @@ struct AddEventView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@Binding var eventName: String
 	@Binding var eventSymbol: String
+	@Binding var eventColor: Color
 	@Binding var eventDescription: String
 	@Binding var eventDate: Date
 	@Binding var eventRecurrence: Event.RecurrenceType
@@ -29,8 +30,9 @@ struct AddEventView: View {
 						Image(systemName: eventSymbol)
 							.resizable()
 							.scaledToFit()
-							.frame(width: 30, height: 30)
+							.frame(width: 25, height: 25)
 					}
+//					.frame(width: 30)
 					.buttonStyle(.bordered)
 					.sheet(isPresented: $isSymbolPickerPresented) {
 						SymbolsPicker(
@@ -39,6 +41,8 @@ struct AddEventView: View {
 							searchLabel: "Search...",
 							autoDismiss: true)
 					}
+					ColorPicker("", selection: $eventColor, supportsOpacity: true)
+						.fixedSize()
 					Divider()
 					ZStack {
 						TextField("Event Name", text: $eventName)
@@ -48,6 +52,7 @@ struct AddEventView: View {
 						MagicClearButton(text: $eventName)
 					}
 				}
+				Text(eventColor.description)
 				
 				// dscription
 				ZStack {
@@ -83,12 +88,23 @@ struct AddEventView: View {
 				viewModel.addEvent(
 					name: eventName,
 					symbol: eventSymbol,
+					color: ColorCodable(eventColor),
 					description: eventDescription,
 					date: eventDate,
 					recurrence: eventRecurrence
 				)
+				//reset addeventView
 				eventName = ""
 				eventSymbol = "star"
+				eventColor = [
+					Color.red,
+					Color.orange,
+					Color.yellow,
+					Color.green,
+					Color.blue,
+					Color.indigo,
+					Color.purple
+				].randomElement() ?? Color.red
 				eventDescription = ""
 				eventDate = Date()
 				eventRecurrence = .none
@@ -135,12 +151,14 @@ struct MagicClearButton: View {
 struct AddEvent_Preview: PreviewProvider {
 	@State static var symbol = "star"
 	@State static var date = Date()
+	@State static var color = Color(.red)
 	
 	static var previews: some View {
 		AddEventView(
 			viewModel: EventViewModel(),
 			eventName: .constant("Birthday"),
 			eventSymbol: $symbol,
+			eventColor: $color,
 			eventDescription: .constant("A very special day"),
 			eventDate: $date,
 			eventRecurrence: .constant(.monthly),
