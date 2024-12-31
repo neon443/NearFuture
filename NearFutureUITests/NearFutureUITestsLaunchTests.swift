@@ -2,7 +2,7 @@
 //  NearFutureUITestsLaunchTests.swift
 //  NearFutureUITests
 //
-//  Created by Nihaal Sharma on 24/12/2024.
+//  Created by Nihaal Sharma on 31/12/2024.
 //
 
 import XCTest
@@ -17,7 +17,6 @@ final class NearFutureUITestsLaunchTests: XCTestCase {
         continueAfterFailure = false
     }
 
-    @MainActor
     func testLaunch() throws {
         let app = XCUIApplication()
         app.launch()

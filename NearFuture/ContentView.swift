@@ -117,6 +117,7 @@ struct ContentView: View {
 			)
 		}
 	}
+	@State var showSettings: Bool = false
 	
 	var body: some View {
 		NavigationView {
@@ -166,14 +167,28 @@ struct ContentView: View {
 						isPresented: $showingAddEventView
 					)
 				}
+				.sheet(
+					isPresented: $showSettings) {
+						SettingsView(
+							viewModel: viewModel,
+							showSettings: $showSettings
+						)
+				}
 				.toolbar {
 					ToolbarItem(placement: .topBarTrailing) {
-						Button(action: {
+						Button() {
 							showingAddEventView.toggle()
-						}) {
+						} label: {
 							Image(systemName: "plus.circle")
 								.resizable()
 								.scaledToFit()
+						}
+					}
+					ToolbarItem(placement: .topBarLeading) {
+						Button() {
+							showSettings.toggle()
+						} label: {
+							Image(systemName: "gear")
 						}
 					}
 				}
@@ -198,10 +213,8 @@ struct EventListView: View {
 					.padding(.leading, -5)
 				VStack(alignment: .leading) {
 					HStack {
-						Image(systemName: event.symbol)
-						Text(event.name)
+						Text("\(Image(systemName: event.symbol)) \(event.name)")
 							.font(.headline)
-							.padding(.bottom, 2)
 					}
 					Text(event.description)
 						.font(.subheadline)
