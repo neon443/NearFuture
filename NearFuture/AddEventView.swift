@@ -10,19 +10,33 @@ import SFSymbolsPicker
 
 struct AddEventView: View {
 	@ObservedObject var viewModel: EventViewModel
+	
 	@Binding var eventName: String
 	@Binding var eventSymbol: String
 	@Binding var eventColor: Color
 	@Binding var eventDescription: String
 	@Binding var eventDate: Date
 	@Binding var eventRecurrence: Event.RecurrenceType
-	@Binding var isPresented: Bool
+	
+	@State var adding : Bool
 	@State var isSymbolPickerPresented = false
 	
+	@FocusState private var focusedField: Field?
+	private enum Field {
+		case Name, Description
+	}
+
+	@Environment(\.dismiss) var dismiss
+	
 	var body: some View {
-		NavigationStack {
+		NavigationView {
 			Form {
-				Section(header: Text("Event Details").font(.headline).foregroundColor(.blue)) {
+				Section(
+					header:
+						Text("Event Details")
+						.font(.headline)
+						.foregroundColor(.accentColor)
+				) {
 					// name & symbol
 					HStack(spacing: 5) {
 						Button() {
@@ -32,6 +46,7 @@ struct AddEventView: View {
 								.resizable()
 								.scaledToFit()
 								.frame(width: 25, height: 25)
+								.foregroundStyle(eventColor)
 						}
 						//					.frame(width: 30)
 						.buttonStyle(.bordered)
@@ -50,6 +65,10 @@ struct AddEventView: View {
 								.textFieldStyle(RoundedBorderTextFieldStyle())
 								.padding(.trailing, eventName.isEmpty ? 0 : 30)
 								.animation(.spring, value: eventName)
+								.focused($focusedField, equals: Field.Name)
+								.onSubmit {
+									focusedField = .Description
+								}
 							MagicClearButton(text: $eventName)
 						}
 					}
@@ -60,12 +79,16 @@ struct AddEventView: View {
 							.textFieldStyle(RoundedBorderTextFieldStyle())
 							.padding(.trailing, eventDescription.isEmpty ? 0 : 30)
 							.animation(.spring, value: eventDescription)
+							.focused($focusedField, equals: Field.Description)
+							.onSubmit {
+								focusedField = nil
+							}
 						MagicClearButton(text: $eventDescription)
 					}
 					
 					
 					// date picker
-					DatePicker("Event Date", selection: $eventDate, in: Date()..., displayedComponents: .date)
+					DatePicker("Event Date", selection: $eventDate, displayedComponents: .date)
 						.datePickerStyle(WheelDatePickerStyle())
 					
 					// re-ocurrence Picker
@@ -83,64 +106,67 @@ struct AddEventView: View {
 					)
 				}
 				
-				// save button
-				Button {
-					viewModel.addEvent(
-						name: eventName,
-						symbol: eventSymbol,
-						color: ColorCodable(eventColor),
-						description: eventDescription,
-						date: eventDate,
-						recurrence: eventRecurrence
-					)
-					//reset addeventView
-					eventName = ""
-					eventSymbol = "star"
-					eventColor = [
-						Color.red,
-						Color.orange,
-						Color.yellow,
-						Color.green,
-						Color.blue,
-						Color.indigo,
-						Color.purple
-					].randomElement() ?? Color.red
-					eventDescription = ""
-					eventDate = Date()
-					eventRecurrence = .none
-					isPresented = false
-				} label: {
-					Text("Save Event")
-						.font(.headline)
-						.cornerRadius(10)
-						.shadow(radius: 10)
-						.buttonStyle(BorderedProminentButtonStyle())
-				}
-				.disabled(eventName.isEmpty || eventDescription.isEmpty)
-				if eventName.isEmpty && eventDescription.isEmpty {
-					Text("Give your event a name and description.")
-				} else if eventName.isEmpty {
-					Text("Give your event a name.")
-				} else if eventDescription.isEmpty {
-					Text("Give your event a description.")
+				// save button only show iff adding new event
+				if adding {
+					Button {
+						viewModel.addEvent(
+							name: eventName,
+							symbol: eventSymbol,
+							color: ColorCodable(eventColor),
+							description: eventDescription,
+							date: eventDate,
+							recurrence: eventRecurrence
+						)
+						resetAddEventView()
+					} label: {
+						Text("Save Event")
+							.font(.headline)
+							.cornerRadius(10)
+							.shadow(radius: 10)
+							.buttonStyle(BorderedProminentButtonStyle())
+					}
+					.disabled(eventName.isEmpty)
+					if eventName.isEmpty {
+						Text("Give your event a name.")
+						
+					}
 				}
 			}
-			.navigationTitle("Add Event")
+			.navigationTitle("\(adding ? "Add Event" : "")")
 			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
 				ToolbarItem(placement: .topBarTrailing) {
-					Button() {
-						isPresented.toggle()
-					} label: {
-						Image(systemName: "xmark.circle.fill")
-							.symbolRenderingMode(.hierarchical)
+					if adding {
+						Button() {
+							dismiss()
+						} label: {
+							Image(systemName: "xmark.circle.fill")
+								.symbolRenderingMode(.hierarchical)
+						}
 					}
 				}
 			}
 		}
 	}
+	func resetAddEventView() {
+		//reset addeventView
+		eventName = ""
+		eventSymbol = "star"
+		eventColor = [
+			Color.red,
+			Color.orange,
+			Color.yellow,
+			Color.green,
+			Color.blue,
+			Color.indigo,
+			Color.purple
+		].randomElement() ?? Color.red
+		eventDescription = ""
+		eventDate = Date()
+		eventRecurrence = .none
+		dismiss()
+	}
 }
-
 struct MagicClearButton: View {
 	@Binding var text: String
 	var body: some View {
@@ -176,7 +202,8 @@ struct AddEvent_Preview: PreviewProvider {
 			eventDescription: .constant("A very special day"),
 			eventDate: $date,
 			eventRecurrence: .constant(.monthly),
-			isPresented: .constant(true)
+			adding: true
 		)
 	}
 }
+

@@ -7,11 +7,11 @@ Near Future is a SwiftUI App to help people to track upcoming events - Holidays,
 - [x] Descriptions
 - [x] Icons
 - [x] Event colors
-- [ ] Recurrence
+- [x] Recurrence
 - [x] Search
 - [ ] Notifications
 - [ ] Apple Watch App
-- [ ] Home Screen Widgets
+- [x] Home Screen Widgets
 - [ ] Lock Screen Widgets
 
 ## Features

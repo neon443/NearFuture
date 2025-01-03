@@ -94,6 +94,7 @@ struct ContentView: View {
 			}
 		}
 	}
+
 	@Environment(\.colorScheme) var appearance
 	private var backgroundGradient: LinearGradient {
 		switch appearance {
@@ -119,6 +120,10 @@ struct ContentView: View {
 	}
 	@State var showSettings: Bool = false
 	
+	@FocusState private var focusedField: Field?
+	private enum Field {
+		case Search
+	}
 	var body: some View {
 		NavigationView {
 			ZStack {
@@ -133,24 +138,39 @@ struct ContentView: View {
 						.padding(.trailing, searchInput.isEmpty ? 0 : 30)
 						.animation(.spring, value: searchInput)
 						.textFieldStyle(RoundedBorderTextFieldStyle())
+						.focused($focusedField, equals: Field.Search)
+						.onSubmit {
+							focusedField = nil
+						}
 						MagicClearButton(text: $searchInput)
 					}
 					.padding(.horizontal)
 					List {
 						ForEach(filteredEvents) { event in
-							var eventBackgroundGradient: LinearGradient {
-								return LinearGradient(
-									colors: [
-										event.color.color,
-										Color.black
-									],
-									startPoint: .leading,
-									endPoint: .trailing
-								)
-							}
-							EventListView(event: event)
+							EventListView(viewModel: viewModel, event: event)
 						}
 						.onDelete(perform: viewModel.removeEvent)
+						if !searchInput.isEmpty {
+							HStack {
+								Image(systemName: "questionmark.square.dashed")
+									.resizable()
+									.scaledToFit()
+									.frame(width: 30, height: 30)
+									.padding(.trailing)
+								Text("Can't find what you're looking for?")
+							}
+							Text("Tip: The Search bar searches event names and descriptions")
+							Button() {
+								searchInput = ""
+								focusedField = nil
+							} label: {
+								HStack {
+									Image(systemName: "xmark")
+									Text("Clear Filters")
+								}
+								.foregroundStyle(Color.accentColor)
+							}
+						}
 					}
 				}
 				.navigationTitle("Near Future")
@@ -164,14 +184,13 @@ struct ContentView: View {
 						eventDescription: $eventDescription,
 						eventDate: $eventDate,
 						eventRecurrence: $eventRecurrence,
-						isPresented: $showingAddEventView
+						adding: true //adding event
 					)
 				}
 				.sheet(
 					isPresented: $showSettings) {
 						SettingsView(
-							viewModel: viewModel,
-							showSettings: $showSettings
+							viewModel: viewModel
 						)
 				}
 				.toolbar {
@@ -193,52 +212,61 @@ struct ContentView: View {
 					}
 				}
 			}
-
 		}
 	}
 }
 
 struct EventListView: View {
+	@StateObject var viewModel: EventViewModel
 	@State var event: Event
 	
 	var body: some View {
-//		var testColor = Color.red
-//		var codableColor = ColorCodable(testColor)
-//		Text("\(codableColor.red), \(codableColor.green), \(codableColor.blue), \(codableColor.alpha)")
-		ZStack {
+		NavigationLink() {
+			EditEventView(
+				viewModel: viewModel,
+				event: $event
+			)
+		} label: {
 			HStack {
 				RoundedRectangle(cornerRadius: 5)
 					.frame(width: 5)
 					.foregroundStyle(event.color.color)
-					.padding(.leading, -5)
+					.padding(.leading, -10)
+					.padding(.vertical, 5)
 				VStack(alignment: .leading) {
 					HStack {
-						Text("\(Image(systemName: event.symbol)) \(event.name)")
+						Image(systemName: event.symbol)
+							.resizable()
+							.scaledToFit()
+							.frame(width: 20, height: 20)
+							.foregroundStyle(event.color.color)
+						Text("\(event.name)")
 							.font(.headline)
 					}
-					Text(event.description)
-						.font(.subheadline)
-						.foregroundColor(.gray)
-					if event.recurrence != .none {
-						Text("Recurring: \(event.recurrence.rawValue.capitalized)")
+					if !event.description.isEmpty {
+						Text(event.description)
 							.font(.subheadline)
-							.foregroundColor(.blue)
+							.foregroundColor(.gray)
 					}
 					Text(event.date.formatted(date: .long, time: .omitted))
 						.font(.subheadline)
-						.foregroundColor(.blue)
+						.foregroundColor(event.color.color)
+					if event.recurrence != .none {
+						Text("Recurring: \(event.recurrence.rawValue.capitalized)")
+							.font(.subheadline)
+					}
 				}
 				
 				Spacer()
 				
-				Text("\(daysUntilEvent(event.date))")
+				Text("\(daysUntilEvent(event.date, short: false))")
 					.font(.subheadline)
-					.foregroundColor(.gray)
+					.foregroundColor(event.color.color)
 			}
-			.padding(.vertical, 8)
 		}
 	}
 }
+
 #Preview {
 	ContentView()
 }
