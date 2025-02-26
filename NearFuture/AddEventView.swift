@@ -45,11 +45,11 @@ struct AddEventView: View {
 							Image(systemName: eventSymbol)
 								.resizable()
 								.scaledToFit()
-								.frame(width: 25, height: 25)
+								.frame(width: 20, height: 20)
 								.foregroundStyle(eventColor)
 						}
-						//					.frame(width: 30)
-						.buttonStyle(.bordered)
+						.frame(width: 20)
+						.buttonStyle(.borderless)
 						.sheet(isPresented: $isSymbolPickerPresented) {
 							SymbolsPicker(
 								selection: $eventSymbol,
@@ -88,8 +88,12 @@ struct AddEventView: View {
 					
 					
 					// date picker
-					DatePicker("Event Date", selection: $eventDate, displayedComponents: .date)
-						.datePickerStyle(WheelDatePickerStyle())
+					HStack {
+						Spacer()
+						DatePicker("", selection: $eventDate, displayedComponents: .date)
+							.datePickerStyle(WheelDatePickerStyle())
+						Spacer()
+					}
 					
 					// re-ocurrence Picker
 					Picker("Recurrence", selection: $eventRecurrence) {
@@ -122,7 +126,6 @@ struct AddEventView: View {
 						Text("Save Event")
 							.font(.headline)
 							.cornerRadius(10)
-							.shadow(radius: 10)
 							.buttonStyle(BorderedProminentButtonStyle())
 					}
 					.disabled(eventName.isEmpty)

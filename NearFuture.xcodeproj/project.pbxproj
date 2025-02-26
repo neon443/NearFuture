@@ -15,6 +15,7 @@
 		A920C2BB2D2401A400E4F9B1 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2B72D2401A300E4F9B1 /* AddEventView.swift */; };
 		A920C2BE2D24021A00E4F9B1 /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = A920C2BD2D24021A00E4F9B1 /* SFSymbolsPicker */; };
 		A920C2C12D2403CA00E4F9B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2C02D2403CA00E4F9B1 /* ContentView.swift */; };
+		A93BC0942D2B18A3002E8BBD /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93BC0932D2B18A3002E8BBD /* StatsView.swift */; };
 		A979F57F2D26B1300094C0B3 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F57E2D26B1300094C0B3 /* EditEventView.swift */; };
 		A979F6052D270AF00094C0B3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6042D270AF00094C0B3 /* WidgetKit.framework */; };
 		A979F6072D270AF00094C0B3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6062D270AF00094C0B3 /* SwiftUI.framework */; };
@@ -60,6 +61,7 @@
 		A920C2B42D2401A100E4F9B1 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A920C2B72D2401A300E4F9B1 /* AddEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		A920C2C02D2403CA00E4F9B1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A93BC0932D2B18A3002E8BBD /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		A979F57E2D26B1300094C0B3 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		A979F58B2D2700680094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
 		A979F58D2D2700680094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				A979F57E2D26B1300094C0B3 /* EditEventView.swift */,
 				A920C2B72D2401A300E4F9B1 /* AddEventView.swift */,
 				A920C2C02D2403CA00E4F9B1 /* ContentView.swift */,
+				A93BC0932D2B18A3002E8BBD /* StatsView.swift */,
 				A920C2B42D2401A100E4F9B1 /* SettingsView.swift */,
 				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
 				A920C28B2D24011400E4F9B1 /* Item.swift */,
@@ -290,6 +293,7 @@
 				A920C2B82D2401A300E4F9B1 /* SettingsView.swift in Sources */,
 				A920C28C2D24011400E4F9B1 /* Item.swift in Sources */,
 				A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */,
+				A93BC0942D2B18A3002E8BBD /* StatsView.swift in Sources */,
 				A979F57F2D26B1300094C0B3 /* EditEventView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,7 +442,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NearFuture/NearFuture.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"NearFuture/Preview Content\"";
 				DEVELOPMENT_TEAM = P6PV2R9443;
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -463,7 +467,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -478,7 +484,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NearFuture/NearFuture.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_ASSET_PATHS = "\"NearFuture/Preview Content\"";
 				DEVELOPMENT_TEAM = P6PV2R9443;
 				ENABLE_HARDENED_RUNTIME = NO;
@@ -503,7 +509,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -517,7 +525,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = NearFutureWidgets/NearFutureWidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = P6PV2R9443;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NearFutureWidgets/Info.plist;
@@ -547,7 +555,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = NearFutureWidgets/NearFutureWidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = P6PV2R9443;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NearFutureWidgets/Info.plist;

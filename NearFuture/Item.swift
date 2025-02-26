@@ -38,7 +38,7 @@ struct ColorCodable: Codable {
 	var green: Double
 	var blue: Double
 	var alpha: Double
-	//for the brainrotted: alpha is the opacity/transparency of the color,
+	//for the brainrot kids: alpha is the opacity/transparency of the color,
 	//alpha == 0 completely transparent
 	//alpha == 1 completely opaque
 	
@@ -215,6 +215,60 @@ class EventViewModel: ObservableObject {
 		icloudStore.synchronize()
 		self.icloudData = self.events
 		saveEvents()
+	}
+	
+	func exportEvents() -> String? {
+		let encoder = JSONEncoder()
+		
+		// Custom date encoding strategy to handle date formatting
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		encoder.dateEncodingStrategy = .formatted(dateFormatter)
+		
+		do {
+			// Encode the events array to JSON data
+			let encodedData = try encoder.encode(events)
+			
+			// Convert the JSON data to a string
+			if let jsonString = String(data: encodedData, encoding: .utf8) {
+				return jsonString
+			} else {
+				print("Failed to convert encoded data to string")
+				return nil
+			}
+		} catch {
+			print("Failed to encode events: \(error.localizedDescription)")
+			return nil
+		}
+	}
+	
+	func importEvents(_ imp: String) {
+		guard let impData = imp.data(using: .utf8) else {
+			print("Failed to convert string to data")
+			return
+		}
+		
+		// Create a JSONDecoder
+		let decoder = JSONDecoder()
+		
+		// Add a custom date formatter for decoding the date string
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // Adjust this to the date format you're using
+		decoder.dateDecodingStrategy = .formatted(dateFormatter)
+		
+		do {
+			// Attempt to decode the events from the provided data
+			let decoded = try decoder.decode([Event].self, from: impData)
+			print("Successfully decoded events: \(decoded)")
+			
+			// Save and reload after importing events
+			self.events = decoded
+			saveEvents()
+			loadEvents()
+		} catch {
+			// Print error if decoding fails
+			print("Failed to decode events: \(error.localizedDescription)")
+		}
 	}
 	
 	//MARK: Danger Zone

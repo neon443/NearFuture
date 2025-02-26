@@ -16,6 +16,7 @@ struct SettingsView: View {
 	@State private var lastSyncWasNormalAgo: Bool = false
 	@State private var localCountEqualToiCloud: Bool = false
 	@State private var icloudCountEqualToLocal: Bool = false
+	@State private var importStr: String = ""
 	
 	func updateStatus() {
 		let vm = viewModel
@@ -65,6 +66,48 @@ struct SettingsView: View {
 				.onAppear {
 					viewModel.sync()
 					updateStatus()
+				}
+				
+				NavigationLink() {
+					NavigationView() {
+						Button() {
+							UIPasteboard.general.string = "\(viewModel.exportEvents())"
+							print(viewModel.exportEvents())
+						} label: {
+							Text("copy")
+						}
+						Text("\(viewModel.exportEvents())")
+					}
+				} label: {
+					Image(systemName: "list.bullet.rectangle")
+					Text("Export events")
+				}
+				NavigationLink() {
+					NavigationView() {
+						VStack {
+							TextEditor(text: $importStr)
+								.foregroundStyle(.foreground, .gray)
+								.background(.gray)
+								.frame(width: 200, height: 400)
+								.shadow(radius: 5)
+							Button() {
+								viewModel.importEvents(importStr)
+							} label: {
+								Text("import events")
+							}
+							.buttonStyle(BorderedProminentButtonStyle())
+							Button() {
+								if let pb = UIPasteboard.general.string {
+									print(pb)
+								}
+							} label: {
+								Text("print pb")
+							}
+						}
+					}
+				} label: {
+					Image(systemName: "square.and.arrow.down")
+					Text("Import events")
 				}
 				
 				Section("Danger Zone") {

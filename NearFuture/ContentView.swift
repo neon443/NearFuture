@@ -8,64 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//struct ContentView: View {
-//    @Environment(\.modelContext) private var modelContext
-//    @Query private var items: [Item]
-//
-//    var body: some View {
-//        NavigationSplitView {
-//            List {
-//                ForEach(items) { item in
-//                    NavigationLink {
-//                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-//                    } label: {
-//                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-//                    }
-//                }
-//                .onDelete(perform: deleteItems)
-//            }
-//#if os(macOS)
-//            .navigationSplitViewColumnWidth(min: 180, ideal: 200)
-//#endif
-//            .toolbar {
-//#if os(iOS)
-//                ToolbarItem(placement: .navigationBarTrailing) {
-//                    EditButton()
-//                }
-//#endif
-//                ToolbarItem {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
-//            }
-//        } detail: {
-//            Text("Select an item")
-//        }
-//    }
-//
-//    private func addItem() {
-//        withAnimation {
-//            let newItem = Item(timestamp: Date())
-//            modelContext.insert(newItem)
-//        }
-//    }
-//
-//    private func deleteItems(offsets: IndexSet) {
-//        withAnimation {
-//            for index in offsets {
-//                modelContext.delete(items[index])
-//            }
-//        }
-//    }
-//}
-//
-//#Preview {
-//    ContentView()
-//        .modelContainer(for: Item.self, inMemory: true)
-//}
-
-
 struct ContentView: View {
 	@StateObject private var viewModel = EventViewModel()
 	@State private var eventName = ""
@@ -124,94 +66,104 @@ struct ContentView: View {
 	private enum Field {
 		case Search
 	}
+
 	var body: some View {
-		NavigationView {
-			ZStack {
-				backgroundGradient
-					.ignoresSafeArea(.all)
-				VStack {
-					ZStack {
-						TextField(
-							"\(Image(systemName: "magnifyingglass")) Search",
-							text: $searchInput
-						)
-						.padding(.trailing, searchInput.isEmpty ? 0 : 30)
-						.animation(.spring, value: searchInput)
-						.textFieldStyle(RoundedBorderTextFieldStyle())
-						.focused($focusedField, equals: Field.Search)
-						.onSubmit {
-							focusedField = nil
+		TabView {
+			NavigationView {
+				ZStack {
+					backgroundGradient
+						.ignoresSafeArea(.all)
+					VStack {
+						ZStack {
+							TextField(
+								"\(Image(systemName: "magnifyingglass")) Search",
+								text: $searchInput
+							)
+							.padding(.trailing, searchInput.isEmpty ? 0 : 30)
+							.animation(.spring, value: searchInput)
+							.textFieldStyle(RoundedBorderTextFieldStyle())
+							.focused($focusedField, equals: Field.Search)
+							.onSubmit {
+								focusedField = nil
+							}
+							MagicClearButton(text: $searchInput)
 						}
-						MagicClearButton(text: $searchInput)
+						.padding(.horizontal)
+						List {
+							ForEach(filteredEvents) { event in
+								EventListView(viewModel: viewModel, event: event)
+							}
+							.onDelete(perform: viewModel.removeEvent)
+							if !searchInput.isEmpty {
+								HStack {
+									Image(systemName: "questionmark.square.dashed")
+										.resizable()
+										.scaledToFit()
+										.frame(width: 30, height: 30)
+										.padding(.trailing)
+									Text("Can't find what you're looking for?")
+								}
+								Text("Tip: The Search bar searches event names and descriptions")
+								Button() {
+									searchInput = ""
+									focusedField = nil
+								} label: {
+									HStack {
+										Image(systemName: "xmark")
+										Text("Clear Filters")
+									}
+									.foregroundStyle(Color.accentColor)
+								}
+							}
+						}
 					}
-					.padding(.horizontal)
-					List {
-						ForEach(filteredEvents) { event in
-							EventListView(viewModel: viewModel, event: event)
-						}
-						.onDelete(perform: viewModel.removeEvent)
-						if !searchInput.isEmpty {
-							HStack {
-								Image(systemName: "questionmark.square.dashed")
+					.navigationTitle("Near Future")
+					.navigationBarTitleDisplayMode(.inline)
+					.sheet(isPresented: $showingAddEventView) {
+						AddEventView(
+							viewModel: viewModel,
+							eventName: $eventName,
+							eventSymbol: $eventSymbol,
+							eventColor: $eventColor,
+							eventDescription: $eventDescription,
+							eventDate: $eventDate,
+							eventRecurrence: $eventRecurrence,
+							adding: true //adding event
+						)
+					}
+					.sheet(
+						isPresented: $showSettings) {
+							SettingsView(
+								viewModel: viewModel
+							)
+					}
+					.toolbar {
+						ToolbarItem(placement: .topBarTrailing) {
+							Button() {
+								showingAddEventView.toggle()
+							} label: {
+								Image(systemName: "plus.circle")
 									.resizable()
 									.scaledToFit()
-									.frame(width: 30, height: 30)
-									.padding(.trailing)
-								Text("Can't find what you're looking for?")
 							}
-							Text("Tip: The Search bar searches event names and descriptions")
+						}
+						ToolbarItem(placement: .topBarLeading) {
 							Button() {
-								searchInput = ""
-								focusedField = nil
+								showSettings.toggle()
 							} label: {
-								HStack {
-									Image(systemName: "xmark")
-									Text("Clear Filters")
-								}
-								.foregroundStyle(Color.accentColor)
+								Image(systemName: "gear")
 							}
-						}
-					}
-				}
-				.navigationTitle("Near Future")
-				.navigationBarTitleDisplayMode(.inline)
-				.sheet(isPresented: $showingAddEventView) {
-					AddEventView(
-						viewModel: viewModel,
-						eventName: $eventName,
-						eventSymbol: $eventSymbol,
-						eventColor: $eventColor,
-						eventDescription: $eventDescription,
-						eventDate: $eventDate,
-						eventRecurrence: $eventRecurrence,
-						adding: true //adding event
-					)
-				}
-				.sheet(
-					isPresented: $showSettings) {
-						SettingsView(
-							viewModel: viewModel
-						)
-				}
-				.toolbar {
-					ToolbarItem(placement: .topBarTrailing) {
-						Button() {
-							showingAddEventView.toggle()
-						} label: {
-							Image(systemName: "plus.circle")
-								.resizable()
-								.scaledToFit()
-						}
-					}
-					ToolbarItem(placement: .topBarLeading) {
-						Button() {
-							showSettings.toggle()
-						} label: {
-							Image(systemName: "gear")
 						}
 					}
 				}
 			}
+			.tabItem {
+				Label("Home", systemImage: "house")
+			}
+			StatsView(viewModel: viewModel)
+				.tabItem {
+					Label("Statistics", systemImage: "chart.pie")
+				}
 		}
 	}
 }
