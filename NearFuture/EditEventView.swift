@@ -31,7 +31,7 @@ struct EditEventView: View {
 	}
 	
 	var body: some View {
-//		NavigationView {
+//		NavigationStack {
 			AddEventView(
 				viewModel: viewModel,
 				eventName: $eventName,

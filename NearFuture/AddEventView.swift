@@ -29,7 +29,7 @@ struct AddEventView: View {
 	@Environment(\.dismiss) var dismiss
 	
 	var body: some View {
-		NavigationView {
+		NavigationStack {
 			Form {
 				Section(
 					header:
@@ -88,12 +88,8 @@ struct AddEventView: View {
 					
 					
 					// date picker
-					HStack {
-						Spacer()
-						DatePicker("", selection: $eventDate, displayedComponents: .date)
-							.datePickerStyle(WheelDatePickerStyle())
-						Spacer()
-					}
+					DatePicker("", selection: $eventDate, displayedComponents: .date)
+						.datePickerStyle(WheelDatePickerStyle())
 					
 					// re-ocurrence Picker
 					Picker("Recurrence", selection: $eventRecurrence) {
@@ -127,6 +123,9 @@ struct AddEventView: View {
 							.font(.headline)
 							.cornerRadius(10)
 							.buttonStyle(BorderedProminentButtonStyle())
+						if eventName.isEmpty {
+							Text("Give your event a name.")
+						}
 					}
 					.disabled(eventName.isEmpty)
 					if eventName.isEmpty {

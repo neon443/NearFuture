@@ -9,7 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
 	@State var viewModel: EventViewModel
-	@Environment(\.dismiss) var dismiss
 	
 	@State private var hasUbiquitous: Bool = false
 	@State private var lastSyncWasSuccessful: Bool = false
@@ -41,7 +40,7 @@ struct SettingsView: View {
 	}
 	
 	var body: some View {
-		NavigationView {
+		NavigationStack {
 			List {
 				NavigationLink() {
 					iCloudSettingsView(
@@ -69,7 +68,7 @@ struct SettingsView: View {
 				}
 				
 				NavigationLink() {
-					NavigationView() {
+					NavigationStack() {
 						Button() {
 							UIPasteboard.general.string = "\(viewModel.exportEvents())"
 							print(viewModel.exportEvents())
@@ -83,7 +82,7 @@ struct SettingsView: View {
 					Text("Export events")
 				}
 				NavigationLink() {
-					NavigationView() {
+					NavigationStack() {
 						VStack {
 							TextEditor(text: $importStr)
 								.foregroundStyle(.foreground, .gray)
@@ -133,16 +132,6 @@ struct SettingsView: View {
 			}
 			.navigationTitle("Settings")
 			.navigationBarTitleDisplayMode(.inline)
-			.toolbar {
-				ToolbarItem(placement: .topBarTrailing) {
-					Button() {
-						dismiss()
-					} label: {
-						Image(systemName: "xmark.circle.fill")
-							.symbolRenderingMode(.hierarchical)
-					}
-				}
-			}
 		}
 	}
 }

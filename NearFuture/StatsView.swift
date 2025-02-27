@@ -12,7 +12,7 @@ struct StatsView: View {
 	@ObservedObject var viewModel: EventViewModel
 	
 	var body: some View {
-		NavigationView {
+		NavigationStack {
 			List {
 				Section(header: Text("Upcoming Events")) {
 					let upcomingEvents = viewModel.events.filter { $0.date > Date() }

@@ -69,7 +69,7 @@ struct ContentView: View {
 
 	var body: some View {
 		TabView {
-			NavigationView {
+			NavigationStack {
 				ZStack {
 					backgroundGradient
 						.ignoresSafeArea(.all)
@@ -131,12 +131,6 @@ struct ContentView: View {
 							adding: true //adding event
 						)
 					}
-					.sheet(
-						isPresented: $showSettings) {
-							SettingsView(
-								viewModel: viewModel
-							)
-					}
 					.toolbar {
 						ToolbarItem(placement: .topBarTrailing) {
 							Button() {
@@ -145,13 +139,6 @@ struct ContentView: View {
 								Image(systemName: "plus.circle")
 									.resizable()
 									.scaledToFit()
-							}
-						}
-						ToolbarItem(placement: .topBarLeading) {
-							Button() {
-								showSettings.toggle()
-							} label: {
-								Image(systemName: "gear")
 							}
 						}
 					}
@@ -163,6 +150,10 @@ struct ContentView: View {
 			StatsView(viewModel: viewModel)
 				.tabItem {
 					Label("Statistics", systemImage: "chart.pie")
+				}
+			SettingsView(viewModel: viewModel)
+				.tabItem {
+					Label("Settings", systemImage: "gear")
 				}
 		}
 	}
