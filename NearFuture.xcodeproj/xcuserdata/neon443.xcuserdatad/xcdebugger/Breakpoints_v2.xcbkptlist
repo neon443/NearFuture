@@ -20,5 +20,661 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            uuid = "328204F3-BB7C-46D3-9780-207657A70694"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "off"
+            moduleName = "">
+            <Locations>
+               <Location
+                  uuid = "328204F3-BB7C-46D3-9780-207657A70694 - 87d7b665ad37852f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[_DKBoolCategory off]"
+                  moduleName = "CoreDuet"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.SymbolicBreakpoint">
+         <BreakpointContent
+            uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            symbolName = "disable"
+            moduleName = "">
+            <Locations>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 6a27c681eabcc1c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[NSGarbageCollector disable]"
+                  moduleName = "Foundation"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 6896a8ccc1cbbf4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Combine._Introspection.disable() -&gt; ()"
+                  moduleName = "Combine"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - e677de259d751566"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Security::CodeSigning::PolicyEngine::disable(void const*, unsigned int, unsigned long long, __CFDictionary const*, bool)"
+                  moduleName = "Security"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 1ef70efdf996008b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kd_precinct_pointer_server::disable()"
+                  moduleName = "libJP2.dylib"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - c5a6a63536a5f602"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenGLCurveEvaluator::disable(int)"
+                  moduleName = "libGLU.dylib"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 993de639c691fd54"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OpenGLSurfaceEvaluator::disable(int)"
+                  moduleName = "libGLU.dylib"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 3d6765b6178f5059"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ExtensionFoundation._AppExtensionIdentity.disable() throws -&gt; ()"
+                  moduleName = "ExtensionFoundation"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 6cbd47e179778bf1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[BWMemoryPool disable]"
+                  moduleName = "CMCapture"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 64631a9688dd1733"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mlir::detail::RecoveryReproducerContext::disable()"
+                  moduleName = "ANECompiler"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 8161317e462ef314"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mlir::detail::RecoveryReproducerContext::disable()"
+                  moduleName = "MetalPerformanceShadersGraph"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 19413fb9178b5401"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CoreAudio.AudioHardwareBox.disable() throws -&gt; ()"
+                  moduleName = "libswiftCoreAudio.dylib"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 4e7018357b464219"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebKit::JSWebExtensionAPIAction::disable(OpaqueJSContext const*, OpaqueJSValue*, OpaqueJSValue*, unsigned long, OpaqueJSValue const* const*, OpaqueJSValue const**)"
+                  moduleName = "WebKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - ed1dc064b7d56449"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebKit::InspectorBrowserAgent::disable()"
+                  moduleName = "WebKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 8c7ce8a2ca95b7c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebKit::RemoteGraphicsContextGLProxy::disable(unsigned int)"
+                  moduleName = "WebKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 85346bbe96bb9335"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebKit::WebExtensionAPIAction::disable(double, WTF::Ref&lt;WebKit::WebExtensionCallbackHandler, WTF::RawPtrTraits&lt;WebKit::WebExtensionCallbackHandler&gt;, WTF::DefaultRefDerefTraits&lt;WebKit::WebExtensionCallbackHandler&gt;&gt;&amp;&amp;, NSString* __autoreleasing*)"
+                  moduleName = "WebKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 828784d99bad6ae0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::InspectorAgent::disable()"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 967683c80b9dce9e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::InspectorHeapAgent::disable()"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - cd5bfad5c8aeee3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::CSSBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - bdbf0b88b25b469e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::HeapBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 85542e03c97c01e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::InspectorConsoleAgent::disable()"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 857aad0b240809f7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::InspectorRuntimeAgent::disable()"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 2d2f59495c3d0981"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::PageBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - d9cde3b9b7121035"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::InspectorDebuggerAgent::disable()"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - eed8ac847a5f32c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::CanvasBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 38a87677558165e6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::MemoryBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 96600d06ed31cae7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::WorkerBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - cdd446ee611a2418"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::BrowserBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 2e440a3055fc9c0b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::ConsoleBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 186a11e142cbd812"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::NetworkBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - db22091c1bc17e18"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::RuntimeBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - fbc1d48d07dfa5eb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::DatabaseBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 7c57e27b44f652fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::DebuggerBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 27046c19a97a5509"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::TimelineBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - b797ebcd9571a918"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::AnimationBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 84b9d847a79031b3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::IndexedDBBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 2137b52e52f0ff23"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::InspectorBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - d72751272d8e240d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::LayerTreeBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 2ab60d2a9a68bcc5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::DOMStorageBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - b9b7f049fa10dcec"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Inspector::ApplicationCacheBackendDispatcher::disable(long, WTF::RefPtr&lt;WTF::JSONImpl::Object, WTF::RawPtrTraits&lt;WTF::JSONImpl::Object&gt;, WTF::DefaultRefDerefTraits&lt;WTF::JSONImpl::Object&gt;&gt;&amp;&amp;)"
+                  moduleName = "JavaScriptCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 788c76a375723d4e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::AudioNodeOutput::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - d3a893aeaaf3c28b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorAnimationAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - a949ec4ea435cc7a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorApplicationCacheAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 36bf44ff805607c6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorCSSAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 49164f9d2becb770"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorCanvasAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - ccb876c591a27322"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorDOMDebuggerAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - cb7af1cf48b9bd95"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorDOMStorageAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 72a12f147e15fd37"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorDatabaseAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - c1952621536a962"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorIndexedDBAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 1599a24929736bbc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorLayerTreeAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 153bb6c61d22e655"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorMemoryAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - d475b09dd06fafc3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorNetworkAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 4eb574206fee9793"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorPageAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - ab830f953a7e1f15"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorTimelineAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 82f5440257eb0352"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::InspectorWorkerAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - c8a3c6c8fc573a10"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::WebHeapAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 83764ad230ab9de3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::PageDOMDebuggerAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 2e15aca6694be493"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::PageHeapAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 58f569529cc85606"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::PageRuntimeAgent::disable()"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 50676d4ed4d2ff6c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::GraphicsContextGLANGLE::disable(unsigned int)"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 1c348fa5c1f03ed0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WBSAppLink disable]"
+                  moduleName = "SafariSharedUI"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - edd634addac7362a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CBSBIM disable]"
+                  moduleName = "CoreBrightness"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 64782c303926d1db"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CBThermalBrightnessCap disable]"
+                  moduleName = "CoreBrightness"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 8fb25ebca0871f31"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DMCTimerContext disable]"
+                  moduleName = "DMCUtilities"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 513abd42b1c9f029"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[VKTimer disable]"
+                  moduleName = "VectorKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 6f57e523b6694b1e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "altitude::RoadRequestManager::disable()"
+                  moduleName = "VectorKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - edd82b192321ccd9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "altitude::SkeletonRequestManager::disable()"
+                  moduleName = "VectorKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 66b15399bae67fdc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[DADisableableObject disable]"
+                  moduleName = "DataAccessExpress"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 6053f828b37b7463"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[AXMOutputManager disable]"
+                  moduleName = "AXMediaUtilities"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 5eb2eb549c2daff5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MSTimerGate disable]"
+                  moduleName = "CoreMediaStream"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

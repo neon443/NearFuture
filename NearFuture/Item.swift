@@ -187,8 +187,8 @@ class EventViewModel: ObservableObject {
 		icloud.set(value, forKey: key)
 		icloud.synchronize()
 		
-		if let retrievedVal = icloud.string(forKey: key) {
-			print("has UbiquitousKeyValueStore: retrieved \(retrievedVal)")
+		if icloud.string(forKey: key) != nil {
+//			print("has UbiquitousKeyValueStore")
 			icloud.removeObject(forKey: key)
 			icloud.synchronize()
 			return true
