@@ -27,7 +27,7 @@ struct Event: Identifiable, Codable {
 	var description: String
 	var date: Date
 	var recurrence: RecurrenceType
-	
+
 	enum RecurrenceType: String, Codable, CaseIterable {
 		case none, daily, weekly, monthly, yearly
 	}
@@ -41,16 +41,16 @@ struct ColorCodable: Codable {
 	//for the brainrot kids: alpha is the opacity/transparency of the color,
 	//alpha == 0 completely transparent
 	//alpha == 1 completely opaque
-	
+
 	var color: Color {
 		Color(red: red, green: green, blue: blue, opacity: alpha)
 	}
-	
+
 	init(_ color: Color) {
 		let uiColor = UIColor(color)
 		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
 		uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
-		
+
 		self.red = Double(r)
 		self.green = Double(g)
 		self.blue = Double(b)
@@ -89,22 +89,22 @@ func daysUntilEvent(_ eventDate: Date, short: Bool) -> String {
 class EventViewModel: ObservableObject {
 	@Published var events: [Event] = []
 	@Published var icloudData: [Event] = []
-	
+
 	@Published var lastSync: Date? = nil
 	@Published var icloudEventCount: Int = 0
 	@Published var localEventCount: Int = 0
 	@Published var syncStatus: String = "Not Synced"
-	
+
 	init() {
 		loadEvents()
 	}
-	
+
 	//appgroup or regular userdefaults
 	let appGroupUserDefaults = UserDefaults(suiteName: "group.com.neon443.NearFuture") ?? UserDefaults.standard
-	
+
 	//icloud store
 	let icloudStore = NSUbiquitousKeyValueStore.default
-	
+
 	// load from icloud or local
 	func loadEvents() {
 		//load icloud 1st
@@ -115,7 +115,7 @@ class EventViewModel: ObservableObject {
 				self.events = decodedIcEvents
 			}
 		}
-		
+
 		if events.isEmpty, let savedData = appGroupUserDefaults.data(forKey: "events") {
 			let decoder = JSONDecoder()
 			if let decodedEvents = try? decoder.decode([Event].self, from: savedData) {
@@ -124,35 +124,35 @@ class EventViewModel: ObservableObject {
 		}
 		updateSyncStatus()
 	}
-	
+
 	// save to local and icloud
 	func saveEvents() {
 		let encoder = JSONEncoder()
 		if let encoded = try? encoder.encode(events) {
 			appGroupUserDefaults.set(encoded, forKey: "events")
-			
+
 			//sync
 			icloudStore.set(encoded, forKey: "events")
 			icloudStore.synchronize()
-			
+
 			updateSyncStatus()
 			loadEvents()
 			WidgetCenter.shared.reloadAllTimelines()//reload all widgets when saving events
 		}
 	}
-	
+
 	private func updateSyncStatus() {
 		lastSync = Date()
 		icloudEventCount = icloudData.count
 		localEventCount = events.count
-		
+
 		if icloudEventCount == localEventCount {
 			syncStatus = "Successful"
 		} else {
 			syncStatus = "Pending"
 		}
 	}
-	
+
 	func addEvent(
 		name: String,
 		symbol: String,
@@ -172,21 +172,21 @@ class EventViewModel: ObservableObject {
 		events.append(newEvent)
 		saveEvents() //sync with icloud
 	}
-	
+
 	func removeEvent(at index: IndexSet) {
 		events.remove(atOffsets: index)
 		saveEvents() //sync local and icl
 	}
-	
+
 	func hasUbiquitousKeyValueStore() -> Bool {
 		let icloud = NSUbiquitousKeyValueStore.default
-		
+
 		let key = "com.neon443.NearFuture.testkey"
 		let value = "testValue"
-		
+
 		icloud.set(value, forKey: key)
 		icloud.synchronize()
-		
+
 		if icloud.string(forKey: key) != nil {
 //			print("has UbiquitousKeyValueStore")
 			icloud.removeObject(forKey: key)
@@ -199,36 +199,36 @@ class EventViewModel: ObservableObject {
 			return false
 		}
 	}
-	
+
 	func sync() {
 		NSUbiquitousKeyValueStore.default.synchronize()
 		loadEvents()
 	}
-	
+
 	func replaceLocalWithiCloudData() {
 		icloudStore.synchronize()
 		self.events = self.icloudData
 		saveEvents()
 	}
-	
+
 	func replaceiCloudWithLocalData() {
 		icloudStore.synchronize()
 		self.icloudData = self.events
 		saveEvents()
 	}
-	
+
 	func exportEvents() -> String? {
 		let encoder = JSONEncoder()
-		
+
 		// Custom date encoding strategy to handle date formatting
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
 		encoder.dateEncodingStrategy = .formatted(dateFormatter)
-		
+
 		do {
 			// Encode the events array to JSON data
 			let encodedData = try encoder.encode(events)
-			
+
 			// Convert the JSON data to a string
 			if let jsonString = String(data: encodedData, encoding: .utf8) {
 				return jsonString
@@ -241,26 +241,26 @@ class EventViewModel: ObservableObject {
 			return nil
 		}
 	}
-	
+
 	func importEvents(_ imp: String) {
 		guard let impData = imp.data(using: .utf8) else {
 			print("Failed to convert string to data")
 			return
 		}
-		
+
 		// Create a JSONDecoder
 		let decoder = JSONDecoder()
-		
+
 		// Add a custom date formatter for decoding the date string
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // Adjust this to the date format you're using
 		decoder.dateDecodingStrategy = .formatted(dateFormatter)
-		
+
 		do {
 			// Attempt to decode the events from the provided data
 			let decoded = try decoder.decode([Event].self, from: impData)
 			print("Successfully decoded events: \(decoded)")
-			
+
 			// Save and reload after importing events
 			self.events = decoded
 			saveEvents()
@@ -270,7 +270,7 @@ class EventViewModel: ObservableObject {
 			print("Failed to decode events: \(error.localizedDescription)")
 		}
 	}
-	
+
 	//MARK: Danger Zone
 	func dangerClearLocalData() {
 		UserDefaults.standard.removeObject(forKey: "events")
@@ -278,29 +278,29 @@ class EventViewModel: ObservableObject {
 		events.removeAll()
 		updateSyncStatus()
 	}
-	
+
 	func dangerCleariCloudData() {
 		icloudStore.removeObject(forKey: "events")
 		icloudStore.synchronize()
 		icloudData.removeAll()
 		updateSyncStatus()
 	}
-	
+
 	func dangerResetLocalData() {
 		let userDFDict = UserDefaults.standard.dictionaryRepresentation()
 		for key in userDFDict.keys {
 			UserDefaults.standard.removeObject(forKey: key)
 		}
-		
+
 		let appGUSDDict = appGroupUserDefaults.dictionaryRepresentation()
 		for key in appGUSDDict.keys {
 			appGroupUserDefaults.removeObject(forKey: key)
 		}
-		
+
 		events.removeAll()
 		updateSyncStatus()
 	}
-	
+
 	func dangerResetiCloud() {
 		let icloudDict = icloudStore.dictionaryRepresentation
 		for key in icloudDict.keys {
@@ -315,7 +315,7 @@ class EventViewModel: ObservableObject {
 func describeOccurrence(date: Date, recurrence: Event.RecurrenceType) -> String {
 	let dateString = date.formatted(date: .long, time: .omitted)
 	let recurrenceDescription: String
-	
+
 	switch recurrence {
 	case .none:
 		recurrenceDescription = "Occurs once on"
@@ -328,6 +328,6 @@ func describeOccurrence(date: Date, recurrence: Event.RecurrenceType) -> String 
 	case .yearly:
 		recurrenceDescription = "Repeats every year from"
 	}
-	
+
 	return "\(recurrenceDescription) \(dateString)"
 }
