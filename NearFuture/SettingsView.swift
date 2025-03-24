@@ -70,12 +70,12 @@ struct SettingsView: View {
 				NavigationLink() {
 					NavigationStack() {
 						Button() {
-							UIPasteboard.general.string = "\(viewModel.exportEvents())"
-							print(viewModel.exportEvents())
+							UIPasteboard.general.string = "\(viewModel.exportEvents() ?? "")"
+							print(viewModel.exportEvents() as Any)
 						} label: {
 							Text("copy")
 						}
-						Text("\(viewModel.exportEvents())")
+						Text("\(viewModel.exportEvents() ?? "")")
 					}
 				} label: {
 					Image(systemName: "list.bullet.rectangle")
