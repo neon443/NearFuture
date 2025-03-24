@@ -8,6 +8,10 @@
 import SwiftUI
 import SwiftData
 
+enum Field {
+	case Search
+}
+
 struct ContentView: View {
 	@StateObject private var viewModel = EventViewModel()
 	@State private var eventName = ""
@@ -62,10 +66,15 @@ struct ContentView: View {
 	}
 	@State var showSettings: Bool = false
 	
-	@FocusState private var focusedField: Field?
-	private enum Field {
-		case Search
+	var noEvents: Bool {
+		if viewModel.events.count == 0 {
+			return true
+		} else {
+			return false
+		}
 	}
+	
+	@FocusState private var focusedField: Field?
 
 	var body: some View {
 		TabView {
@@ -86,6 +95,7 @@ struct ContentView: View {
 							.onSubmit {
 								focusedField = nil
 							}
+							.submitLabel(.done)
 							MagicClearButton(text: $searchInput)
 						}
 						.padding(.horizontal)
@@ -95,25 +105,10 @@ struct ContentView: View {
 							}
 							.onDelete(perform: viewModel.removeEvent)
 							if !searchInput.isEmpty {
-								HStack {
-									Image(systemName: "questionmark.square.dashed")
-										.resizable()
-										.scaledToFit()
-										.frame(width: 30, height: 30)
-										.padding(.trailing)
-									Text("Can't find what you're looking for?")
-								}
-								Text("Tip: The Search bar searches event names and descriptions")
-								Button() {
-									searchInput = ""
-									focusedField = nil
-								} label: {
-									HStack {
-										Image(systemName: "xmark")
-										Text("Clear Filters")
-									}
-									.foregroundStyle(Color.accentColor)
-								}
+								SearchHelp(
+									searchInput: $searchInput,
+									focusedField: _focusedField
+								)
 							}
 						}
 					}
@@ -206,6 +201,32 @@ struct EventListView: View {
 					.font(.subheadline)
 					.foregroundColor(event.color.color)
 			}
+		}
+	}
+}
+
+struct SearchHelp: View {
+	@Binding var searchInput: String
+	@FocusState var focusedField: Field?
+	var body: some View {
+		HStack {
+			Image(systemName: "questionmark.square.dashed")
+				.resizable()
+				.scaledToFit()
+				.frame(width: 30, height: 30)
+				.padding(.trailing)
+			Text("Can't find what you're looking for?")
+		}
+		Text("Tip: The Search bar searches event names and descriptions")
+		Button() {
+			searchInput = ""
+			focusedField = nil
+		} label: {
+			HStack {
+				Image(systemName: "xmark")
+				Text("Clear Filters")
+			}
+			.foregroundStyle(Color.accentColor)
 		}
 	}
 }

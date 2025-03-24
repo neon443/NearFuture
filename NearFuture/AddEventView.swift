@@ -66,6 +66,7 @@ struct AddEventView: View {
 								.padding(.trailing, eventName.isEmpty ? 0 : 30)
 								.animation(.spring, value: eventName)
 								.focused($focusedField, equals: Field.Name)
+								.submitLabel(.next)
 								.onSubmit {
 									focusedField = .Description
 								}
@@ -80,6 +81,7 @@ struct AddEventView: View {
 							.padding(.trailing, eventDescription.isEmpty ? 0 : 30)
 							.animation(.spring, value: eventDescription)
 							.focused($focusedField, equals: Field.Description)
+							.submitLabel(.done)
 							.onSubmit {
 								focusedField = nil
 							}

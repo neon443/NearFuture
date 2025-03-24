@@ -53,57 +53,12 @@
             moduleName = "">
             <Locations>
                <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 6a27c681eabcc1c6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[NSGarbageCollector disable]"
-                  moduleName = "Foundation"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
                   uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 6896a8ccc1cbbf4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "Combine._Introspection.disable() -&gt; ()"
                   moduleName = "Combine"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - e677de259d751566"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Security::CodeSigning::PolicyEngine::disable(void const*, unsigned int, unsigned long long, __CFDictionary const*, bool)"
-                  moduleName = "Security"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 1ef70efdf996008b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "kd_precinct_pointer_server::disable()"
-                  moduleName = "libJP2.dylib"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - c5a6a63536a5f602"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpenGLCurveEvaluator::disable(int)"
-                  moduleName = "libGLU.dylib"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 993de639c691fd54"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "OpenGLSurfaceEvaluator::disable(int)"
-                  moduleName = "libGLU.dylib"
                   usesParentBreakpointCondition = "Yes">
                </Location>
                <Location
@@ -116,75 +71,12 @@
                   usesParentBreakpointCondition = "Yes">
                </Location>
                <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 6cbd47e179778bf1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[BWMemoryPool disable]"
-                  moduleName = "CMCapture"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 64631a9688dd1733"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "mlir::detail::RecoveryReproducerContext::disable()"
-                  moduleName = "ANECompiler"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
                   uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 8161317e462ef314"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "mlir::detail::RecoveryReproducerContext::disable()"
                   moduleName = "MetalPerformanceShadersGraph"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 19413fb9178b5401"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "CoreAudio.AudioHardwareBox.disable() throws -&gt; ()"
-                  moduleName = "libswiftCoreAudio.dylib"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 4e7018357b464219"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WebKit::JSWebExtensionAPIAction::disable(OpaqueJSContext const*, OpaqueJSValue*, OpaqueJSValue*, unsigned long, OpaqueJSValue const* const*, OpaqueJSValue const**)"
-                  moduleName = "WebKit"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - ed1dc064b7d56449"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WebKit::InspectorBrowserAgent::disable()"
-                  moduleName = "WebKit"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 8c7ce8a2ca95b7c1"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WebKit::RemoteGraphicsContextGLProxy::disable(unsigned int)"
-                  moduleName = "WebKit"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 85346bbe96bb9335"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WebKit::WebExtensionAPIAction::disable(double, WTF::Ref&lt;WebKit::WebExtensionCallbackHandler, WTF::RawPtrTraits&lt;WebKit::WebExtensionCallbackHandler&gt;, WTF::DefaultRefDerefTraits&lt;WebKit::WebExtensionCallbackHandler&gt;&gt;&amp;&amp;, NSString* __autoreleasing*)"
-                  moduleName = "WebKit"
                   usesParentBreakpointCondition = "Yes">
                </Location>
                <Location
@@ -404,15 +296,6 @@
                   usesParentBreakpointCondition = "Yes">
                </Location>
                <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 788c76a375723d4e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "WebCore::AudioNodeOutput::disable()"
-                  moduleName = "WebCore"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
                   uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - d3a893aeaaf3c28b"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
@@ -584,33 +467,6 @@
                   usesParentBreakpointCondition = "Yes">
                </Location>
                <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 1c348fa5c1f03ed0"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[WBSAppLink disable]"
-                  moduleName = "SafariSharedUI"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - edd634addac7362a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CBSBIM disable]"
-                  moduleName = "CoreBrightness"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
-                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 64782c303926d1db"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[CBThermalBrightnessCap disable]"
-                  moduleName = "CoreBrightness"
-                  usesParentBreakpointCondition = "Yes">
-               </Location>
-               <Location
                   uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 8fb25ebca0871f31"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
@@ -656,6 +512,51 @@
                   usesParentBreakpointCondition = "Yes">
                </Location>
                <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 921ff423092fb558"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "kd_precinct_pointer_server::disable()"
+                  moduleName = "ImageIO"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 4db6a03f184a5171"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MCTimerContext disable]"
+                  moduleName = "ManagedConfiguration"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 895c3b28d3b0be6b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebCore::AudioNodeInput::disable(WebCore::AudioNodeOutput*)"
+                  moduleName = "WebCore"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 8e113a16851df014"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SpectralOutput::disable()"
+                  moduleName = "ShazamKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 8a37ac5636f777a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "+[SpeakCorrections disable]"
+                  moduleName = "AccessibilitySettingsLoader"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
                   uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 6053f828b37b7463"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
@@ -665,12 +566,84 @@
                   usesParentBreakpointCondition = "Yes">
                </Location>
                <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 4e7018357b464219"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebKit::JSWebExtensionAPIAction::disable(OpaqueJSContext const*, OpaqueJSValue*, OpaqueJSValue*, unsigned long, OpaqueJSValue const* const*, OpaqueJSValue const**)"
+                  moduleName = "WebKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - ed1dc064b7d56449"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebKit::InspectorBrowserAgent::disable()"
+                  moduleName = "WebKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 8c7ce8a2ca95b7c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebKit::RemoteGraphicsContextGLProxy::disable(unsigned int)"
+                  moduleName = "WebKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 85346bbe96bb9335"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebKit::WebExtensionAPIAction::disable(double, WTF::Ref&lt;WebKit::WebExtensionCallbackHandler, WTF::RawPtrTraits&lt;WebKit::WebExtensionCallbackHandler&gt;, WTF::DefaultRefDerefTraits&lt;WebKit::WebExtensionCallbackHandler&gt;&gt;&amp;&amp;, NSString* __autoreleasing*)"
+                  moduleName = "WebKit"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
                   uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 5eb2eb549c2daff5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[MSTimerGate disable]"
                   moduleName = "CoreMediaStream"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - d2467d35396f9097"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SFExtensionWrapper disable]"
+                  moduleName = "MobileSafari"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 9361a2432fecca62"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SFContentBlockerExtensionWrapper disable]"
+                  moduleName = "MobileSafari"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - d23dcba3d53d98ae"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[SFWebExtensionExtensionWrapper disable]"
+                  moduleName = "MobileSafari"
+                  usesParentBreakpointCondition = "Yes">
+               </Location>
+               <Location
+                  uuid = "A2F7727A-BA9E-4A62-BE81-62B5BB097DD3 - 1c348fa5c1f03ed0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[WBSAppLink disable]"
+                  moduleName = "SafariSharedUI"
                   usesParentBreakpointCondition = "Yes">
                </Location>
             </Locations>
