@@ -142,6 +142,7 @@ struct Widget_Previews: PreviewProvider {
 			color: ColorCodable(.blue),
 			description: "Event description",
 			date: Date.distantFuture,
+			time: false,
 			recurrence: .yearly
 		),
 		Event(
@@ -150,6 +151,7 @@ struct Widget_Previews: PreviewProvider {
 			color: ColorCodable(.orange),
 			description: "description",
 			date: Date(),
+			time: false,
 			recurrence: .daily
 		),
 		Event(
@@ -158,6 +160,7 @@ struct Widget_Previews: PreviewProvider {
 			color: ColorCodable(.orange),
 			description: "description",
 			date: Date(),
+			time: false,
 			recurrence: .daily
 		),
 		Event(
@@ -166,6 +169,7 @@ struct Widget_Previews: PreviewProvider {
 			color: ColorCodable(.orange),
 			description: "description",
 			date: Date(),
+			time: false,
 			recurrence: .daily
 		),
 		Event(
@@ -174,7 +178,17 @@ struct Widget_Previews: PreviewProvider {
 			color: ColorCodable(.orange),
 			description: "description",
 			date: Date(),
+			time: false,
 			recurrence: .daily
+		),
+		Event(
+			name: "time event",
+			symbol: "",
+			color: ColorCodable(.blue),
+			description: "an event with a time",
+			date: Date(),
+			time: true,
+			recurrence: .none
 		)
 	]
 	static var previews: some View {

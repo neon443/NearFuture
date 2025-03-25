@@ -26,6 +26,7 @@ struct Event: Identifiable, Codable {
 	var color: ColorCodable
 	var description: String
 	var date: Date
+	var time: Bool
 	var recurrence: RecurrenceType
 
 	enum RecurrenceType: String, Codable, CaseIterable {
@@ -159,6 +160,7 @@ class EventViewModel: ObservableObject {
 		color: ColorCodable,
 		description: String,
 		date: Date,
+		time: Bool,
 		recurrence: Event.RecurrenceType
 	) {
 		let newEvent = Event(
@@ -167,6 +169,7 @@ class EventViewModel: ObservableObject {
 			color: color,
 			description: description,
 			date: date,
+			time: time,
 			recurrence: recurrence
 		)
 		events.append(newEvent)

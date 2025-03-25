@@ -16,6 +16,7 @@ struct AddEventView: View {
 	@Binding var eventColor: Color
 	@Binding var eventDescription: String
 	@Binding var eventDate: Date
+	@Binding var eventTime: Bool
 	@Binding var eventRecurrence: Event.RecurrenceType
 	
 	@State var adding : Bool
@@ -93,6 +94,15 @@ struct AddEventView: View {
 					DatePicker("", selection: $eventDate, displayedComponents: .date)
 						.datePickerStyle(WheelDatePickerStyle())
 					
+					Toggle("Schedule a Time", isOn: $eventTime)
+					if eventTime {
+						DatePicker(
+							"",
+							selection: $eventDate,
+							displayedComponents: .hourAndMinute
+						)
+					}
+					
 					// re-ocurrence Picker
 					Picker("Recurrence", selection: $eventRecurrence) {
 						ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
@@ -117,6 +127,7 @@ struct AddEventView: View {
 							color: ColorCodable(eventColor),
 							description: eventDescription,
 							date: eventDate,
+							time: eventTime,
 							recurrence: eventRecurrence
 						)
 						resetAddEventView()
@@ -125,14 +136,14 @@ struct AddEventView: View {
 							.font(.headline)
 							.cornerRadius(10)
 							.buttonStyle(BorderedProminentButtonStyle())
-						if eventName.isEmpty {
-							Text("Give your event a name.")
-						}
 					}
 					.disabled(eventName.isEmpty)
 					if eventName.isEmpty {
-						Text("Give your event a name.")
-						
+						HStack {
+							Image(systemName: "exclamationmark.circle")
+								.foregroundStyle(.red)
+							Text("Give your event a name.")
+						}
 					}
 				}
 			}
@@ -192,22 +203,16 @@ struct MagicClearButton: View {
 	}
 }
 
-struct AddEvent_Preview: PreviewProvider {
-	@State static var symbol = "star"
-	@State static var date = Date()
-	@State static var color = Color(.red)
-	
-	static var previews: some View {
-		AddEventView(
-			viewModel: EventViewModel(),
-			eventName: .constant("Birthday"),
-			eventSymbol: $symbol,
-			eventColor: $color,
-			eventDescription: .constant("A very special day"),
-			eventDate: $date,
-			eventRecurrence: .constant(.monthly),
-			adding: true
-		)
-	}
+#Preview {
+	AddEventView(
+		viewModel: EventViewModel(),
+		eventName: .constant("Birthday"),
+		eventSymbol: .constant("star"),
+		eventColor: .constant(Color.red),
+		eventDescription: .constant("A very special day"),
+		eventDate: .constant(Date()),
+		eventTime: .constant(true),
+		eventRecurrence: .constant(.monthly),
+		adding: true
+	)
 }
-

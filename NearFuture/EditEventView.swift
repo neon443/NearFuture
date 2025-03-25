@@ -17,6 +17,7 @@ struct EditEventView: View {
 	@State private var eventColor: Color
 	@State private var eventDescription: String
 	@State private var eventDate: Date
+	@State private var eventTime: Bool
 	@State private var eventRecurrence: Event.RecurrenceType
 	
 	init(viewModel: EventViewModel, event: Binding<Event>) {
@@ -27,6 +28,7 @@ struct EditEventView: View {
 		_eventColor = State(initialValue: event.wrappedValue.color.color)
 		_eventDescription = State(initialValue: event.wrappedValue.description)
 		_eventDate = State(initialValue: event.wrappedValue.date)
+		_eventTime = State(initialValue: event.wrappedValue.time)
 		_eventRecurrence = State(initialValue: event.wrappedValue.recurrence)
 	}
 	
@@ -39,6 +41,7 @@ struct EditEventView: View {
 				eventColor: $eventColor,
 				eventDescription: $eventDescription,
 				eventDate: $eventDate,
+				eventTime: $eventTime,
 				eventRecurrence: $eventRecurrence,
 				adding: false //bc we editing existing event
 			)
@@ -82,6 +85,7 @@ struct EditEventView: View {
 				color: ColorCodable(.red),
 				description: "an event",
 				date: Date(),
+				time: true,
 				recurrence: .yearly
 			)
 		)

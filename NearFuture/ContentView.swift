@@ -27,6 +27,7 @@ struct ContentView: View {
 	].randomElement() ?? Color.red
 	@State private var eventDescription = ""
 	@State private var eventDate = Date()
+	@State private var eventTime = false
 	@State private var eventRecurrence: Event.RecurrenceType = .none
 	@State private var showingAddEventView = false
 	@State private var searchInput: String = ""
@@ -122,6 +123,7 @@ struct ContentView: View {
 							eventColor: $eventColor,
 							eventDescription: $eventDescription,
 							eventDate: $eventDate,
+							eventTime: $eventTime,
 							eventRecurrence: $eventRecurrence,
 							adding: true //adding event
 						)
@@ -186,7 +188,12 @@ struct EventListView: View {
 							.font(.subheadline)
 							.foregroundColor(.gray)
 					}
-					Text(event.date.formatted(date: .long, time: .omitted))
+					Text(
+						event.date.formatted(
+							date: .long,
+							time: event.time ? .standard : .omitted
+						)
+					)
 						.font(.subheadline)
 						.foregroundColor(event.color.color)
 					if event.recurrence != .none {
