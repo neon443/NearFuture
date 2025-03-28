@@ -109,6 +109,10 @@ struct SettingsView: View {
 					Text("Import events")
 				}
 				
+				Section("Tip") {
+					Text("Near Future has Widgets!")
+				}
+				
 				Section("Danger Zone") {
 					Button("Delete local data", role: .destructive) {
 						viewModel.dangerClearLocalData()

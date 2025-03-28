@@ -22,6 +22,8 @@ import WidgetKit
 struct Event: Identifiable, Codable {
 	var id = UUID()
 	var name: String
+	var complete: Bool
+	var completeDesc: String
 	var symbol: String
 	var color: ColorCodable
 	var description: String
@@ -65,7 +67,7 @@ struct ColorCodable: Codable {
 	}
 }
 
-func daysUntilEvent(_ eventDate: Date, short: Bool) -> String {
+func daysUntilEvent(_ eventDate: Date, short: Bool, sepLines: Bool = false) -> String {
 	let calendar = Calendar.current
 	let currentDate = Date()
 	let components = calendar.dateComponents([.day], from: currentDate, to: eventDate)
@@ -74,7 +76,7 @@ func daysUntilEvent(_ eventDate: Date, short: Bool) -> String {
 		if short {
 			return "\(days)d"
 		} else {
-			return "\(-days) day\(-days == 1 ? "" : "s") ago"
+			return "\(-days)\(sepLines ? "\n" : " ")day\(-days == 1 ? "" : "s") ago"
 		}
 	}
 	guard days != 0 else {
@@ -83,7 +85,7 @@ func daysUntilEvent(_ eventDate: Date, short: Bool) -> String {
 	if short {
 		return "\(days)d"
 	} else {
-		return "\(days) day\(days == 1 ? "" : "s")"
+		return "\(days)\(sepLines ? "\n" : " ")day\(days == 1 ? "" : "s")"
 	}
 }
 
@@ -156,6 +158,8 @@ class EventViewModel: ObservableObject {
 
 	func addEvent(
 		name: String,
+		complete: Bool,
+		completedDesc: String,
 		symbol: String,
 		color: ColorCodable,
 		description: String,
@@ -165,6 +169,8 @@ class EventViewModel: ObservableObject {
 	) {
 		let newEvent = Event(
 			name: name,
+			complete: complete,
+			completeDesc: completedDesc,
 			symbol: symbol,
 			color: color,
 			description: description,

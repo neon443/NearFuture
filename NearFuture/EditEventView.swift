@@ -13,6 +13,8 @@ struct EditEventView: View {
 	@Binding var event: Event
 	
 	@State private var eventName: String
+	@State private var eventComplete: Bool
+	@State private var eventCompleteDesc: String
 	@State private var eventSymbol: String
 	@State private var eventColor: Color
 	@State private var eventDescription: String
@@ -24,6 +26,8 @@ struct EditEventView: View {
 		self.viewModel = viewModel
 		_event = event
 		_eventName = State(initialValue: event.wrappedValue.name)
+		_eventComplete = State(initialValue: event.wrappedValue.complete)
+		_eventCompleteDesc = State(initialValue: event.wrappedValue.completeDesc)
 		_eventSymbol = State(initialValue: event.wrappedValue.symbol)
 		_eventColor = State(initialValue: event.wrappedValue.color.color)
 		_eventDescription = State(initialValue: event.wrappedValue.description)
@@ -32,11 +36,33 @@ struct EditEventView: View {
 		_eventRecurrence = State(initialValue: event.wrappedValue.recurrence)
 	}
 	
+	fileprivate func saveEdits() {
+		event.name = eventName
+		event.symbol = eventSymbol
+		event.color = ColorCodable(eventColor)
+		event.description = eventDescription
+		event.date = eventDate
+		event.recurrence = eventRecurrence
+		
+		//if there is an event in vM.events with the id of the event we r editing,
+		//firstindex - loops through the arr and finds first element where that events id matches editing event's id
+		if let index = viewModel.events.firstIndex(where: { xEvent in
+			xEvent.id == event.id
+		}) {
+			viewModel.events[index] = event
+		}
+		viewModel.saveEvents()
+		
+		dismiss()
+	}
+	
 	var body: some View {
 //		NavigationStack {
 			AddEventView(
 				viewModel: viewModel,
 				eventName: $eventName,
+				eventComplete: $eventComplete,
+				eventCompleteDesc: $eventCompleteDesc,
 				eventSymbol: $eventSymbol,
 				eventColor: $eventColor,
 				eventDescription: $eventDescription,
@@ -49,26 +75,11 @@ struct EditEventView: View {
 			.toolbar {
 				ToolbarItem(placement: .topBarTrailing) {
 					Button() {
-						event.name = eventName
-						event.symbol = eventSymbol
-						event.color = ColorCodable(eventColor)
-						event.description = eventDescription
-						event.date = eventDate
-						event.recurrence = eventRecurrence
-						
-						//if there is an event in vM.events with the id of the event we r editing,
-						//firstindex - loops through the arr and finds first element where that events id matches editing event's id
-						if let index = viewModel.events.firstIndex(where: { xEvent in
-							xEvent.id == event.id
-						}) {
-							viewModel.events[index] = event
-						}
-						viewModel.saveEvents()
-						
-						dismiss()
+						saveEdits()
 					} label: {
 						Text("Done")
 					}
+					.disabled(eventName == "")
 				}
 			}
 //		}
@@ -81,6 +92,8 @@ struct EditEventView: View {
 		event: .constant(
 			Event(
 				name: "Birthday",
+				complete: false,
+				completeDesc: "",
 				symbol: "gear",
 				color: ColorCodable(.red),
 				description: "an event",

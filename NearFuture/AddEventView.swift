@@ -12,6 +12,8 @@ struct AddEventView: View {
 	@ObservedObject var viewModel: EventViewModel
 	
 	@Binding var eventName: String
+	@Binding var eventComplete: Bool
+	@Binding var eventCompleteDesc: String
 	@Binding var eventSymbol: String
 	@Binding var eventColor: Color
 	@Binding var eventDescription: String
@@ -123,6 +125,8 @@ struct AddEventView: View {
 					Button {
 						viewModel.addEvent(
 							name: eventName,
+							complete: eventComplete,
+							completedDesc: eventCompleteDesc,
 							symbol: eventSymbol,
 							color: ColorCodable(eventColor),
 							description: eventDescription,
@@ -140,7 +144,7 @@ struct AddEventView: View {
 					.disabled(eventName.isEmpty)
 					if eventName.isEmpty {
 						HStack {
-							Image(systemName: "exclamationmark.circle")
+							Image(systemName: "exclamationmark")
 								.foregroundStyle(.red)
 							Text("Give your event a name.")
 						}
@@ -207,6 +211,8 @@ struct MagicClearButton: View {
 	AddEventView(
 		viewModel: EventViewModel(),
 		eventName: .constant("Birthday"),
+		eventComplete: .constant(false),
+		eventCompleteDesc: .constant(""),
 		eventSymbol: .constant("star"),
 		eventColor: .constant(Color.red),
 		eventDescription: .constant("A very special day"),

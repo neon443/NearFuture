@@ -50,7 +50,7 @@ struct EventWidgetProvider: TimelineProvider {
 struct EventWidgetView: View {
 	var entry: EventWidgetEntry
 	@Environment(\.widgetFamily) var widgetFamily
-	var showedEvents: Int {
+	var showedEventsNum: Int {
 		switch widgetFamily {
 		case .systemSmall:
 			return 3
@@ -63,74 +63,100 @@ struct EventWidgetView: View {
 		}
 	}
 	
+	let bgGradient = LinearGradient(
+		gradient: Gradient(
+			colors: [
+				.black,
+				.gray.opacity(0.2)
+			]
+		),
+		startPoint: .bottom,
+		endPoint: .top
+	)
+	
 	var body: some View {
 		let isLarge = widgetFamily == .systemLarge
 		let events = entry.events
-		VStack {
-			Text("Upcoming Events")
-				.font(.subheadline)
-				.padding(.top, -12)
-//				.padding(.bottom, -5)
-			
-			ForEach(events.prefix(showedEvents), id: \.id) { event in
-				HStack {
-					RoundedRectangle(cornerRadius: 5)
-						.frame(width: 5)
-						.frame(maxHeight: isLarge ? 50 : 30)
-						.foregroundStyle(event.color.color)
-						.padding(.leading, -18)
-						.padding(.vertical, 2)
-					VStack(alignment: .leading) {
+		ZStack {
+			bgGradient
+				.padding(.top, 4)
+				.padding(.horizontal, -50)
+				.padding(.bottom, -100)
+			VStack {
+				Text("In the Near Future...")
+					.foregroundStyle(.white)
+					.font(.caption)
+					.bold()
+					.padding(.top, -12)
+				
+				ForEach(events.prefix(showedEventsNum), id: \.id) { event in
+					if !event.complete {
 						HStack {
-							Image(systemName: event.symbol)
-								.resizable()
-								.scaledToFit()
-								.frame(width: 15, height: 15)
+							RoundedRectangle(cornerRadius: 5)
+								.frame(width: 5)
+								.frame(maxHeight: isLarge ? 50 : 30)
 								.foregroundStyle(event.color.color)
-							Text("\(event.name)")
-								.font(.footnote)
-								.padding(.leading, -5)
-						}
-						
-						if isLarge {
-							if !event.description.isEmpty {
-								Text(event.description)
-									.font(.caption2)
-									.foregroundColor(.gray)
-									.padding(.top, -5)
+								.padding(.leading, -18)
+								.padding(.vertical, 2)
+							VStack(alignment: .leading) {
+								HStack {
+									Image(systemName: event.symbol)
+										.resizable()
+										.scaledToFit()
+										.frame(width: 15, height: 15)
+										.foregroundStyle(event.color.color)
+									Text("\(event.name)")
+										.foregroundStyle(.white)
+										.font(.footnote)
+										.padding(.leading, -5)
+								}
+								
+								if isLarge {
+									if !event.description.isEmpty {
+										Text(event.description)
+											.font(.caption2)
+											.foregroundColor(.gray)
+											.padding(.top, -5)
+									}
+									Text(event.date.formatted(date: .long, time: .omitted))
+										.font(.caption2)
+										.foregroundColor(event.color.color)
+										.padding(.top, -5)
+								}
+								if event.recurrence != .none {
+									Text("\(event.recurrence.rawValue.capitalized)")
+										.foregroundStyle(.white)
+										.font(.caption2)
+										.padding(.top, -5)
+								}
 							}
-							Text(event.date.formatted(date: .long, time: .omitted))
-								.font(.caption2)
+							.padding(.leading, -15)
+							
+							Spacer()
+							
+							//short days till if not large widget
+							Text(daysUntilEvent(event.date, short: !isLarge, sepLines: true))
+								.font(.caption)
+								.multilineTextAlignment(.trailing)
 								.foregroundColor(event.color.color)
-								.padding(.top, -5)
+								.padding(.trailing, -12)
 						}
-						if event.recurrence != .none {
-							Text("\(event.recurrence.rawValue.capitalized)")
-								.font(.caption2)
-								.padding(.top, -5)
-						}
+					} else {
+						/*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
 					}
-					.padding(.leading, -15)
-					
-					Spacer()
-					
-					Text(daysUntilEvent(event.date, short: !isLarge))
-						.font(.caption)
-						.foregroundColor(event.color.color)
-						.padding(.trailing, -12)
+				}
+				Spacer()
+				if showedEventsNum < events.count {
+					let xMoreEvents = events.count - showedEventsNum
+					Text("+\(xMoreEvents) more event\(xMoreEvents == 1 ? "" : "s")")
+						.font(.caption2)
+//						.foregroundStyle(.gray)
+						.padding(.top, -5)
+						.padding(.bottom, -15)
 				}
 			}
-			Spacer()
-			if showedEvents < events.count {
-				let xMoreEvents = events.count - showedEvents
-				Text("+\(xMoreEvents) more event\(xMoreEvents == 1 ? "" : "s")")
-					.font(.caption2)
-					.foregroundStyle(.gray)
-					.padding(.top, -5)
-					.padding(.bottom, -15)
-			}
+			.containerBackground(Color.widgetBackground, for: .widget)
 		}
-		.containerBackground(Color.widgetBackground, for: .widget)
 	}
 }
 
@@ -138,6 +164,8 @@ struct Widget_Previews: PreviewProvider {
 	static var events = [
 		Event(
 			name: "Event Name",
+			complete: false,
+			completeDesc: "",
 			symbol: "gear",
 			color: ColorCodable(.blue),
 			description: "Event description",
@@ -146,36 +174,33 @@ struct Widget_Previews: PreviewProvider {
 			recurrence: .yearly
 		),
 		Event(
-			name: "A Day",
+			name: "distant past",
+			complete: false,
+			completeDesc: "",
 			symbol: "star",
 			color: ColorCodable(.orange),
+			description: "description",
+			date: Date.distantPast,
+			time: false,
+			recurrence: .daily
+		),
+		Event(
+			name: "event",
+			complete: false,
+			completeDesc: "",
+			symbol: "star",
+			color: ColorCodable(.purple),
 			description: "description",
 			date: Date(),
 			time: false,
 			recurrence: .daily
 		),
 		Event(
-			name: "A Day",
+			name: "An event",
+			complete: false,
+			completeDesc: "",
 			symbol: "star",
-			color: ColorCodable(.orange),
-			description: "description",
-			date: Date(),
-			time: false,
-			recurrence: .daily
-		),
-		Event(
-			name: "A Day",
-			symbol: "star",
-			color: ColorCodable(.orange),
-			description: "description",
-			date: Date(),
-			time: false,
-			recurrence: .daily
-		),
-		Event(
-			name: "A Day",
-			symbol: "star",
-			color: ColorCodable(.orange),
+			color: ColorCodable(.green),
 			description: "description",
 			date: Date(),
 			time: false,
@@ -183,8 +208,10 @@ struct Widget_Previews: PreviewProvider {
 		),
 		Event(
 			name: "time event",
-			symbol: "",
-			color: ColorCodable(.blue),
+			complete: true,
+			completeDesc: "",
+			symbol: "clock",
+			color: ColorCodable(.brown),
 			description: "an event with a time",
 			date: Date(),
 			time: true,

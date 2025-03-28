@@ -15,6 +15,8 @@ enum Field {
 struct ContentView: View {
 	@StateObject private var viewModel = EventViewModel()
 	@State private var eventName = ""
+	@State private var eventComplete = false
+	@State private var eventCompleteDesc = ""
 	@State private var eventSymbol = "star"
 	@State private var eventColor: Color = [
 		Color.red,
@@ -119,6 +121,8 @@ struct ContentView: View {
 						AddEventView(
 							viewModel: viewModel,
 							eventName: $eventName,
+							eventComplete: $eventComplete,
+							eventCompleteDesc: $eventCompleteDesc,
 							eventSymbol: $eventSymbol,
 							eventColor: $eventColor,
 							eventDescription: $eventDescription,
@@ -159,6 +163,7 @@ struct ContentView: View {
 struct EventListView: View {
 	@StateObject var viewModel: EventViewModel
 	@State var event: Event
+	@State var opaity: Double = 1
 	
 	var body: some View {
 		NavigationLink() {
@@ -170,18 +175,33 @@ struct EventListView: View {
 			HStack {
 				RoundedRectangle(cornerRadius: 5)
 					.frame(width: 5)
-					.foregroundStyle(event.color.color)
+					.foregroundStyle(
+						event.color.color.opacity(
+							event.complete ? 0.5 : 1
+						)
+					)
 					.padding(.leading, -10)
 					.padding(.vertical, 5)
+					.animation(.spring, value: event.complete)
 				VStack(alignment: .leading) {
 					HStack {
 						Image(systemName: event.symbol)
 							.resizable()
 							.scaledToFit()
 							.frame(width: 20, height: 20)
-							.foregroundStyle(event.color.color)
+							.foregroundStyle(
+								event.color.color.opacity(
+									event.complete ? 0.5 : 1
+								)
+							)
+							.animation(.spring, value: event.complete)
 						Text("\(event.name)")
 							.font(.headline)
+							.strikethrough(event.complete)
+//							.foregroundStyle(
+//								event.complete ? .gray : .primary
+//							)
+							.animation(.spring, value: event.complete)
 					}
 					if !event.description.isEmpty {
 						Text(event.description)
@@ -195,18 +215,63 @@ struct EventListView: View {
 						)
 					)
 						.font(.subheadline)
-						.foregroundColor(event.color.color)
+						.foregroundStyle(
+							event.color.color.opacity(
+								event.complete ? 0.5 : 1
+							)
+						)
+						.animation(.spring, value: event.complete)
 					if event.recurrence != .none {
-						Text("Recurring: \(event.recurrence.rawValue.capitalized)")
+						Text("Recurs \(event.recurrence.rawValue)")
 							.font(.subheadline)
+							.foregroundStyle(
+								.primary.opacity(
+									event.complete ? 0.5 : 1
+								)
+							)
+							.animation(.spring, value: event.complete)
 					}
 				}
 				
 				Spacer()
 				
-				Text("\(daysUntilEvent(event.date, short: false))")
-					.font(.subheadline)
-					.foregroundColor(event.color.color)
+				VStack {
+					Text("\(daysUntilEvent(event.date, short: false))")
+						.font(.subheadline)
+						.foregroundStyle(
+							event.color.color.opacity(
+								event.complete ? 0.5 : 1
+							)
+						)
+						.animation(.spring, value: event.complete)
+				}
+				Button() {
+					withAnimation(.spring) {
+						event.complete.toggle()
+						opaity = 0.5
+					}
+					viewModel.saveEvents()
+				} label: {
+					if event.complete {
+						ZStack {
+							Circle()
+								.foregroundStyle(.green)
+							Image(systemName: "checkmark")
+								.resizable()
+								.foregroundStyle(.white)
+								.scaledToFit()
+								.frame(width: 15)
+						}
+					} else {
+						Image(systemName: "circle")
+							.resizable()
+							.scaledToFit()
+							.foregroundStyle(event.color.color)
+					}
+				}
+				.buttonStyle(.borderless)
+				.frame(maxWidth: 25, maxHeight: 25)
+				.animation(.spring, value: event.complete)
 			}
 		}
 	}
@@ -240,4 +305,21 @@ struct SearchHelp: View {
 
 #Preview {
 	ContentView()
+}
+
+#Preview("EventListView") {
+	EventListView(
+		viewModel: EventViewModel(),
+		event: Event(
+			name: "event",
+			complete: false,
+			completeDesc: "dofajiof",
+			symbol: "star",
+			color: ColorCodable(.orange),
+			description: "lksdjfakdflkasjlkjl",
+			date: Date(),
+			time: true,
+			recurrence: .daily
+		)
+	)
 }
