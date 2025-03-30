@@ -43,7 +43,7 @@ struct ContentView: View {
 			}
 		}
 	}
-
+	
 	@Environment(\.colorScheme) var appearance
 	private var backgroundGradient: LinearGradient {
 		switch appearance {
@@ -78,7 +78,7 @@ struct ContentView: View {
 	}
 	
 	@FocusState private var focusedField: Field?
-
+	
 	var body: some View {
 		TabView {
 			NavigationStack {
@@ -161,9 +161,8 @@ struct ContentView: View {
 }
 
 struct EventListView: View {
-	@StateObject var viewModel: EventViewModel
+	@ObservedObject var viewModel: EventViewModel
 	@State var event: Event
-	@State var opaity: Double = 1
 	
 	var body: some View {
 		NavigationLink() {
@@ -198,9 +197,9 @@ struct EventListView: View {
 						Text("\(event.name)")
 							.font(.headline)
 							.strikethrough(event.complete)
-//							.foregroundStyle(
-//								event.complete ? .gray : .primary
-//							)
+						//							.foregroundStyle(
+						//								event.complete ? .gray : .primary
+						//							)
 							.animation(.spring, value: event.complete)
 					}
 					if !event.description.isEmpty {
@@ -214,13 +213,13 @@ struct EventListView: View {
 							time: event.time ? .standard : .omitted
 						)
 					)
-						.font(.subheadline)
-						.foregroundStyle(
-							event.color.color.opacity(
-								event.complete ? 0.5 : 1
-							)
+					.font(.subheadline)
+					.foregroundStyle(
+						event.color.color.opacity(
+							event.complete ? 0.5 : 1
 						)
-						.animation(.spring, value: event.complete)
+					)
+					.animation(.spring, value: event.complete)
 					if event.recurrence != .none {
 						Text("Recurs \(event.recurrence.rawValue)")
 							.font(.subheadline)
@@ -248,9 +247,15 @@ struct EventListView: View {
 				Button() {
 					withAnimation(.spring) {
 						event.complete.toggle()
-						opaity = 0.5
 					}
-					viewModel.saveEvents()
+					let eventToModify = viewModel.events.firstIndex() { currEvent in
+						currEvent.id == event.id
+					}
+					if let eventToModify = eventToModify {
+						viewModel.events[eventToModify] = event
+						viewModel.saveEvents()
+						viewModel.loadEvents()
+					}
 				} label: {
 					if event.complete {
 						ZStack {
@@ -310,16 +315,18 @@ struct SearchHelp: View {
 #Preview("EventListView") {
 	EventListView(
 		viewModel: EventViewModel(),
-		event: Event(
-			name: "event",
-			complete: false,
-			completeDesc: "dofajiof",
-			symbol: "star",
-			color: ColorCodable(.orange),
-			description: "lksdjfakdflkasjlkjl",
-			date: Date(),
-			time: true,
-			recurrence: .daily
+		event:
+			Event(
+				name: "event",
+				complete: false,
+				completeDesc: "dofajiof",
+				symbol: "star",
+				color: ColorCodable(.orange),
+				description: "lksdjfakdflkasjlkjl",
+				date: Date(),
+				time: true,
+				recurrence: .daily
+//			)
 		)
 	)
 }
