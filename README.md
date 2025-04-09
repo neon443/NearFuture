@@ -19,6 +19,7 @@ Near Future is a SwiftUI App to help people to track upcoming events - Holidays,
 - [ ] Archive
 - [ ] Collaboration
 - [ ] Autocomplete tasks
+- [ ] Settings
 
 ## Features
 - **Event Creation**: Create events with a name, description, date, recurrence, and an icon
