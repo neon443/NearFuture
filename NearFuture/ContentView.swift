@@ -13,24 +13,26 @@ enum Field {
 }
 
 struct ContentView: View {
-	@StateObject private var viewModel = EventViewModel()
-	@State private var eventName = ""
-	@State private var eventComplete = false
-	@State private var eventCompleteDesc = ""
-	@State private var eventSymbol = "star"
-	@State private var eventColor: Color = [
-		Color.red,
-		Color.orange,
-		Color.yellow,
-		Color.green,
-		Color.blue,
-		Color.indigo,
-		Color.purple
-	].randomElement() ?? Color.red
-	@State private var eventDescription = ""
-	@State private var eventDate = Date()
-	@State private var eventTime = false
-	@State private var eventRecurrence: Event.RecurrenceType = .none
+	@ObservedObject private var viewModel = EventViewModel()
+	@State var event: Event = Event(
+		name: "",
+		complete: false,
+		completeDesc: "",
+		symbol: "star",
+		color: [
+			ColorCodable(.red),
+			ColorCodable(.orange),
+			ColorCodable(.yellow),
+			ColorCodable(.green),
+			ColorCodable(.blue),
+			ColorCodable(.indigo),
+			ColorCodable(.purple)
+		].randomElement()!,
+		description: "",
+		date: Date(),
+		time: true,
+		recurrence: .none
+	)
 	@State private var showingAddEventView = false
 	@State private var searchInput: String = ""
 	var filteredEvents: [Event] {
@@ -120,15 +122,7 @@ struct ContentView: View {
 					.sheet(isPresented: $showingAddEventView) {
 						AddEventView(
 							viewModel: viewModel,
-							eventName: $eventName,
-							eventComplete: $eventComplete,
-							eventCompleteDesc: $eventCompleteDesc,
-							eventSymbol: $eventSymbol,
-							eventColor: $eventColor,
-							eventDescription: $eventDescription,
-							eventDate: $eventDate,
-							eventTime: $eventTime,
-							eventRecurrence: $eventRecurrence,
+							event: $event,
 							adding: true //adding event
 						)
 					}
@@ -148,6 +142,10 @@ struct ContentView: View {
 			.tabItem {
 				Label("Home", systemImage: "house")
 			}
+			ArchiveView(viewModel: viewModel)
+				.tabItem {
+					Label("Archive", systemImage: "tray.full")
+				}
 			StatsView(viewModel: viewModel)
 				.tabItem {
 					Label("Statistics", systemImage: "chart.pie")
@@ -156,128 +154,6 @@ struct ContentView: View {
 				.tabItem {
 					Label("Settings", systemImage: "gear")
 				}
-		}
-	}
-}
-
-struct EventListView: View {
-	@ObservedObject var viewModel: EventViewModel
-	@State var event: Event
-	
-	var body: some View {
-		NavigationLink() {
-			EditEventView(
-				viewModel: viewModel,
-				event: $event
-			)
-		} label: {
-			HStack {
-				RoundedRectangle(cornerRadius: 5)
-					.frame(width: 5)
-					.foregroundStyle(
-						event.color.color.opacity(
-							event.complete ? 0.5 : 1
-						)
-					)
-					.padding(.leading, -10)
-					.padding(.vertical, 5)
-					.animation(.spring, value: event.complete)
-				VStack(alignment: .leading) {
-					HStack {
-						Image(systemName: event.symbol)
-							.resizable()
-							.scaledToFit()
-							.frame(width: 20, height: 20)
-							.foregroundStyle(
-								event.color.color.opacity(
-									event.complete ? 0.5 : 1
-								)
-							)
-							.animation(.spring, value: event.complete)
-						Text("\(event.name)")
-							.font(.headline)
-							.strikethrough(event.complete)
-						//							.foregroundStyle(
-						//								event.complete ? .gray : .primary
-						//							)
-							.animation(.spring, value: event.complete)
-					}
-					if !event.description.isEmpty {
-						Text(event.description)
-							.font(.subheadline)
-							.foregroundColor(.gray)
-					}
-					Text(
-						event.date.formatted(
-							date: .long,
-							time: event.time ? .standard : .omitted
-						)
-					)
-					.font(.subheadline)
-					.foregroundStyle(
-						event.color.color.opacity(
-							event.complete ? 0.5 : 1
-						)
-					)
-					.animation(.spring, value: event.complete)
-					if event.recurrence != .none {
-						Text("Recurs \(event.recurrence.rawValue)")
-							.font(.subheadline)
-							.foregroundStyle(
-								.primary.opacity(
-									event.complete ? 0.5 : 1
-								)
-							)
-							.animation(.spring, value: event.complete)
-					}
-				}
-				
-				Spacer()
-				
-				VStack {
-					Text("\(daysUntilEvent(event.date, short: false))")
-						.font(.subheadline)
-						.foregroundStyle(
-							event.color.color.opacity(
-								event.complete ? 0.5 : 1
-							)
-						)
-						.animation(.spring, value: event.complete)
-				}
-				Button() {
-					withAnimation(.spring) {
-						event.complete.toggle()
-					}
-					let eventToModify = viewModel.events.firstIndex() { currEvent in
-						currEvent.id == event.id
-					}
-					if let eventToModify = eventToModify {
-						viewModel.events[eventToModify] = event
-						viewModel.saveEvents()
-						viewModel.loadEvents()
-					}
-				} label: {
-					if event.complete {
-						ZStack {
-							Circle()
-								.foregroundStyle(.green)
-							Image(systemName: "checkmark")
-								.resizable()
-								.foregroundStyle(.white)
-								.scaledToFit()
-								.frame(width: 15)
-						}
-					} else {
-						Image(systemName: "circle")
-							.resizable()
-							.scaledToFit()
-							.foregroundStyle(event.color.color)
-					}
-				}
-				.buttonStyle(.borderless)
-				.frame(maxWidth: 25, maxHeight: 25)
-				.animation(.spring, value: event.complete)
-			}
 		}
 	}
 }
@@ -315,18 +191,16 @@ struct SearchHelp: View {
 #Preview("EventListView") {
 	EventListView(
 		viewModel: EventViewModel(),
-		event:
-			Event(
-				name: "event",
-				complete: false,
-				completeDesc: "dofajiof",
-				symbol: "star",
-				color: ColorCodable(.orange),
-				description: "lksdjfakdflkasjlkjl",
-				date: Date(),
-				time: true,
-				recurrence: .daily
-//			)
+		event: Event(
+			name: "event",
+			complete: false,
+			completeDesc: "dofajiof",
+			symbol: "star",
+			color: ColorCodable(.orange),
+			description: "lksdjfakdflkasjlkjl",
+			date: Date(),
+			time: true,
+			recurrence: .daily
 		)
 	)
 }

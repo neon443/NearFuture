@@ -16,42 +16,44 @@
 		A920C2BE2D24021A00E4F9B1 /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = A920C2BD2D24021A00E4F9B1 /* SFSymbolsPicker */; };
 		A920C2C12D2403CA00E4F9B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2C02D2403CA00E4F9B1 /* ContentView.swift */; };
 		A93BC0942D2B18A3002E8BBD /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93BC0932D2B18A3002E8BBD /* StatsView.swift */; };
+		A93F21DC2D99D3D200BBBF5D /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93F21DB2D99D3D200BBBF5D /* ArchiveView.swift */; };
+		A93F21DE2D99D3ED00BBBF5D /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93F21DD2D99D3ED00BBBF5D /* EventListView.swift */; };
 		A979F57F2D26B1300094C0B3 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F57E2D26B1300094C0B3 /* EditEventView.swift */; };
 		A979F6052D270AF00094C0B3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6042D270AF00094C0B3 /* WidgetKit.framework */; };
 		A979F6072D270AF00094C0B3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6062D270AF00094C0B3 /* SwiftUI.framework */; };
 		A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */; };
 		A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */; };
 		A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A979F60F2D270AF80094C0B3 /* Assets.xcassets */; };
-		A979F6142D270AF90094C0B3 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A979F6182D2714310094C0B3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
+		A9E1B33F2DA3F1C2005EBB17 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		A979F6122D270AF90094C0B3 /* PBXContainerItemProxy */ = {
+		A9E1B3402DA3F1C2005EBB17 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A920C27C2D24011300E4F9B1 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = A979F6012D270AF00094C0B3;
 			remoteInfo = NearFutureWidgetsExtension;
 		};
-		A980FC3B2D93FB2B006A778F /* PBXContainerItemProxy */ = {
+		A9E1B3432DA3F1C8005EBB17 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A920C27C2D24011300E4F9B1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A920C2832D24011300E4F9B1;
-			remoteInfo = NearFuture;
+			remoteGlobalIDString = A979F6012D270AF00094C0B3;
+			remoteInfo = NearFutureWidgetsExtension;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		A979F59C2D27006D0094C0B3 /* Embed Foundation Extensions */ = {
+		A9E1B3422DA3F1C2005EBB17 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				A979F6142D270AF90094C0B3 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */,
+				A9E1B33F2DA3F1C2005EBB17 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -69,6 +71,8 @@
 		A920C2B72D2401A300E4F9B1 /* AddEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		A920C2C02D2403CA00E4F9B1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A93BC0932D2B18A3002E8BBD /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		A93F21DB2D99D3D200BBBF5D /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
+		A93F21DD2D99D3ED00BBBF5D /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		A979F57E2D26B1300094C0B3 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		A979F58B2D2700680094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
 		A979F58D2D2700680094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
@@ -84,8 +88,8 @@
 		A979F60F2D270AF80094C0B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A979F6112D270AF90094C0B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A980FC302D920097006A778F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A980FC372D93FB2B006A778F /* NearFutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NearFutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9C05E412D2805D7007DC497 /* NearFutureWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFutureWidgetsExtension.entitlements; sourceTree = "<group>"; };
+		A9D85EBD2DA2CF4B0004D635 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,19 +115,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A980FC342D93FB2B006A778F /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		A920C27B2D24011300E4F9B1 = {
 			isa = PBXGroup;
 			children = (
+				A9D85EBD2DA2CF4B0004D635 /* README.md */,
 				A920C2862D24011400E4F9B1 /* NearFuture */,
 				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
 				A980FC382D93FB2B006A778F /* NearFutureTests */,
@@ -137,7 +135,6 @@
 			children = (
 				A920C2842D24011400E4F9B1 /* NearFuture.app */,
 				A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */,
-				A980FC372D93FB2B006A778F /* NearFutureTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,6 +145,8 @@
 				A979F57E2D26B1300094C0B3 /* EditEventView.swift */,
 				A920C2B72D2401A300E4F9B1 /* AddEventView.swift */,
 				A920C2C02D2403CA00E4F9B1 /* ContentView.swift */,
+				A93F21DD2D99D3ED00BBBF5D /* EventListView.swift */,
+				A93F21DB2D99D3D200BBBF5D /* ArchiveView.swift */,
 				A93BC0932D2B18A3002E8BBD /* StatsView.swift */,
 				A920C2B42D2401A100E4F9B1 /* SettingsView.swift */,
 				A980FC302D920097006A778F /* Info.plist */,
@@ -214,12 +213,13 @@
 				A920C2802D24011300E4F9B1 /* Sources */,
 				A920C2812D24011300E4F9B1 /* Frameworks */,
 				A920C2822D24011300E4F9B1 /* Resources */,
-				A979F59C2D27006D0094C0B3 /* Embed Foundation Extensions */,
+				A9E1B3422DA3F1C2005EBB17 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				A979F6132D270AF90094C0B3 /* PBXTargetDependency */,
+				A9E1B3412DA3F1C2005EBB17 /* PBXTargetDependency */,
+				A9E1B3442DA3F1C8005EBB17 /* PBXTargetDependency */,
 			);
 			name = NearFuture;
 			packageProductDependencies = (
@@ -246,29 +246,6 @@
 			productReference = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		A980FC362D93FB2B006A778F /* NearFutureTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A980FC3D2D93FB2B006A778F /* Build configuration list for PBXNativeTarget "NearFutureTests" */;
-			buildPhases = (
-				A980FC332D93FB2B006A778F /* Sources */,
-				A980FC342D93FB2B006A778F /* Frameworks */,
-				A980FC352D93FB2B006A778F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A980FC3C2D93FB2B006A778F /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A980FC382D93FB2B006A778F /* NearFutureTests */,
-			);
-			name = NearFutureTests;
-			packageProductDependencies = (
-			);
-			productName = NearFutureTests;
-			productReference = A980FC372D93FB2B006A778F /* NearFutureTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -284,10 +261,6 @@
 					};
 					A979F6012D270AF00094C0B3 = {
 						CreatedOnToolsVersion = 15.4;
-					};
-					A980FC362D93FB2B006A778F = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = A920C2832D24011300E4F9B1;
 					};
 				};
 			};
@@ -309,7 +282,6 @@
 			targets = (
 				A920C2832D24011300E4F9B1 /* NearFuture */,
 				A979F6012D270AF00094C0B3 /* NearFutureWidgetsExtension */,
-				A980FC362D93FB2B006A778F /* NearFutureTests */,
 			);
 		};
 /* End PBXProject section */
@@ -332,13 +304,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A980FC352D93FB2B006A778F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -347,6 +312,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A920C2BB2D2401A400E4F9B1 /* AddEventView.swift in Sources */,
+				A93F21DE2D99D3ED00BBBF5D /* EventListView.swift in Sources */,
+				A93F21DC2D99D3D200BBBF5D /* ArchiveView.swift in Sources */,
 				A920C2C12D2403CA00E4F9B1 /* ContentView.swift in Sources */,
 				A920C2B82D2401A300E4F9B1 /* SettingsView.swift in Sources */,
 				A920C28C2D24011400E4F9B1 /* Item.swift in Sources */,
@@ -367,26 +334,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A980FC332D93FB2B006A778F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		A979F6132D270AF90094C0B3 /* PBXTargetDependency */ = {
+		A9E1B3412DA3F1C2005EBB17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = ios;
 			target = A979F6012D270AF00094C0B3 /* NearFutureWidgetsExtension */;
-			targetProxy = A979F6122D270AF90094C0B3 /* PBXContainerItemProxy */;
+			targetProxy = A9E1B3402DA3F1C2005EBB17 /* PBXContainerItemProxy */;
 		};
-		A980FC3C2D93FB2B006A778F /* PBXTargetDependency */ = {
+		A9E1B3442DA3F1C8005EBB17 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A920C2832D24011300E4F9B1 /* NearFuture */;
-			targetProxy = A980FC3B2D93FB2B006A778F /* PBXContainerItemProxy */;
+			target = A979F6012D270AF00094C0B3 /* NearFutureWidgetsExtension */;
+			targetProxy = A9E1B3432DA3F1C8005EBB17 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -517,6 +476,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NearFuture/NearFuture.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 25;
 				DEAD_CODE_STRIPPING = YES;
@@ -549,7 +509,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vape.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = NO;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -567,6 +528,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = NearFuture/NearFuture.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 25;
 				DEAD_CODE_STRIPPING = YES;
@@ -596,7 +558,8 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.vape.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = NO;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -614,6 +577,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = NearFutureWidgets/NearFutureWidgetsExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 85Q9QG6DN7;
@@ -634,9 +598,11 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.vape.NearFuture.NearFutureWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -650,6 +616,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = NearFutureWidgets/NearFutureWidgetsExtension.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 85Q9QG6DN7;
@@ -666,66 +633,16 @@
 				MARKETING_VERSION = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.vape.NearFuture.NearFutureWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				REGISTER_APP_GROUPS = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		A980FC3E2D93FB2B006A778F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P6PV2R9443;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
-				MACOSX_DEPLOYMENT_TARGET = 13;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFutureTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NearFuture.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NearFuture";
-				XROS_DEPLOYMENT_TARGET = 1;
-			};
-			name = Debug;
-		};
-		A980FC3F2D93FB2B006A778F /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P6PV2R9443;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
-				MACOSX_DEPLOYMENT_TARGET = 13;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFutureTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NearFuture.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NearFuture";
-				XROS_DEPLOYMENT_TARGET = 1;
 			};
 			name = Release;
 		};
@@ -755,15 +672,6 @@
 			buildConfigurations = (
 				A979F6162D270AF90094C0B3 /* Debug */,
 				A979F6172D270AF90094C0B3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A980FC3D2D93FB2B006A778F /* Build configuration list for PBXNativeTarget "NearFutureTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A980FC3E2D93FB2B006A778F /* Debug */,
-				A980FC3F2D93FB2B006A778F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

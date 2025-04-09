@@ -112,13 +112,7 @@ struct EventWidgetView: View {
 								}
 								
 								if isLarge {
-									if !event.description.isEmpty {
-										Text(event.description)
-											.font(.caption2)
-											.foregroundColor(.gray)
-											.padding(.top, -5)
-									}
-									Text(event.date.formatted(date: .long, time: .omitted))
+									Text(event.date.formatted(date: .long, time: event.time ? .shortened : .omitted))
 										.font(.caption2)
 										.foregroundColor(event.color.color)
 										.padding(.top, -5)

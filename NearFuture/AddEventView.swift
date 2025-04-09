@@ -11,15 +11,7 @@ import SFSymbolsPicker
 struct AddEventView: View {
 	@ObservedObject var viewModel: EventViewModel
 	
-	@Binding var eventName: String
-	@Binding var eventComplete: Bool
-	@Binding var eventCompleteDesc: String
-	@Binding var eventSymbol: String
-	@Binding var eventColor: Color
-	@Binding var eventDescription: String
-	@Binding var eventDate: Date
-	@Binding var eventTime: Bool
-	@Binding var eventRecurrence: Event.RecurrenceType
+	@Binding var event: Event
 	
 	@State var adding : Bool
 	@State var isSymbolPickerPresented = false
@@ -38,75 +30,85 @@ struct AddEventView: View {
 					header:
 						Text("Event Details")
 						.font(.headline)
-						.foregroundColor(.accentColor)
+						.foregroundColor(event.color.color)
 				) {
 					// name & symbol
 					HStack(spacing: 5) {
 						Button() {
 							isSymbolPickerPresented.toggle()
 						} label: {
-							Image(systemName: eventSymbol)
+							Image(systemName: event.symbol)
 								.resizable()
 								.scaledToFit()
 								.frame(width: 20, height: 20)
-								.foregroundStyle(eventColor)
+								.foregroundStyle(event.color.color)
 						}
 						.frame(width: 20)
 						.buttonStyle(.borderless)
 						.sheet(isPresented: $isSymbolPickerPresented) {
 							SymbolsPicker(
-								selection: $eventSymbol,
+								selection: $event.symbol,
 								title: "Choose a Symbol",
 								searchLabel: "Search...",
 								autoDismiss: true)
 						}
-						ColorPicker("", selection: $eventColor, supportsOpacity: true)
+						
+						//TODO: FIXXX
+						ColorPicker("", selection: $event.color.color, supportsOpacity: true)
 							.fixedSize()
 						Divider()
 						ZStack {
-							TextField("Event Name", text: $eventName)
+							TextField("Event Name", text: $event.name)
 								.textFieldStyle(RoundedBorderTextFieldStyle())
-								.padding(.trailing, eventName.isEmpty ? 0 : 30)
-								.animation(.spring, value: eventName)
+								.padding(.trailing, event.name.isEmpty ? 0 : 30)
+								.animation(.spring, value: event.name)
 								.focused($focusedField, equals: Field.Name)
 								.submitLabel(.next)
 								.onSubmit {
-									focusedField = .Description
+									focusedField = Field.Description
 								}
-							MagicClearButton(text: $eventName)
+							MagicClearButton(text: $event.name)
 						}
 					}
 					
 					// dscription
 					ZStack {
-						TextField("Event Description", text: $eventDescription)
+						TextField("Event Description", text: $event.description)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
-							.padding(.trailing, eventDescription.isEmpty ? 0 : 30)
-							.animation(.spring, value: eventDescription)
+							.padding(.trailing, event.description.isEmpty ? 0 : 30)
+							.animation(.spring, value: event.description)
 							.focused($focusedField, equals: Field.Description)
 							.submitLabel(.done)
 							.onSubmit {
 								focusedField = nil
 							}
-						MagicClearButton(text: $eventDescription)
+						MagicClearButton(text: $event.description)
 					}
 					
 					
 					// date picker
-					DatePicker("", selection: $eventDate, displayedComponents: .date)
-						.datePickerStyle(WheelDatePickerStyle())
+					HStack {
+						DatePicker("", selection: $event.date, displayedComponents: .date)
+							.datePickerStyle(WheelDatePickerStyle())
+						Button() {
+							event.date = Date()
+						} label: {
+							Image(systemName: "arrow.uturn.backward")
+						}
+						.buttonStyle(BorderlessButtonStyle())
+					}
 					
-					Toggle("Schedule a Time", isOn: $eventTime)
-					if eventTime {
+					Toggle("Schedule a Time", isOn: $event.time)
+					if event.time {
 						DatePicker(
 							"",
-							selection: $eventDate,
+							selection: $event.date,
 							displayedComponents: .hourAndMinute
 						)
 					}
 					
 					// re-ocurrence Picker
-					Picker("Recurrence", selection: $eventRecurrence) {
+					Picker("Recurrence", selection: $event.recurrence) {
 						ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
 							Text(recurrence.rawValue.capitalized)
 						}
@@ -114,8 +116,8 @@ struct AddEventView: View {
 					.pickerStyle(SegmentedPickerStyle())
 					Text(
 						describeOccurrence(
-							date: eventDate,
-							recurrence: eventRecurrence
+							date: event.date,
+							recurrence: event.recurrence
 						)
 					)
 				}
@@ -123,17 +125,7 @@ struct AddEventView: View {
 				// save button only show iff adding new event
 				if adding {
 					Button {
-						viewModel.addEvent(
-							name: eventName,
-							complete: eventComplete,
-							completedDesc: eventCompleteDesc,
-							symbol: eventSymbol,
-							color: ColorCodable(eventColor),
-							description: eventDescription,
-							date: eventDate,
-							time: eventTime,
-							recurrence: eventRecurrence
-						)
+						viewModel.addEvent(event)
 						resetAddEventView()
 					} label: {
 						Text("Save Event")
@@ -141,8 +133,8 @@ struct AddEventView: View {
 							.cornerRadius(10)
 							.buttonStyle(BorderedProminentButtonStyle())
 					}
-					.disabled(eventName.isEmpty)
-					if eventName.isEmpty {
+					.disabled(event.name.isEmpty)
+					if event.name.isEmpty {
 						HStack {
 							Image(systemName: "exclamationmark")
 								.foregroundStyle(.red)
@@ -169,20 +161,20 @@ struct AddEventView: View {
 	}
 	func resetAddEventView() {
 		//reset addeventView
-		eventName = ""
-		eventSymbol = "star"
-		eventColor = [
-			Color.red,
-			Color.orange,
-			Color.yellow,
-			Color.green,
-			Color.blue,
-			Color.indigo,
-			Color.purple
-		].randomElement() ?? Color.red
-		eventDescription = ""
-		eventDate = Date()
-		eventRecurrence = .none
+		event.name = ""
+		event.symbol = "star"
+		event.color = [
+			ColorCodable(.red),
+			ColorCodable(.orange),
+			ColorCodable(.yellow),
+			ColorCodable(.green),
+			ColorCodable(.blue),
+			ColorCodable(.indigo),
+			ColorCodable(.purple)
+		].randomElement()!
+		event.description = ""
+		event.date = Date()
+		event.recurrence = .none
 		dismiss()
 	}
 }
@@ -210,15 +202,19 @@ struct MagicClearButton: View {
 #Preview {
 	AddEventView(
 		viewModel: EventViewModel(),
-		eventName: .constant("Birthday"),
-		eventComplete: .constant(false),
-		eventCompleteDesc: .constant(""),
-		eventSymbol: .constant("star"),
-		eventColor: .constant(Color.red),
-		eventDescription: .constant("A very special day"),
-		eventDate: .constant(Date()),
-		eventTime: .constant(true),
-		eventRecurrence: .constant(.monthly),
-		adding: true
+		event: .constant(
+			Event(
+				name: "event",
+				complete: false,
+				completeDesc: "dofajiof",
+				symbol: "star",
+				color: ColorCodable(.orange),
+				description: "lksdjfakdflkasjlkjl",
+				date: Date(),
+				time: true,
+				recurrence: .daily
+			)
+		),
+		adding: false
 	)
 }

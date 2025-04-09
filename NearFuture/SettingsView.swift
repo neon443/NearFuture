@@ -42,6 +42,7 @@ struct SettingsView: View {
 	var body: some View {
 		NavigationStack {
 			List {
+				Toggle("Show completed events", isOn: $viewModel.settings.showCompletedEvents)
 				NavigationLink() {
 					iCloudSettingsView(
 						viewModel: viewModel,
@@ -301,10 +302,6 @@ struct iCloudSettingsView: View {
 		lastSyncWasNormalAgo: .constant(true),
 		localCountEqualToiCloud: .constant(true),
 		icloudCountEqualToLocal: .constant(true),
-		updateStatus: test
+		updateStatus: {}
 	)
-}
-
-func test() -> Void {
-	
 }
