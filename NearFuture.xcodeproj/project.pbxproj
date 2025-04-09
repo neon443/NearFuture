@@ -521,12 +521,13 @@
 				CURRENT_PROJECT_VERSION = 25;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NearFuture/Preview Content\"";
-				DEVELOPMENT_TEAM = P6PV2R9443;
+				DEVELOPMENT_TEAM = 85Q9QG6DN7;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NearFuture/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Near Future";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -546,7 +547,7 @@
 					"-Xlinker",
 					"-interposable",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFuture;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vape.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
 				SDKROOT = auto;
@@ -570,12 +571,13 @@
 				CURRENT_PROJECT_VERSION = 25;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"NearFuture/Preview Content\"";
-				DEVELOPMENT_TEAM = P6PV2R9443;
+				DEVELOPMENT_TEAM = 85Q9QG6DN7;
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NearFuture/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Near Future";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -592,7 +594,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 13;
 				MARKETING_VERSION = 2.0;
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFuture;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vape.NearFuture;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = NO;
 				SDKROOT = auto;
@@ -614,7 +616,7 @@
 				CODE_SIGN_ENTITLEMENTS = NearFutureWidgets/NearFutureWidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 25;
-				DEVELOPMENT_TEAM = P6PV2R9443;
+				DEVELOPMENT_TEAM = 85Q9QG6DN7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NearFutureWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NearFutureWidgets;
@@ -630,7 +632,7 @@
 					"-Xlinker",
 					"-interposable",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFuture.NearFutureWidgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vape.NearFuture.NearFutureWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -650,7 +652,7 @@
 				CODE_SIGN_ENTITLEMENTS = NearFutureWidgets/NearFutureWidgetsExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 25;
-				DEVELOPMENT_TEAM = P6PV2R9443;
+				DEVELOPMENT_TEAM = 85Q9QG6DN7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NearFutureWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NearFutureWidgets;
@@ -662,7 +664,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 2.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFuture.NearFutureWidgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vape.NearFuture.NearFutureWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
