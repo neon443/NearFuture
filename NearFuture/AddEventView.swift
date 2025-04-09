@@ -73,16 +73,16 @@ struct AddEventView: View {
 					
 					// dscription
 					ZStack {
-						TextField("Event Description", text: $event.description)
+						TextField("Event Notes", text: $event.notes)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
-							.padding(.trailing, event.description.isEmpty ? 0 : 30)
-							.animation(.spring, value: event.description)
+							.padding(.trailing, event.notes.isEmpty ? 0 : 30)
+							.animation(.spring, value: event.notes)
 							.focused($focusedField, equals: Field.Description)
 							.submitLabel(.done)
 							.onSubmit {
 								focusedField = nil
 							}
-						MagicClearButton(text: $event.description)
+						MagicClearButton(text: $event.notes)
 					}
 					
 					
@@ -172,7 +172,7 @@ struct AddEventView: View {
 			ColorCodable(.indigo),
 			ColorCodable(.purple)
 		].randomElement()!
-		event.description = ""
+		event.notes = ""
 		event.date = Date()
 		event.recurrence = .none
 		dismiss()
@@ -209,7 +209,7 @@ struct MagicClearButton: View {
 				completeDesc: "dofajiof",
 				symbol: "star",
 				color: ColorCodable(.orange),
-				description: "lksdjfakdflkasjlkjl",
+				notes: "lksdjfakdflkasjlkjl",
 				date: Date(),
 				time: true,
 				recurrence: .daily

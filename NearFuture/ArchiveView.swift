@@ -23,10 +23,10 @@ struct ArchiveView: View {
 //		Event(
 //			name: "Event",
 //			complete: false,
-//			completeDesc: "Coplete description",
+//			completeDesc: "Coplete notes",
 //			symbol: "gear",
 //			color: ColorCodable(.purple),
-//			description: "loremd ipsum doret so re mi far",
+//			notes: "loremd ipsum doret so re mi far",
 //			date: Date(),
 //			time: true,
 //			recurrence: .daily

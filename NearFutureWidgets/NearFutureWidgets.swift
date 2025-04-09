@@ -162,7 +162,7 @@ struct Widget_Previews: PreviewProvider {
 			completeDesc: "",
 			symbol: "gear",
 			color: ColorCodable(.blue),
-			description: "Event description",
+			notes: "Event notes",
 			date: Date.distantFuture,
 			time: false,
 			recurrence: .yearly
@@ -173,7 +173,7 @@ struct Widget_Previews: PreviewProvider {
 			completeDesc: "",
 			symbol: "star",
 			color: ColorCodable(.orange),
-			description: "description",
+			notes: "notes",
 			date: Date.distantPast,
 			time: false,
 			recurrence: .daily
@@ -184,7 +184,7 @@ struct Widget_Previews: PreviewProvider {
 			completeDesc: "",
 			symbol: "star",
 			color: ColorCodable(.purple),
-			description: "description",
+			notes: "notes",
 			date: Date(),
 			time: false,
 			recurrence: .daily
@@ -195,7 +195,7 @@ struct Widget_Previews: PreviewProvider {
 			completeDesc: "",
 			symbol: "star",
 			color: ColorCodable(.green),
-			description: "description",
+			notes: "notes",
 			date: Date(),
 			time: false,
 			recurrence: .daily
@@ -206,7 +206,7 @@ struct Widget_Previews: PreviewProvider {
 			completeDesc: "",
 			symbol: "clock",
 			color: ColorCodable(.brown),
-			description: "an event with a time",
+			notes: "an event with a time",
 			date: Date(),
 			time: true,
 			recurrence: .none

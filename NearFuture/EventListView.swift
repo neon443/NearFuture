@@ -49,8 +49,8 @@ struct EventListView: View {
 						//							)
 							.animation(.spring, value: event.complete)
 					}
-					if !event.description.isEmpty {
-						Text(event.description)
+					if !event.notes.isEmpty {
+						Text(event.notes)
 							.font(.subheadline)
 							.foregroundColor(.gray)
 					}
@@ -134,10 +134,10 @@ struct EventListView: View {
 		event: Event(
 			name: "Event",
 			complete: false,
-			completeDesc: "Coplete description",
+			completeDesc: "Coplete notes",
 			symbol: "gear",
 			color: ColorCodable(.purple),
-			description: "loremd ipsum doret so re mi far",
+			notes: "loremd ipsum doret so re mi far",
 			date: Date(),
 			time: true,
 			recurrence: .daily

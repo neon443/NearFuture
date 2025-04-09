@@ -34,7 +34,7 @@ struct Event: Identifiable, Codable {
 	var completeDesc: String
 	var symbol: String
 	var color: ColorCodable
-	var description: String
+	var notes: String
 	var date: Date
 	var time: Bool
 	var recurrence: RecurrenceType
@@ -103,7 +103,7 @@ class EventViewModel: ObservableObject {
 		completeDesc: "dofajiof",
 		symbol: "star",
 		color: ColorCodable(.orange),
-		description: "lksdjfakdflkasjlkjl",
+		notes: "lksdjfakdflkasjlkjl",
 		date: Date(),
 		time: true,
 		recurrence: .daily

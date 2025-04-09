@@ -50,7 +50,7 @@ struct EditEventView: View {
 			completeDesc: "dofajiof",
 			symbol: "star",
 			color: ColorCodable(.orange),
-			description: "lksdjfakdflkasjlkjl",
+			notes: "lksdjfakdflkasjlkjl",
 			date: Date(),
 			time: true,
 			recurrence: .daily

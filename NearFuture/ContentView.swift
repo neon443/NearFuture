@@ -28,7 +28,7 @@ struct ContentView: View {
 			ColorCodable(.indigo),
 			ColorCodable(.purple)
 		].randomElement()!,
-		description: "",
+		notes: "",
 		date: Date(),
 		time: true,
 		recurrence: .none
@@ -41,7 +41,7 @@ struct ContentView: View {
 		} else {
 			return viewModel.events.filter {
 				$0.name.localizedCaseInsensitiveContains(searchInput) ||
-				$0.description.localizedCaseInsensitiveContains(searchInput)
+				$0.notes.localizedCaseInsensitiveContains(searchInput)
 			}
 		}
 	}
@@ -170,7 +170,7 @@ struct SearchHelp: View {
 				.padding(.trailing)
 			Text("Can't find what you're looking for?")
 		}
-		Text("Tip: The Search bar searches event names and descriptions")
+		Text("Tip: The Search bar searches event names and notes")
 		Button() {
 			searchInput = ""
 			focusedField = nil
@@ -197,7 +197,7 @@ struct SearchHelp: View {
 			completeDesc: "dofajiof",
 			symbol: "star",
 			color: ColorCodable(.orange),
-			description: "lksdjfakdflkasjlkjl",
+			notes: "lksdjfakdflkasjlkjl",
 			date: Date(),
 			time: true,
 			recurrence: .daily
