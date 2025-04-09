@@ -222,11 +222,16 @@ struct iCloudSettingsView: View {
 						}
 					}
 					ZStack {
-						Image(systemName: "iphone.gen3")
+						let deviceModel = UIDevice().model.lowercased()
+						var isiPad: Bool {
+							return deviceModel == "ipad"
+						}
+						Image(systemName: deviceModel)
 							.resizable()
 							.scaledToFit()
 							.frame(width: 75, height: 75)
 							.symbolRenderingMode(.monochrome)
+							.rotationEffect(Angle(degrees: isiPad ? -90 : 0))
 						Text("\(viewModel.localEventCount)")
 							.font(.headline)
 					}
