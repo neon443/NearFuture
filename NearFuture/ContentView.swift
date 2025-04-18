@@ -18,16 +18,8 @@ struct ContentView: View {
 	@State private var eventComplete = false
 	@State private var eventCompleteDesc = ""
 	@State private var eventSymbol = "star"
-	@State private var eventColor: Color = [
-		Color.red,
-		Color.orange,
-		Color.yellow,
-		Color.green,
-		Color.blue,
-		Color.indigo,
-		Color.purple
-	].randomElement() ?? Color.red
-	@State private var eventDescription = ""
+	@State private var eventColor: Color = randomColor()
+	@State private var eventNotes = ""
 	@State private var eventDate = Date()
 	@State private var eventTime = false
 	@State private var eventRecurrence: Event.RecurrenceType = .none
@@ -39,7 +31,7 @@ struct ContentView: View {
 		} else {
 			return viewModel.events.filter {
 				$0.name.localizedCaseInsensitiveContains(searchInput) ||
-				$0.description.localizedCaseInsensitiveContains(searchInput)
+				$0.notes.localizedCaseInsensitiveContains(searchInput)
 			}
 		}
 	}
@@ -125,7 +117,7 @@ struct ContentView: View {
 							eventCompleteDesc: $eventCompleteDesc,
 							eventSymbol: $eventSymbol,
 							eventColor: $eventColor,
-							eventDescription: $eventDescription,
+							eventNotes: $eventNotes,
 							eventDate: $eventDate,
 							eventTime: $eventTime,
 							eventRecurrence: $eventRecurrence,
@@ -160,128 +152,6 @@ struct ContentView: View {
 	}
 }
 
-struct EventListView: View {
-	@ObservedObject var viewModel: EventViewModel
-	@State var event: Event
-	
-	var body: some View {
-		NavigationLink() {
-			EditEventView(
-				viewModel: viewModel,
-				event: $event
-			)
-		} label: {
-			HStack {
-				RoundedRectangle(cornerRadius: 5)
-					.frame(width: 5)
-					.foregroundStyle(
-						event.color.color.opacity(
-							event.complete ? 0.5 : 1
-						)
-					)
-					.padding(.leading, -10)
-					.padding(.vertical, 5)
-					.animation(.spring, value: event.complete)
-				VStack(alignment: .leading) {
-					HStack {
-						Image(systemName: event.symbol)
-							.resizable()
-							.scaledToFit()
-							.frame(width: 20, height: 20)
-							.foregroundStyle(
-								event.color.color.opacity(
-									event.complete ? 0.5 : 1
-								)
-							)
-							.animation(.spring, value: event.complete)
-						Text("\(event.name)")
-							.font(.headline)
-							.strikethrough(event.complete)
-						//							.foregroundStyle(
-						//								event.complete ? .gray : .primary
-						//							)
-							.animation(.spring, value: event.complete)
-					}
-					if !event.description.isEmpty {
-						Text(event.description)
-							.font(.subheadline)
-							.foregroundColor(.gray)
-					}
-					Text(
-						event.date.formatted(
-							date: .long,
-							time: event.time ? .standard : .omitted
-						)
-					)
-					.font(.subheadline)
-					.foregroundStyle(
-						event.color.color.opacity(
-							event.complete ? 0.5 : 1
-						)
-					)
-					.animation(.spring, value: event.complete)
-					if event.recurrence != .none {
-						Text("Recurs \(event.recurrence.rawValue)")
-							.font(.subheadline)
-							.foregroundStyle(
-								.primary.opacity(
-									event.complete ? 0.5 : 1
-								)
-							)
-							.animation(.spring, value: event.complete)
-					}
-				}
-				
-				Spacer()
-				
-				VStack {
-					Text("\(daysUntilEvent(event.date, short: false))")
-						.font(.subheadline)
-						.foregroundStyle(
-							event.color.color.opacity(
-								event.complete ? 0.5 : 1
-							)
-						)
-						.animation(.spring, value: event.complete)
-				}
-				Button() {
-					withAnimation(.spring) {
-						event.complete.toggle()
-					}
-					let eventToModify = viewModel.events.firstIndex() { currEvent in
-						currEvent.id == event.id
-					}
-					if let eventToModify = eventToModify {
-						viewModel.events[eventToModify] = event
-						viewModel.saveEvents()
-						viewModel.loadEvents()
-					}
-				} label: {
-					if event.complete {
-						ZStack {
-							Circle()
-								.foregroundStyle(.green)
-							Image(systemName: "checkmark")
-								.resizable()
-								.foregroundStyle(.white)
-								.scaledToFit()
-								.frame(width: 15)
-						}
-					} else {
-						Image(systemName: "circle")
-							.resizable()
-							.scaledToFit()
-							.foregroundStyle(event.color.color)
-					}
-				}
-				.buttonStyle(.borderless)
-				.frame(maxWidth: 25, maxHeight: 25)
-				.animation(.spring, value: event.complete)
-			}
-		}
-	}
-}
-
 struct SearchHelp: View {
 	@Binding var searchInput: String
 	@FocusState var focusedField: Field?
@@ -294,7 +164,7 @@ struct SearchHelp: View {
 				.padding(.trailing)
 			Text("Can't find what you're looking for?")
 		}
-		Text("Tip: The Search bar searches event names and descriptions")
+		Text("Tip: The Search bar searches event names and notes")
 		Button() {
 			searchInput = ""
 			focusedField = nil
@@ -310,23 +180,4 @@ struct SearchHelp: View {
 
 #Preview {
 	ContentView()
-}
-
-#Preview("EventListView") {
-	EventListView(
-		viewModel: EventViewModel(),
-		event:
-			Event(
-				name: "event",
-				complete: false,
-				completeDesc: "dofajiof",
-				symbol: "star",
-				color: ColorCodable(.orange),
-				description: "lksdjfakdflkasjlkjl",
-				date: Date(),
-				time: true,
-				recurrence: .daily
-//			)
-		)
-	)
 }

@@ -70,7 +70,7 @@ struct iCloudSettingsView: View {
 						} message: {
 							Text("This will replace Events stored in iCloud with Events stored locally.")
 						}
-
+						
 						Button() {
 							viewModel.sync()
 							updateStatus()

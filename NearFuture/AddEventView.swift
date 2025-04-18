@@ -16,7 +16,7 @@ struct AddEventView: View {
 	@Binding var eventCompleteDesc: String
 	@Binding var eventSymbol: String
 	@Binding var eventColor: Color
-	@Binding var eventDescription: String
+	@Binding var eventNotes: String
 	@Binding var eventDate: Date
 	@Binding var eventTime: Bool
 	@Binding var eventRecurrence: Event.RecurrenceType
@@ -28,7 +28,7 @@ struct AddEventView: View {
 	private enum Field {
 		case Name, Description
 	}
-
+	
 	@Environment(\.dismiss) var dismiss
 	
 	var body: some View {
@@ -79,22 +79,33 @@ struct AddEventView: View {
 					
 					// dscription
 					ZStack {
-						TextField("Event Description", text: $eventDescription)
+						TextField("Event Description", text: $eventNotes)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
-							.padding(.trailing, eventDescription.isEmpty ? 0 : 30)
-							.animation(.spring, value: eventDescription)
+							.padding(.trailing, eventNotes.isEmpty ? 0 : 30)
+							.animation(.spring, value: eventNotes)
 							.focused($focusedField, equals: Field.Description)
 							.submitLabel(.done)
 							.onSubmit {
 								focusedField = nil
 							}
-						MagicClearButton(text: $eventDescription)
+						MagicClearButton(text: $eventNotes)
 					}
 					
 					
 					// date picker
-					DatePicker("", selection: $eventDate, displayedComponents: .date)
-						.datePickerStyle(WheelDatePickerStyle())
+					HStack {
+						DatePicker("", selection: $eventDate, displayedComponents: .date)
+							.datePickerStyle(WheelDatePickerStyle())
+						Button() {
+							eventDate = Date()
+						} label: {
+							Image(systemName: "arrow.uturn.left")
+								.resizable()
+								.scaledToFit()
+						}
+						.buttonStyle(BorderlessButtonStyle())
+						.frame(width: 20)
+					}
 					
 					Toggle("Schedule a Time", isOn: $eventTime)
 					if eventTime {
@@ -124,15 +135,17 @@ struct AddEventView: View {
 				if adding {
 					Button {
 						viewModel.addEvent(
-							name: eventName,
-							complete: eventComplete,
-							completedDesc: eventCompleteDesc,
-							symbol: eventSymbol,
-							color: ColorCodable(eventColor),
-							description: eventDescription,
-							date: eventDate,
-							time: eventTime,
-							recurrence: eventRecurrence
+							newEvent: Event(
+								name: eventName,
+								complete: eventComplete,
+								completeDesc: eventCompleteDesc,
+								symbol: eventSymbol,
+								color: ColorCodable(eventColor),
+								notes: eventNotes,
+								date: eventDate,
+								time: eventTime,
+								recurrence: eventRecurrence
+							)
 						)
 						resetAddEventView()
 					} label: {
@@ -171,16 +184,8 @@ struct AddEventView: View {
 		//reset addeventView
 		eventName = ""
 		eventSymbol = "star"
-		eventColor = [
-			Color.red,
-			Color.orange,
-			Color.yellow,
-			Color.green,
-			Color.blue,
-			Color.indigo,
-			Color.purple
-		].randomElement() ?? Color.red
-		eventDescription = ""
+		eventColor = randomColor()
+		eventNotes = ""
 		eventDate = Date()
 		eventRecurrence = .none
 		dismiss()
@@ -215,7 +220,7 @@ struct MagicClearButton: View {
 		eventCompleteDesc: .constant(""),
 		eventSymbol: .constant("star"),
 		eventColor: .constant(Color.red),
-		eventDescription: .constant("A very special day"),
+		eventNotes: .constant("A very special day"),
 		eventDate: .constant(Date()),
 		eventTime: .constant(true),
 		eventRecurrence: .constant(.monthly),

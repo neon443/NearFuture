@@ -17,7 +17,7 @@ struct EditEventView: View {
 	@State private var eventCompleteDesc: String
 	@State private var eventSymbol: String
 	@State private var eventColor: Color
-	@State private var eventDescription: String
+	@State private var eventNotes: String
 	@State private var eventDate: Date
 	@State private var eventTime: Bool
 	@State private var eventRecurrence: Event.RecurrenceType
@@ -30,7 +30,7 @@ struct EditEventView: View {
 		_eventCompleteDesc = State(initialValue: event.wrappedValue.completeDesc)
 		_eventSymbol = State(initialValue: event.wrappedValue.symbol)
 		_eventColor = State(initialValue: event.wrappedValue.color.color)
-		_eventDescription = State(initialValue: event.wrappedValue.description)
+		_eventNotes = State(initialValue: event.wrappedValue.notes)
 		_eventDate = State(initialValue: event.wrappedValue.date)
 		_eventTime = State(initialValue: event.wrappedValue.time)
 		_eventRecurrence = State(initialValue: event.wrappedValue.recurrence)
@@ -40,7 +40,7 @@ struct EditEventView: View {
 		event.name = eventName
 		event.symbol = eventSymbol
 		event.color = ColorCodable(eventColor)
-		event.description = eventDescription
+		event.notes = eventNotes
 		event.date = eventDate
 		event.recurrence = eventRecurrence
 		
@@ -57,32 +57,30 @@ struct EditEventView: View {
 	}
 	
 	var body: some View {
-//		NavigationStack {
-			AddEventView(
-				viewModel: viewModel,
-				eventName: $eventName,
-				eventComplete: $eventComplete,
-				eventCompleteDesc: $eventCompleteDesc,
-				eventSymbol: $eventSymbol,
-				eventColor: $eventColor,
-				eventDescription: $eventDescription,
-				eventDate: $eventDate,
-				eventTime: $eventTime,
-				eventRecurrence: $eventRecurrence,
-				adding: false //bc we editing existing event
-			)
-			.navigationTitle("Edit Event")
-			.toolbar {
-				ToolbarItem(placement: .topBarTrailing) {
-					Button() {
-						saveEdits()
-					} label: {
-						Text("Done")
-					}
-					.disabled(eventName == "")
+		AddEventView(
+			viewModel: viewModel,
+			eventName: $eventName,
+			eventComplete: $eventComplete,
+			eventCompleteDesc: $eventCompleteDesc,
+			eventSymbol: $eventSymbol,
+			eventColor: $eventColor,
+			eventNotes: $eventNotes,
+			eventDate: $eventDate,
+			eventTime: $eventTime,
+			eventRecurrence: $eventRecurrence,
+			adding: false //bc we editing existing event
+		)
+		.navigationTitle("Edit Event")
+		.toolbar {
+			ToolbarItem(placement: .topBarTrailing) {
+				Button() {
+					saveEdits()
+				} label: {
+					Text("Done")
 				}
+				.disabled(eventName == "")
 			}
-//		}
+		}
 	}
 }
 
@@ -90,17 +88,7 @@ struct EditEventView: View {
 	EditEventView(
 		viewModel: EventViewModel(),
 		event: .constant(
-			Event(
-				name: "Birthday",
-				complete: false,
-				completeDesc: "",
-				symbol: "gear",
-				color: ColorCodable(.red),
-				description: "an event",
-				date: Date(),
-				time: true,
-				recurrence: .yearly
-			)
+			EventViewModel().example
 		)
 	)
 }

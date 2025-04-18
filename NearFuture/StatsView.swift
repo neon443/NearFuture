@@ -23,7 +23,7 @@ struct StatsView: View {
 					Text("\(pastEvents.count) past event\(pastEvents.count == 1 ? "" : "s")")
 						.foregroundStyle(.gray)
 				}
-
+				
 				Section("Events by Month") {
 					let eventsByMonth = Dictionary(grouping: viewModel.events, by: { $0.date })
 					ForEach(eventsByMonth.keys.sorted(), id: \.self) { month in

@@ -112,12 +112,6 @@ struct EventWidgetView: View {
 								}
 								
 								if isLarge {
-									if !event.description.isEmpty {
-										Text(event.description)
-											.font(.caption2)
-											.foregroundColor(.gray)
-											.padding(.top, -5)
-									}
 									Text(event.date.formatted(date: .long, time: .omitted))
 										.font(.caption2)
 										.foregroundColor(event.color.color)
@@ -141,8 +135,6 @@ struct EventWidgetView: View {
 								.foregroundColor(event.color.color)
 								.padding(.trailing, -12)
 						}
-					} else {
-						/*@START_MENU_TOKEN@*/EmptyView()/*@END_MENU_TOKEN@*/
 					}
 				}
 				Spacer()
@@ -150,7 +142,6 @@ struct EventWidgetView: View {
 					let xMoreEvents = events.count - showedEventsNum
 					Text("+\(xMoreEvents) more event\(xMoreEvents == 1 ? "" : "s")")
 						.font(.caption2)
-//						.foregroundStyle(.gray)
 						.padding(.top, -5)
 						.padding(.bottom, -15)
 				}
@@ -162,61 +153,10 @@ struct EventWidgetView: View {
 
 struct Widget_Previews: PreviewProvider {
 	static var events = [
-		Event(
-			name: "Event Name",
-			complete: false,
-			completeDesc: "",
-			symbol: "gear",
-			color: ColorCodable(.blue),
-			description: "Event description",
-			date: Date.distantFuture,
-			time: false,
-			recurrence: .yearly
-		),
-		Event(
-			name: "distant past",
-			complete: false,
-			completeDesc: "",
-			symbol: "star",
-			color: ColorCodable(.orange),
-			description: "description",
-			date: Date.distantPast,
-			time: false,
-			recurrence: .daily
-		),
-		Event(
-			name: "event",
-			complete: false,
-			completeDesc: "",
-			symbol: "star",
-			color: ColorCodable(.purple),
-			description: "description",
-			date: Date(),
-			time: false,
-			recurrence: .daily
-		),
-		Event(
-			name: "An event",
-			complete: false,
-			completeDesc: "",
-			symbol: "star",
-			color: ColorCodable(.green),
-			description: "description",
-			date: Date(),
-			time: false,
-			recurrence: .daily
-		),
-		Event(
-			name: "time event",
-			complete: true,
-			completeDesc: "",
-			symbol: "clock",
-			color: ColorCodable(.brown),
-			description: "an event with a time",
-			date: Date(),
-			time: true,
-			recurrence: .none
-		)
+		EventViewModel().example,
+		EventViewModel().example,
+		EventViewModel().example,
+		EventViewModel().example
 	]
 	static var previews: some View {
 		Group {
