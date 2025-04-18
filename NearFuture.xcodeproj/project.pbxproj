@@ -24,6 +24,7 @@
 		A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A979F60F2D270AF80094C0B3 /* Assets.xcassets */; };
 		A979F6142D270AF90094C0B3 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A979F6182D2714310094C0B3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
+		A985104E2DB256430013D5FF /* iCloudSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985104D2DB256430013D5FF /* iCloudSettingsView.swift */; };
 		A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */; };
 /* End PBXBuildFile section */
 
@@ -85,6 +86,7 @@
 		A979F6112D270AF90094C0B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A980FC302D920097006A778F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A980FC372D93FB2B006A778F /* NearFutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NearFutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A985104D2DB256430013D5FF /* iCloudSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudSettingsView.swift; sourceTree = "<group>"; };
 		A9C05E412D2805D7007DC497 /* NearFutureWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFutureWidgetsExtension.entitlements; sourceTree = "<group>"; };
 		A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +152,7 @@
 				A920C2C02D2403CA00E4F9B1 /* ContentView.swift */,
 				A93BC0932D2B18A3002E8BBD /* StatsView.swift */,
 				A920C2B42D2401A100E4F9B1 /* SettingsView.swift */,
+				A985104D2DB256430013D5FF /* iCloudSettingsView.swift */,
 				A980FC302D920097006A778F /* Info.plist */,
 				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
 				A920C28B2D24011400E4F9B1 /* Item.swift */,
@@ -353,6 +356,7 @@
 				A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */,
 				A93BC0942D2B18A3002E8BBD /* StatsView.swift in Sources */,
 				A979F57F2D26B1300094C0B3 /* EditEventView.swift in Sources */,
+				A985104E2DB256430013D5FF /* iCloudSettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
