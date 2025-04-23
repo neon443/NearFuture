@@ -45,10 +45,37 @@ struct ColorCodable: Codable {
 	//alpha == 0 completely transparent
 	//alpha == 1 completely opaque
 	
+//	var color: Color {
+//		get {
+//			Color(red: red, green: green, blue: blue, opacity: alpha)
+//		}
+//		set {
+//			self.red = newValue.resolve(in: red)
+//			self.green = newValue.resolve(in: green)
+//			self.blue = newValue.resolve(in: blue)
+//			self.alpha = newValue.resolve(in: alpha)
+//		}
+//	}
 	var color: Color {
 		Color(red: red, green: green, blue: blue, opacity: alpha)
 	}
-	
+	var colorBind: Color {
+		get {
+			return Color(
+				red: red,
+				green: green,
+				blue: blue,
+				opacity: alpha
+			)
+		} set {
+			let cc = ColorCodable(newValue)
+			red = cc.red
+			green = cc.green
+			blue = cc.blue
+			alpha = cc.alpha
+		}
+	}
+
 	init(_ color: Color) {
 		let uiColor = UIColor(color)
 		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
@@ -93,6 +120,17 @@ class EventViewModel: ObservableObject {
 	@Published var events: [Event] = []
 	@Published var icloudData: [Event] = []
 	
+	@Published var template: Event = Event(
+		name: "",
+		complete: false,
+		completeDesc: "",
+		symbol: "star",
+		color: ColorCodable(randomColor()),
+		notes: "",
+		date: Date(),
+		time: false,
+		recurrence: .none
+	)
 	@Published var example: Event = Event(
 		name: "event",
 		complete: false,
