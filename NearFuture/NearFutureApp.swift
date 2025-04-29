@@ -25,7 +25,7 @@ struct NearFutureApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+			ContentView(viewModel: EventViewModel())
         }
 //        .modelContainer(sharedModelContainer)
     }

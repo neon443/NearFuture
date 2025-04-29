@@ -40,57 +40,38 @@ struct ColorCodable: Codable {
 	var red: Double
 	var green: Double
 	var blue: Double
-	var alpha: Double
-	//for the brainrot kids: alpha is the opacity/transparency of the color,
-	//alpha == 0 completely transparent
-	//alpha == 1 completely opaque
 	
-//	var color: Color {
-//		get {
-//			Color(red: red, green: green, blue: blue, opacity: alpha)
-//		}
-//		set {
-//			self.red = newValue.resolve(in: red)
-//			self.green = newValue.resolve(in: green)
-//			self.blue = newValue.resolve(in: blue)
-//			self.alpha = newValue.resolve(in: alpha)
-//		}
-//	}
 	var color: Color {
-		Color(red: red, green: green, blue: blue, opacity: alpha)
+		Color(red: red, green: green, blue: blue)
 	}
 	var colorBind: Color {
 		get {
 			return Color(
 				red: red,
 				green: green,
-				blue: blue,
-				opacity: alpha
+				blue: blue
 			)
 		} set {
 			let cc = ColorCodable(newValue)
-			red = cc.red
-			green = cc.green
-			blue = cc.blue
-			alpha = cc.alpha
+			self.red = cc.red
+			self.green = cc.green
+			self.blue = cc.blue
 		}
 	}
 
 	init(_ color: Color) {
 		let uiColor = UIColor(color)
-		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1.0
 		uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
 		
 		self.red = Double(r)
 		self.green = Double(g)
 		self.blue = Double(b)
-		self.alpha = Double(a)
 	}
-	init(red: Double, green: Double, blue: Double, alpha: Double = 1.0) {
+	init(red: Double, green: Double, blue: Double) {
 		self.red = red
 		self.green = green
 		self.blue = blue
-		self.alpha = alpha
 	}
 }
 
@@ -120,7 +101,18 @@ class EventViewModel: ObservableObject {
 	@Published var events: [Event] = []
 	@Published var icloudData: [Event] = []
 	
-	@Published var template: Event = Event(
+	public let template: Event = Event(
+		name: "",
+		complete: false,
+		completeDesc: "",
+		symbol: "star",
+		color: ColorCodable(randomColor()),
+		notes: "",
+		date: Date(),
+		time: false,
+		recurrence: .none
+	)
+	@Published var editableTemplate: Event = Event(
 		name: "",
 		complete: false,
 		completeDesc: "",
@@ -148,12 +140,14 @@ class EventViewModel: ObservableObject {
 	@Published var localEventCount: Int = 0
 	@Published var syncStatus: String = "Not Synced"
 	
-	init() {
-		loadEvents()
+	init(load: Bool = true) {
+		if load {
+			loadEvents()
+		}
 	}
 	
 	//appgroup or regular userdefaults
-	let appGroupUserDefaults = UserDefaults(suiteName: "group.com.neon443.NearFuture") ?? UserDefaults.standard
+	let appGroupUserDefaults = UserDefaults(suiteName: "group.NearFuture") ?? UserDefaults.standard
 	
 	//icloud store
 	let icloudStore = NSUbiquitousKeyValueStore.default
@@ -191,6 +185,7 @@ class EventViewModel: ObservableObject {
 			updateSyncStatus()
 			loadEvents()
 			WidgetCenter.shared.reloadAllTimelines()//reload all widgets when saving events
+			objectWillChange.send()
 		}
 	}
 	
@@ -349,6 +344,14 @@ class EventViewModel: ObservableObject {
 	}
 }
 
+class dummyEventViewModel: EventViewModel {
+	override init(load: Bool = false) {
+		super.init(load: false)
+		self.events = [self.example, self.template, self.example, self.template]
+		self.events[0].complete.toggle()
+	}
+}
+
 func describeOccurrence(date: Date, recurrence: Event.RecurrenceType) -> String {
 	let dateString = date.formatted(date: .long, time: .omitted)
 	let recurrenceDescription: String
@@ -385,6 +388,5 @@ func randomColor() -> Color {
 	let r = Double.random(in: 0...1)
 	let g = Double.random(in: 0...1)
 	let b = Double.random(in: 0...1)
-	let a = Double.random(in: 0...1)
-	return Color(red: r, green: g, blue: b, opacity: a)
+	return Color(red: r, green: g, blue: b)
 }

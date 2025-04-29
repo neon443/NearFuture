@@ -11,9 +11,16 @@ import SwiftData
 enum Field {
 	case Search
 }
+enum Tab {
+	case Home
+	case Archive
+	case Statistics
+	case Settings
+	case Gradient
+}
 
 struct ContentView: View {
-	@StateObject private var viewModel = EventViewModel()
+	@StateObject var viewModel: EventViewModel
 	@State private var eventName = ""
 	@State private var eventComplete = false
 	@State private var eventCompleteDesc = ""
@@ -23,6 +30,7 @@ struct ContentView: View {
 	@State private var eventDate = Date()
 	@State private var eventTime = false
 	@State private var eventRecurrence: Event.RecurrenceType = .none
+	@State var hey: UUID = UUID()
 	@State private var showingAddEventView = false
 	@State private var searchInput: String = ""
 	var filteredEvents: [Event] {
@@ -36,31 +44,6 @@ struct ContentView: View {
 		}
 	}
 	
-	@Environment(\.colorScheme) var appearance
-	private var backgroundGradient: LinearGradient {
-		switch appearance {
-		case .light:
-			return LinearGradient(
-				gradient: Gradient(colors: [.gray.opacity(0.2), .white]),
-				startPoint: .top,
-				endPoint: .bottom
-			)
-		case .dark:
-			return LinearGradient(
-				gradient: Gradient(colors: [.gray.opacity(0.2), .black]),
-				startPoint: .top,
-				endPoint: .bottom)
-		@unknown default:
-			//red bg gradient for uknown appearance
-			return LinearGradient(
-				gradient: Gradient(colors: [.red, .black]),
-				startPoint: .bottom,
-				endPoint: .top
-			)
-		}
-	}
-	@State var showSettings: Bool = false
-	
 	var noEvents: Bool {
 		if viewModel.events.count == 0 {
 			return true
@@ -70,40 +53,43 @@ struct ContentView: View {
 	}
 	
 	@FocusState private var focusedField: Field?
+	@FocusState private var focusedTab: Tab?
 	
 	var body: some View {
 		TabView {
 			NavigationStack {
 				ZStack {
 					backgroundGradient
-						.ignoresSafeArea(.all)
 					VStack {
 						ZStack {
-							TextField(
-								"\(Image(systemName: "magnifyingglass")) Search",
-								text: $searchInput
-							)
-							.padding(.trailing, searchInput.isEmpty ? 0 : 30)
-							.animation(.spring, value: searchInput)
-							.textFieldStyle(RoundedBorderTextFieldStyle())
-							.focused($focusedField, equals: Field.Search)
-							.onSubmit {
-								focusedField = nil
-							}
-							.submitLabel(.done)
+							SearchBar(searchInput: $searchInput)
+								.focused($focusedField, equals: Field.Search)
+								.onSubmit {
+									focusedField = nil
+								}
 							MagicClearButton(text: $searchInput)
+								.onTapGesture {
+									focusedField = nil
+								}
 						}
 						.padding(.horizontal)
-						List {
-							ForEach(filteredEvents) { event in
-								EventListView(viewModel: viewModel, event: event)
-							}
-							.onDelete(perform: viewModel.removeEvent)
-							if !searchInput.isEmpty {
-								SearchHelp(
-									searchInput: $searchInput,
-									focusedField: _focusedField
-								)
+						if filteredEvents.isEmpty && !searchInput.isEmpty {
+							HelpView(searchInput: $searchInput, focusedField: focusedField)
+						} else {
+							ScrollView {
+								ForEach(filteredEvents) { event in
+									EventListView(viewModel: viewModel, event: event)
+								}
+								.onDelete(perform: viewModel.removeEvent)
+								.id(hey)
+								.onReceive(viewModel.objectWillChange) {
+									hey = UUID()
+								}
+								.padding(.horizontal)
+								if /*!searchInput.isEmpty && */filteredEvents.isEmpty {
+									HelpView(searchInput: $searchInput, focusedField: focusedField)
+								}
+								Spacer()
 							}
 						}
 					}
@@ -123,16 +109,12 @@ struct ContentView: View {
 							eventRecurrence: $eventRecurrence,
 							adding: true //adding event
 						)
+						.presentationDragIndicator(.visible)
+						.presentationBackground(.ultraThinMaterial)
 					}
 					.toolbar {
 						ToolbarItem(placement: .topBarTrailing) {
-							Button() {
-								showingAddEventView.toggle()
-							} label: {
-								Image(systemName: "plus.circle")
-									.resizable()
-									.scaledToFit()
-							}
+							AddEventButton(showingAddEventView: $showingAddEventView)
 						}
 					}
 				}
@@ -140,44 +122,76 @@ struct ContentView: View {
 			.tabItem {
 				Label("Home", systemImage: "house")
 			}
+			.focused($focusedTab, equals: Tab.Home)
+			ArchiveView(viewModel: viewModel)
+				.tabItem() {
+					Label("Archive", systemImage: "tray.full")
+				}
+				.focused($focusedTab, equals: Tab.Archive)
 			StatsView(viewModel: viewModel)
 				.tabItem {
 					Label("Statistics", systemImage: "chart.pie")
 				}
+				.focused($focusedTab, equals: Tab.Statistics)
 			SettingsView(viewModel: viewModel)
 				.tabItem {
 					Label("Settings", systemImage: "gear")
 				}
-		}
-	}
-}
-
-struct SearchHelp: View {
-	@Binding var searchInput: String
-	@FocusState var focusedField: Field?
-	var body: some View {
-		HStack {
-			Image(systemName: "questionmark.square.dashed")
-				.resizable()
-				.scaledToFit()
-				.frame(width: 30, height: 30)
-				.padding(.trailing)
-			Text("Can't find what you're looking for?")
-		}
-		Text("Tip: The Search bar searches event names and notes")
-		Button() {
-			searchInput = ""
-			focusedField = nil
-		} label: {
-			HStack {
-				Image(systemName: "xmark")
-				Text("Clear Filters")
-			}
-			.foregroundStyle(Color.accentColor)
+				.focused($focusedTab, equals: Tab.Settings)
 		}
 	}
 }
 
 #Preview {
-	ContentView()
+	ContentView(viewModel: dummyEventViewModel())
+}
+
+struct SearchBar: View {
+	@Binding var searchInput: String
+	
+	var body: some View {
+		TextField(
+			"\(Image(systemName: "magnifyingglass")) Search",
+			text: $searchInput
+		)
+		.padding(.trailing, searchInput.isEmpty ? 0 : 30)
+		.animation(.spring, value: searchInput)
+		.textFieldStyle(RoundedBorderTextFieldStyle())
+		.submitLabel(.done)
+	}
+}
+
+struct AddEventButton: View {
+	@Binding var showingAddEventView: Bool
+	var body: some View {
+		Button() {
+			showingAddEventView.toggle()
+		} label: {
+			ZStack {
+				Circle()
+					.frame(width: 33)
+					.foregroundStyle(.one)
+				Image(systemName: "plus")
+					.resizable()
+					.scaledToFit()
+					.frame(width: 15)
+					.bold()
+					.foregroundStyle(.two)
+			}
+		}
+	}
+}
+
+extension View {
+	var appearance: ColorScheme {
+		return UITraitCollection.current.userInterfaceStyle == .dark ? .dark : .light
+	}
+	var backgroundGradient: some View {
+		return LinearGradient(
+			gradient: Gradient(colors: [.bgTop, .two]),
+			startPoint: .top,
+			endPoint: .bottom
+		)
+		.ignoresSafeArea(.all)
+	}
 }

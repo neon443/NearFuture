@@ -76,7 +76,7 @@ struct EventWidgetView: View {
 	
 	var body: some View {
 		let isLarge = widgetFamily == .systemLarge
-		let events = entry.events
+		let events = entry.events.filter(){!$0.complete}
 		ZStack {
 			bgGradient
 				.padding(.top, 4)
@@ -90,51 +90,49 @@ struct EventWidgetView: View {
 					.padding(.top, -12)
 				
 				ForEach(events.prefix(showedEventsNum), id: \.id) { event in
-					if !event.complete {
-						HStack {
-							RoundedRectangle(cornerRadius: 5)
-								.frame(width: 5)
-								.frame(maxHeight: isLarge ? 50 : 30)
-								.foregroundStyle(event.color.color)
-								.padding(.leading, -18)
-								.padding(.vertical, 2)
-							VStack(alignment: .leading) {
-								HStack {
-									Image(systemName: event.symbol)
-										.resizable()
-										.scaledToFit()
-										.frame(width: 15, height: 15)
-										.foregroundStyle(event.color.color)
-									Text("\(event.name)")
-										.foregroundStyle(.white)
-										.font(.footnote)
-										.padding(.leading, -5)
-								}
-								
-								if isLarge {
-									Text(event.date.formatted(date: .long, time: .omitted))
-										.font(.caption2)
-										.foregroundColor(event.color.color)
-										.padding(.top, -5)
-								}
-								if event.recurrence != .none {
-									Text("\(event.recurrence.rawValue.capitalized)")
-										.foregroundStyle(.white)
-										.font(.caption2)
-										.padding(.top, -5)
-								}
+					HStack {
+						RoundedRectangle(cornerRadius: 5)
+							.frame(width: 5)
+							.frame(maxHeight: isLarge ? 50 : 30)
+							.foregroundStyle(event.color.color)
+							.padding(.leading, -18)
+							.padding(.vertical, 2)
+						VStack(alignment: .leading) {
+							HStack {
+								Image(systemName: event.symbol)
+									.resizable()
+									.scaledToFit()
+									.frame(width: 15, height: 15)
+									.foregroundStyle(event.color.color)
+								Text("\(event.name.isEmpty ? " " : event.name)")
+									.foregroundStyle(.white)
+									.font(.footnote)
+									.padding(.leading, -5)
 							}
-							.padding(.leading, -15)
 							
-							Spacer()
-							
-							//short days till if not large widget
-							Text(daysUntilEvent(event.date, short: !isLarge, sepLines: true))
-								.font(.caption)
-								.multilineTextAlignment(.trailing)
-								.foregroundColor(event.color.color)
-								.padding(.trailing, -12)
+							if isLarge {
+								Text(event.date.formatted(date: .long, time: .omitted))
+									.font(.caption2)
+									.foregroundColor(event.color.color)
+									.padding(.top, -5)
+							}
+							if event.recurrence != .none {
+								Text("\(event.recurrence.rawValue.capitalized)")
+									.foregroundStyle(.white)
+									.font(.caption2)
+									.padding(.top, -5)
+							}
 						}
+						.padding(.leading, -15)
+						
+						Spacer()
+						
+						//short days till if not large widget
+						Text(daysUntilEvent(event.date, short: !isLarge, sepLines: true))
+							.font(.caption)
+							.multilineTextAlignment(.trailing)
+							.foregroundColor(event.color.color)
+							.padding(.trailing, -12)
 					}
 				}
 				Spacer()
@@ -152,38 +150,31 @@ struct EventWidgetView: View {
 }
 
 struct Widget_Previews: PreviewProvider {
-	static var events = [
-		EventViewModel().example,
-		EventViewModel().example,
-		EventViewModel().example,
-		EventViewModel().example
-	]
+	static var events = dummyEventViewModel().events
 	static var previews: some View {
-		Group {
-			EventWidgetView(
-				entry: EventWidgetEntry(
-					date: Date(),
-					events: events
-				)
+		EventWidgetView(
+			entry: EventWidgetEntry(
+				date: Date(),
+				events: events
 			)
-			.previewContext(WidgetPreviewContext(family: .systemLarge))
-			.previewDisplayName("Large")
-			EventWidgetView(
-				entry: EventWidgetEntry(
-					date: Date(),
-					events: events
-				)
+		)
+		.previewContext(WidgetPreviewContext(family: .systemLarge))
+		.previewDisplayName("Large")
+		EventWidgetView(
+			entry: EventWidgetEntry(
+				date: Date(),
+				events: events
 			)
-			.previewContext(WidgetPreviewContext(family: .systemMedium))
-			.previewDisplayName("Medium")
-			EventWidgetView(
-				entry: EventWidgetEntry(
-					date: Date(),
-					events: events
-				)
+		)
+		.previewContext(WidgetPreviewContext(family: .systemMedium))
+		.previewDisplayName("Medium")
+		EventWidgetView(
+			entry: EventWidgetEntry(
+				date: Date(),
+				events: events
 			)
-			.previewContext(WidgetPreviewContext(family: .systemSmall))
-			.previewDisplayName("Small")
-		}
+		)
+		.previewContext(WidgetPreviewContext(family: .systemSmall))
+		.previewDisplayName("Small")
 	}
 }

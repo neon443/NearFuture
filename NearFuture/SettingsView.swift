@@ -41,109 +41,111 @@ struct SettingsView: View {
 	
 	var body: some View {
 		NavigationStack {
-			List {
-				NavigationLink() {
-					iCloudSettingsView(
-						viewModel: viewModel,
-						hasUbiquitous: $hasUbiquitous,
-						lastSyncWasSuccessful: $lastSyncWasSuccessful,
-						lastSyncWasNormalAgo: $lastSyncWasNormalAgo,
-						localCountEqualToiCloud: $localCountEqualToiCloud,
-						icloudCountEqualToLocal: $icloudCountEqualToLocal,
-						updateStatus: updateStatus
-					)
-				} label: {
-					HStack {
-						Image(systemName: "icloud.fill")
-						Text("iCloud")
-						Spacer()
-						Circle()
-							.frame(width: 20, height: 20)
-							.foregroundStyle(iCloudStatusColor)
-					}
-				}
-				.onAppear {
-					viewModel.sync()
-					updateStatus()
-				}
-				
-				NavigationLink() {
-					NavigationStack() {
-						Button() {
-							UIPasteboard.general.string = "\(viewModel.exportEvents() ?? "")"
-							print(viewModel.exportEvents() as Any)
-						} label: {
-							Text("copy")
+			ZStack {
+				backgroundGradient
+				List {
+					NavigationLink() {
+						iCloudSettingsView(
+							viewModel: viewModel,
+							hasUbiquitous: $hasUbiquitous,
+							lastSyncWasSuccessful: $lastSyncWasSuccessful,
+							lastSyncWasNormalAgo: $lastSyncWasNormalAgo,
+							localCountEqualToiCloud: $localCountEqualToiCloud,
+							icloudCountEqualToLocal: $icloudCountEqualToLocal,
+							updateStatus: updateStatus
+						)
+					} label: {
+						HStack {
+							Image(systemName: "icloud.fill")
+							Text("iCloud")
+							Spacer()
+							Circle()
+								.frame(width: 20, height: 20)
+								.foregroundStyle(iCloudStatusColor)
 						}
-						Text("\(viewModel.exportEvents() ?? "")")
 					}
-				} label: {
-					Image(systemName: "list.bullet.rectangle")
-					Text("Export events")
-				}
-				NavigationLink() {
-					NavigationStack() {
-						VStack {
-							TextEditor(text: $importStr)
-								.foregroundStyle(.foreground, .gray)
-								.background(.gray)
-								.frame(width: 200, height: 400)
-								.shadow(radius: 5)
+					.onAppear {
+						viewModel.sync()
+						updateStatus()
+					}
+					
+					NavigationLink() {
+						NavigationStack() {
 							Button() {
-								viewModel.importEvents(importStr)
+								UIPasteboard.general.string = "\(viewModel.exportEvents() ?? "")"
+								print(viewModel.exportEvents() as Any)
 							} label: {
-								Text("import events")
+								Text("copy")
 							}
-							.buttonStyle(BorderedProminentButtonStyle())
-							Button() {
-								if let pb = UIPasteboard.general.string {
-									print(pb)
+							Text("\(viewModel.exportEvents() ?? "")")
+						}
+					} label: {
+						Image(systemName: "list.bullet.rectangle")
+						Text("Export events")
+					}
+					NavigationLink() {
+						NavigationStack() {
+							VStack {
+								TextEditor(text: $importStr)
+									.foregroundStyle(.foreground, .gray)
+									.background(.gray)
+									.frame(width: 200, height: 400)
+									.shadow(radius: 5)
+								Button() {
+									viewModel.importEvents(importStr)
+								} label: {
+									Text("import events")
 								}
-							} label: {
-								Text("print pb")
+								.buttonStyle(BorderedProminentButtonStyle())
+								Button() {
+									if let pb = UIPasteboard.general.string {
+										print(pb)
+									}
+								} label: {
+									Text("print pb")
+								}
 							}
 						}
+					} label: {
+						Image(systemName: "square.and.arrow.down")
+						Text("Import events")
 					}
-				} label: {
-					Image(systemName: "square.and.arrow.down")
-					Text("Import events")
+					
+					Section("Tip") {
+						Text("Near Future has Widgets!")
+					}
+					
+					Section("Danger Zone") {
+						Button("Delete local data", role: .destructive) {
+							viewModel.dangerClearLocalData()
+						}
+						Button("Delete iCloud data", role: .destructive) {
+							viewModel.dangerCleariCloudData()
+						}
+						Button("Delete all data", role: .destructive) {
+							viewModel.dangerClearLocalData()
+							viewModel.dangerCleariCloudData()
+						}
+					}
+					Section("Debug") {
+						Button("Reset UserDefaults", role: .destructive) {
+							viewModel.dangerResetLocalData()
+						}
+						Button("Reset iCloud", role: .destructive) {
+							viewModel.dangerResetiCloud()
+						}
+					}
 				}
-				
-				Section("Tip") {
-					Text("Near Future has Widgets!")
-				}
-				
-				Section("Danger Zone") {
-					Button("Delete local data", role: .destructive) {
-						viewModel.dangerClearLocalData()
-					}
-					Button("Delete iCloud data", role: .destructive) {
-						viewModel.dangerCleariCloudData()
-					}
-					Button("Delete all data", role: .destructive) {
-						viewModel.dangerClearLocalData()
-						viewModel.dangerCleariCloudData()
-					}
-				}
-				Section("Debug") {
-					Button("Reset UserDefaults", role: .destructive) {
-						viewModel.dangerResetLocalData()
-					}
-					Button("Reset iCloud", role: .destructive) {
-						viewModel.dangerResetiCloud()
-					}
-				}
+				.scrollContentBackground(.hidden)
+				.navigationTitle("Settings")
+				.navigationBarTitleDisplayMode(.inline)
 			}
-			.navigationTitle("Settings")
-			.navigationBarTitleDisplayMode(.inline)
 		}
 	}
 }
 
 #Preview {
-	SettingsView(
-		viewModel: EventViewModel()
-	)
+	SettingsView(viewModel: dummyEventViewModel())
 }
 
 func test() -> Void {

@@ -34,154 +34,158 @@ struct iCloudSettingsView: View {
 	var updateStatus: () -> Void
 	
 	var body: some View {
-		List {
-			HStack {
-				Spacer()
-				VStack {
-					ZStack {
-						Image(systemName: "icloud")
-							.resizable()
-							.scaledToFit()
-							.frame(width: 75, height: 55)
-							.symbolRenderingMode(.multicolor)
-						Text("\(viewModel.icloudEventCount)")
-							.font(.title2)
-							.monospaced()
-							.bold()
-					}
-					Text("iCloud")
-					HStack {
-						Button(role: .destructive) {
-							showPushAlert.toggle()
-						} label: {
-							Image(systemName: "arrow.up")
+		ZStack {
+			backgroundGradient
+			List {
+				HStack {
+					Spacer()
+					VStack {
+						ZStack {
+							Image(systemName: "icloud")
 								.resizable()
 								.scaledToFit()
-								.frame(width: 30, height: 40)
+								.frame(width: 75, height: 55)
+								.symbolRenderingMode(.multicolor)
+							Text("\(viewModel.icloudEventCount)")
+								.font(.title2)
+								.monospaced()
+								.bold()
 						}
-						.buttonStyle(BorderedButtonStyle())
-						.alert("Warning", isPresented: $showPushAlert) {
-							Button("OK", role: .destructive) {
-								viewModel.replaceiCloudWithLocalData()
+						Text("iCloud")
+						HStack {
+							Button(role: .destructive) {
+								showPushAlert.toggle()
+							} label: {
+								Image(systemName: "arrow.up")
+									.resizable()
+									.scaledToFit()
+									.frame(width: 30, height: 40)
+							}
+							.buttonStyle(BorderedButtonStyle())
+							.alert("Warning", isPresented: $showPushAlert) {
+								Button("OK", role: .destructive) {
+									viewModel.replaceiCloudWithLocalData()
+									viewModel.sync()
+									updateStatus()
+								}
+								Button("Cancel", role: .cancel) {}
+							} message: {
+								Text("This will replace Events stored in iCloud with Events stored locally.")
+							}
+							
+							Button() {
 								viewModel.sync()
 								updateStatus()
+							} label: {
+								Image(systemName: "arrow.triangle.2.circlepath")
+									.resizable()
+									.scaledToFit()
+									.frame(width: 30, height: 40)
+									.foregroundStyle(Color.accentColor)
 							}
-							Button("Cancel", role: .cancel) {}
-						} message: {
-							Text("This will replace Events stored in iCloud with Events stored locally.")
+							.buttonStyle(BorderedButtonStyle())
+							
+							Button(role: .destructive) {
+								showPullAlert.toggle()
+							} label: {
+								Image(systemName: "arrow.down")
+									.resizable()
+									.scaledToFit()
+									.frame(width: 30, height: 40)
+							}
+							.buttonStyle(BorderedButtonStyle())
+							.alert("Warning", isPresented: $showPullAlert) {
+								Button("OK", role: .destructive) {
+									viewModel.replaceLocalWithiCloudData()
+									viewModel.sync()
+									updateStatus()
+								}
+								Button("Cancel", role: .cancel) {}
+							} message: {
+								Text("This will replace Events stored locally with Events stored in iCloud.")
+							}
 						}
-						
-						Button() {
-							viewModel.sync()
-							updateStatus()
-						} label: {
-							Image(systemName: "arrow.triangle.2.circlepath")
+						ZStack {
+							Image(systemName: device.sf)
 								.resizable()
 								.scaledToFit()
-								.frame(width: 30, height: 40)
-								.foregroundStyle(Color.accentColor)
+								.frame(width: 75, height: 75)
+								.symbolRenderingMode(.monochrome)
+							Text("\(viewModel.localEventCount)")
+								.font(.title2)
+								.monospaced()
+								.bold()
 						}
-						.buttonStyle(BorderedButtonStyle())
-						
-						Button(role: .destructive) {
-							showPullAlert.toggle()
-						} label: {
-							Image(systemName: "arrow.down")
-								.resizable()
-								.scaledToFit()
-								.frame(width: 30, height: 40)
-						}
-						.buttonStyle(BorderedButtonStyle())
-						.alert("Warning", isPresented: $showPullAlert) {
-							Button("OK", role: .destructive) {
-								viewModel.replaceLocalWithiCloudData()
-								viewModel.sync()
-								updateStatus()
-							}
-							Button("Cancel", role: .cancel) {}
-						} message: {
-							Text("This will replace Events stored locally with Events stored in iCloud.")
-						}
+						Text(device.label)
 					}
-					ZStack {
-						Image(systemName: device.sf)
-							.resizable()
-							.scaledToFit()
-							.frame(width: 75, height: 75)
-							.symbolRenderingMode(.monochrome)
-						Text("\(viewModel.localEventCount)")
-							.font(.title2)
-							.monospaced()
-							.bold()
-					}
-					Text(device.label)
+					Spacer()
 				}
-				Spacer()
+				.listRowSeparator(.hidden)
+				.onAppear {
+					viewModel.sync()
+					updateStatus()
+				}
+				
+				HStack {
+					Circle()
+						.frame(width: 20, height: 20)
+						.foregroundStyle(hasUbiquitous ? .green : .red)
+					Text("iCloud")
+					Spacer()
+					Text("\(hasUbiquitous ? "" : "Not ")Working")
+						.bold()
+				}
+				
+				HStack {
+					Circle()
+						.frame(width: 20, height: 20)
+						.foregroundStyle(lastSyncWasSuccessful ? .green : .red)
+					Text("Sync Status")
+					Spacer()
+					Text("\(viewModel.syncStatus)")
+						.bold()
+				}
+				
+				HStack {
+					Circle()
+						.frame(width: 20, height: 20)
+						.foregroundStyle(lastSyncWasNormalAgo ? .green : .red)
+					Text("Last Sync")
+					Spacer()
+					Text("\(viewModel.lastSync?.formatted() ?? "Never")")
+						.bold()
+				}
+				
+				HStack {
+					Circle()
+						.frame(width: 20, height: 20)
+						.foregroundStyle(localCountEqualToiCloud ? .green : .red)
+					Text("Local Events")
+					Spacer()
+					Text("\(viewModel.localEventCount)")
+						.bold()
+				}
+				
+				HStack {
+					Circle()
+						.frame(width: 20, height: 20)
+						.foregroundStyle(icloudCountEqualToLocal ? .green : .red)
+					Text("Events in iCloud")
+					Spacer()
+					Text("\(viewModel.icloudEventCount)")
+						.bold()
+				}
 			}
-			.listRowSeparator(.hidden)
-			.onAppear {
-				viewModel.sync()
-				updateStatus()
-			}
-			
-			HStack {
-				Circle()
-					.frame(width: 20, height: 20)
-					.foregroundStyle(hasUbiquitous ? .green : .red)
-				Text("iCloud")
-				Spacer()
-				Text("\(hasUbiquitous ? "" : "Not ")Working")
-					.bold()
-			}
-			
-			HStack {
-				Circle()
-					.frame(width: 20, height: 20)
-					.foregroundStyle(lastSyncWasSuccessful ? .green : .red)
-				Text("Sync Status")
-				Spacer()
-				Text("\(viewModel.syncStatus)")
-					.bold()
-			}
-			
-			HStack {
-				Circle()
-					.frame(width: 20, height: 20)
-					.foregroundStyle(lastSyncWasNormalAgo ? .green : .red)
-				Text("Last Sync")
-				Spacer()
-				Text("\(viewModel.lastSync?.formatted() ?? "Never")")
-					.bold()
-			}
-			
-			HStack {
-				Circle()
-					.frame(width: 20, height: 20)
-					.foregroundStyle(localCountEqualToiCloud ? .green : .red)
-				Text("Local Events")
-				Spacer()
-				Text("\(viewModel.localEventCount)")
-					.bold()
-			}
-			
-			HStack {
-				Circle()
-					.frame(width: 20, height: 20)
-					.foregroundStyle(icloudCountEqualToLocal ? .green : .red)
-				Text("Events in iCloud")
-				Spacer()
-				Text("\(viewModel.icloudEventCount)")
-					.bold()
-			}
+			.scrollContentBackground(.hidden)
+			.navigationTitle("iCloud")
+			.navigationBarTitleDisplayMode(.inline)
 		}
-		.navigationTitle("iCloud")
-		.navigationBarTitleDisplayMode(.inline)
 	}
 }
 
 #Preview("iCloudSettingsView") {
 	iCloudSettingsView(
-		viewModel: EventViewModel(),
+		viewModel: dummyEventViewModel(),
 		hasUbiquitous: .constant(true),
 		lastSyncWasSuccessful: .constant(true),
 		lastSyncWasNormalAgo: .constant(true),

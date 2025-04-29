@@ -21,12 +21,13 @@ struct AddEventView: View {
 	@Binding var eventTime: Bool
 	@Binding var eventRecurrence: Event.RecurrenceType
 	
-	@State var adding : Bool
+	@State var adding: Bool
+	@State var showNeedsNameAlert: Bool = false
 	@State var isSymbolPickerPresented = false
 	
 	@FocusState private var focusedField: Field?
 	private enum Field {
-		case Name, Description
+		case Name, Notes
 	}
 	
 	@Environment(\.dismiss) var dismiss
@@ -60,9 +61,8 @@ struct AddEventView: View {
 								searchLabel: "Search...",
 								autoDismiss: true)
 						}
-						ColorPicker("", selection: $eventColor, supportsOpacity: true)
+						ColorPicker("", selection: $eventColor, supportsOpacity: false)
 							.fixedSize()
-						Divider()
 						ZStack {
 							TextField("Event Name", text: $eventName)
 								.textFieldStyle(RoundedBorderTextFieldStyle())
@@ -71,7 +71,7 @@ struct AddEventView: View {
 								.focused($focusedField, equals: Field.Name)
 								.submitLabel(.next)
 								.onSubmit {
-									focusedField = .Description
+									focusedField = .Notes
 								}
 							MagicClearButton(text: $eventName)
 						}
@@ -79,11 +79,11 @@ struct AddEventView: View {
 					
 					// dscription
 					ZStack {
-						TextField("Event Description", text: $eventNotes)
+						TextField("Event Notes", text: $eventNotes)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
 							.padding(.trailing, eventNotes.isEmpty ? 0 : 30)
 							.animation(.spring, value: eventNotes)
-							.focused($focusedField, equals: Field.Description)
+							.focused($focusedField, equals: Field.Notes)
 							.submitLabel(.done)
 							.onSubmit {
 								focusedField = nil
@@ -130,50 +130,68 @@ struct AddEventView: View {
 						)
 					)
 				}
-				
-				// save button only show iff adding new event
-				if adding {
-					Button {
-						viewModel.addEvent(
-							newEvent: Event(
-								name: eventName,
-								complete: eventComplete,
-								completeDesc: eventCompleteDesc,
-								symbol: eventSymbol,
-								color: ColorCodable(eventColor),
-								notes: eventNotes,
-								date: eventDate,
-								time: eventTime,
-								recurrence: eventRecurrence
-							)
-						)
-						resetAddEventView()
-					} label: {
-						Text("Save Event")
-							.font(.headline)
-							.cornerRadius(10)
-							.buttonStyle(BorderedProminentButtonStyle())
-					}
-					.disabled(eventName.isEmpty)
-					if eventName.isEmpty {
-						HStack {
-							Image(systemName: "exclamationmark")
-								.foregroundStyle(.red)
-							Text("Give your event a name.")
-						}
-					}
-				}
 			}
+			.scrollContentBackground(.hidden)
 			.navigationTitle("\(adding ? "Add Event" : "")")
 			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
-				ToolbarItem(placement: .topBarTrailing) {
+				ToolbarItem(placement: .topBarLeading) {
 					if adding {
 						Button() {
+							resetAddEventView()
 							dismiss()
 						} label: {
 							Image(systemName: "xmark.circle.fill")
 								.symbolRenderingMode(.hierarchical)
+								.resizable()
+								.scaledToFit()
+								.frame(width: 30)
+						}
+					}
+				}
+				ToolbarItem(placement: .topBarTrailing) {
+					if adding {
+						Button {
+							viewModel.addEvent(
+								newEvent: Event(
+									name: eventName,
+									complete: eventComplete,
+									completeDesc: eventCompleteDesc,
+									symbol: eventSymbol,
+									color: ColorCodable(eventColor),
+									notes: eventNotes,
+									date: eventDate,
+									time: eventTime,
+									recurrence: eventRecurrence
+								)
+							)
+							resetAddEventView()
+						} label: {
+							Text("Save")
+								.font(.headline)
+								.cornerRadius(10)
+								.buttonStyle(BorderedProminentButtonStyle())
+						}
+						.disabled(eventName.isEmpty)
+						.onTapGesture {
+							if eventName.isEmpty {
+								showNeedsNameAlert.toggle()
+							}
+						}
+						.alert("Missing Name", isPresented: $showNeedsNameAlert) {
+							Button("OK", role: .cancel) {
+								showNeedsNameAlert.toggle()
+								focusedField = .Name
+							}
+						} message: {
+							Text("Give your Event a name before saving.")
+						}
+						if eventName.isEmpty {
+							HStack {
+								Image(systemName: "exclamationmark")
+									.foregroundStyle(.red)
+								Text("Give your event a name.")
+							}
 						}
 					}
 				}
@@ -182,14 +200,18 @@ struct AddEventView: View {
 	}
 	func resetAddEventView() {
 		//reset addeventView
-		eventName = ""
-		eventSymbol = "star"
+		eventName = viewModel.template.name
+		eventComplete = viewModel.template.complete
+		eventCompleteDesc = viewModel.template.completeDesc
+		eventSymbol = viewModel.template.symbol
 		eventColor = randomColor()
-		eventNotes = ""
-		eventDate = Date()
-		eventRecurrence = .none
+		eventNotes = viewModel.template.notes
+		eventDate = viewModel.template.date
+		eventTime = viewModel.template.time
+		eventRecurrence = viewModel.template.recurrence
 		dismiss()
 	}
+	
 }
 struct MagicClearButton: View {
 	@Binding var text: String
@@ -213,17 +235,24 @@ struct MagicClearButton: View {
 }
 
 #Preview {
-	AddEventView(
-		viewModel: EventViewModel(),
-		eventName: .constant("Birthday"),
-		eventComplete: .constant(false),
-		eventCompleteDesc: .constant(""),
-		eventSymbol: .constant("star"),
-		eventColor: .constant(Color.red),
-		eventNotes: .constant("A very special day"),
-		eventDate: .constant(Date()),
-		eventTime: .constant(true),
-		eventRecurrence: .constant(.monthly),
-		adding: true
-	)
+	let vm = dummyEventViewModel()
+	Color.orange
+		.ignoresSafeArea(.all)
+		.sheet(isPresented: .constant(true)) {
+			AddEventView(
+				viewModel: vm,
+				eventName: .constant(vm.template.notes),
+				eventComplete: .constant(vm.template.complete),
+				eventCompleteDesc: .constant(vm.template.completeDesc),
+				eventSymbol: .constant(vm.template.symbol),
+				eventColor: .constant(vm.template.color.color),
+				eventNotes: .constant(vm.template.notes),
+				eventDate: .constant(vm.template.date),
+				eventTime: .constant(vm.template.time),
+				eventRecurrence: .constant(vm.template.recurrence),
+				adding: true
+			)
+			.presentationDragIndicator(.visible)
+			.presentationBackground(.ultraThinMaterial)
+		}
 }

@@ -1,0 +1,16 @@
+//
+//  Config.xcconfig
+//  NearFuture
+//
+//  Created by neon443 on 29/04/2025.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+TEAM_ID = 8JGND254B7
+BUNDLE_ID = com.neon443.NearFuture
+GROUP_ID  = group.NearFuture
+VERSION = 3.0.1
+NAME = Near Future
+BUILD_NUMBER = 1

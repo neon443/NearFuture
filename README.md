@@ -1,6 +1,7 @@
 # NearFuture
+[![AppStore Link](https://github.com/neon443/NearFuture/blob/main/NearFuture/Images/appstore.png?raw=true)](https://apps.apple.com/us/app/near-future-event-tracker/id6744963429)
 
-Near Future is a SwiftUI App to help people to track upcoming events - Holidays, Trips, Birthdays, Weddings, Anniversaries
+**Near Future** is a SwiftUI App to help people track upcoming events - Holidays, Trips, Birthdays, Weddings, Anniversaries.
 
 ## Roadmap
 - [x] Add and delete events
@@ -19,6 +20,7 @@ Near Future is a SwiftUI App to help people to track upcoming events - Holidays,
 - [ ] Archive
 - [ ] Collaboration
 - [ ] Autocomplete tasks
+- [ ] Settings
 
 ## Features
 - **Event Creation**: Create events with a name, description, date, recurrence, and an icon
@@ -43,7 +45,7 @@ Near Future is a SwiftUI App to help people to track upcoming events - Holidays,
 4. Hit `Command + R` to Build and Run the Project
 
 ## Contributing
-Contributions are welcome! just follow these:
+Contributions are welcome! Just follow these steps:
 1. Follow [#Compiling] to get a copy on your machine
 2. Optionally create a feature branch for your additions
 3. Open a pull request

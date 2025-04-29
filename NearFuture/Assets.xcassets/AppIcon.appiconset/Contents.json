@@ -1,7 +1,31 @@
 {
   "images" : [
     {
-      "filename" : "telescope-pointed-at-the-milky-way-galaxy-royalty-free-image-93204189-1533148569-2899733190.jpg",
+      "filename" : "NearFutureIcon.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "NearFutureIconDark.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "tinted"
+        }
+      ],
+      "filename" : "NearFutureIconTint.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
