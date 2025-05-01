@@ -11,9 +11,6 @@ struct ArchiveView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@State var showAddEvent: Bool = false
 	@State var hey: UUID = UUID()
-	init(viewModel: EventViewModel) {
-		self.viewModel = viewModel
-	}
 	var body: some View {
 		NavigationStack {
 			ZStack {
@@ -55,6 +52,7 @@ struct ArchiveView: View {
 				adding: true
 			)
 			.presentationDragIndicator(.visible)
+			.presentationBackground(.ultraThinMaterial)
 		}
 	}
 }

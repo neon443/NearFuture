@@ -128,11 +128,19 @@ struct EventWidgetView: View {
 						Spacer()
 						
 						//short days till if not large widget
-						Text(daysUntilEvent(event.date, short: !isLarge, sepLines: true))
-							.font(.caption)
-							.multilineTextAlignment(.trailing)
-							.foregroundColor(event.color.color)
-							.padding(.trailing, -12)
+						if isLarge {
+							Text(daysUntilEvent(event.date).long)
+								.font(.caption)
+								.multilineTextAlignment(.trailing)
+								.foregroundColor(event.color.color)
+								.padding(.trailing, -12)
+						} else {
+							Text(daysUntilEvent(event.date).short)
+								.font(.caption)
+								.multilineTextAlignment(.trailing)
+								.foregroundColor(event.color.color)
+								.padding(.trailing, -12)
+						}
 					}
 				}
 				Spacer()

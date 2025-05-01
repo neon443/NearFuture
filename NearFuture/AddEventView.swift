@@ -60,6 +60,7 @@ struct AddEventView: View {
 								title: "Choose a Symbol",
 								searchLabel: "Search...",
 								autoDismiss: true)
+							.presentationBackground(.ultraThinMaterial)
 						}
 						ColorPicker("", selection: $eventColor, supportsOpacity: false)
 							.fixedSize()

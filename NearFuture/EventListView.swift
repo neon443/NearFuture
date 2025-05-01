@@ -71,14 +71,12 @@ struct EventListView: View {
 					}
 					Spacer()
 					VStack {
-						Text("\(daysUntilEvent(event.date, short: false))")
+						Text("\(daysUntilEvent(event.date).long)")
 							.font(.subheadline)
 							.foregroundStyle(.one)
 					}
 					Button() {
-						withAnimation {
-							event.complete.toggle()
-						}
+						event.complete.toggle()
 						let eventToModify = viewModel.events.firstIndex() { currEvent in
 							currEvent.id == event.id
 						}

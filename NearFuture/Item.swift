@@ -75,25 +75,73 @@ struct ColorCodable: Codable {
 	}
 }
 
-func daysUntilEvent(_ eventDate: Date, short: Bool, sepLines: Bool = false) -> String {
+func daysUntilEvent(_ eventDate: Date) -> (short: String, long: String) {
 	let calendar = Calendar.current
 	let currentDate = Date()
-	let components = calendar.dateComponents([.day], from: currentDate, to: eventDate)
-	guard let days = components.day else { return "N/A" }
-	guard days >= 0 else {
-		if short {
-			return "\(days)d"
-		} else {
-			return "\(-days)\(sepLines ? "\n" : " ")day\(-days == 1 ? "" : "s") ago"
+	let components = calendar.dateComponents([.day, .hour, .minute], from: currentDate, to: eventDate)
+	guard let days = components.day else {
+		return ("N/A", "N/A")
+	}
+	guard let hours = components.hour else {
+		return ("N/A", "N/A")
+	}
+	guard let minutes = components.minute else {
+		return ("N/A", "N/A")
+	}
+	
+	enum RetUnit {
+		case days
+		case hours
+		case minutes
+	}
+	func ret(days: Int = 0, hours: Int = 0, minutes: Int = 0, unit: RetUnit, future: Bool = true) -> (String, String) {
+		switch unit {
+		case .days:
+			return (
+				"\(days)d",
+				"\(days) day\(plu(-hours))"
+			)
+		case .hours:
+			return (
+				"\(hours)h",
+				"\(hours) hour\(plu(-hours))"
+			)
+		case .minutes:
+			return (
+				"\(minutes)m",
+				"\(minutes) min\(plu(-minutes))"
+			)
 		}
 	}
-	guard days != 0 else {
-		return "Today"
-	}
-	if short {
-		return "\(days)d"
-	} else {
-		return "\(days)\(sepLines ? "\n" : " ")day\(days == 1 ? "" : "s")"
+	switch eventDate > Date() {
+	case true:
+		//future
+		if days == 0 {
+			if hours == 0 {
+				//less than 1h
+				return ret(minutes: minutes, unit: .minutes)
+			} else {
+				//less than 24h
+				return ret(hours: hours, unit: .hours)
+			}
+		} else {
+			//grater than 24h
+			return ret(days: days, unit: .days)
+		}
+	case false:
+		//past
+		if days == 0 {
+			if hours == 0 {
+				//less than 1h
+				return ret(minutes: minutes, unit: .minutes, future: false)
+			} else {
+				//less than 24h
+				return ret(hours: hours, unit: .hours, future: false)
+			}
+		} else {
+			//grater than 24h
+			return ret(days: days, unit: .days, future: false)
+		}
 	}
 }
 
@@ -389,4 +437,10 @@ func randomColor() -> Color {
 	let g = Double.random(in: 0...1)
 	let b = Double.random(in: 0...1)
 	return Color(red: r, green: g, blue: b)
+}
+
+func plu(_ inp: Int) -> String {
+	var input = inp
+	if inp < 0 { input.negate() }
+	return "\(input == 1 ? "" : "s")"
 }
