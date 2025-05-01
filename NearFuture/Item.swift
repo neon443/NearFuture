@@ -28,7 +28,6 @@ struct Event: Identifiable, Codable {
 	var color: ColorCodable
 	var notes: String
 	var date: Date
-	var time: Bool
 	var recurrence: RecurrenceType
 	
 	enum RecurrenceType: String, Codable, CaseIterable {
@@ -157,20 +156,9 @@ class EventViewModel: ObservableObject {
 		color: ColorCodable(randomColor()),
 		notes: "",
 		date: Date(),
-		time: false,
 		recurrence: .none
 	)
-	@Published var editableTemplate: Event = Event(
-		name: "",
-		complete: false,
-		completeDesc: "",
-		symbol: "star",
-		color: ColorCodable(randomColor()),
-		notes: "",
-		date: Date(),
-		time: false,
-		recurrence: .none
-	)
+	@Published var editableTemplate: Event
 	@Published var example: Event = Event(
 		name: "event",
 		complete: false,
@@ -179,7 +167,6 @@ class EventViewModel: ObservableObject {
 		color: ColorCodable(.orange),
 		notes: "lksdjfakdflkasjlkjl",
 		date: Date(),
-		time: true,
 		recurrence: .daily
 	)
 	
@@ -189,6 +176,7 @@ class EventViewModel: ObservableObject {
 	@Published var syncStatus: String = "Not Synced"
 	
 	init(load: Bool = true) {
+		self.editableTemplate = template
 		if load {
 			loadEvents()
 		}

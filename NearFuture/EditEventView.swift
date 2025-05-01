@@ -35,7 +35,6 @@ struct EditEventView: View {
 			eventColor: $event.color.colorBind,
 			eventNotes: $event.notes,
 			eventDate: $event.date,
-			eventTime: $event.time,
 			eventRecurrence: $event.recurrence,
 			adding: false //bc we editing existing event
 		)

@@ -47,7 +47,6 @@ struct ArchiveView: View {
 				eventColor: $viewModel.editableTemplate.color.colorBind,
 				eventNotes: $viewModel.editableTemplate.notes,
 				eventDate: $viewModel.editableTemplate.date,
-				eventTime: $viewModel.editableTemplate.time,
 				eventRecurrence: $viewModel.editableTemplate.recurrence,
 				adding: true
 			)

@@ -53,7 +53,7 @@ struct EventListView: View {
 						Text(
 							event.date.formatted(
 								date: .long,
-								time: event.time ? .shortened : .omitted
+								time: .shortened
 							)
 						)
 						.font(.subheadline)

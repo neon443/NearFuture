@@ -28,7 +28,6 @@ struct ContentView: View {
 	@State private var eventColor: Color = randomColor()
 	@State private var eventNotes = ""
 	@State private var eventDate = Date()
-	@State private var eventTime = false
 	@State private var eventRecurrence: Event.RecurrenceType = .none
 	@State var hey: UUID = UUID()
 	@State private var showingAddEventView = false
@@ -105,7 +104,6 @@ struct ContentView: View {
 							eventColor: $eventColor,
 							eventNotes: $eventNotes,
 							eventDate: $eventDate,
-							eventTime: $eventTime,
 							eventRecurrence: $eventRecurrence,
 							adding: true //adding event
 						)

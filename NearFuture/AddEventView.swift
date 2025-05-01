@@ -18,7 +18,6 @@ struct AddEventView: View {
 	@Binding var eventColor: Color
 	@Binding var eventNotes: String
 	@Binding var eventDate: Date
-	@Binding var eventTime: Bool
 	@Binding var eventRecurrence: Event.RecurrenceType
 	
 	@State var adding: Bool
@@ -108,14 +107,11 @@ struct AddEventView: View {
 						.frame(width: 20)
 					}
 					
-					Toggle("Schedule a Time", isOn: $eventTime)
-					if eventTime {
 						DatePicker(
 							"",
 							selection: $eventDate,
 							displayedComponents: .hourAndMinute
 						)
-					}
 					
 					// re-ocurrence Picker
 					Picker("Recurrence", selection: $eventRecurrence) {
@@ -162,7 +158,6 @@ struct AddEventView: View {
 									color: ColorCodable(eventColor),
 									notes: eventNotes,
 									date: eventDate,
-									time: eventTime,
 									recurrence: eventRecurrence
 								)
 							)
@@ -208,7 +203,6 @@ struct AddEventView: View {
 		eventColor = randomColor()
 		eventNotes = viewModel.template.notes
 		eventDate = viewModel.template.date
-		eventTime = viewModel.template.time
 		eventRecurrence = viewModel.template.recurrence
 		dismiss()
 	}
@@ -249,7 +243,6 @@ struct MagicClearButton: View {
 				eventColor: .constant(vm.template.color.color),
 				eventNotes: .constant(vm.template.notes),
 				eventDate: .constant(vm.template.date),
-				eventTime: .constant(vm.template.time),
 				eventRecurrence: .constant(vm.template.recurrence),
 				adding: true
 			)
