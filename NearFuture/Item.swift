@@ -93,22 +93,34 @@ func daysUntilEvent(_ eventDate: Date) -> (short: String, long: String) {
 		case hours
 		case minutes
 	}
-	func ret(days: Int = 0, hours: Int = 0, minutes: Int = 0, unit: RetUnit, future: Bool = true) -> (String, String) {
+	func ret(days: Int = 0, hours: Int = 0, minutes: Int = 0, unit: RetUnit) -> (String, String) {
+		var future: Bool = true
+		var days = days
+		var hours = hours
+		var minutes = minutes
+		if days < 0 || hours < 0 || minutes < 0 {
+			future = false
+			days.negate()
+			hours.negate()
+			minutes.negate()
+		} else {
+			future = true
+		}
 		switch unit {
 		case .days:
 			return (
-				"\(days)d",
-				"\(days) day\(plu(-hours))"
+				"\(future ? "" : "-")\(days)d",
+				"\(days) day\(plu(days)) \(future ? "" : "ago")"
 			)
 		case .hours:
 			return (
-				"\(hours)h",
-				"\(hours) hour\(plu(-hours))"
+				"\(future ? "" : "-")\(hours)h",
+				"\(hours) hour\(plu(hours)) \(future ? "" : "ago")"
 			)
 		case .minutes:
 			return (
-				"\(minutes)m",
-				"\(minutes) min\(plu(-minutes))"
+				"\(future ? "" : "-")\(minutes)m",
+				"\(minutes) min\(plu(minutes)) \(future ? "" : "ago")"
 			)
 		}
 	}
@@ -132,14 +144,14 @@ func daysUntilEvent(_ eventDate: Date) -> (short: String, long: String) {
 		if days == 0 {
 			if hours == 0 {
 				//less than 1h
-				return ret(minutes: minutes, unit: .minutes, future: false)
+				return ret(minutes: minutes, unit: .minutes)
 			} else {
 				//less than 24h
-				return ret(hours: hours, unit: .hours, future: false)
+				return ret(hours: hours, unit: .hours)
 			}
 		} else {
 			//grater than 24h
-			return ret(days: days, unit: .days, future: false)
+			return ret(days: days, unit: .days)
 		}
 	}
 }
