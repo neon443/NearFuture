@@ -14,4 +14,4 @@ BUNDLE_ID_WIDGETS = com.neon443.NearFuture.widgets
 GROUP_ID  = group.NearFuture
 VERSION = 3.1.1
 NAME = Near Future
-BUILD_NUMBER = 1
+BUILD_NUMBER = 5
