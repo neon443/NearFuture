@@ -76,7 +76,9 @@ struct EventListView: View {
 							.foregroundStyle(.one)
 					}
 					Button() {
-						event.complete.toggle()
+						withAnimation {
+							event.complete.toggle()
+						}
 						let eventToModify = viewModel.events.firstIndex() { currEvent in
 							currEvent.id == event.id
 						}

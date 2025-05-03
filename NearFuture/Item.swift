@@ -35,7 +35,22 @@ struct Event: Identifiable, Codable {
 	}
 }
 
-struct ColorCodable: Codable {
+struct ColorCodable: Codable, Equatable {
+	init(_ color: Color) {
+		let uiColor = UIColor(color)
+		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1.0
+		uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
+		
+		self.red = Double(r)
+		self.green = Double(g)
+		self.blue = Double(b)
+	}
+	init(red: Double, green: Double, blue: Double) {
+		self.red = red
+		self.green = green
+		self.blue = blue
+	}
+	
 	var red: Double
 	var green: Double
 	var blue: Double
@@ -57,103 +72,34 @@ struct ColorCodable: Codable {
 			self.blue = cc.blue
 		}
 	}
-
-	init(_ color: Color) {
-		let uiColor = UIColor(color)
-		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1.0
-		uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
-		
-		self.red = Double(r)
-		self.green = Double(g)
-		self.blue = Double(b)
-	}
-	init(red: Double, green: Double, blue: Double) {
-		self.red = red
-		self.green = green
-		self.blue = blue
-	}
 }
 
-func daysUntilEvent(_ eventDate: Date) -> (short: String, long: String) {
+func daysUntilEvent(_ eventDate: Date) -> (long: String, short: String) {
 	let calendar = Calendar.current
-	let currentDate = Date()
-	let components = calendar.dateComponents([.day, .hour, .minute], from: currentDate, to: eventDate)
-	guard let days = components.day else {
-		return ("N/A", "N/A")
-	}
-	guard let hours = components.hour else {
-		return ("N/A", "N/A")
-	}
-	guard let minutes = components.minute else {
-		return ("N/A", "N/A")
-	}
+	let now = Date()
 	
-	enum RetUnit {
-		case days
-		case hours
-		case minutes
-	}
-	func ret(days: Int = 0, hours: Int = 0, minutes: Int = 0, unit: RetUnit) -> (String, String) {
-		var future: Bool = true
-		var days = days
-		var hours = hours
-		var minutes = minutes
-		if days < 0 || hours < 0 || minutes < 0 {
-			future = false
-			days.negate()
-			hours.negate()
-			minutes.negate()
-		} else {
-			future = true
-		}
-		switch unit {
-		case .days:
-			return (
-				"\(future ? "" : "-")\(days)d",
-				"\(days) day\(plu(days)) \(future ? "" : "ago")"
-			)
-		case .hours:
-			return (
-				"\(future ? "" : "-")\(hours)h",
-				"\(hours) hour\(plu(hours)) \(future ? "" : "ago")"
-			)
-		case .minutes:
-			return (
-				"\(future ? "" : "-")\(minutes)m",
-				"\(minutes) min\(plu(minutes)) \(future ? "" : "ago")"
-			)
-		}
-	}
-	switch eventDate > Date() {
-	case true:
-		//future
-		if days == 0 {
-			if hours == 0 {
-				//less than 1h
-				return ret(minutes: minutes, unit: .minutes)
-			} else {
-				//less than 24h
-				return ret(hours: hours, unit: .hours)
-			}
-		} else {
-			//grater than 24h
-			return ret(days: days, unit: .days)
-		}
-	case false:
+	let isToday = calendar.isDate(now, inSameDayAs: eventDate)
+	let components = calendar.dateComponents([.second, .day], from: now, to: eventDate)
+	
+	guard !isToday else { return ("Today", "Today") }
+	let secsComponents = eventDate.timeIntervalSinceNow
+	guard let daysCompontents = components.day else { return ("N/A", "N/A") }
+	let secs = Double(secsComponents)
+	var days = 0
+	var long = ""
+	var short = ""
+	if secs < 0 {
 		//past
-		if days == 0 {
-			if hours == 0 {
-				//less than 1h
-				return ret(minutes: minutes, unit: .minutes)
-			} else {
-				//less than 24h
-				return ret(hours: hours, unit: .hours)
-			}
-		} else {
-			//grater than 24h
-			return ret(days: days, unit: .days)
-		}
+		days = Int(floor(secs/86400))
+		long = "\(-days) day\(plu(days)) ago"
+		short = "\(days)d"
+	} else {
+		//future
+		days = Int(ceil(secs/86400))
+		long = "\(days) day\(plu(days))"
+		short = "\(days)d"
 	}
+	return (long, short)
 }
 
 class EventViewModel: ObservableObject {
@@ -297,57 +243,25 @@ class EventViewModel: ObservableObject {
 		saveEvents()
 	}
 	
-	func exportEvents() -> String? {
+	func exportEvents() -> String {
 		let encoder = JSONEncoder()
-		
-		// Custom date encoding strategy to handle date formatting
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-		encoder.dateEncodingStrategy = .formatted(dateFormatter)
-		
-		do {
-			// Encode the events array to JSON data
-			let encodedData = try encoder.encode(events)
-			
-			// Convert the JSON data to a string
-			if let jsonString = String(data: encodedData, encoding: .utf8) {
-				return jsonString
-			} else {
-				print("Failed to convert encoded data to string")
-				return nil
-			}
-		} catch {
-			print("Failed to encode events: \(error.localizedDescription)")
-			return nil
+		if let json = try? encoder.encode(self.events) {
+			return "\(json.base64EncodedString())"
 		}
+		return ""
 	}
 	
-	func importEvents(_ imp: String) {
-		guard let impData = imp.data(using: .utf8) else {
-			print("Failed to convert string to data")
-			return
+	func importEvents(_ imported: String) throws {
+		guard let data = Data(base64Encoded: imported) else {
+			throw importError.invalidB64
 		}
-		
-		// Create a JSONDecoder
 		let decoder = JSONDecoder()
-		
-		// Add a custom date formatter for decoding the date string
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // Adjust this to the date format you're using
-		decoder.dateDecodingStrategy = .formatted(dateFormatter)
-		
 		do {
-			// Attempt to decode the events from the provided data
-			let decoded = try decoder.decode([Event].self, from: impData)
-			print("Successfully decoded events: \(decoded)")
-			
-			// Save and reload after importing events
+			let decoded = try decoder.decode([Event].self, from: data)
 			self.events = decoded
 			saveEvents()
-			loadEvents()
 		} catch {
-			// Print error if decoding fails
-			print("Failed to decode events: \(error.localizedDescription)")
+			throw error
 		}
 	}
 	
@@ -443,4 +357,8 @@ func plu(_ inp: Int) -> String {
 	var input = inp
 	if inp < 0 { input.negate() }
 	return "\(input == 1 ? "" : "s")"
+}
+
+public enum importError: Error {
+	case invalidB64
 }

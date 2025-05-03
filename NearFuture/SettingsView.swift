@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-	@State var viewModel: EventViewModel
+	@ObservedObject var viewModel: EventViewModel
 	
 	@State private var hasUbiquitous: Bool = false
 	@State private var lastSyncWasSuccessful: Bool = false
@@ -68,47 +68,17 @@ struct SettingsView: View {
 						viewModel.sync()
 						updateStatus()
 					}
-					
 					NavigationLink() {
-						NavigationStack() {
-							Button() {
-								UIPasteboard.general.string = "\(viewModel.exportEvents() ?? "")"
-								print(viewModel.exportEvents() as Any)
-							} label: {
-								Text("copy")
-							}
-							Text("\(viewModel.exportEvents() ?? "")")
-						}
+						ImportView(viewModel: viewModel, importStr: $importStr)
 					} label: {
-						Image(systemName: "list.bullet.rectangle")
-						Text("Export events")
+						Label("Import Events", systemImage: "tray.and.arrow.down.fill")
+							.foregroundStyle(.one)
 					}
 					NavigationLink() {
-						NavigationStack() {
-							VStack {
-								TextEditor(text: $importStr)
-									.foregroundStyle(.foreground, .gray)
-									.background(.gray)
-									.frame(width: 200, height: 400)
-									.shadow(radius: 5)
-								Button() {
-									viewModel.importEvents(importStr)
-								} label: {
-									Text("import events")
-								}
-								.buttonStyle(BorderedProminentButtonStyle())
-								Button() {
-									if let pb = UIPasteboard.general.string {
-										print(pb)
-									}
-								} label: {
-									Text("print pb")
-								}
-							}
-						}
+						ExportView(viewModel: viewModel)
 					} label: {
-						Image(systemName: "square.and.arrow.down")
-						Text("Import events")
+						Label("Export Events", systemImage: "square.and.arrow.up")
+							.foregroundStyle(.one)
 					}
 					
 					Section("Tip") {
@@ -146,8 +116,4 @@ struct SettingsView: View {
 
 #Preview {
 	SettingsView(viewModel: dummyEventViewModel())
-}
-
-func test() -> Void {
-	
 }

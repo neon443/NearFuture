@@ -191,6 +191,6 @@ struct iCloudSettingsView: View {
 		lastSyncWasNormalAgo: .constant(true),
 		localCountEqualToiCloud: .constant(true),
 		icloudCountEqualToLocal: .constant(true),
-		updateStatus: test
+		updateStatus: {}
 	)
 }
