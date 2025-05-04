@@ -44,11 +44,13 @@ struct EventListView: View {
 								.font(.headline)
 								.foregroundStyle(.one)
 								.strikethrough(event.complete)
+								.multilineTextAlignment(.leading)
 						}
 						if !event.notes.isEmpty {
 							Text(event.notes)
 								.font(.subheadline)
 								.foregroundStyle(.one.opacity(0.8))
+								.multilineTextAlignment(.leading)
 						}
 						Text(
 							event.date.formatted(

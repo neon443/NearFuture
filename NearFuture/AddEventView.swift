@@ -94,8 +94,10 @@ struct AddEventView: View {
 					
 					// date picker
 					HStack {
+						Spacer()
 						DatePicker("", selection: $eventDate, displayedComponents: .date)
 							.datePickerStyle(WheelDatePickerStyle())
+						Spacer()
 						Button() {
 							eventDate = Date()
 						} label: {

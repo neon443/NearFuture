@@ -34,7 +34,7 @@ struct ContentView: View {
 	@State private var searchInput: String = ""
 	var filteredEvents: [Event] {
 		if searchInput.isEmpty {
-			return viewModel.events
+			return viewModel.events.filter() {!$0.complete}
 		} else {
 			return viewModel.events.filter {
 				$0.name.localizedCaseInsensitiveContains(searchInput) ||
@@ -86,14 +86,23 @@ struct ContentView: View {
 								}
 								.padding(.horizontal)
 								if /*!searchInput.isEmpty && */filteredEvents.isEmpty {
-									HelpView(searchInput: $searchInput, focusedField: focusedField)
+									HelpView(
+										searchInput: $searchInput,
+										focusedField: focusedField
+									)
 								}
 								Spacer()
 							}
 						}
 					}
 					.navigationTitle("Near Future")
-					.navigationBarTitleDisplayMode(.inline)
+					.apply {
+						if #available(iOS 17, *) {
+							$0.toolbarTitleDisplayMode(.inlineLarge)
+						} else {
+							$0.navigationBarTitleDisplayMode(.inline)
+						}
+					}
 					.sheet(isPresented: $showingAddEventView) {
 						AddEventView(
 							viewModel: viewModel,
@@ -192,4 +201,8 @@ extension View {
 		)
 		.ignoresSafeArea(.all)
 	}
+}
+
+extension View {
+	func apply<V: View>(@ViewBuilder _ block: (Self) -> V) -> V { block(self) }
 }

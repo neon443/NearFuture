@@ -76,30 +76,24 @@ struct ColorCodable: Codable, Equatable {
 
 func daysUntilEvent(_ eventDate: Date) -> (long: String, short: String) {
 	let calendar = Calendar.current
-	let now = Date()
-	
-	let isToday = calendar.isDate(now, inSameDayAs: eventDate)
-	let components = calendar.dateComponents([.second, .day], from: now, to: eventDate)
-	
-	guard !isToday else { return ("Today", "Today") }
-	let secsComponents = eventDate.timeIntervalSinceNow
-	guard let daysCompontents = components.day else { return ("N/A", "N/A") }
-	let secs = Double(secsComponents)
-	var days = 0
-	var long = ""
-	var short = ""
-	if secs < 0 {
+	let startOfDayNow = calendar.startOfDay(for: Date())
+	let startOfDayEvent = calendar.startOfDay(for: eventDate)
+	let components = calendar.dateComponents([.day], from: startOfDayNow, to: startOfDayEvent)
+	guard let days = components.day else { return ("N/A", "N/A") }
+	guard days != 0 else { return ("Today", "Today") }
+	if days < 0 {
 		//past
-		days = Int(floor(secs/86400))
-		long = "\(-days) day\(plu(days)) ago"
-		short = "\(days)d"
+		return (
+			"\(-days) day\(plu(days)) ago",
+			"\(days)d"
+		)
 	} else {
 		//future
-		days = Int(ceil(secs/86400))
-		long = "\(days) day\(plu(days))"
-		short = "\(days)d"
+		return (
+			"\(days) day\(plu(days))",
+			"\(days)d"
+		)
 	}
-	return (long, short)
 }
 
 class EventViewModel: ObservableObject {

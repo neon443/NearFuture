@@ -58,7 +58,13 @@ struct StatsView: View {
 				}
 				.scrollContentBackground(.hidden)
 				.navigationTitle("Statistics")
-				.navigationBarTitleDisplayMode(.inline)
+				.apply {
+					if #available(iOS 17, *) {
+						$0.toolbarTitleDisplayMode(.inlineLarge)
+					} else {
+						$0.navigationBarTitleDisplayMode(.inline)
+					}
+				}
 			}
 		}
 	}
