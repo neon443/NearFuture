@@ -1,5 +1,6 @@
 # NearFuture
-[![AppStore Link](https://github.com/neon443/NearFuture/blob/main/NearFuture/Images/appstore.png?raw=true)](https://apps.apple.com/us/app/near-future-event-tracker/id6744963429)
+
+[App Store](https://apps.apple.com/us/app/near-future-event-tracker/id6744963429)
 
 **Near Future** is a SwiftUI App to help people track upcoming events - Holidays, Trips, Birthdays, Weddings, Anniversaries.
 
