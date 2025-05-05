@@ -48,6 +48,12 @@ struct ImportView: View {
 				Label("Import", systemImage: "tray.and.arrow.down.fill")
 			}
 			.disabled(importStr.isEmpty)
+			.onAppear() {
+				importStr = ""
+				image = "clock.fill"
+				text = "Ready..."
+				fgColor = .yellow
+			}
 		}
 
 	}
