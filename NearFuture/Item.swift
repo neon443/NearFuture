@@ -96,6 +96,40 @@ func daysUntilEvent(_ eventDate: Date) -> (long: String, short: String) {
 	}
 }
 
+struct Settings: Codable, Equatable {
+	var showCompletedInHome: Bool
+	var tint: ColorCodable
+}
+
+class SettingsViewModel: ObservableObject {
+	@Published var settings: Settings = Settings(
+		showCompletedInHome: false,
+		tint: ColorCodable(.blue)
+	)
+	
+	init(load: Bool = true) {
+		if load {
+			loadSettings()
+		}
+	}
+	
+	let appGroupSettingsStore = UserDefaults(suiteName: "group.NearFuture") ?? UserDefaults.standard
+	let icSettStore = NSUbiquitousKeyValueStore.default
+	
+	func loadSettings() {
+		let decoder = JSONDecoder()
+		if let icSettings = icSettStore.data(forKey: "settings") {
+			if let decodedSetts = try? decoder.decode(Settings.self, from: icSettings) {
+				self.settings = decodedSetts
+			}
+		} else if let savedData = appGroupSettingsStore.data(forKey: "settings") {
+			if let decodedSetts = try? decoder.decode(Settings.self, from: savedData) {
+				self.settings = decodedSetts
+			}
+		}
+	}
+}
+
 class EventViewModel: ObservableObject {
 	@Published var events: [Event] = []
 	@Published var icloudData: [Event] = []
@@ -305,6 +339,12 @@ class dummyEventViewModel: EventViewModel {
 		super.init(load: false)
 		self.events = [self.example, self.template, self.example, self.template]
 		self.events[0].complete.toggle()
+	}
+}
+
+class dummySettingsViewModel: SettingsViewModel {
+	override init(load: Bool = false) {
+		super.init(load: false)
 	}
 }
 

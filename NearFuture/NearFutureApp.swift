@@ -22,10 +22,14 @@ struct NearFutureApp: App {
 //            fatalError("Could not create ModelContainer: \(error)")
 //        }
 //    }()
-
+	@StateObject var settingsModel: SettingsViewModel = SettingsViewModel()
     var body: some Scene {
         WindowGroup {
-			ContentView(viewModel: EventViewModel())
+			ContentView(
+				viewModel: EventViewModel(),
+				settingsModel: settingsModel
+			)
+			.tint(settingsModel.settings.tint.color)
         }
 //        .modelContainer(sharedModelContainer)
     }

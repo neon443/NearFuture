@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SettingsView: View {
 	@ObservedObject var viewModel: EventViewModel
+	@ObservedObject var settingsModel: SettingsViewModel
 	
 	@State private var hasUbiquitous: Bool = false
 	@State private var lastSyncWasSuccessful: Bool = false
@@ -38,12 +39,33 @@ struct SettingsView: View {
 			return .red
 		}
 	}
+	let rainbow = [
+		Color.red,
+		Color.orange,
+		Color.yellow,
+		Color.green,
+		Color.blue,
+		Color.indigo,
+		Color.purple
+	]
 	
 	var body: some View {
 		NavigationStack {
 			ZStack {
 				backgroundGradient
 				List {
+					ScrollView(.horizontal) {
+						HStack {
+							ForEach(rainbow, id: \.self) { color in
+								Button() {
+									settingsModel.settings.tint.colorBind = color
+								} label: {
+									Circle()
+										.foregroundStyle(color)
+								}
+							}
+						}
+					}
 					NavigationLink() {
 						iCloudSettingsView(
 							viewModel: viewModel,
@@ -121,5 +143,8 @@ struct SettingsView: View {
 }
 
 #Preview {
-	SettingsView(viewModel: dummyEventViewModel())
+	SettingsView(
+		viewModel: dummyEventViewModel(),
+		settingsModel: dummySettingsViewModel()
+	)
 }

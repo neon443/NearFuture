@@ -21,6 +21,7 @@ enum Tab {
 
 struct ContentView: View {
 	@StateObject var viewModel: EventViewModel
+	@StateObject var settingsModel: SettingsViewModel
 	@State private var eventName = ""
 	@State private var eventComplete = false
 	@State private var eventCompleteDesc = ""
@@ -140,7 +141,7 @@ struct ContentView: View {
 					Label("Statistics", systemImage: "chart.pie")
 				}
 				.focused($focusedTab, equals: Tab.Statistics)
-			SettingsView(viewModel: viewModel)
+			SettingsView(viewModel: viewModel, settingsModel: settingsModel)
 				.tabItem {
 					Label("Settings", systemImage: "gear")
 				}
@@ -150,7 +151,10 @@ struct ContentView: View {
 }
 
 #Preview {
-	ContentView(viewModel: dummyEventViewModel())
+	ContentView(
+		viewModel: dummyEventViewModel(),
+		settingsModel: dummySettingsViewModel()
+	)
 }
 
 struct SearchBar: View {
