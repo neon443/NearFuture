@@ -11,18 +11,20 @@
 		A920C28C2D24011400E4F9B1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
 		A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
 		A920C2922D24011A00E4F9B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C2912D24011A00E4F9B1 /* Preview Assets.xcassets */; };
-		A920C2B82D2401A300E4F9B1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2B42D2401A100E4F9B1 /* SettingsView.swift */; };
-		A920C2BB2D2401A400E4F9B1 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2B72D2401A300E4F9B1 /* AddEventView.swift */; };
 		A920C2BE2D24021A00E4F9B1 /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = A920C2BD2D24021A00E4F9B1 /* SFSymbolsPicker */; };
-		A920C2C12D2403CA00E4F9B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2C02D2403CA00E4F9B1 /* ContentView.swift */; };
-		A93BC0942D2B18A3002E8BBD /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93BC0932D2B18A3002E8BBD /* StatsView.swift */; };
-		A949F8022DCAA0440064DCA0 /* NearFutureIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A949F8012DCAA0440064DCA0 /* NearFutureIcon.png */; };
-		A973B26C2DC551310028F8A2 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A973B26B2DC551310028F8A2 /* ImportView.swift */; };
-		A973B2702DC552EB0028F8A2 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A973B26F2DC552EB0028F8A2 /* ExportView.swift */; };
-		A973B2712DC553050028F8A2 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A973B26F2DC552EB0028F8A2 /* ExportView.swift */; };
-		A977CC922DBBB48000DED8C0 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977CC912DBBB48000DED8C0 /* ArchiveView.swift */; };
-		A977CC9A2DBD74FE00DED8C0 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977CC992DBD74FE00DED8C0 /* HelpView.swift */; };
-		A979F57F2D26B1300094C0B3 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F57E2D26B1300094C0B3 /* EditEventView.swift */; };
+		A949F8322DCAAA8A0064DCA0 /* NearFutureIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A949F8312DCAAA8A0064DCA0 /* NearFutureIcon.png */; };
+		A949F84B2DCAABE00064DCA0 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83A2DCAABE00064DCA0 /* ArchiveView.swift */; };
+		A949F84C2DCAABE00064DCA0 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83C2DCAABE00064DCA0 /* AddEventView.swift */; };
+		A949F84D2DCAABE00064DCA0 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83D2DCAABE00064DCA0 /* EditEventView.swift */; };
+		A949F84E2DCAABE00064DCA0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83F2DCAABE00064DCA0 /* ContentView.swift */; };
+		A949F84F2DCAABE00064DCA0 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8402DCAABE00064DCA0 /* EventListView.swift */; };
+		A949F8502DCAABE00064DCA0 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8412DCAABE00064DCA0 /* HelpView.swift */; };
+		A949F8512DCAABE00064DCA0 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8432DCAABE00064DCA0 /* ExportView.swift */; };
+		A949F8522DCAABE00064DCA0 /* iCloudSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8442DCAABE00064DCA0 /* iCloudSettingsView.swift */; };
+		A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8452DCAABE00064DCA0 /* ImportView.swift */; };
+		A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8462DCAABE00064DCA0 /* SettingsView.swift */; };
+		A949F8552DCAABE00064DCA0 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8482DCAABE00064DCA0 /* StatsView.swift */; };
+		A949F8562DCAABE00064DCA0 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8432DCAABE00064DCA0 /* ExportView.swift */; };
 		A979F6052D270AF00094C0B3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6042D270AF00094C0B3 /* WidgetKit.framework */; };
 		A979F6072D270AF00094C0B3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6062D270AF00094C0B3 /* SwiftUI.framework */; };
 		A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */; };
@@ -30,8 +32,6 @@
 		A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A979F60F2D270AF80094C0B3 /* Assets.xcassets */; };
 		A979F6142D270AF90094C0B3 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A979F6182D2714310094C0B3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
-		A985104E2DB256430013D5FF /* iCloudSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985104D2DB256430013D5FF /* iCloudSettingsView.swift */; };
-		A98510502DB263F00013D5FF /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A985104F2DB263F00013D5FF /* EventListView.swift */; };
 		A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */; };
 /* End PBXBuildFile section */
 
@@ -74,16 +74,21 @@
 		A920C28D2D24011A00E4F9B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A920C28F2D24011A00E4F9B1 /* NearFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFuture.entitlements; sourceTree = "<group>"; };
 		A920C2912D24011A00E4F9B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		A920C2B42D2401A100E4F9B1 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		A920C2B72D2401A300E4F9B1 /* AddEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
-		A920C2C02D2403CA00E4F9B1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A93BC0932D2B18A3002E8BBD /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
-		A949F8012DCAA0440064DCA0 /* NearFutureIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NearFutureIcon.png; path = NearFuture/Assets.xcassets/AppIcon.appiconset/NearFutureIcon.png; sourceTree = SOURCE_ROOT; };
-		A973B26B2DC551310028F8A2 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
-		A973B26F2DC552EB0028F8A2 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
-		A977CC912DBBB48000DED8C0 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
-		A977CC992DBD74FE00DED8C0 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
-		A979F57E2D26B1300094C0B3 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
+		A949F82E2DCAAA640064DCA0 /* NearFutureIcon.pxd */ = {isa = PBXFileReference; lastKnownFileType = file; path = NearFutureIcon.pxd; sourceTree = "<group>"; };
+		A949F82F2DCAAA640064DCA0 /* NearFutureIconDark.pxd */ = {isa = PBXFileReference; lastKnownFileType = file; path = NearFutureIconDark.pxd; sourceTree = "<group>"; };
+		A949F8302DCAAA640064DCA0 /* NearFutureIconTint.pxd */ = {isa = PBXFileReference; lastKnownFileType = file; path = NearFutureIconTint.pxd; sourceTree = "<group>"; };
+		A949F8312DCAAA8A0064DCA0 /* NearFutureIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NearFutureIcon.png; path = Assets.xcassets/AppIcon.appiconset/NearFutureIcon.png; sourceTree = "<group>"; };
+		A949F83A2DCAABE00064DCA0 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
+		A949F83C2DCAABE00064DCA0 /* AddEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
+		A949F83D2DCAABE00064DCA0 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
+		A949F83F2DCAABE00064DCA0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A949F8402DCAABE00064DCA0 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
+		A949F8412DCAABE00064DCA0 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		A949F8432DCAABE00064DCA0 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
+		A949F8442DCAABE00064DCA0 /* iCloudSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudSettingsView.swift; sourceTree = "<group>"; };
+		A949F8452DCAABE00064DCA0 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
+		A949F8462DCAABE00064DCA0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A949F8482DCAABE00064DCA0 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		A979F58B2D2700680094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
 		A979F58D2D2700680094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
 		A979F58F2D2700680094C0B3 /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
@@ -99,8 +104,6 @@
 		A979F6112D270AF90094C0B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A980FC302D920097006A778F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A980FC372D93FB2B006A778F /* NearFutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NearFutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A985104D2DB256430013D5FF /* iCloudSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iCloudSettingsView.swift; sourceTree = "<group>"; };
-		A985104F2DB263F00013D5FF /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		A9C05E412D2805D7007DC497 /* NearFutureWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFutureWidgetsExtension.entitlements; sourceTree = "<group>"; };
 		A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,19 +168,8 @@
 			children = (
 				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
 				A920C28B2D24011400E4F9B1 /* Item.swift */,
-				A920C2C02D2403CA00E4F9B1 /* ContentView.swift */,
-				A985104F2DB263F00013D5FF /* EventListView.swift */,
-				A920C2B72D2401A300E4F9B1 /* AddEventView.swift */,
-				A979F57E2D26B1300094C0B3 /* EditEventView.swift */,
-				A977CC912DBBB48000DED8C0 /* ArchiveView.swift */,
-				A93BC0932D2B18A3002E8BBD /* StatsView.swift */,
-				A977CC992DBD74FE00DED8C0 /* HelpView.swift */,
-				A920C2B42D2401A100E4F9B1 /* SettingsView.swift */,
-				A973B26B2DC551310028F8A2 /* ImportView.swift */,
-				A973B26F2DC552EB0028F8A2 /* ExportView.swift */,
-				A985104D2DB256430013D5FF /* iCloudSettingsView.swift */,
+				A949F84A2DCAABE00064DCA0 /* Views */,
 				A980FC302D920097006A778F /* Info.plist */,
-				A920C28D2D24011A00E4F9B1 /* Assets.xcassets */,
 				A920C28F2D24011A00E4F9B1 /* NearFuture.entitlements */,
 				A920C2902D24011A00E4F9B1 /* Preview Content */,
 			);
@@ -196,9 +188,71 @@
 		A949F8002DCAA0340064DCA0 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A949F8012DCAA0440064DCA0 /* NearFutureIcon.png */,
+				A949F8312DCAAA8A0064DCA0 /* NearFutureIcon.png */,
+				A920C28D2D24011A00E4F9B1 /* Assets.xcassets */,
+				A949F82E2DCAAA640064DCA0 /* NearFutureIcon.pxd */,
+				A949F82F2DCAAA640064DCA0 /* NearFutureIconDark.pxd */,
+				A949F8302DCAAA640064DCA0 /* NearFutureIconTint.pxd */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A949F83B2DCAABE00064DCA0 /* Archive */ = {
+			isa = PBXGroup;
+			children = (
+				A949F83A2DCAABE00064DCA0 /* ArchiveView.swift */,
+			);
+			path = Archive;
+			sourceTree = "<group>";
+		};
+		A949F83E2DCAABE00064DCA0 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				A949F83C2DCAABE00064DCA0 /* AddEventView.swift */,
+				A949F83D2DCAABE00064DCA0 /* EditEventView.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		A949F8422DCAABE00064DCA0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A949F83F2DCAABE00064DCA0 /* ContentView.swift */,
+				A949F8402DCAABE00064DCA0 /* EventListView.swift */,
+				A949F8412DCAABE00064DCA0 /* HelpView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A949F8472DCAABE00064DCA0 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				A949F8432DCAABE00064DCA0 /* ExportView.swift */,
+				A949F8442DCAABE00064DCA0 /* iCloudSettingsView.swift */,
+				A949F8452DCAABE00064DCA0 /* ImportView.swift */,
+				A949F8462DCAABE00064DCA0 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		A949F8492DCAABE00064DCA0 /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+				A949F8482DCAABE00064DCA0 /* StatsView.swift */,
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
+		A949F84A2DCAABE00064DCA0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A949F83B2DCAABE00064DCA0 /* Archive */,
+				A949F83E2DCAABE00064DCA0 /* Events */,
+				A949F8422DCAABE00064DCA0 /* Home */,
+				A949F8472DCAABE00064DCA0 /* Settings */,
+				A949F8492DCAABE00064DCA0 /* Stats */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		A979F58A2D2700680094C0B3 /* NearFutureWidgets */ = {
@@ -352,7 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A920C2922D24011A00E4F9B1 /* Preview Assets.xcassets in Resources */,
-				A949F8022DCAA0440064DCA0 /* NearFutureIcon.png in Resources */,
+				A949F8322DCAAA8A0064DCA0 /* NearFutureIcon.png in Resources */,
 				A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,19 +433,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A920C2BB2D2401A400E4F9B1 /* AddEventView.swift in Sources */,
-				A973B26C2DC551310028F8A2 /* ImportView.swift in Sources */,
-				A98510502DB263F00013D5FF /* EventListView.swift in Sources */,
-				A920C2C12D2403CA00E4F9B1 /* ContentView.swift in Sources */,
-				A973B2712DC553050028F8A2 /* ExportView.swift in Sources */,
-				A920C2B82D2401A300E4F9B1 /* SettingsView.swift in Sources */,
-				A977CC9A2DBD74FE00DED8C0 /* HelpView.swift in Sources */,
 				A920C28C2D24011400E4F9B1 /* Item.swift in Sources */,
+				A949F84B2DCAABE00064DCA0 /* ArchiveView.swift in Sources */,
+				A949F84C2DCAABE00064DCA0 /* AddEventView.swift in Sources */,
+				A949F84D2DCAABE00064DCA0 /* EditEventView.swift in Sources */,
+				A949F84E2DCAABE00064DCA0 /* ContentView.swift in Sources */,
+				A949F84F2DCAABE00064DCA0 /* EventListView.swift in Sources */,
+				A949F8502DCAABE00064DCA0 /* HelpView.swift in Sources */,
+				A949F8512DCAABE00064DCA0 /* ExportView.swift in Sources */,
+				A949F8522DCAABE00064DCA0 /* iCloudSettingsView.swift in Sources */,
+				A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */,
+				A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */,
+				A949F8552DCAABE00064DCA0 /* StatsView.swift in Sources */,
 				A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */,
-				A93BC0942D2B18A3002E8BBD /* StatsView.swift in Sources */,
-				A977CC922DBBB48000DED8C0 /* ArchiveView.swift in Sources */,
-				A979F57F2D26B1300094C0B3 /* EditEventView.swift in Sources */,
-				A985104E2DB256430013D5FF /* iCloudSettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,7 +464,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A973B2702DC552EB0028F8A2 /* ExportView.swift in Sources */,
+				A949F8562DCAABE00064DCA0 /* ExportView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
