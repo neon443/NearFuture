@@ -39,15 +39,16 @@ struct SettingsView: View {
 			return .red
 		}
 	}
-	let rainbow = [
-		Color.red,
-		Color.orange,
-		Color.yellow,
-		Color.green,
-		Color.blue,
-		Color.indigo,
-		Color.purple
+	let rainbow: [Color] = [
+		Color.UiColors.red,
+		Color.UiColors.orange,
+		Color.UiColors.yellow,
+		Color.UiColors.green,
+		Color.UiColors.blue,
+		Color.UiColors.indigo,
+		Color.UiColors.basic
 	]
+	@State private var selectedIndex: Int = 1
 	
 	var body: some View {
 		NavigationStack {
@@ -56,12 +57,22 @@ struct SettingsView: View {
 				List {
 					ScrollView(.horizontal) {
 						HStack {
-							ForEach(rainbow, id: \.self) { color in
-								Button() {
-									settingsModel.settings.tint.colorBind = color
-								} label: {
-									Circle()
-										.foregroundStyle(color)
+							ForEach(0..<rainbow.count, id: \.self) { index in
+								ZStack {
+									Button() {
+										selectedIndex = index
+										settingsModel.settings.tint.colorBind = rainbow[index]
+										settingsModel.saveSettings()
+									} label: {
+										Circle()
+											.foregroundStyle(rainbow[index])
+											.frame(width: 30)
+									}
+									if selectedIndex == index {
+										Circle()
+											.foregroundStyle(index == rainbow.count-1 ? .two : .one)
+											.frame(width: 10)
+									}
 								}
 							}
 						}
@@ -127,15 +138,33 @@ struct SettingsView: View {
 							viewModel.dangerResetiCloud()
 						}
 					}
-				}
-				.scrollContentBackground(.hidden)
-				.navigationTitle("Settings")
-				.apply {
-					if #available(iOS 17, *) {
-						$0.toolbarTitleDisplayMode(.inlineLarge)
-					} else {
-						$0.navigationBarTitleDisplayMode(.inline)
+					Section("About") {
+						VStack {
+							if let image = UIImage(named: getAppIcon()) {
+								Image(uiImage: image)
+									.resizable()
+									.scaledToFit()
+									.frame(width: 100)
+									.clipShape(RoundedRectangle(cornerRadius: 25))
+							}
+							Text("Near Future")
+								.bold()
+								.monospaced()
+								.font(.title)
+								.frame(maxWidth: .infinity)
+							Text("Version " + getVersion() + " (\(getBuildID()))")
+								.frame(maxWidth: .infinity)
+						}
 					}
+				}
+			}
+			.scrollContentBackground(.hidden)
+			.navigationTitle("Settings")
+			.apply {
+				if #available(iOS 17, *) {
+					$0.toolbarTitleDisplayMode(.inlineLarge)
+				} else {
+					$0.navigationBarTitleDisplayMode(.inline)
 				}
 			}
 		}
@@ -147,4 +176,29 @@ struct SettingsView: View {
 		viewModel: dummyEventViewModel(),
 		settingsModel: dummySettingsViewModel()
 	)
+}
+
+func getAppIcon() -> String {
+	let bundle = Bundle.main
+	guard let icons = bundle.object(forInfoDictionaryKey: "CFBundleIcons") as? [String: Any],
+		  let primaryIcon = icons["CFBundlePrimaryIcon"] as? [String: Any],
+		  let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String],
+		  let iconFileName = iconFiles.last else {
+		fatalError("hell na where ur icon")
+	}
+	return iconFileName
+}
+
+func getVersion() -> String {
+	guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] else {
+		fatalError("no bundle id wtf lol")
+	}
+	return "\(version)"
+}
+
+func getBuildID() -> String {
+	guard let build = Bundle.main.infoDictionary?["CFBundleVersion"] else {
+		fatalError("wtf did u do w the build number")
+	}
+	return "\(build)"
 }

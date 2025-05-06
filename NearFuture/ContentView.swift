@@ -118,7 +118,11 @@ struct ContentView: View {
 							adding: true //adding event
 						)
 						.presentationDragIndicator(.visible)
-						.presentationBackground(.ultraThinMaterial)
+						.apply {
+							if #available(iOS 16.4, *) {
+								$0.presentationBackground(.ultraThinMaterial)
+							}
+						}
 					}
 					.toolbar {
 						ToolbarItem(placement: .topBarTrailing) {

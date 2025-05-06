@@ -59,7 +59,11 @@ struct ArchiveView: View {
 				adding: true
 			)
 			.presentationDragIndicator(.visible)
-			.presentationBackground(.ultraThinMaterial)
+			.apply {
+				if #available(iOS 16.4, *) {
+					$0.presentationBackground(.ultraThinMaterial)
+				}
+			}
 		}
 	}
 }

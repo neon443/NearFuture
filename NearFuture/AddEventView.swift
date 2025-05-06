@@ -59,7 +59,11 @@ struct AddEventView: View {
 								title: "Choose a Symbol",
 								searchLabel: "Search...",
 								autoDismiss: true)
-							.presentationBackground(.ultraThinMaterial)
+							.apply {
+								if #available(iOS 16.4, *) {
+									$0.presentationBackground(.ultraThinMaterial)
+								}
+							}
 						}
 						ColorPicker("", selection: $eventColor, supportsOpacity: false)
 							.fixedSize()
@@ -249,6 +253,10 @@ struct MagicClearButton: View {
 				adding: true
 			)
 			.presentationDragIndicator(.visible)
-			.presentationBackground(.ultraThinMaterial)
+			.apply {
+				if #available(iOS 16.4, *) {
+					$0.presentationBackground(.ultraThinMaterial)
+				}
+			}
 		}
 }

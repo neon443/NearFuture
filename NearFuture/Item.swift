@@ -128,6 +128,16 @@ class SettingsViewModel: ObservableObject {
 			}
 		}
 	}
+	
+	func saveSettings() {
+		let encoder = JSONEncoder()
+		if let encoded = try? encoder.encode(settings) {
+			appGroupSettingsStore.set(encoded, forKey: "settings")
+			icSettStore.set(encoded, forKey: "settings")
+			icSettStore.synchronize()
+			loadSettings()
+		}
+	}
 }
 
 class EventViewModel: ObservableObject {
