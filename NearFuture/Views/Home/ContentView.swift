@@ -63,11 +63,18 @@ struct ContentView: View {
 					backgroundGradient
 					VStack {
 						ZStack {
-							SearchBar(searchInput: $searchInput)
-								.focused($focusedField, equals: Field.Search)
-								.onSubmit {
-									focusedField = nil
-								}
+							TextField(
+								"\(Image(systemName: "magnifyingglass")) Search",
+								text: $searchInput
+							)
+							.padding(.trailing, searchInput.isEmpty ? 0 : 30)
+							.animation(.spring, value: searchInput)
+							.textFieldStyle(RoundedBorderTextFieldStyle())
+							.submitLabel(.done)
+							.focused($focusedField, equals: Field.Search)
+							.onSubmit {
+								focusedField = nil
+							}
 							MagicClearButton(text: $searchInput)
 								.onTapGesture {
 									focusedField = nil
@@ -166,42 +173,6 @@ struct ContentView: View {
 		viewModel: dummyEventViewModel(),
 		settingsModel: dummySettingsViewModel()
 	)
-}
-
-struct SearchBar: View {
-	@Binding var searchInput: String
-	
-	var body: some View {
-		TextField(
-			"\(Image(systemName: "magnifyingglass")) Search",
-			text: $searchInput
-		)
-		.padding(.trailing, searchInput.isEmpty ? 0 : 30)
-		.animation(.spring, value: searchInput)
-		.textFieldStyle(RoundedBorderTextFieldStyle())
-		.submitLabel(.done)
-	}
-}
-
-struct AddEventButton: View {
-	@Binding var showingAddEventView: Bool
-	var body: some View {
-		Button() {
-			showingAddEventView.toggle()
-		} label: {
-			ZStack {
-				Circle()
-					.frame(width: 33)
-					.foregroundStyle(.one)
-				Image(systemName: "plus")
-					.resizable()
-					.scaledToFit()
-					.frame(width: 15)
-					.bold()
-					.foregroundStyle(.two)
-			}
-		}
-	}
 }
 
 extension View {

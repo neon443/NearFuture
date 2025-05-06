@@ -215,26 +215,6 @@ struct AddEventView: View {
 	}
 	
 }
-struct MagicClearButton: View {
-	@Binding var text: String
-	var body: some View {
-		HStack {
-			Spacer()
-			Button {
-				text = ""
-			} label: {
-				Image(systemName: "xmark.circle.fill")
-					.resizable()
-					.scaledToFit()
-					.frame(width: text.isEmpty ? 0 : 25)
-					.symbolRenderingMode(.hierarchical)
-					.padding(.trailing, -5)
-					.animation(.spring, value: text.isEmpty)
-			}
-			.buttonStyle(.borderless)
-		}
-	}
-}
 
 #Preview {
 	let vm = dummyEventViewModel()

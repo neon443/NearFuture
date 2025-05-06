@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 56;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,8 @@
 		A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8462DCAABE00064DCA0 /* SettingsView.swift */; };
 		A949F8552DCAABE00064DCA0 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8482DCAABE00064DCA0 /* StatsView.swift */; };
 		A949F8562DCAABE00064DCA0 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8432DCAABE00064DCA0 /* ExportView.swift */; };
+		A949F8592DCAAD670064DCA0 /* NearFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */; };
+		A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F85D2DCABB420064DCA0 /* Buttons.swift */; };
 		A979F6052D270AF00094C0B3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6042D270AF00094C0B3 /* WidgetKit.framework */; };
 		A979F6072D270AF00094C0B3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6062D270AF00094C0B3 /* SwiftUI.framework */; };
 		A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */; };
@@ -89,6 +91,8 @@
 		A949F8452DCAABE00064DCA0 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
 		A949F8462DCAABE00064DCA0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A949F8482DCAABE00064DCA0 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureTests.swift; sourceTree = "<group>"; };
+		A949F85D2DCABB420064DCA0 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		A979F58B2D2700680094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
 		A979F58D2D2700680094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
 		A979F58F2D2700680094C0B3 /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
@@ -107,10 +111,6 @@
 		A9C05E412D2805D7007DC497 /* NearFutureWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFutureWidgetsExtension.entitlements; sourceTree = "<group>"; };
 		A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		A980FC382D93FB2B006A778F /* NearFutureTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = NearFutureTests; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A920C2812D24011300E4F9B1 /* Frameworks */ = {
@@ -147,7 +147,7 @@
 				A949F8002DCAA0340064DCA0 /* Resources */,
 				A920C2862D24011400E4F9B1 /* NearFuture */,
 				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
-				A980FC382D93FB2B006A778F /* NearFutureTests */,
+				A949F8582DCAAD670064DCA0 /* NearFutureTests */,
 				A979F6032D270AF00094C0B3 /* Frameworks */,
 				A920C2852D24011400E4F9B1 /* Products */,
 			);
@@ -251,8 +251,25 @@
 				A949F8422DCAABE00064DCA0 /* Home */,
 				A949F8472DCAABE00064DCA0 /* Settings */,
 				A949F8492DCAABE00064DCA0 /* Stats */,
+				A949F85E2DCABB420064DCA0 /* Misc */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		A949F8582DCAAD670064DCA0 /* NearFutureTests */ = {
+			isa = PBXGroup;
+			children = (
+				A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */,
+			);
+			path = NearFutureTests;
+			sourceTree = "<group>";
+		};
+		A949F85E2DCABB420064DCA0 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				A949F85D2DCABB420064DCA0 /* Buttons.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		A979F58A2D2700680094C0B3 /* NearFutureWidgets */ = {
@@ -344,9 +361,6 @@
 			);
 			dependencies = (
 				A980FC3C2D93FB2B006A778F /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				A980FC382D93FB2B006A778F /* NearFutureTests */,
 			);
 			name = NearFutureTests;
 			packageProductDependencies = (
@@ -440,6 +454,7 @@
 				A949F84E2DCAABE00064DCA0 /* ContentView.swift in Sources */,
 				A949F84F2DCAABE00064DCA0 /* EventListView.swift in Sources */,
 				A949F8502DCAABE00064DCA0 /* HelpView.swift in Sources */,
+				A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */,
 				A949F8512DCAABE00064DCA0 /* ExportView.swift in Sources */,
 				A949F8522DCAABE00064DCA0 /* iCloudSettingsView.swift in Sources */,
 				A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */,
@@ -464,6 +479,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A949F8592DCAAD670064DCA0 /* NearFutureTests.swift in Sources */,
 				A949F8562DCAABE00064DCA0 /* ExportView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
