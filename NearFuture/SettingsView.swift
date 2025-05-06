@@ -130,13 +130,11 @@ struct SettingsView: View {
 					}
 					Section("About") {
 						VStack {
-							if let image = UIImage(named: getAppIcon()) {
-								Image(uiImage: image)
-									.resizable()
-									.scaledToFit()
-									.frame(width: 100)
-									.clipShape(RoundedRectangle(cornerRadius: 25))
-							}
+                            Image(uiImage: #imageLiteral(resourceName: "NearFutureIcon.png"))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 100)
+                                .clipShape(RoundedRectangle(cornerRadius: 25))
 							Text("Near Future")
 								.bold()
 								.monospaced()
@@ -166,17 +164,6 @@ struct SettingsView: View {
 		viewModel: dummyEventViewModel(),
 		settingsModel: dummySettingsViewModel()
 	)
-}
-
-func getAppIcon() -> String {
-	let bundle = Bundle.main
-	guard let icons = bundle.object(forInfoDictionaryKey: "CFBundleIcons") as? [String: Any],
-		  let primaryIcon = icons["CFBundlePrimaryIcon"] as? [String: Any],
-		  let iconFiles = primaryIcon["CFBundleIconFiles"] as? [String],
-		  let iconFileName = iconFiles.last else {
-		fatalError("hell na where ur icon")
-	}
-	return iconFileName
 }
 
 func getVersion() -> String {
