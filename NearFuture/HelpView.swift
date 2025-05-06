@@ -74,7 +74,7 @@ struct HelpView: View {
 	var body: some View {
 		List {
 			ZStack {
-				Color(.accent)
+				Color(.tintColor)
 					.opacity(0.4)
 					.padding(.horizontal, -15)
 					.blur(radius: 5)

@@ -45,6 +45,13 @@ struct ColorCodable: Codable, Equatable {
 		self.green = Double(g)
 		self.blue = Double(b)
 	}
+	init(uiColor: UIColor) {
+		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1.0
+		uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
+		self.red = Double(r)
+		self.green = Double(g)
+		self.blue = Double(b)
+	}
 	init(red: Double, green: Double, blue: Double) {
 		self.red = red
 		self.green = green
@@ -104,8 +111,18 @@ struct Settings: Codable, Equatable {
 class SettingsViewModel: ObservableObject {
 	@Published var settings: Settings = Settings(
 		showCompletedInHome: false,
-		tint: ColorCodable(.blue)
+		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!)
 	)
+	
+	@Published var accentChoices: [Color] = [
+		Color(UIColor(named: "uiColors/red")!),
+		Color(UIColor(named: "uiColors/orange")!),
+		Color(UIColor(named: "uiColors/yellow")!),
+		Color(UIColor(named: "uiColors/green")!),
+		Color(UIColor(named: "uiColors/blue")!),
+		Color(UIColor(named: "uiColors/indigo")!),
+		Color(UIColor(named: "uiColors/basic")!)
+	]
 	
 	init(load: Bool = true) {
 		if load {

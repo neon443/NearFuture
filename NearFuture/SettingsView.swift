@@ -39,16 +39,6 @@ struct SettingsView: View {
 			return .red
 		}
 	}
-	let rainbow: [Color] = [
-		Color.UiColors.red,
-		Color.UiColors.orange,
-		Color.UiColors.yellow,
-		Color.UiColors.green,
-		Color.UiColors.blue,
-		Color.UiColors.indigo,
-		Color.UiColors.basic
-	]
-	@State private var selectedIndex: Int = 1
 	
 	var body: some View {
 		NavigationStack {
@@ -57,20 +47,20 @@ struct SettingsView: View {
 				List {
 					ScrollView(.horizontal) {
 						HStack {
-							ForEach(0..<rainbow.count, id: \.self) { index in
+							ForEach(settingsModel.accentChoices, id: \.self) { color in
 								ZStack {
 									Button() {
-										selectedIndex = index
-										settingsModel.settings.tint.colorBind = rainbow[index]
+										settingsModel.settings.tint.colorBind = color
 										settingsModel.saveSettings()
 									} label: {
 										Circle()
-											.foregroundStyle(rainbow[index])
+											.foregroundStyle(color)
 											.frame(width: 30)
 									}
-									if selectedIndex == index {
+									if ColorCodable(color) == settingsModel.settings.tint {
+										let needContrast: Bool = ColorCodable(color) == settingsModel.settings.tint
 										Circle()
-											.foregroundStyle(index == rainbow.count-1 ? .two : .one)
+											.foregroundStyle(needContrast ? .two : .one)
 											.frame(width: 10)
 									}
 								}
