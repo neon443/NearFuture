@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 import SwiftUI
 import WidgetKit
+import UserNotifications
 
 //@Model
 //final class Item {
@@ -422,4 +423,20 @@ func plu(_ inp: Int) -> String {
 
 public enum importError: Error {
 	case invalidB64
+}
+
+func requestNotifs() async -> Bool {
+	let result = try? await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .carPlay, .sound])
+	return result ?? false
+}
+
+func scheduleNotif() {
+	let content = UNMutableNotificationContent()
+	content.title = "hi"
+	content.subtitle = "sss"
+	content.sound = .default
+	let identifier = UUID().uuidString
+	let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+	let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+	UNUserNotificationCenter.current().add(request)
 }

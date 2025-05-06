@@ -17,6 +17,7 @@ struct SettingsView: View {
 	@State private var localCountEqualToiCloud: Bool = false
 	@State private var icloudCountEqualToLocal: Bool = false
 	@State private var importStr: String = ""
+	@State private var notifsGranted: Bool = false
 	
 	func updateStatus() {
 		let vm = viewModel
@@ -66,6 +67,25 @@ struct SettingsView: View {
 								}
 							}
 						}
+					}
+					NavigationLink() {
+						List {
+							if !notifsGranted {
+								Button("Request Notifications") {
+									Task {
+										notifsGranted = await requestNotifs()
+									}
+								}
+								Text("\(Image(systemName: "xmark")) Notifications disabled for Near Future")
+									.foregroundStyle(.red)
+							} else {
+								Text("\(Image(systemName: "checkmark")) Notifications enabled for Near Future")
+									.foregroundStyle(.green)
+							}
+						}
+					} label: {
+						Image(systemName: "bell.badge.fill")
+						Text("Notifications")
 					}
 					NavigationLink() {
 						iCloudSettingsView(
@@ -144,6 +164,11 @@ struct SettingsView: View {
 								.frame(maxWidth: .infinity)
 						}
 					}
+				}
+			}
+			.onAppear() {
+				Task {
+					notifsGranted = await requestNotifs()
 				}
 			}
 			.scrollContentBackground(.hidden)

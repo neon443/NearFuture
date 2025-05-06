@@ -16,6 +16,7 @@
 		A920C2BE2D24021A00E4F9B1 /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = A920C2BD2D24021A00E4F9B1 /* SFSymbolsPicker */; };
 		A920C2C12D2403CA00E4F9B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2C02D2403CA00E4F9B1 /* ContentView.swift */; };
 		A93BC0942D2B18A3002E8BBD /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93BC0932D2B18A3002E8BBD /* StatsView.swift */; };
+		A949F8022DCAA0440064DCA0 /* NearFutureIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A949F8012DCAA0440064DCA0 /* NearFutureIcon.png */; };
 		A973B26C2DC551310028F8A2 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A973B26B2DC551310028F8A2 /* ImportView.swift */; };
 		A973B2702DC552EB0028F8A2 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A973B26F2DC552EB0028F8A2 /* ExportView.swift */; };
 		A973B2712DC553050028F8A2 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A973B26F2DC552EB0028F8A2 /* ExportView.swift */; };
@@ -77,6 +78,7 @@
 		A920C2B72D2401A300E4F9B1 /* AddEventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventView.swift; sourceTree = "<group>"; };
 		A920C2C02D2403CA00E4F9B1 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A93BC0932D2B18A3002E8BBD /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		A949F8012DCAA0440064DCA0 /* NearFutureIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NearFutureIcon.png; path = NearFuture/Assets.xcassets/AppIcon.appiconset/NearFutureIcon.png; sourceTree = SOURCE_ROOT; };
 		A973B26B2DC551310028F8A2 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
 		A973B26F2DC552EB0028F8A2 /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
 		A977CC912DBBB48000DED8C0 /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				A90FDE222DC0D4310012790C /* Config.xcconfig */,
+				A949F8002DCAA0340064DCA0 /* Resources */,
 				A920C2862D24011400E4F9B1 /* NearFuture */,
 				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
 				A980FC382D93FB2B006A778F /* NearFutureTests */,
@@ -188,6 +191,14 @@
 				A920C2912D24011A00E4F9B1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		A949F8002DCAA0340064DCA0 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A949F8012DCAA0440064DCA0 /* NearFutureIcon.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		A979F58A2D2700680094C0B3 /* NearFutureWidgets */ = {
@@ -341,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A920C2922D24011A00E4F9B1 /* Preview Assets.xcassets in Resources */,
+				A949F8022DCAA0440064DCA0 /* NearFutureIcon.png in Resources */,
 				A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 import SwiftData
 
 enum Field {
@@ -54,7 +55,7 @@ struct ContentView: View {
 	
 	@FocusState private var focusedField: Field?
 	@FocusState private var focusedTab: Tab?
-	
+
 	var body: some View {
 		TabView {
 			NavigationStack {
@@ -73,6 +74,7 @@ struct ContentView: View {
 								}
 						}
 						.padding(.horizontal)
+						
 						if filteredEvents.isEmpty && !searchInput.isEmpty {
 							HelpView(searchInput: $searchInput, focusedField: focusedField)
 						} else {
@@ -127,6 +129,11 @@ struct ContentView: View {
 					.toolbar {
 						ToolbarItem(placement: .topBarTrailing) {
 							AddEventButton(showingAddEventView: $showingAddEventView)
+						}
+					}
+					.onAppear() {
+						Task {
+							notifsGranted = await requestNotifs()
 						}
 					}
 				}
