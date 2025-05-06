@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A9111B1B2DCA549600D4F793 /* NearFutureIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A9111B1A2DCA549600D4F793 /* NearFutureIcon.png */; };
-		A9111B1C2DCA549600D4F793 /* NearFutureIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A9111B1A2DCA549600D4F793 /* NearFutureIcon.png */; };
 		A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2872D24011400E4F9B1 /* NearFutureApp.swift */; };
 		A920C28C2D24011400E4F9B1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
 		A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
@@ -69,7 +67,6 @@
 
 /* Begin PBXFileReference section */
 		A90FDE222DC0D4310012790C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		A9111B1A2DCA549600D4F793 /* NearFutureIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = NearFutureIcon.png; path = NearFuture/Assets.xcassets/AppIcon.appiconset/NearFutureIcon.png; sourceTree = SOURCE_ROOT; };
 		A920C2842D24011400E4F9B1 /* NearFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A920C2872D24011400E4F9B1 /* NearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureApp.swift; sourceTree = "<group>"; };
 		A920C28B2D24011400E4F9B1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -138,19 +135,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A9111B192DCA548800D4F793 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				A9111B1A2DCA549600D4F793 /* NearFutureIcon.png */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		A920C27B2D24011300E4F9B1 = {
 			isa = PBXGroup;
 			children = (
 				A90FDE222DC0D4310012790C /* Config.xcconfig */,
-				A9111B192DCA548800D4F793 /* Resources */,
 				A920C2862D24011400E4F9B1 /* NearFuture */,
 				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
 				A980FC382D93FB2B006A778F /* NearFutureTests */,
@@ -353,7 +341,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A920C2922D24011A00E4F9B1 /* Preview Assets.xcassets in Resources */,
-				A9111B1C2DCA549600D4F793 /* NearFutureIcon.png in Resources */,
 				A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,7 +350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */,
-				A9111B1B2DCA549600D4F793 /* NearFutureIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

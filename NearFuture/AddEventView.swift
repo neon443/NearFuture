@@ -59,6 +59,7 @@ struct AddEventView: View {
 								title: "Choose a Symbol",
 								searchLabel: "Search...",
 								autoDismiss: true)
+							.presentationDetents([.medium])
 							.apply {
 								if #available(iOS 16.4, *) {
 									$0.presentationBackground(.ultraThinMaterial)
