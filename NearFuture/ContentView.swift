@@ -133,7 +133,7 @@ struct ContentView: View {
 					}
 					.onAppear() {
 						Task {
-							notifsGranted = await requestNotifs()
+							await requestNotifs()
 						}
 					}
 				}
