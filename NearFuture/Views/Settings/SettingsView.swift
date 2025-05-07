@@ -17,7 +17,6 @@ struct SettingsView: View {
 	@State private var localCountEqualToiCloud: Bool = false
 	@State private var icloudCountEqualToLocal: Bool = false
 	@State private var importStr: String = ""
-	@State private var notifsGranted: Bool = false
 	
 	func updateStatus() {
 		let vm = viewModel
@@ -70,10 +69,10 @@ struct SettingsView: View {
 					}
 					NavigationLink() {
 						List {
-							if !notifsGranted {
+							if !settingsModel.notifsGranted {
 								Button("Request Notifications") {
 									Task {
-										notifsGranted = await requestNotifs()
+										settingsModel.notifsGranted = await requestNotifs()
 									}
 								}
 								Text("\(Image(systemName: "xmark")) Notifications disabled for Near Future")
@@ -164,11 +163,6 @@ struct SettingsView: View {
 								.frame(maxWidth: .infinity)
 						}
 					}
-				}
-			}
-			.onAppear() {
-				Task {
-					notifsGranted = await requestNotifs()
 				}
 			}
 			.scrollContentBackground(.hidden)

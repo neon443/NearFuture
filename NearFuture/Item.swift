@@ -114,6 +114,7 @@ class SettingsViewModel: ObservableObject {
 		showCompletedInHome: false,
 		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!)
 	)
+	@Published var notifsGranted: Bool = false
 	
 	@Published var accentChoices: [Color] = [
 		Color(UIColor(named: "uiColors/red")!),
@@ -128,6 +129,15 @@ class SettingsViewModel: ObservableObject {
 	init(load: Bool = true) {
 		if load {
 			loadSettings()
+			UNUserNotificationCenter.current().getNotificationSettings { settings in
+				if settings.authorizationStatus == .authorized {
+					self.notifsGranted = true
+				} else {
+					Task {
+						self.notifsGranted = await requestNotifs()
+					}
+				}
+			}
 		}
 	}
 	
@@ -222,6 +232,38 @@ class EventViewModel: ObservableObject {
 		updateSyncStatus()
 	}
 	
+	func getNotifs() async -> [UNNotificationRequest] {
+		return await UNUserNotificationCenter.current().pendingNotificationRequests()
+	}
+	
+	func checkPendingNotifs(_ pending: [UNNotificationRequest]) {
+		for req in pending {
+			checkNotif(notif: req)
+		}
+	}
+	
+	func checkNotif(notif: UNNotificationRequest) {
+		//match the notif to an event
+		if let index = events.firstIndex(where: {$0.id.uuidString == notif.identifier}) {
+			let components = getDateComponents(events[index].date)
+			//check the notif matches event details
+			if notif.content.title == events[index].name,
+			   notif.content.subtitle == events[index].notes,
+			   notif.trigger == UNCalendarNotificationTrigger(dateMatching: components, repeats: false) {
+				//if it does, make sure the notif delets if u complete the veent
+				if events[index].complete {
+					cancelNotif(notif.identifier)
+				}
+			} else {
+				cancelNotif(notif.identifier)
+				scheduleEventNotif(events[index])
+			}
+		} else {
+			//cancel if the event is deleted
+			cancelNotif(notif.identifier)
+		}
+	}
+	
 	// save to local and icloud
 	func saveEvents() {
 		let encoder = JSONEncoder()
@@ -233,6 +275,9 @@ class EventViewModel: ObservableObject {
 			icloudStore.synchronize()
 			
 			updateSyncStatus()
+			Task {
+				await checkPendingNotifs(getNotifs())
+			}
 			loadEvents()
 			WidgetCenter.shared.reloadAllTimelines()//reload all widgets when saving events
 			objectWillChange.send()
@@ -253,6 +298,7 @@ class EventViewModel: ObservableObject {
 	
 	func addEvent(newEvent: Event) {
 		events.append(newEvent)
+		scheduleEventNotif(newEvent)
 		saveEvents() //sync with icloud
 	}
 	
@@ -430,13 +476,33 @@ func requestNotifs() async -> Bool {
 	return result ?? false
 }
 
-func scheduleNotif() {
+func scheduleNotif(title: String, sub: String, date: Date, id: String = UUID().uuidString) {
 	let content = UNMutableNotificationContent()
-	content.title = "hi"
-	content.subtitle = "sss"
+	content.title = title
+	content.subtitle = sub
 	content.sound = .default
-	let identifier = UUID().uuidString
-	let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+	
+	let identifier = id
+	let dateComponents = getDateComponents(date)
+	
+	let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
 	let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
 	UNUserNotificationCenter.current().add(request)
+}
+
+func scheduleEventNotif(_ event: Event) {
+	scheduleNotif(
+		title: event.name,
+		sub: event.notes,
+		date: event.date,
+		id: event.id.uuidString
+	)
+}
+
+func getDateComponents(_ date: Date) -> DateComponents {
+	return Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: date)
+}
+
+func cancelNotif(_ id: String) {
+	UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
 }

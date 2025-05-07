@@ -138,11 +138,6 @@ struct ContentView: View {
 							AddEventButton(showingAddEventView: $showingAddEventView)
 						}
 					}
-					.onAppear() {
-						Task {
-							await requestNotifs()
-						}
-					}
 				}
 			}
 			.tabItem {
