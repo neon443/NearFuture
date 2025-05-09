@@ -227,10 +227,10 @@
 		A949F8472DCAABE00064DCA0 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				A949F8432DCAABE00064DCA0 /* ExportView.swift */,
+				A949F8462DCAABE00064DCA0 /* SettingsView.swift */,
 				A949F8442DCAABE00064DCA0 /* iCloudSettingsView.swift */,
 				A949F8452DCAABE00064DCA0 /* ImportView.swift */,
-				A949F8462DCAABE00064DCA0 /* SettingsView.swift */,
+				A949F8432DCAABE00064DCA0 /* ExportView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -246,12 +246,12 @@
 		A949F84A2DCAABE00064DCA0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A949F83B2DCAABE00064DCA0 /* Archive */,
-				A949F83E2DCAABE00064DCA0 /* Events */,
 				A949F8422DCAABE00064DCA0 /* Home */,
-				A949F8472DCAABE00064DCA0 /* Settings */,
-				A949F8492DCAABE00064DCA0 /* Stats */,
+				A949F83E2DCAABE00064DCA0 /* Events */,
+				A949F83B2DCAABE00064DCA0 /* Archive */,
 				A949F85E2DCABB420064DCA0 /* Misc */,
+				A949F8492DCAABE00064DCA0 /* Stats */,
+				A949F8472DCAABE00064DCA0 /* Settings */,
 			);
 			path = Views;
 			sourceTree = "<group>";
