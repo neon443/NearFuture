@@ -129,13 +129,10 @@ class SettingsViewModel: ObservableObject {
 	init(load: Bool = true) {
 		if load {
 			loadSettings()
-			UNUserNotificationCenter.current().getNotificationSettings { settings in
-				if settings.authorizationStatus == .authorized {
-					self.notifsGranted = true
-				} else {
-					Task {
-						self.notifsGranted = await requestNotifs()
-					}
+			Task {
+				let requestResult = await requestNotifs()
+				await MainActor.run {
+					self.notifsGranted = requestResult
 				}
 			}
 		}
@@ -237,30 +234,35 @@ class EventViewModel: ObservableObject {
 	}
 	
 	func checkPendingNotifs(_ pending: [UNNotificationRequest]) {
+		var eventUUIDs = events.map({$0.id.uuidString})
 		for req in pending {
-			checkNotif(notif: req)
-		}
-	}
-	
-	func checkNotif(notif: UNNotificationRequest) {
-		//match the notif to an event
-		if let index = events.firstIndex(where: {$0.id.uuidString == notif.identifier}) {
-			let components = getDateComponents(events[index].date)
-			//check the notif matches event details
-			if notif.content.title == events[index].name,
-			   notif.content.subtitle == events[index].notes,
-			   notif.trigger == UNCalendarNotificationTrigger(dateMatching: components, repeats: false) {
-				//if it does, make sure the notif delets if u complete the veent
-				if events[index].complete {
-					cancelNotif(notif.identifier)
+			//match the notif to an event
+			if let index = events.firstIndex(where: {$0.id.uuidString == req.identifier}) {
+				if let remove = eventUUIDs.firstIndex(where: {$0 == req.identifier}) {
+					eventUUIDs.remove(at: remove)
+				}
+				let components = getDateComponents(events[index].date)
+				//check the notif matches event details
+				if req.content.title == events[index].name,
+				   req.content.subtitle == events[index].notes,
+				   req.trigger == UNCalendarNotificationTrigger(dateMatching: components, repeats: false) {
+					//if it does, make sure the notif delets if u complete the veent
+					if events[index].complete {
+						cancelNotif(req.identifier)
+					}
+				} else {
+					cancelNotif(req.identifier)
+					scheduleEventNotif(events[index])
 				}
 			} else {
-				cancelNotif(notif.identifier)
-				scheduleEventNotif(events[index])
+				//cancel if the event is deleted
+				cancelNotif(req.identifier)
 			}
-		} else {
-			//cancel if the event is deleted
-			cancelNotif(notif.identifier)
+		}
+		for uuid in eventUUIDs {
+			if let event = events.first(where: {$0.id.uuidString == uuid}) {
+				scheduleEventNotif(event)
+			}
 		}
 	}
 	
@@ -275,10 +277,10 @@ class EventViewModel: ObservableObject {
 			icloudStore.synchronize()
 			
 			updateSyncStatus()
+			loadEvents()
 			Task {
 				await checkPendingNotifs(getNotifs())
 			}
-			loadEvents()
 			WidgetCenter.shared.reloadAllTimelines()//reload all widgets when saving events
 			objectWillChange.send()
 		}
@@ -372,6 +374,7 @@ class EventViewModel: ObservableObject {
 		UserDefaults.standard.removeObject(forKey: "events")
 		appGroupUserDefaults.removeObject(forKey: "events")
 		events.removeAll()
+		cancelAllNotifs()
 		updateSyncStatus()
 	}
 	
@@ -379,6 +382,7 @@ class EventViewModel: ObservableObject {
 		icloudStore.removeObject(forKey: "events")
 		icloudStore.synchronize()
 		icloudData.removeAll()
+		cancelAllNotifs()
 		updateSyncStatus()
 	}
 	
@@ -394,6 +398,7 @@ class EventViewModel: ObservableObject {
 		}
 		
 		events.removeAll()
+		cancelAllNotifs()
 		updateSyncStatus()
 	}
 	
@@ -404,6 +409,7 @@ class EventViewModel: ObservableObject {
 		}
 		icloudStore.synchronize()
 		icloudData.removeAll()
+		cancelAllNotifs()
 		updateSyncStatus()
 	}
 }
@@ -505,4 +511,8 @@ func getDateComponents(_ date: Date) -> DateComponents {
 
 func cancelNotif(_ id: String) {
 	UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+}
+
+func cancelAllNotifs() {
+	UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
 }
