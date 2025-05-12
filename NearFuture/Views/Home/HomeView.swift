@@ -66,11 +66,6 @@ struct HomeView: View {
 					if filteredEvents.isEmpty && !searchInput.isEmpty {
 						HelpView(searchInput: $searchInput, focusedField: focusedField)
 					} else {
-						Button("hiiiiiiiiiiiiiii") {
-							withAnimation() {
-								settingsModel.settings.showCompletedInHome.toggle()
-							}
-						}
 						ScrollView {
 							ForEach(filteredEvents) { event in
 								EventListView(viewModel: viewModel, event: event)

@@ -16,23 +16,25 @@ struct WhatsNewView: View {
 		var title: String
 		var subtitle: String
 	}
-	var whatsNew: [WhatsNew] = [
-		WhatsNew(
-			symbol: "bell.badge.fill",
-			title: "Notifications",
-			subtitle: "Events now have notifications, reminding you to complete them!"
-		),
-		WhatsNew(
-			symbol: "list.bullet.indent",
-			title: "Animations!",
-			subtitle: "I added animations for adding, removing and ticking events, fixing "
-		),
-		WhatsNew(
-			symbol: "list.bullet.indent",
-			title: "Animations!",
-			subtitle: "I added animations for adding, removing and ticking events, fixing "
-		)
-	]
+	var whatsNew: [WhatsNew] {
+		return [
+			WhatsNew(
+				symbol: settingsModel.device.sf,
+				title: "This Screen",
+				subtitle: "This update add a Whats New page that will tell you (suprise!) What's New"
+			),
+			WhatsNew(
+				symbol: "bell.badge.fill",
+				title: "Notifications",
+				subtitle: "Events now have notifications, reminding you to complete them!"
+			),
+			WhatsNew(
+				symbol: "list.bullet.indent",
+				title: "Animations!",
+				subtitle: "I added animations for adding, removing and ticking events"
+			)
+		]
+	}
 	var body: some View {
 		NavigationStack {
 			List {
@@ -52,6 +54,7 @@ struct WhatsNewView: View {
 						
 				}
 				.onDisappear {
+					settingsModel.settings.showWhatsNew = false
 					settingsModel.saveSettings()
 				}
 			}

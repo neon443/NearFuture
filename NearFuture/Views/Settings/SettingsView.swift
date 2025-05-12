@@ -89,6 +89,7 @@ struct SettingsView: View {
 					NavigationLink() {
 						iCloudSettingsView(
 							viewModel: viewModel,
+							settingsModel: settingsModel,
 							hasUbiquitous: $hasUbiquitous,
 							lastSyncWasSuccessful: $lastSyncWasSuccessful,
 							lastSyncWasNormalAgo: $lastSyncWasNormalAgo,

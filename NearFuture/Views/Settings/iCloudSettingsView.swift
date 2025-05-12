@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct iCloudSettingsView: View {
-	@State var viewModel: EventViewModel
+	@ObservedObject var viewModel: EventViewModel
+	@ObservedObject var settingsModel: SettingsViewModel
 	@State var showPushAlert: Bool = false
 	@State var showPullAlert: Bool = false
 	
@@ -17,19 +18,6 @@ struct iCloudSettingsView: View {
 	@Binding var lastSyncWasNormalAgo: Bool
 	@Binding var localCountEqualToiCloud: Bool
 	@Binding var icloudCountEqualToLocal: Bool
-	
-	let asi = ProcessInfo().isiOSAppOnMac
-	let model = UIDevice().model
-	var device: (sf: String, label: String) {
-		if asi {
-			return (sf: "laptopcomputer", label: "Computer")
-		} else if model == "iPhone" {
-			return (sf: model.lowercased(), label: model)
-		} else if model == "iPad" {
-			return (sf: model.lowercased(), label: model)
-		}
-		return (sf: "iphone", label: "iPhone")
-	}
 	
 	var updateStatus: () -> Void
 	
@@ -107,7 +95,7 @@ struct iCloudSettingsView: View {
 								}
 							}
 							ZStack {
-								Image(systemName: device.sf)
+								Image(systemName: settingsModel.device.sf)
 									.resizable()
 									.scaledToFit()
 									.frame(width: 75, height: 75)
@@ -117,7 +105,7 @@ struct iCloudSettingsView: View {
 									.monospaced()
 									.bold()
 							}
-							Text(device.label)
+							Text(settingsModel.device.label)
 						}
 						Spacer()
 					}
@@ -196,6 +184,7 @@ struct iCloudSettingsView: View {
 #Preview("iCloudSettingsView") {
 	iCloudSettingsView(
 		viewModel: dummyEventViewModel(),
+		settingsModel: dummySettingsViewModel(),
 		hasUbiquitous: .constant(true),
 		lastSyncWasSuccessful: .constant(true),
 		lastSyncWasNormalAgo: .constant(true),

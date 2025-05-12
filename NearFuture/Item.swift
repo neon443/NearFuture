@@ -130,7 +130,11 @@ class SettingsViewModel: ObservableObject {
 		Color(UIColor(named: "uiColors/basic")!)
 	]
 	
+	@Published var device: (sf: String, label: String)
+	
 	init(load: Bool = true) {
+		self.device = getDevice()
+		
 		if load {
 			loadSettings()
 			Task {
@@ -548,4 +552,17 @@ func getBuildID() -> String {
 		fatalError("wtf did u do w the build number")
 	}
 	return "\(build)"
+}
+
+func getDevice() -> (sf: String, label: String) {
+	let asi = ProcessInfo().isiOSAppOnMac
+	let model = UIDevice().model
+	if asi {
+		return (sf: "laptopcomputer", label: "Computer")
+	} else if model == "iPhone" {
+		return (sf: model.lowercased(), label: model)
+	} else if model == "iPad" {
+		return (sf: model.lowercased(), label: model)
+	}
+	return (sf: "iphone", label: "iPhone")
 }
