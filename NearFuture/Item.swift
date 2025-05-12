@@ -2,7 +2,7 @@
 //  Item.swift
 //  NearFuture
 //
-//  Created by Nihaal Sharma on 24/12/2024.
+//  Created by neon443 on 24/12/2024.
 //
 
 import Foundation
@@ -20,7 +20,7 @@ import UserNotifications
 //    }
 //}
 
-struct Event: Identifiable, Codable, Equatable {
+struct Event: Identifiable, Codable, Equatable, Animatable {
 	var id = UUID()
 	var name: String
 	var complete: Bool
@@ -227,6 +227,7 @@ class EventViewModel: ObservableObject {
 			}
 		}
 		updateSyncStatus()
+		self.events.sort() {$0.date < $1.date}
 	}
 	
 	func getNotifs() async -> [UNNotificationRequest] {

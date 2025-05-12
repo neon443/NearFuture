@@ -10,7 +10,9 @@ import SwiftUI
 struct ArchiveView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@State var showAddEvent: Bool = false
-	@State var hey: UUID = UUID()
+	var filteredEvents: [Event] {
+		return viewModel.events.filter() {$0.complete}
+	}
 	var body: some View {
 		NavigationStack {
 			ZStack {
@@ -19,16 +21,14 @@ struct ArchiveView: View {
 					HelpView(showAddEvent: $showAddEvent)
 				} else {
 					ScrollView {
-						ForEach(viewModel.events.filter({$0.complete})) { event in
+						ForEach(filteredEvents) { event in
 							EventListView(viewModel: viewModel, event: event)
+								.transition(.moveAndFadeReversed)
+								.id(event.complete)
 						}
 					}
-					.transition(.opacity)
+					.animation(.default, value: filteredEvents)
 					.padding(.horizontal)
-					.id(hey)
-					.onReceive(viewModel.objectWillChange) {
-						hey = UUID()
-					}
 				}
 			}
 			.scrollContentBackground(.hidden)
@@ -72,5 +72,3 @@ struct ArchiveView: View {
 #Preview {
 	ArchiveView(viewModel: dummyEventViewModel())
 }
-
-

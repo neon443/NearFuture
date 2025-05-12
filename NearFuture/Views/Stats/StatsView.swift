@@ -2,7 +2,7 @@
 //  StatsView.swift
 //  NearFuture
 //
-//  Created by Nihaal Sharma on 05/01/2025.
+//  Created by neon443 on 05/01/2025.
 //
 
 import SwiftUI

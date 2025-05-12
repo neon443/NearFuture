@@ -2,7 +2,7 @@
 //  SettingsView.swift
 //  NearFuture
 //
-//  Created by Nihaal Sharma on 29/12/2024.
+//  Created by neon443 on 29/12/2024.
 //
 
 import SwiftUI

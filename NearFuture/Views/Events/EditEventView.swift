@@ -2,7 +2,7 @@
 //  EditEventView.swift
 //  NearFuture
 //
-//  Created by Nihaal Sharma on 02/01/2025.
+//  Created by neon443 on 02/01/2025.
 //
 
 import SwiftUI
