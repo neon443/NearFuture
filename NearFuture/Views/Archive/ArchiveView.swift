@@ -22,11 +22,12 @@ struct ArchiveView: View {
 						ForEach(viewModel.events.filter({$0.complete})) { event in
 							EventListView(viewModel: viewModel, event: event)
 						}
-						.padding(.horizontal)
-						.id(hey)
-						.onReceive(viewModel.objectWillChange) {
-							hey = UUID()
-						}
+					}
+					.transition(.opacity)
+					.padding(.horizontal)
+					.id(hey)
+					.onReceive(viewModel.objectWillChange) {
+						hey = UUID()
 					}
 				}
 			}

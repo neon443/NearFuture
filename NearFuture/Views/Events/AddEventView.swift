@@ -24,6 +24,8 @@ struct AddEventView: View {
 	@State var showNeedsNameAlert: Bool = false
 	@State var isSymbolPickerPresented = false
 	
+	@State private var bye: Bool = false
+	
 	@FocusState private var focusedField: Field?
 	private enum Field {
 		case Name, Notes
@@ -32,168 +34,177 @@ struct AddEventView: View {
 	@Environment(\.dismiss) var dismiss
 	
 	var body: some View {
-		NavigationStack {
-			Form {
-				Section(
-					header:
-						Text("Event Details")
-						.font(.headline)
-						.foregroundColor(.accentColor)
-				) {
-					// name & symbol
-					HStack(spacing: 5) {
-						Button() {
-							isSymbolPickerPresented.toggle()
-						} label: {
-							Image(systemName: eventSymbol)
-								.resizable()
-								.scaledToFit()
-								.frame(width: 20, height: 20)
-								.foregroundStyle(eventColor)
-						}
-						.frame(width: 20)
-						.buttonStyle(.borderless)
-						.sheet(isPresented: $isSymbolPickerPresented) {
-							SymbolsPicker(
-								selection: $eventSymbol,
-								title: "Choose a Symbol",
-								searchLabel: "Search...",
-								autoDismiss: true)
-							.presentationDetents([.medium])
-							.apply {
-								if #available(iOS 16.4, *) {
-									$0.presentationBackground(.ultraThinMaterial)
+		ZStack {
+			backgroundGradient
+			NavigationStack {
+				Form {
+					Section(
+						header:
+							Text("Event Details")
+							.font(.headline)
+							.foregroundColor(.accentColor)
+					) {
+						// name & symbol
+						HStack(spacing: 5) {
+							Button() {
+								isSymbolPickerPresented.toggle()
+							} label: {
+								Image(systemName: eventSymbol)
+									.resizable()
+									.scaledToFit()
+									.frame(width: 20, height: 20)
+									.foregroundStyle(eventColor)
+							}
+							.frame(width: 20)
+							.buttonStyle(.borderless)
+							.sheet(isPresented: $isSymbolPickerPresented) {
+								SymbolsPicker(
+									selection: $eventSymbol,
+									title: "Choose a Symbol",
+									searchLabel: "Search...",
+									autoDismiss: true)
+								.presentationDetents([.medium])
+								.apply {
+									if #available(iOS 16.4, *) {
+										$0.presentationBackground(.ultraThinMaterial)
+									}
 								}
 							}
+							ColorPicker("", selection: $eventColor, supportsOpacity: false)
+								.fixedSize()
+							ZStack {
+								TextField("Event Name", text: $eventName)
+									.textFieldStyle(RoundedBorderTextFieldStyle())
+									.padding(.trailing, eventName.isEmpty ? 0 : 30)
+									.animation(.spring, value: eventName)
+									.focused($focusedField, equals: Field.Name)
+									.submitLabel(.next)
+									.onSubmit {
+										focusedField = .Notes
+									}
+								MagicClearButton(text: $eventName)
+							}
 						}
-						ColorPicker("", selection: $eventColor, supportsOpacity: false)
-							.fixedSize()
+						
+						// dscription
 						ZStack {
-							TextField("Event Name", text: $eventName)
+							TextField("Event Notes", text: $eventNotes)
 								.textFieldStyle(RoundedBorderTextFieldStyle())
-								.padding(.trailing, eventName.isEmpty ? 0 : 30)
-								.animation(.spring, value: eventName)
-								.focused($focusedField, equals: Field.Name)
-								.submitLabel(.next)
+								.padding(.trailing, eventNotes.isEmpty ? 0 : 30)
+								.animation(.spring, value: eventNotes)
+								.focused($focusedField, equals: Field.Notes)
+								.submitLabel(.done)
 								.onSubmit {
-									focusedField = .Notes
+									focusedField = nil
 								}
-							MagicClearButton(text: $eventName)
+							MagicClearButton(text: $eventNotes)
 						}
-					}
-					
-					// dscription
-					ZStack {
-						TextField("Event Notes", text: $eventNotes)
-							.textFieldStyle(RoundedBorderTextFieldStyle())
-							.padding(.trailing, eventNotes.isEmpty ? 0 : 30)
-							.animation(.spring, value: eventNotes)
-							.focused($focusedField, equals: Field.Notes)
-							.submitLabel(.done)
-							.onSubmit {
-								focusedField = nil
+						
+						
+						// date picker
+						HStack {
+							Spacer()
+							DatePicker("", selection: $eventDate, displayedComponents: .date)
+								.datePickerStyle(WheelDatePickerStyle())
+							Spacer()
+							Button() {
+								eventDate = Date()
+							} label: {
+								Image(systemName: "arrow.uturn.left")
+									.resizable()
+									.scaledToFit()
 							}
-						MagicClearButton(text: $eventNotes)
-					}
-					
-					
-					// date picker
-					HStack {
-						Spacer()
-						DatePicker("", selection: $eventDate, displayedComponents: .date)
-							.datePickerStyle(WheelDatePickerStyle())
-						Spacer()
-						Button() {
-							eventDate = Date()
-						} label: {
-							Image(systemName: "arrow.uturn.left")
-								.resizable()
-								.scaledToFit()
+							.buttonStyle(BorderlessButtonStyle())
+							.frame(width: 20)
 						}
-						.buttonStyle(BorderlessButtonStyle())
-						.frame(width: 20)
-					}
-					
+						
 						DatePicker(
 							"",
 							selection: $eventDate,
 							displayedComponents: .hourAndMinute
 						)
-					
-					// re-ocurrence Picker
-					Picker("Recurrence", selection: $eventRecurrence) {
-						ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
-							Text(recurrence.rawValue.capitalized)
+						
+						// re-ocurrence Picker
+						Picker("Recurrence", selection: $eventRecurrence) {
+							ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
+								Text(recurrence.rawValue.capitalized)
+							}
 						}
-					}
-					.pickerStyle(SegmentedPickerStyle())
-					Text(
-						describeOccurrence(
-							date: eventDate,
-							recurrence: eventRecurrence
-						)
-					)
-				}
-			}
-			.scrollContentBackground(.hidden)
-			.navigationTitle("\(adding ? "Add Event" : "")")
-			.navigationBarTitleDisplayMode(.inline)
-			.toolbar {
-				ToolbarItem(placement: .topBarLeading) {
-					if adding {
-						Button() {
-							resetAddEventView()
-							dismiss()
-						} label: {
-							Image(systemName: "xmark.circle.fill")
-								.symbolRenderingMode(.hierarchical)
-								.resizable()
-								.scaledToFit()
-								.frame(width: 30)
-						}
-					}
-				}
-				ToolbarItem(placement: .topBarTrailing) {
-					if adding {
-						Button {
-							viewModel.addEvent(
-								newEvent: Event(
-									name: eventName,
-									complete: eventComplete,
-									completeDesc: eventCompleteDesc,
-									symbol: eventSymbol,
-									color: ColorCodable(eventColor),
-									notes: eventNotes,
-									date: eventDate,
-									recurrence: eventRecurrence
-								)
+						.pickerStyle(SegmentedPickerStyle())
+						Text(
+							describeOccurrence(
+								date: eventDate,
+								recurrence: eventRecurrence
 							)
-							resetAddEventView()
-						} label: {
-							Text("Save")
-								.font(.headline)
-								.cornerRadius(10)
-								.buttonStyle(BorderedProminentButtonStyle())
+						)
+					}
+				}
+				.scrollContentBackground(.hidden)
+				.navigationTitle("\(adding ? "Add Event" : "")")
+				.navigationBarTitleDisplayMode(.inline)
+				.toolbar {
+					ToolbarItem(placement: .topBarLeading) {
+						if adding {
+							Button() {
+								resetAddEventView()
+								dismiss()
+							} label: {
+								Image(systemName: "xmark.circle.fill")
+									.symbolRenderingMode(.hierarchical)
+									.resizable()
+									.scaledToFit()
+									.frame(width: 30)
+							}
 						}
-						.disabled(eventName.isEmpty)
-						.onTapGesture {
+					}
+					ToolbarItem(placement: .topBarTrailing) {
+						if adding {
+							Button {
+								viewModel.addEvent(
+									newEvent: Event(
+										name: eventName,
+										complete: eventComplete,
+										completeDesc: eventCompleteDesc,
+										symbol: eventSymbol,
+										color: ColorCodable(eventColor),
+										notes: eventNotes,
+										date: eventDate,
+										recurrence: eventRecurrence
+									)
+								)
+								bye.toggle()
+								resetAddEventView()
+							} label: {
+								Text("Save")
+									.font(.headline)
+									.cornerRadius(10)
+									.buttonStyle(BorderedProminentButtonStyle())
+							}
+							.apply {
+								if #available(iOS 17, *) {
+									$0.sensoryFeedback(.success, trigger: bye)
+								}
+							}
+							.disabled(eventName.isEmpty)
+							.onTapGesture {
+								if eventName.isEmpty {
+									showNeedsNameAlert.toggle()
+								}
+							}
+							.alert("Missing Name", isPresented: $showNeedsNameAlert) {
+								Button("OK", role: .cancel) {
+									showNeedsNameAlert.toggle()
+									focusedField = .Name
+								}
+							} message: {
+								Text("Give your Event a name before saving.")
+							}
 							if eventName.isEmpty {
-								showNeedsNameAlert.toggle()
-							}
-						}
-						.alert("Missing Name", isPresented: $showNeedsNameAlert) {
-							Button("OK", role: .cancel) {
-								showNeedsNameAlert.toggle()
-								focusedField = .Name
-							}
-						} message: {
-							Text("Give your Event a name before saving.")
-						}
-						if eventName.isEmpty {
-							HStack {
-								Image(systemName: "exclamationmark")
-									.foregroundStyle(.red)
-								Text("Give your event a name.")
+								HStack {
+									Image(systemName: "exclamationmark")
+										.foregroundStyle(.red)
+									Text("Give your event a name.")
+								}
 							}
 						}
 					}

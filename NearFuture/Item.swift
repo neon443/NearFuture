@@ -20,7 +20,7 @@ import UserNotifications
 //    }
 //}
 
-struct Event: Identifiable, Codable {
+struct Event: Identifiable, Codable, Equatable {
 	var id = UUID()
 	var name: String
 	var complete: Bool
@@ -415,9 +415,20 @@ class EventViewModel: ObservableObject {
 }
 
 class dummyEventViewModel: EventViewModel {
+	var template2: Event
 	override init(load: Bool = false) {
+		self.template2 = Event(
+			name: "template2",
+			complete: false,
+			completeDesc: "",
+			symbol: "hammer",
+			color: ColorCodable(randomColor()),
+			notes: "notes",
+			date: Date(),
+			recurrence: .none
+		)
 		super.init(load: false)
-		self.events = [self.example, self.template, self.example, self.template]
+		self.events = [self.example, self.template, self.template2]
 		self.events[0].complete.toggle()
 	}
 }

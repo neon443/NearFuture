@@ -13,11 +13,16 @@ enum Field {
 	case Search
 }
 enum Tab {
-	case Home
-	case Archive
-	case Statistics
-	case Settings
-	case Gradient
+	case home
+	case archive
+	case stats
+	case settings
+}
+enum FilterCategory {
+	case Future
+	case Past
+	case Complete
+	case Incomplete
 }
 
 struct ContentView: View {
@@ -36,7 +41,11 @@ struct ContentView: View {
 	@State private var searchInput: String = ""
 	var filteredEvents: [Event] {
 		if searchInput.isEmpty {
-			return viewModel.events.filter() {!$0.complete}
+			if settingsModel.settings.showCompletedInHome {
+				return viewModel.events
+			} else {
+				return viewModel.events.filter() {!$0.complete}
+			}
 		} else {
 			return viewModel.events.filter {
 				$0.name.localizedCaseInsensitiveContains(searchInput) ||
@@ -44,17 +53,9 @@ struct ContentView: View {
 			}
 		}
 	}
-	
-	var noEvents: Bool {
-		if viewModel.events.count == 0 {
-			return true
-		} else {
-			return false
-		}
-	}
+	@State private var focusedTab: Tab = .home
 	
 	@FocusState private var focusedField: Field?
-	@FocusState private var focusedTab: Tab?
 
 	var body: some View {
 		TabView {
@@ -85,17 +86,28 @@ struct ContentView: View {
 						if filteredEvents.isEmpty && !searchInput.isEmpty {
 							HelpView(searchInput: $searchInput, focusedField: focusedField)
 						} else {
+							Button("hiiiiiiiiiiiiiii") {
+								withAnimation() {
+									settingsModel.settings.showCompletedInHome.toggle()
+								}
+							}
+							Button("sort") {
+								withAnimation() {
+									viewModel.events.sort() { $0.date < $1.date }
+								}
+							}
 							ScrollView {
 								ForEach(filteredEvents) { event in
 									EventListView(viewModel: viewModel, event: event)
 								}
-								.onDelete(perform: viewModel.removeEvent)
+								.animation(.default, value: filteredEvents)
+								.transition(.opacity)
 								.id(hey)
 								.onReceive(viewModel.objectWillChange) {
 									hey = UUID()
 								}
 								.padding(.horizontal)
-								if /*!searchInput.isEmpty && */filteredEvents.isEmpty {
+								if filteredEvents.isEmpty {
 									HelpView(
 										searchInput: $searchInput,
 										focusedField: focusedField
@@ -143,22 +155,22 @@ struct ContentView: View {
 			.tabItem {
 				Label("Home", systemImage: "house")
 			}
-			.focused($focusedTab, equals: Tab.Home)
+			.tag(Tab.home)
 			ArchiveView(viewModel: viewModel)
 				.tabItem() {
 					Label("Archive", systemImage: "tray.full")
 				}
-				.focused($focusedTab, equals: Tab.Archive)
+				.tag(Tab.archive)
 			StatsView(viewModel: viewModel)
 				.tabItem {
 					Label("Statistics", systemImage: "chart.pie")
 				}
-				.focused($focusedTab, equals: Tab.Statistics)
+				.tag(Tab.stats)
 			SettingsView(viewModel: viewModel, settingsModel: settingsModel)
 				.tabItem {
 					Label("Settings", systemImage: "gear")
 				}
-				.focused($focusedTab, equals: Tab.Settings)
+				.tag(Tab.settings)
 		}
 	}
 }

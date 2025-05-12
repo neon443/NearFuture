@@ -75,7 +75,7 @@ struct EventListView: View {
 					VStack {
 						Text("\(daysUntilEvent(event.date).long)")
 							.font(.subheadline)
-							.foregroundStyle(.one)
+							.foregroundStyle(event.date.timeIntervalSinceNow < 0 ? .red : .one)
 					}
 					Button() {
 						withAnimation {
@@ -112,6 +112,7 @@ struct EventListView: View {
 					.shadow(radius: 5)
 					.padding(.trailing, 5)
 				}
+				.transition(.opacity)
 				.padding(.vertical, 5)
 				.background(.ultraThinMaterial)
 				.overlay(

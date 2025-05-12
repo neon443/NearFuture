@@ -126,6 +126,7 @@ struct EventListView: View {
 				)
 				.fixedSize(horizontal: false, vertical: true)
 			}
+			.transition(.opacity)
 			.contextMenu() {
 				Button(role: .destructive) {
 					let eventToModify = viewModel.events.firstIndex() { currEvent in
