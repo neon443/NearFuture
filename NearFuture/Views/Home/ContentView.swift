@@ -46,6 +46,9 @@ struct ContentView: View {
 				}
 				.tag(Tab.settings)
 		}
+		.sheet(isPresented: $settingsModel.settings.showWhatsNew) {
+			WhatsNewView(settingsModel: settingsModel)
+		}
 	}
 }
 

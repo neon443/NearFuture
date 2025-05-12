@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4A2DD26C0F00856265 /* HomeView.swift */; };
+		A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
+		A914FA4F2DD276D200856265 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4E2DD276D200856265 /* AboutView.swift */; };
 		A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2872D24011400E4F9B1 /* NearFutureApp.swift */; };
 		A920C28C2D24011400E4F9B1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
 		A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
@@ -72,6 +74,8 @@
 /* Begin PBXFileReference section */
 		A90FDE222DC0D4310012790C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A914FA4A2DD26C0F00856265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A914FA4C2DD2768900856265 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhatsNewView.swift; path = NearFuture/Views/Settings/WhatsNewView.swift; sourceTree = SOURCE_ROOT; };
+		A914FA4E2DD276D200856265 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutView.swift; path = NearFuture/Views/Misc/AboutView.swift; sourceTree = SOURCE_ROOT; };
 		A920C2842D24011400E4F9B1 /* NearFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A920C2872D24011400E4F9B1 /* NearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureApp.swift; sourceTree = "<group>"; };
 		A920C28B2D24011400E4F9B1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -232,6 +236,7 @@
 			children = (
 				A949F8462DCAABE00064DCA0 /* SettingsView.swift */,
 				A949F8442DCAABE00064DCA0 /* iCloudSettingsView.swift */,
+				A914FA4C2DD2768900856265 /* WhatsNewView.swift */,
 				A949F8452DCAABE00064DCA0 /* ImportView.swift */,
 				A949F8432DCAABE00064DCA0 /* ExportView.swift */,
 			);
@@ -271,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				A949F85D2DCABB420064DCA0 /* Buttons.swift */,
+				A914FA4E2DD276D200856265 /* AboutView.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -452,6 +458,7 @@
 			files = (
 				A920C28C2D24011400E4F9B1 /* Item.swift in Sources */,
 				A949F84B2DCAABE00064DCA0 /* ArchiveView.swift in Sources */,
+				A914FA4F2DD276D200856265 /* AboutView.swift in Sources */,
 				A949F84C2DCAABE00064DCA0 /* AddEventView.swift in Sources */,
 				A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */,
 				A949F84D2DCAABE00064DCA0 /* EditEventView.swift in Sources */,
@@ -459,6 +466,7 @@
 				A949F84F2DCAABE00064DCA0 /* EventListView.swift in Sources */,
 				A949F8502DCAABE00064DCA0 /* HelpView.swift in Sources */,
 				A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */,
+				A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */,
 				A949F8512DCAABE00064DCA0 /* ExportView.swift in Sources */,
 				A949F8522DCAABE00064DCA0 /* iCloudSettingsView.swift in Sources */,
 				A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */,

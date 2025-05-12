@@ -107,12 +107,16 @@ func daysUntilEvent(_ eventDate: Date) -> (long: String, short: String) {
 struct Settings: Codable, Equatable {
 	var showCompletedInHome: Bool
 	var tint: ColorCodable
+	var showWhatsNew: Bool
+	var prevAppVersion: String
 }
 
 class SettingsViewModel: ObservableObject {
 	@Published var settings: Settings = Settings(
 		showCompletedInHome: false,
-		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!)
+		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!),
+		showWhatsNew: true,
+		prevAppVersion: getVersion()+getBuildID()
 	)
 	@Published var notifsGranted: Bool = false
 	
@@ -151,6 +155,9 @@ class SettingsViewModel: ObservableObject {
 			if let decodedSetts = try? decoder.decode(Settings.self, from: savedData) {
 				self.settings = decodedSetts
 			}
+		}
+		if self.settings.prevAppVersion != getVersion()+getBuildID() {
+			self.settings.showWhatsNew = true
 		}
 	}
 	
@@ -527,4 +534,18 @@ func cancelNotif(_ id: String) {
 
 func cancelAllNotifs() {
 	UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+}
+
+func getVersion() -> String {
+	guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] else {
+		fatalError("no bundle id wtf lol")
+	}
+	return "\(version)"
+}
+
+func getBuildID() -> String {
+	guard let build = Bundle.main.infoDictionary?["CFBundleVersion"] else {
+		fatalError("wtf did u do w the build number")
+	}
+	return "\(build)"
 }

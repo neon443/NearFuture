@@ -111,12 +111,6 @@ struct HomeView: View {
 						eventRecurrence: $eventRecurrence,
 						adding: true //adding event
 					)
-					.presentationDragIndicator(.visible)
-					.apply {
-						if #available(iOS 16.4, *) {
-							$0.presentationBackground(.ultraThinMaterial)
-						}
-					}
 				}
 				.toolbar {
 					ToolbarItem(placement: .topBarTrailing) {

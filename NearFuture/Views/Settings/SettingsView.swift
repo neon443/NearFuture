@@ -148,20 +148,7 @@ struct SettingsView: View {
 						}
 					}
 					Section("About") {
-						VStack {
-                            Image(uiImage: #imageLiteral(resourceName: "NearFutureIcon.png"))
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 100)
-                                .clipShape(RoundedRectangle(cornerRadius: 25))
-							Text("Near Future")
-								.bold()
-								.monospaced()
-								.font(.title)
-								.frame(maxWidth: .infinity)
-							Text("Version " + getVersion() + " (\(getBuildID()))")
-								.frame(maxWidth: .infinity)
-						}
+						AboutView()
 					}
 				}
 			}
@@ -185,16 +172,3 @@ struct SettingsView: View {
 	)
 }
 
-func getVersion() -> String {
-	guard let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] else {
-		fatalError("no bundle id wtf lol")
-	}
-	return "\(version)"
-}
-
-func getBuildID() -> String {
-	guard let build = Bundle.main.infoDictionary?["CFBundleVersion"] else {
-		fatalError("wtf did u do w the build number")
-	}
-	return "\(build)"
-}

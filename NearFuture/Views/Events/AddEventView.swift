@@ -35,7 +35,9 @@ struct AddEventView: View {
 	
 	var body: some View {
 		ZStack {
-			backgroundGradient
+			if !adding {
+				backgroundGradient
+			}
 			NavigationStack {
 				Form {
 					Section(
@@ -210,6 +212,13 @@ struct AddEventView: View {
 					}
 				}
 			}
+			.presentationDragIndicator(.visible)
+			.scrollContentBackground(.hidden)
+		}
+		.apply {
+			if #available(iOS 16.4, *) {
+				$0.presentationBackground(.ultraThinMaterial)
+			}
 		}
 	}
 	func resetAddEventView() {
@@ -244,11 +253,5 @@ struct AddEventView: View {
 				eventRecurrence: .constant(vm.template.recurrence),
 				adding: true
 			)
-			.presentationDragIndicator(.visible)
-			.apply {
-				if #available(iOS 16.4, *) {
-					$0.presentationBackground(.ultraThinMaterial)
-				}
-			}
 		}
 }

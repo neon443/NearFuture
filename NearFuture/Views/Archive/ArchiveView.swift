@@ -59,12 +59,6 @@ struct ArchiveView: View {
 				eventRecurrence: $viewModel.editableTemplate.recurrence,
 				adding: true
 			)
-			.presentationDragIndicator(.visible)
-			.apply {
-				if #available(iOS 16.4, *) {
-					$0.presentationBackground(.ultraThinMaterial)
-				}
-			}
 		}
 	}
 }
