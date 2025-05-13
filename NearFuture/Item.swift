@@ -126,8 +126,7 @@ class SettingsViewModel: ObservableObject {
 		Color(UIColor(named: "uiColors/yellow")!),
 		Color(UIColor(named: "uiColors/green")!),
 		Color(UIColor(named: "uiColors/blue")!),
-		Color(UIColor(named: "uiColors/indigo")!),
-		Color(UIColor(named: "uiColors/basic")!)
+		Color(UIColor(named: "uiColors/indigo")!)
 	]
 	
 	@Published var device: (sf: String, label: String)
