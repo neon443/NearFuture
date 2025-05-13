@@ -31,7 +31,7 @@ struct WhatsNewView: View {
 			WhatsNewChunk(
 				symbol: "list.bullet.indent",
 				title: "Animations!",
-				subtitle: "I added animations for adding, removing and ticking events"
+				subtitle: "I added animations for adding, removing and ticking events - animations are definitely the most important change"
 			)
 		]
 	}
