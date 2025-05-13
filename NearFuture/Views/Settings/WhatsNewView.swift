@@ -44,18 +44,15 @@ struct WhatsNewView: View {
 						.bold()
 					AboutView()
 					Divider()
-					ForEach(whatsNewChunks) { new in
-						WhatsNewChunkView(
-							symbol: new.symbol,
-							title: new.title,
-							subtitle: new.subtitle
-						)
+					VStack(alignment: .leading) {
+						ForEach(whatsNewChunks) { new in
+							WhatsNewChunkView(
+								symbol: new.symbol,
+								title: new.title,
+								subtitle: new.subtitle
+							)
+						}
 					}
-						
-				}
-				.onDisappear {
-					settingsModel.settings.prevAppVersion = getVersion()+getBuildID()
-					settingsModel.saveSettings()
 				}
 			}
 			Button() {
@@ -78,6 +75,10 @@ struct WhatsNewView: View {
 				$0.presentationBackground(.ultraThinMaterial)
 			}
 		}
+		.onDisappear {
+			settingsModel.settings.prevAppVersion = getVersion()+getBuildID()
+			settingsModel.saveSettings()
+		}
 	}
 }
 
@@ -94,23 +95,21 @@ struct WhatsNewChunkView: View {
 	@State var title: String
 	@State var subtitle: String
 	var body: some View {
-//		GeometryReader { geo in
-			HStack {
-				Image(systemName: symbol)
-					.resizable()
-					.scaledToFit()
-					.frame(width: 30, height: 30)
-					.foregroundStyle(.accent)
-					.padding(.trailing, 5)
-				VStack(alignment: .leading) {
-					Text(title)
-						.font(.headline)
-						.bold()
-					Text(subtitle)
-						.foregroundStyle(.gray)
-						.font(.subheadline)
-				}
+		HStack {
+			Image(systemName: symbol)
+				.resizable()
+				.scaledToFit()
+				.frame(width: 30, height: 30)
+				.foregroundStyle(.accent)
+				.padding(.trailing, 15)
+			VStack(alignment: .leading) {
+				Text(title)
+					.font(.headline)
+					.bold()
+				Text(subtitle)
+					.foregroundStyle(.gray)
+					.font(.subheadline)
 			}
-//		}
+		}
 	}
 }
