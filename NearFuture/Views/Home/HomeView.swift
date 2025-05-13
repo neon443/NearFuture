@@ -82,7 +82,6 @@ struct HomeView: View {
 							Spacer()
 						}
 						.animation(.default, value: filteredEvents)
-						.searchable(text: $searchInput)
 					}
 				}
 				.navigationTitle("Near Future")

@@ -67,6 +67,10 @@ struct SettingsView: View {
 							}
 						}
 					}
+					Toggle("Show completed Events in Home", isOn: $settingsModel.settings.showCompletedInHome)
+						.onChange(of: settingsModel.settings.showCompletedInHome) { _ in
+							settingsModel.saveSettings()
+						}
 					NavigationLink() {
 						List {
 							if !settingsModel.notifsGranted {

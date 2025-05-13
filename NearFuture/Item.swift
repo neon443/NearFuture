@@ -134,7 +134,6 @@ class SettingsViewModel: ObservableObject {
 	
 	init(load: Bool = true) {
 		self.device = getDevice()
-		
 		if load {
 			loadSettings()
 			Task {

@@ -10,25 +10,25 @@ import SwiftUI
 struct WhatsNewView: View {
 	@ObservedObject var settingsModel: SettingsViewModel
 	@Environment(\.dismiss) var dismiss
-	struct WhatsNew: Identifiable {
+	struct WhatsNewChunk: Identifiable {
 		var id: UUID = UUID()
 		var symbol: String
 		var title: String
 		var subtitle: String
 	}
-	var whatsNew: [WhatsNew] {
+	var whatsNewChunks: [WhatsNewChunk] {
 		return [
-			WhatsNew(
+			WhatsNewChunk(
 				symbol: settingsModel.device.sf,
 				title: "This Screen",
 				subtitle: "This update add a Whats New page that will tell you (suprise!) What's New"
 			),
-			WhatsNew(
+			WhatsNewChunk(
 				symbol: "bell.badge.fill",
 				title: "Notifications",
 				subtitle: "Events now have notifications, reminding you to complete them!"
 			),
-			WhatsNew(
+			WhatsNewChunk(
 				symbol: "list.bullet.indent",
 				title: "Animations!",
 				subtitle: "I added animations for adding, removing and ticking events"
@@ -44,8 +44,8 @@ struct WhatsNewView: View {
 						.bold()
 					AboutView()
 					Divider()
-					ForEach(whatsNew) { new in
-						WhatsNewChunk(
+					ForEach(whatsNewChunks) { new in
+						WhatsNewChunkView(
 							symbol: new.symbol,
 							title: new.title,
 							subtitle: new.subtitle
@@ -54,7 +54,7 @@ struct WhatsNewView: View {
 						
 				}
 				.onDisappear {
-					settingsModel.settings.showWhatsNew = false
+					settingsModel.settings.prevAppVersion = getVersion()+getBuildID()
 					settingsModel.saveSettings()
 				}
 			}
@@ -89,7 +89,7 @@ struct WhatsNewView: View {
 		}
 }
 
-struct WhatsNewChunk: View {
+struct WhatsNewChunkView: View {
 	@State var symbol: String
 	@State var title: String
 	@State var subtitle: String
