@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "Pink.png",
+      "filename" : "pink.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -13,7 +13,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "PinkDark.png",
+      "filename" : "pinkDark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

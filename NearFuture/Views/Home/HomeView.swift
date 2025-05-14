@@ -70,15 +70,15 @@ struct HomeView: View {
 					if filteredEvents.isEmpty && !searchInput.isEmpty {
 						HelpView(searchInput: $searchInput, focusedField: focusedField)
 					} else {
-						ForEach(settingsModel.iconChoices, id: \.self) { image in
-							Image(uiImage: UIImage(named: darkMode ? image+"Dark" : image)!)
-								.resizable()
-								.scaledToFit()
-								.frame(width: 50)
-								.onTapGesture {
-									
-								}
-						}
+//						ForEach(settingsModel.iconChoices, id: \.self) { image in
+//							Image(uiImage: UIImage(named: darkMode ? image+"Dark" : image)!)
+//								.resizable()
+//								.scaledToFit()
+//								.frame(width: 50)
+//								.onTapGesture {
+//									settingsModel.changeAccent(to: image)
+//								}
+//						}
 						ScrollView {
 							ForEach(filteredEvents) { event in
 								EventListView(viewModel: viewModel, event: event)
@@ -137,3 +137,9 @@ struct HomeView: View {
 	)
 }
 
+func changeIcon(to iconName: String?) {
+	guard UIApplication.shared.supportsAlternateIcons else { return }
+	UIApplication.shared.setAlternateIconName(iconName) {error in
+		print(error as Any)
+	}
+}

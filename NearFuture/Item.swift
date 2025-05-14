@@ -111,16 +111,22 @@ struct Settings: Codable, Equatable {
 	var prevAppVersion: String
 }
 
+struct AccentIcon {
+	var icon: UIImage
+	var color: Color
+	var name: String
+	init(_ colorName: String) {
+		if colorName == "orange" {
+			self.icon = UIImage(named: "AppIcon")!
+		} else {
+			self.icon = UIImage(named: colorName)!
+		}
+		self.color = Color(uiColor: UIColor(named: "uiColors/\(colorName)")!)
+		self.name = colorName
+	}
+}
+
 class SettingsViewModel: ObservableObject {
-	@Published var iconChoices = [
-		"Bloo",
-		"Blue",
-		"Green",
-		"Pink",
-		"Purple",
-		"Red",
-		"Yellow"
-	]
 	@Published var settings: Settings = Settings(
 		showCompletedInHome: false,
 		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!),
@@ -129,13 +135,17 @@ class SettingsViewModel: ObservableObject {
 	)
 	@Published var notifsGranted: Bool = false
 	
-	@Published var accentChoices: [Color] = [
-		Color(UIColor(named: "uiColors/red")!),
-		Color(UIColor(named: "uiColors/orange")!),
-		Color(UIColor(named: "uiColors/yellow")!),
-		Color(UIColor(named: "uiColors/green")!),
-		Color(UIColor(named: "uiColors/blue")!),
-		Color(UIColor(named: "uiColors/indigo")!)
+	@Published var colorChoices: [AccentIcon] = []
+	
+	let accentChoices: [String] = [
+		"bloo",
+		"blue",
+		"green",
+		"orange",
+		"pink",
+		"purple",
+		"red",
+		"yellow"
 	]
 	
 	@Published var device: (sf: String, label: String)
@@ -170,6 +180,11 @@ class SettingsViewModel: ObservableObject {
 		if self.settings.prevAppVersion != getVersion()+getBuildID() {
 			self.settings.showWhatsNew = true
 		}
+		
+		//
+		for color in accentChoices {
+			self.colorChoices.append(AccentIcon(color))
+		}
 	}
 	
 	func saveSettings() {
@@ -180,6 +195,10 @@ class SettingsViewModel: ObservableObject {
 			icSettStore.synchronize()
 			loadSettings()
 		}
+	}
+	
+	func changeAccent(to color: AccentIcon) {
+		
 	}
 }
 

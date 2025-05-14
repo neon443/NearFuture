@@ -47,24 +47,42 @@ struct SettingsView: View {
 				List {
 					ScrollView(.horizontal) {
 						HStack {
-							ForEach(settingsModel.accentChoices, id: \.self) { color in
+							ForEach(settingsModel.accentChoices, id: \.self) { choice in
 								ZStack {
 									Button() {
-										settingsModel.settings.tint.colorBind = color
-										settingsModel.saveSettings()
+										settingsModel.changeAccent(to: choice)
 									} label: {
 										Circle()
-											.foregroundStyle(color)
+											.foregroundStyle(choice.color)
 											.frame(width: 30)
 									}
-									if ColorCodable(color) == settingsModel.settings.tint {
-										let needContrast: Bool = ColorCodable(color) == settingsModel.settings.tint
+									if ColorCodable(choice.color) == settingsModel.settings.tint {
+										let needContrast: Bool = ColorCodable(choice.color) == settingsModel.settings.tint
 										Circle()
 											.foregroundStyle(needContrast ? .two : .one)
 											.frame(width: 10)
 									}
 								}
 							}
+							
+							
+//							ForEach(settingsModel.accentChoices, id: \.self) { color in
+//								ZStack {
+//									Button() {
+//
+//									} label: {
+//										Circle()
+//											.foregroundStyle(color)
+//											.frame(width: 30)
+//									}
+//									if ColorCodable(color) == settingsModel.settings.tint {
+//										let needContrast: Bool = ColorCodable(color) == settingsModel.settings.tint
+//										Circle()
+//											.foregroundStyle(needContrast ? .two : .one)
+//											.frame(width: 10)
+//									}
+//								}
+//							}
 						}
 					}
 					Toggle("Show completed Events in Home", isOn: $settingsModel.settings.showCompletedInHome)
