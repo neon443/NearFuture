@@ -60,9 +60,6 @@ struct ContentView: View {
 }
 
 extension View {
-	var appearance: ColorScheme {
-		return UITraitCollection.current.userInterfaceStyle == .dark ? .dark : .light
-	}
 	var backgroundGradient: some View {
 		return LinearGradient(
 			gradient: Gradient(colors: [.bgTop, .two]),

@@ -37,6 +37,20 @@
 		A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A979F60F2D270AF80094C0B3 /* Assets.xcassets */; };
 		A979F6142D270AF90094C0B3 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A979F6182D2714310094C0B3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
+		A99BF5462DD51522007FBC80 /* Blue.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF53A2DD51522007FBC80 /* Blue.png */; };
+		A99BF5472DD51522007FBC80 /* PurpleDark.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF5412DD51522007FBC80 /* PurpleDark.png */; };
+		A99BF5482DD51522007FBC80 /* Green.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF53C2DD51522007FBC80 /* Green.png */; };
+		A99BF5492DD51522007FBC80 /* Bloo.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF5382DD51522007FBC80 /* Bloo.png */; };
+		A99BF54A2DD51522007FBC80 /* BlueDark.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF53B2DD51522007FBC80 /* BlueDark.png */; };
+		A99BF54B2DD51522007FBC80 /* Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF53E2DD51522007FBC80 /* Pink.png */; };
+		A99BF54C2DD51522007FBC80 /* PinkDark.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF53F2DD51522007FBC80 /* PinkDark.png */; };
+		A99BF54D2DD51522007FBC80 /* Red.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF5422DD51522007FBC80 /* Red.png */; };
+		A99BF54E2DD51522007FBC80 /* RedDark.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF5432DD51522007FBC80 /* RedDark.png */; };
+		A99BF54F2DD51522007FBC80 /* Purple.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF5402DD51522007FBC80 /* Purple.png */; };
+		A99BF5502DD51522007FBC80 /* GreenDark.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF53D2DD51522007FBC80 /* GreenDark.png */; };
+		A99BF5512DD51522007FBC80 /* YellowDark.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF5452DD51522007FBC80 /* YellowDark.png */; };
+		A99BF5522DD51522007FBC80 /* BlooDark.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF5392DD51522007FBC80 /* BlooDark.png */; };
+		A99BF5532DD51522007FBC80 /* Yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = A99BF5442DD51522007FBC80 /* Yellow.png */; };
 		A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */; };
 /* End PBXBuildFile section */
 
@@ -114,6 +128,20 @@
 		A979F6112D270AF90094C0B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A980FC302D920097006A778F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A980FC372D93FB2B006A778F /* NearFutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NearFutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A99BF5382DD51522007FBC80 /* Bloo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Bloo.png; path = ../Assets.xcassets/IconVariants/Bloo.appiconset/Bloo.png; sourceTree = "<group>"; };
+		A99BF5392DD51522007FBC80 /* BlooDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlooDark.png; path = ../Assets.xcassets/IconVariants/Bloo.appiconset/BlooDark.png; sourceTree = "<group>"; };
+		A99BF53A2DD51522007FBC80 /* Blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Blue.png; path = ../Assets.xcassets/IconVariants/Blue.appiconset/Blue.png; sourceTree = "<group>"; };
+		A99BF53B2DD51522007FBC80 /* BlueDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BlueDark.png; path = ../Assets.xcassets/IconVariants/Blue.appiconset/BlueDark.png; sourceTree = "<group>"; };
+		A99BF53C2DD51522007FBC80 /* Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Green.png; path = ../Assets.xcassets/IconVariants/Green.appiconset/Green.png; sourceTree = "<group>"; };
+		A99BF53D2DD51522007FBC80 /* GreenDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = GreenDark.png; path = ../Assets.xcassets/IconVariants/Green.appiconset/GreenDark.png; sourceTree = "<group>"; };
+		A99BF53E2DD51522007FBC80 /* Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Pink.png; path = ../Assets.xcassets/IconVariants/Pink.appiconset/Pink.png; sourceTree = "<group>"; };
+		A99BF53F2DD51522007FBC80 /* PinkDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PinkDark.png; path = ../Assets.xcassets/IconVariants/Pink.appiconset/PinkDark.png; sourceTree = "<group>"; };
+		A99BF5402DD51522007FBC80 /* Purple.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Purple.png; path = ../Assets.xcassets/IconVariants/Purple.appiconset/Purple.png; sourceTree = "<group>"; };
+		A99BF5412DD51522007FBC80 /* PurpleDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PurpleDark.png; path = ../Assets.xcassets/IconVariants/Purple.appiconset/PurpleDark.png; sourceTree = "<group>"; };
+		A99BF5422DD51522007FBC80 /* Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Red.png; path = ../Assets.xcassets/IconVariants/Red.appiconset/Red.png; sourceTree = "<group>"; };
+		A99BF5432DD51522007FBC80 /* RedDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = RedDark.png; path = ../Assets.xcassets/IconVariants/Red.appiconset/RedDark.png; sourceTree = "<group>"; };
+		A99BF5442DD51522007FBC80 /* Yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Yellow.png; path = ../Assets.xcassets/IconVariants/Yellow.appiconset/Yellow.png; sourceTree = "<group>"; };
+		A99BF5452DD51522007FBC80 /* YellowDark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YellowDark.png; path = ../Assets.xcassets/IconVariants/Yellow.appiconset/YellowDark.png; sourceTree = "<group>"; };
 		A9C05E412D2805D7007DC497 /* NearFutureWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFutureWidgetsExtension.entitlements; sourceTree = "<group>"; };
 		A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +224,7 @@
 			children = (
 				A949F8312DCAAA8A0064DCA0 /* NearFutureIcon.png */,
 				A920C28D2D24011A00E4F9B1 /* Assets.xcassets */,
+				A99BF5542DD51525007FBC80 /* Variants */,
 				A949F82E2DCAAA640064DCA0 /* NearFutureIcon.pxd */,
 				A949F82F2DCAAA640064DCA0 /* NearFutureIconDark.pxd */,
 				A949F8302DCAAA640064DCA0 /* NearFutureIconTint.pxd */,
@@ -316,6 +345,27 @@
 			path = NearFutureWidgets;
 			sourceTree = "<group>";
 		};
+		A99BF5542DD51525007FBC80 /* Variants */ = {
+			isa = PBXGroup;
+			children = (
+				A99BF5382DD51522007FBC80 /* Bloo.png */,
+				A99BF5392DD51522007FBC80 /* BlooDark.png */,
+				A99BF53A2DD51522007FBC80 /* Blue.png */,
+				A99BF53B2DD51522007FBC80 /* BlueDark.png */,
+				A99BF53C2DD51522007FBC80 /* Green.png */,
+				A99BF53D2DD51522007FBC80 /* GreenDark.png */,
+				A99BF53E2DD51522007FBC80 /* Pink.png */,
+				A99BF53F2DD51522007FBC80 /* PinkDark.png */,
+				A99BF5402DD51522007FBC80 /* Purple.png */,
+				A99BF5412DD51522007FBC80 /* PurpleDark.png */,
+				A99BF5422DD51522007FBC80 /* Red.png */,
+				A99BF5432DD51522007FBC80 /* RedDark.png */,
+				A99BF5442DD51522007FBC80 /* Yellow.png */,
+				A99BF5452DD51522007FBC80 /* YellowDark.png */,
+			);
+			path = Variants;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -428,6 +478,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A99BF5462DD51522007FBC80 /* Blue.png in Resources */,
+				A99BF5472DD51522007FBC80 /* PurpleDark.png in Resources */,
+				A99BF5482DD51522007FBC80 /* Green.png in Resources */,
+				A99BF5492DD51522007FBC80 /* Bloo.png in Resources */,
+				A99BF54A2DD51522007FBC80 /* BlueDark.png in Resources */,
+				A99BF54B2DD51522007FBC80 /* Pink.png in Resources */,
+				A99BF54C2DD51522007FBC80 /* PinkDark.png in Resources */,
+				A99BF54D2DD51522007FBC80 /* Red.png in Resources */,
+				A99BF54E2DD51522007FBC80 /* RedDark.png in Resources */,
+				A99BF54F2DD51522007FBC80 /* Purple.png in Resources */,
+				A99BF5502DD51522007FBC80 /* GreenDark.png in Resources */,
+				A99BF5512DD51522007FBC80 /* YellowDark.png in Resources */,
+				A99BF5522DD51522007FBC80 /* BlooDark.png in Resources */,
+				A99BF5532DD51522007FBC80 /* Yellow.png in Resources */,
 				A920C2922D24011A00E4F9B1 /* Preview Assets.xcassets in Resources */,
 				A949F8322DCAAA8A0064DCA0 /* NearFutureIcon.png in Resources */,
 				A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */,
@@ -517,7 +581,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "Bloo Blue Green Pink Purple Red Yellow";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -585,7 +652,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "Bloo Blue Green Pink Purple Red Yellow";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

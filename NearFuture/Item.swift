@@ -112,6 +112,15 @@ struct Settings: Codable, Equatable {
 }
 
 class SettingsViewModel: ObservableObject {
+	@Published var iconChoices = [
+		"Bloo",
+		"Blue",
+		"Green",
+		"Pink",
+		"Purple",
+		"Red",
+		"Yellow"
+	]
 	@Published var settings: Settings = Settings(
 		showCompletedInHome: false,
 		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!),

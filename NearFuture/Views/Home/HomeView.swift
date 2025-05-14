@@ -20,6 +20,10 @@ struct HomeView: View {
 	@State private var eventRecurrence: Event.RecurrenceType = .none
 	@State private var showingAddEventView = false
 	@State private var searchInput: String = ""
+	@Environment(\.colorScheme) var appearance
+	var darkMode: Bool {
+		return appearance == .dark
+	}
 	var filteredEvents: [Event] {
 		if searchInput.isEmpty {
 			if settingsModel.settings.showCompletedInHome {
@@ -66,6 +70,15 @@ struct HomeView: View {
 					if filteredEvents.isEmpty && !searchInput.isEmpty {
 						HelpView(searchInput: $searchInput, focusedField: focusedField)
 					} else {
+						ForEach(settingsModel.iconChoices, id: \.self) { image in
+							Image(uiImage: UIImage(named: darkMode ? image+"Dark" : image)!)
+								.resizable()
+								.scaledToFit()
+								.frame(width: 50)
+								.onTapGesture {
+									
+								}
+						}
 						ScrollView {
 							ForEach(filteredEvents) { event in
 								EventListView(viewModel: viewModel, event: event)
@@ -123,3 +136,4 @@ struct HomeView: View {
 		settingsModel: dummySettingsViewModel()
 	)
 }
+

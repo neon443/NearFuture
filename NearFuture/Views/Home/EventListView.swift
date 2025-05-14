@@ -118,7 +118,7 @@ struct EventListView: View {
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
 						.stroke(
-							.one.opacity(appearance == .dark ? 0.5 : 1),
+							.one.opacity(0.5),
 							lineWidth: 1
 						)
 				)
