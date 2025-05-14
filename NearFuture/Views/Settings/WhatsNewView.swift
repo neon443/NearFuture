@@ -85,6 +85,10 @@ struct WhatsNewView: View {
 				$0.presentationBackground(.ultraThinMaterial)
 			}
 		}
+		.onDisappear {
+			settingsModel.settings.prevAppVersion = getVersion()+getBuildID()
+			settingsModel.saveSettings()
+		}
 	}
 }
 

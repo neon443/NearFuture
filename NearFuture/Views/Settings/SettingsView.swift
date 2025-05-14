@@ -76,6 +76,9 @@ struct SettingsView: View {
 							}
 						}
 					}
+					Button("Show What's New") {
+						settingsModel.settings.showWhatsNew = true
+					}
 					Toggle("Show completed Events in Home", isOn: $settingsModel.settings.showCompletedInHome)
 						.onChange(of: settingsModel.settings.showCompletedInHome) { _ in
 							settingsModel.saveSettings()
