@@ -40,6 +40,14 @@ struct SettingsView: View {
 		}
 	}
 	
+	func changeIcon(to: String) {
+		guard !(to == "orange") else {
+			UIApplication.shared.setAlternateIconName(nil)
+			return
+		}
+		UIApplication.shared.setAlternateIconName(to)
+	}
+	
 	var body: some View {
 		NavigationStack {
 			ZStack {
@@ -48,41 +56,24 @@ struct SettingsView: View {
 					ScrollView(.horizontal) {
 						HStack {
 							ForEach(settingsModel.accentChoices, id: \.self) { choice in
+								let color = Color(uiColor: UIColor(named: "uiColors/\(choice)")!)
 								ZStack {
 									Button() {
-										settingsModel.changeAccent(to: choice)
+										settingsModel.changeTint(to: choice)
+										changeIcon(to: choice)
 									} label: {
 										Circle()
-											.foregroundStyle(choice.color)
+											.foregroundStyle(color)
 											.frame(width: 30)
 									}
-									if ColorCodable(choice.color) == settingsModel.settings.tint {
-										let needContrast: Bool = ColorCodable(choice.color) == settingsModel.settings.tint
+									if ColorCodable(color) == settingsModel.settings.tint {
+										let needContrast: Bool = ColorCodable(color) == settingsModel.settings.tint
 										Circle()
 											.foregroundStyle(needContrast ? .two : .one)
 											.frame(width: 10)
 									}
 								}
 							}
-							
-							
-//							ForEach(settingsModel.accentChoices, id: \.self) { color in
-//								ZStack {
-//									Button() {
-//
-//									} label: {
-//										Circle()
-//											.foregroundStyle(color)
-//											.frame(width: 30)
-//									}
-//									if ColorCodable(color) == settingsModel.settings.tint {
-//										let needContrast: Bool = ColorCodable(color) == settingsModel.settings.tint
-//										Circle()
-//											.foregroundStyle(needContrast ? .two : .one)
-//											.frame(width: 10)
-//									}
-//								}
-//							}
 						}
 					}
 					Toggle("Show completed Events in Home", isOn: $settingsModel.settings.showCompletedInHome)
@@ -194,4 +185,3 @@ struct SettingsView: View {
 		settingsModel: dummySettingsViewModel()
 	)
 }
-

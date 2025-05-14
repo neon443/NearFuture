@@ -163,6 +163,13 @@ class SettingsViewModel: ObservableObject {
 		}
 	}
 	
+	func changeTint(to: String) {
+		if let uicolor = UIColor(named: "uiColors/\(to)") {
+			self.settings.tint = ColorCodable(uiColor: uicolor)
+			saveSettings()
+		}
+	}
+	
 	let appGroupSettingsStore = UserDefaults(suiteName: "group.NearFuture") ?? UserDefaults.standard
 	let icSettStore = NSUbiquitousKeyValueStore.default
 	
@@ -182,9 +189,9 @@ class SettingsViewModel: ObservableObject {
 		}
 		
 		//
-		for color in accentChoices {
-			self.colorChoices.append(AccentIcon(color))
-		}
+//		for color in accentChoices {
+//			self.colorChoices.append(AccentIcon(color))
+//		}
 	}
 	
 	func saveSettings() {
@@ -195,10 +202,6 @@ class SettingsViewModel: ObservableObject {
 			icSettStore.synchronize()
 			loadSettings()
 		}
-	}
-	
-	func changeAccent(to color: AccentIcon) {
-		
 	}
 }
 
