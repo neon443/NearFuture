@@ -24,6 +24,11 @@ struct WhatsNewView: View {
 				subtitle: "You now get a special app icon that matches the color you choose in settings!"
 			),
 			WhatsNewChunk(
+				symbol: "apps.iphone",
+				title: "Widgets Day Count Fix",
+				subtitle: "The day count for widgets are now red for overdue events, just like the app, and are now more readable"
+			),
+			WhatsNewChunk(
 				symbol: settingsModel.device.sf,
 				title: "This Screen",
 				subtitle: "This update add a Whats New page that will tell you (suprise!) What's New"

@@ -12,6 +12,6 @@ TEAM_ID = 8JGND254B7
 BUNDLE_ID = com.neon443.NearFuture
 BUNDLE_ID_WIDGETS = com.neon443.NearFuture.widgets
 GROUP_ID  = group.NearFuture
-VERSION = 4.3
+VERSION = 4.3.1
 NAME = Near Future
 BUILD_NUMBER = 1
