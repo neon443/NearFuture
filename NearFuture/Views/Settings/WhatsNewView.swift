@@ -19,6 +19,11 @@ struct WhatsNewView: View {
 	var whatsNewChunks: [WhatsNewChunk] {
 		return [
 			WhatsNewChunk(
+				symbol: "app",
+				title: "App Icons",
+				subtitle: "You now get a special app icon that matches the color you choose in settings!"
+			),
+			WhatsNewChunk(
 				symbol: settingsModel.device.sf,
 				title: "This Screen",
 				subtitle: "This update add a Whats New page that will tell you (suprise!) What's New"
@@ -75,10 +80,6 @@ struct WhatsNewView: View {
 				$0.presentationBackground(.ultraThinMaterial)
 			}
 		}
-		.onDisappear {
-			settingsModel.settings.prevAppVersion = getVersion()+getBuildID()
-			settingsModel.saveSettings()
-		}
 	}
 }
 
@@ -100,7 +101,7 @@ struct WhatsNewChunkView: View {
 				.resizable()
 				.scaledToFit()
 				.frame(width: 30, height: 30)
-				.foregroundStyle(.accent)
+				.foregroundStyle(Color.accentColor)
 				.padding(.trailing, 15)
 			VStack(alignment: .leading) {
 				Text(title)
@@ -109,6 +110,7 @@ struct WhatsNewChunkView: View {
 				Text(subtitle)
 					.foregroundStyle(.gray)
 					.font(.subheadline)
+					.fixedSize(horizontal: false, vertical: true)
 			}
 		}
 	}
