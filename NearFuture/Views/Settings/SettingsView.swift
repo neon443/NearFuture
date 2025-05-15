@@ -47,10 +47,14 @@ struct SettingsView: View {
 		}
 		print(UIApplication.shared.supportsAlternateIcons)
 		guard !(to == "orange") else {
-			UIApplication.shared.setAlternateIconName(nil)
+			UIApplication.shared.setAlternateIconName(nil) { error in
+				print(error as Any)
+			}
 			return
 		}
-		UIApplication.shared.setAlternateIconName(to)
+		UIApplication.shared.setAlternateIconName(to) { error in
+			print(error as Any)
+		}
 	}
 	
 	var body: some View {

@@ -26,9 +26,9 @@ struct ArchiveView: View {
 								.transition(.moveAndFadeReversed)
 								.id(event.complete)
 						}
+						.padding(.horizontal)
 					}
 					.animation(.default, value: filteredEvents)
-					.padding(.horizontal)
 				}
 			}
 			.scrollContentBackground(.hidden)
