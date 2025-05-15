@@ -138,14 +138,14 @@ class SettingsViewModel: ObservableObject {
 	@Published var colorChoices: [AccentIcon] = []
 	
 	let accentChoices: [String] = [
-		"bloo",
-		"blue",
-		"green",
-		"orange",
-		"pink",
-		"purple",
 		"red",
-		"yellow"
+		"orange",
+		"yellow",
+		"green",
+		"blue",
+		"bloo",
+		"purple",
+		"pink"
 	]
 	
 	@Published var device: (sf: String, label: String)
@@ -187,11 +187,6 @@ class SettingsViewModel: ObservableObject {
 		if self.settings.prevAppVersion != getVersion()+getBuildID() {
 			self.settings.showWhatsNew = true
 		}
-		
-		//
-//		for color in accentChoices {
-//			self.colorChoices.append(AccentIcon(color))
-//		}
 	}
 	
 	func saveSettings() {

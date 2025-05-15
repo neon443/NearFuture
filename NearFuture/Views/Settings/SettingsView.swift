@@ -41,6 +41,11 @@ struct SettingsView: View {
 	}
 	
 	func changeIcon(to: String) {
+		guard UIApplication.shared.supportsAlternateIcons else {
+			print("doesnt tsupport alternate icons")
+			return
+		}
+		print(UIApplication.shared.supportsAlternateIcons)
 		guard !(to == "orange") else {
 			UIApplication.shared.setAlternateIconName(nil)
 			return
