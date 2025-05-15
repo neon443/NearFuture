@@ -41,20 +41,21 @@ struct SettingsView: View {
 	}
 	
 	func changeIcon(to: String) {
-		guard UIApplication.shared.supportsAlternateIcons else {
-			print("doesnt tsupport alternate icons")
-			return
-		}
-		print(UIApplication.shared.supportsAlternateIcons)
-		guard !(to == "orange") else {
-			UIApplication.shared.setAlternateIconName(nil) { error in
-				print(error as Any)
-			}
-			return
-		}
-		UIApplication.shared.setAlternateIconName(to) { error in
-			print(error as Any)
-		}
+		UIApplication.shared.setAlternateIconName(to)
+//		guard UIApplication.shared.supportsAlternateIcons else {
+//			print("doesnt tsupport alternate icons")
+//			return
+//		}
+//		print(UIApplication.shared.supportsAlternateIcons)
+//		guard !(to == "orange") else {
+//			UIApplication.shared.setAlternateIconName(nil) { error in
+//				print(error as Any)
+//			}
+//			return
+//		}
+//		UIApplication.shared.setAlternateIconName(to) { error in
+//			print(error as Any)
+//		}
 	}
 	
 	var body: some View {
