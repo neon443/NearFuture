@@ -7,6 +7,7 @@
 
 import WidgetKit
 import SwiftUI
+import AppIntents
 
 // Timeline Entry for Widget
 struct EventWidgetEntry: TimelineEntry {
@@ -45,6 +46,24 @@ struct EventWidgetProvider: TimelineProvider {
 		return viewModel.events
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Event Widget View
 struct EventWidgetView: View {
@@ -135,6 +154,25 @@ struct EventWidgetView: View {
 								.foregroundColor(event.date < Date() ? .red : .primary)
 								.padding(.trailing, -12)
 						} else {
+							Button(
+								intent: CompleteEvent(
+									eventID: IntentParameter(
+										title: LocalizedStringResource(
+											stringLiteral: event.id.uuidString
+										)
+									)
+								)
+							) {
+								if event.complete {
+									Circle()
+										.frame(width: 10)
+										.foregroundStyle(.green)
+								} else {
+									Circle()
+										.frame(width: 10)
+										.foregroundStyle(.gray)
+								}
+							}
 							Text(daysUntilEvent(event.date).long)
 								.font(.caption)
 								.multilineTextAlignment(.trailing)
