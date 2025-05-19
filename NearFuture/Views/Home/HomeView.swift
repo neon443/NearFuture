@@ -75,7 +75,6 @@ struct HomeView: View {
 								EventListView(viewModel: viewModel, event: event)
 									.transition(.moveAndFade)
 									.id(event.complete)
-								Divider()
 							}
 							.padding(.horizontal)
 							if filteredEvents.isEmpty {

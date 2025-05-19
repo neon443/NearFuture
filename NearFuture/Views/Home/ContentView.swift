@@ -22,9 +22,10 @@ enum Tab {
 struct ContentView: View {
 	@StateObject var viewModel: EventViewModel
 	@StateObject var settingsModel: SettingsViewModel
+	@State var selection: Tab = .home
 	
 	var body: some View {
-		TabView {
+		TabView(selection: $selection) {
 			HomeView(viewModel: viewModel, settingsModel: settingsModel)
 			.tabItem {
 				Label("Home", systemImage: "house")
@@ -45,6 +46,11 @@ struct ContentView: View {
 					Label("Settings", systemImage: "gear")
 				}
 				.tag(Tab.settings)
+		}
+		.apply {
+			if #available(iOS 17, *) {
+				$0.sensoryFeedback(.impact(weight: .heavy, intensity: 1), trigger: selection)
+			}
 		}
 		.sheet(isPresented: $settingsModel.settings.showWhatsNew) {
 			WhatsNewView(settingsModel: settingsModel)
