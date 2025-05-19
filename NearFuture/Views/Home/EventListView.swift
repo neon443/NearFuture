@@ -111,6 +111,11 @@ struct EventListView: View {
 					.frame(maxWidth: 25, maxHeight: 25)
 					.shadow(radius: 5)
 					.padding(.trailing, 5)
+					.apply {
+						if #available(iOS 17, *) {
+							$0.sensoryFeedback(.success, trigger: event.complete)
+						}
+					}
 				}
 				.transition(.opacity)
 				.padding(.vertical, 5)

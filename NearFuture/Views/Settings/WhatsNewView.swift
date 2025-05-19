@@ -16,8 +16,14 @@ struct WhatsNewView: View {
 		var title: String
 		var subtitle: String
 	}
+	@State var bye = false
 	var whatsNewChunks: [WhatsNewChunk] {
 		return [
+			WhatsNewChunk(
+				symbol: "iphone.radiowaves.left.and.right",
+				title: "Haptic Feedback",
+				subtitle: "Lovely haptic feedback when completing and adding events, and selecting tabs"
+			),
 			WhatsNewChunk(
 				symbol: "app",
 				title: "App Icons",
@@ -66,6 +72,7 @@ struct WhatsNewView: View {
 				}
 			}
 			Button() {
+				bye.toggle()
 				dismiss()
 			} label: {
 				Text("Continue")
@@ -77,6 +84,11 @@ struct WhatsNewView: View {
 			.buttonStyle(BorderedProminentButtonStyle())
 			.clipShape(RoundedRectangle(cornerRadius: 15))
 			.padding().padding()
+			.apply {
+				if #available(iOS 17, *) {
+					$0.sensoryFeedback(.impact(weight: .heavy, intensity: 1), trigger: bye)
+				}
+			}
 		}
 		.scrollContentBackground(.hidden)
 		.presentationDragIndicator(.visible)
