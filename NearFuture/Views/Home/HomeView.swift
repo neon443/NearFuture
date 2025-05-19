@@ -72,9 +72,6 @@ struct HomeView: View {
 					} else {
 						ScrollView {
 							ForEach(filteredEvents) { event in
-								if #available(iOS 17, *) {
-									Completebutton(event: event)
-								}
 								EventListView(viewModel: viewModel, event: event)
 									.transition(.moveAndFade)
 									.id(event.complete)
@@ -130,18 +127,4 @@ struct HomeView: View {
 		viewModel: dummyEventViewModel(),
 		settingsModel: dummySettingsViewModel()
 	)
-}
-
-@available(iOS 17.0, *)
-struct Completebutton: View {
-	@State var event: Event
-	var body: some View {
-		Button(intent: CompleteEvent(eventID: IntentParameter(
-			title: LocalizedStringResource(
-				stringLiteral: event.id.uuidString
-			)
-		))) {
-			Text(event.name)
-		}
-	}
 }
