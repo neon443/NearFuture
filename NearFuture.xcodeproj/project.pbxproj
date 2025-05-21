@@ -72,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A90D491F2DDE08E400781124 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A90FDE222DC0D4310012790C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A914FA4A2DD26C0F00856265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A914FA4C2DD2768900856265 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhatsNewView.swift; path = NearFuture/Views/Settings/WhatsNewView.swift; sourceTree = SOURCE_ROOT; };
@@ -149,11 +150,12 @@
 		A920C27B2D24011300E4F9B1 = {
 			isa = PBXGroup;
 			children = (
+				A90D491F2DDE08E400781124 /* README.md */,
 				A90FDE222DC0D4310012790C /* Config.xcconfig */,
-				A949F8002DCAA0340064DCA0 /* Resources */,
 				A920C2862D24011400E4F9B1 /* NearFuture */,
 				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
 				A949F8582DCAAD670064DCA0 /* NearFutureTests */,
+				A949F8002DCAA0340064DCA0 /* Resources */,
 				A979F6032D270AF00094C0B3 /* Frameworks */,
 				A920C2852D24011400E4F9B1 /* Products */,
 			);
