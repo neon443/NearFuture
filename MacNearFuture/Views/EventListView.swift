@@ -12,10 +12,11 @@ struct EventListView: View {
 	@State var event: Event
 	
 	@State var largeTick: Bool = false
+	@State var hovering: Bool = false
 	
 	var body: some View {
 		ZStack {
-			Color.two
+			Color.black.opacity(hovering ? 0.5 : 0.0)
 			HStack {
 				RoundedRectangle(cornerRadius: 5)
 					.frame(width: 7)
@@ -121,9 +122,12 @@ struct EventListView: View {
 				}
 			}
 			.transition(.opacity)
-			.padding(.vertical, 5)
-			.background(.ultraThinMaterial)
 			.fixedSize(horizontal: false, vertical: true)
+		}
+		.onHover { isHovering in
+			withAnimation {
+				hovering.toggle()
+			}
 		}
 		.contextMenu() {
 			Button(role: .destructive) {

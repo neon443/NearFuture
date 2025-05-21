@@ -16,7 +16,9 @@ struct ContentView: View {
 			ForEach(viewModel.events) { event in
 				EventListView(viewModel: viewModel, event: event)
 			}
+			.padding(.trailing)
 		}
+		.scrollContentBackground(.hidden)
     }
 }
 

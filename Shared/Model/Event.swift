@@ -132,7 +132,7 @@ func daysUntilEvent(_ eventDate: Date) -> (long: String, short: String) {
 	}
 }
 
-struct Settings: Codable, Equatable {
+struct NFSettings: Codable, Equatable {
 	var showCompletedInHome: Bool
 	var tint: ColorCodable
 	var showWhatsNew: Bool
@@ -182,7 +182,7 @@ class SettingsViewModel: ObservableObject {
 		prevAppVersion: getVersion()+getBuildID()
 	)
 #elseif canImport(AppKit)
-	@Published var settings: Settings = Settings(
+	@Published var settings: NFSettings = NFSettings(
 		showCompletedInHome: false,
 		tint: ColorCodable(nsColor: NSColor(named: "AccentColor")!),
 		showWhatsNew: true,
@@ -239,11 +239,11 @@ class SettingsViewModel: ObservableObject {
 	func loadSettings() {
 		let decoder = JSONDecoder()
 		if let icSettings = icSettStore.data(forKey: "settings") {
-			if let decodedSetts = try? decoder.decode(Settings.self, from: icSettings) {
+			if let decodedSetts = try? decoder.decode(NFSettings.self, from: icSettings) {
 				self.settings = decodedSetts
 			}
 		} else if let savedData = appGroupSettingsStore.data(forKey: "settings") {
-			if let decodedSetts = try? decoder.decode(Settings.self, from: savedData) {
+			if let decodedSetts = try? decoder.decode(NFSettings.self, from: savedData) {
 				self.settings = decodedSetts
 			}
 		}

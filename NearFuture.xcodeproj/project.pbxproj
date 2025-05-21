@@ -24,6 +24,8 @@
 		A90D49592DDE2DBD00781124 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49572DDE2DBD00781124 /* EventListView.swift */; };
 		A90D495B2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */; };
 		A90D495C2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */; };
+		A90D495E2DDE3C7400781124 /* NFCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D495D2DDE3C7400781124 /* NFCommands.swift */; };
+		A90D495F2DDE3C7400781124 /* NFCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D495D2DDE3C7400781124 /* NFCommands.swift */; };
 		A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4A2DD26C0F00856265 /* HomeView.swift */; };
 		A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
 		A914FA4F2DD276D200856265 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4E2DD276D200856265 /* AboutView.swift */; };
@@ -87,6 +89,7 @@
 		A90D49512DDE2D0000781124 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A90D49572DDE2DBD00781124 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
 		A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MacNearFutureApp.swift; path = MacNearFuture/MacNearFutureApp.swift; sourceTree = SOURCE_ROOT; };
+		A90D495D2DDE3C7400781124 /* NFCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCommands.swift; sourceTree = "<group>"; };
 		A90FDE222DC0D4310012790C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A914FA4A2DD26C0F00856265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A914FA4C2DD2768900856265 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhatsNewView.swift; path = NearFuture/Views/Settings/WhatsNewView.swift; sourceTree = SOURCE_ROOT; };
@@ -158,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */,
+				A90D495D2DDE3C7400781124 /* NFCommands.swift */,
 				A90D493F2DDE10EC00781124 /* Views */,
 				A90D49342DDE0FAF00781124 /* MacNearFuture.entitlements */,
 			);
@@ -473,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A90D494B2DDE2C2900781124 /* AddEventView.swift in Sources */,
+				A90D495E2DDE3C7400781124 /* NFCommands.swift in Sources */,
 				A90D495B2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */,
 				A90D49522DDE2D0000781124 /* Extensions.swift in Sources */,
 				A90D49422DDE114100781124 /* Event.swift in Sources */,
@@ -495,6 +500,7 @@
 				A949F84D2DCAABE00064DCA0 /* EditEventView.swift in Sources */,
 				A949F84E2DCAABE00064DCA0 /* ContentView.swift in Sources */,
 				A90D495C2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */,
+				A90D495F2DDE3C7400781124 /* NFCommands.swift in Sources */,
 				A949F84F2DCAABE00064DCA0 /* EventListView.swift in Sources */,
 				A949F8502DCAABE00064DCA0 /* HelpView.swift in Sources */,
 				A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */,
