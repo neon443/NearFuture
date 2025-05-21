@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A90D49372DDE0FAF00781124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90D49322DDE0FAF00781124 /* Assets.xcassets */; };
 		A90D49382DDE0FAF00781124 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49332DDE0FAF00781124 /* ContentView.swift */; };
-		A90D49392DDE0FAF00781124 /* MacNearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49352DDE0FAF00781124 /* MacNearFutureApp.swift */; };
+		A90D493D2DDE10B200781124 /* NearFutureIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A949F8312DCAAA8A0064DCA0 /* NearFutureIcon.png */; };
+		A90D493E2DDE10CF00781124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
+		A90D49402DDE111400781124 /* NearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2872D24011400E4F9B1 /* NearFutureApp.swift */; };
+		A90D49422DDE114100781124 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Event.swift */; };
 		A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4A2DD26C0F00856265 /* HomeView.swift */; };
 		A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
 		A914FA4F2DD276D200856265 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4E2DD276D200856265 /* AboutView.swift */; };
@@ -66,10 +68,8 @@
 /* Begin PBXFileReference section */
 		A90D491F2DDE08E400781124 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A90D49262DDE0FA400781124 /* MacNearFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacNearFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A90D49322DDE0FAF00781124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A90D49332DDE0FAF00781124 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A90D49342DDE0FAF00781124 /* MacNearFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacNearFuture.entitlements; sourceTree = "<group>"; };
-		A90D49352DDE0FAF00781124 /* MacNearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNearFutureApp.swift; sourceTree = "<group>"; };
 		A90FDE222DC0D4310012790C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A914FA4A2DD26C0F00856265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A914FA4C2DD2768900856265 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhatsNewView.swift; path = NearFuture/Views/Settings/WhatsNewView.swift; sourceTree = SOURCE_ROOT; };
@@ -139,22 +139,39 @@
 		A90D49362DDE0FAF00781124 /* MacNearFuture */ = {
 			isa = PBXGroup;
 			children = (
-				A90D49322DDE0FAF00781124 /* Assets.xcassets */,
-				A90D49332DDE0FAF00781124 /* ContentView.swift */,
+				A90D493F2DDE10EC00781124 /* Views */,
 				A90D49342DDE0FAF00781124 /* MacNearFuture.entitlements */,
-				A90D49352DDE0FAF00781124 /* MacNearFutureApp.swift */,
 			);
 			path = MacNearFuture;
+			sourceTree = "<group>";
+		};
+		A90D493F2DDE10EC00781124 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A90D49332DDE0FAF00781124 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A90D49412DDE112700781124 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
+				A90D49202DDE0A3B00781124 /* Model */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		A920C27B2D24011300E4F9B1 = {
 			isa = PBXGroup;
 			children = (
+				A90D49412DDE112700781124 /* Shared */,
 				A90D491F2DDE08E400781124 /* README.md */,
 				A90FDE222DC0D4310012790C /* Config.xcconfig */,
 				A920C2862D24011400E4F9B1 /* NearFuture */,
-				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
 				A90D49362DDE0FAF00781124 /* MacNearFuture */,
+				A949F8002DCAA0340064DCA0 /* Resources */,
+				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
 				A920C2852D24011400E4F9B1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -172,10 +189,7 @@
 		A920C2862D24011400E4F9B1 /* NearFuture */ = {
 			isa = PBXGroup;
 			children = (
-				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
 				A949F84A2DCAABE00064DCA0 /* Views */,
-				A90D49202DDE0A3B00781124 /* Model */,
-				A949F8002DCAA0340064DCA0 /* Resources */,
 				A920C2902D24011A00E4F9B1 /* Preview Content */,
 			);
 			path = NearFuture;
@@ -392,7 +406,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A90D49372DDE0FAF00781124 /* Assets.xcassets in Resources */,
+				A90D493E2DDE10CF00781124 /* Assets.xcassets in Resources */,
+				A90D493D2DDE10B200781124 /* NearFutureIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -421,8 +436,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90D49402DDE111400781124 /* NearFutureApp.swift in Sources */,
+				A90D49422DDE114100781124 /* Event.swift in Sources */,
 				A90D49382DDE0FAF00781124 /* ContentView.swift in Sources */,
-				A90D49392DDE0FAF00781124 /* MacNearFutureApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

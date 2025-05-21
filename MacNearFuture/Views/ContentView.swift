@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+	@ObservedObject var viewModel: EventViewModel
+	@ObservedObject var settingsModel: SettingsViewModel
+	
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -20,5 +23,8 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+	ContentView(
+		viewModel: dummyEventViewModel(),
+		settingsModel: dummySettingsViewModel()
+	)
 }
