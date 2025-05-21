@@ -11,7 +11,7 @@
 		A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
 		A914FA4F2DD276D200856265 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4E2DD276D200856265 /* AboutView.swift */; };
 		A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2872D24011400E4F9B1 /* NearFutureApp.swift */; };
-		A920C28C2D24011400E4F9B1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
+		A920C28C2D24011400E4F9B1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Event.swift */; };
 		A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
 		A920C2922D24011A00E4F9B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C2912D24011A00E4F9B1 /* Preview Assets.xcassets */; };
 		A920C2BE2D24021A00E4F9B1 /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = A920C2BD2D24021A00E4F9B1 /* SFSymbolsPicker */; };
@@ -36,7 +36,7 @@
 		A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */; };
 		A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A979F60F2D270AF80094C0B3 /* Assets.xcassets */; };
 		A979F6142D270AF90094C0B3 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A979F6182D2714310094C0B3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
+		A979F6182D2714310094C0B3 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Event.swift */; };
 		A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */; };
 /* End PBXBuildFile section */
 
@@ -79,7 +79,7 @@
 		A914FA4E2DD276D200856265 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutView.swift; path = NearFuture/Views/Misc/AboutView.swift; sourceTree = SOURCE_ROOT; };
 		A920C2842D24011400E4F9B1 /* NearFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A920C2872D24011400E4F9B1 /* NearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureApp.swift; sourceTree = "<group>"; };
-		A920C28B2D24011400E4F9B1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		A920C28B2D24011400E4F9B1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		A920C28D2D24011A00E4F9B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A920C28F2D24011A00E4F9B1 /* NearFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFuture.entitlements; sourceTree = "<group>"; };
 		A920C2912D24011A00E4F9B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -147,6 +147,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A90D49202DDE0A3B00781124 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A920C28B2D24011400E4F9B1 /* Event.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		A920C27B2D24011300E4F9B1 = {
 			isa = PBXGroup;
 			children = (
@@ -155,7 +163,6 @@
 				A920C2862D24011400E4F9B1 /* NearFuture */,
 				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
 				A949F8582DCAAD670064DCA0 /* NearFutureTests */,
-				A949F8002DCAA0340064DCA0 /* Resources */,
 				A979F6032D270AF00094C0B3 /* Frameworks */,
 				A920C2852D24011400E4F9B1 /* Products */,
 			);
@@ -175,10 +182,11 @@
 			isa = PBXGroup;
 			children = (
 				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
-				A920C28B2D24011400E4F9B1 /* Item.swift */,
+				A90D49202DDE0A3B00781124 /* Model */,
 				A949F84A2DCAABE00064DCA0 /* Views */,
 				A980FC302D920097006A778F /* Info.plist */,
 				A920C28F2D24011A00E4F9B1 /* NearFuture.entitlements */,
+				A949F8002DCAA0340064DCA0 /* Resources */,
 				A920C2902D24011A00E4F9B1 /* Preview Content */,
 			);
 			path = NearFuture;
@@ -225,7 +233,6 @@
 		A949F8422DCAABE00064DCA0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A949F83F2DCAABE00064DCA0 /* ContentView.swift */,
 				A949F8402DCAABE00064DCA0 /* EventListView.swift */,
 				A949F8412DCAABE00064DCA0 /* HelpView.swift */,
 				A914FA4A2DD26C0F00856265 /* HomeView.swift */,
@@ -256,6 +263,7 @@
 		A949F84A2DCAABE00064DCA0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A949F83F2DCAABE00064DCA0 /* ContentView.swift */,
 				A949F8422DCAABE00064DCA0 /* Home */,
 				A949F83E2DCAABE00064DCA0 /* Events */,
 				A949F83B2DCAABE00064DCA0 /* Archive */,
@@ -458,7 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A920C28C2D24011400E4F9B1 /* Item.swift in Sources */,
+				A920C28C2D24011400E4F9B1 /* Event.swift in Sources */,
 				A949F84B2DCAABE00064DCA0 /* ArchiveView.swift in Sources */,
 				A914FA4F2DD276D200856265 /* AboutView.swift in Sources */,
 				A949F84C2DCAABE00064DCA0 /* AddEventView.swift in Sources */,
@@ -482,7 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A979F6182D2714310094C0B3 /* Item.swift in Sources */,
+				A979F6182D2714310094C0B3 /* Event.swift in Sources */,
 				A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */,
 				A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */,
 				A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */,
