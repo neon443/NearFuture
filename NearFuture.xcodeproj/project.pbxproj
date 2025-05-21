@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A90D49372DDE0FAF00781124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90D49322DDE0FAF00781124 /* Assets.xcassets */; };
+		A90D49382DDE0FAF00781124 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49332DDE0FAF00781124 /* ContentView.swift */; };
+		A90D49392DDE0FAF00781124 /* MacNearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49352DDE0FAF00781124 /* MacNearFutureApp.swift */; };
 		A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4A2DD26C0F00856265 /* HomeView.swift */; };
 		A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
 		A914FA4F2DD276D200856265 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4E2DD276D200856265 /* AboutView.swift */; };
@@ -27,8 +30,6 @@
 		A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8452DCAABE00064DCA0 /* ImportView.swift */; };
 		A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8462DCAABE00064DCA0 /* SettingsView.swift */; };
 		A949F8552DCAABE00064DCA0 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8482DCAABE00064DCA0 /* StatsView.swift */; };
-		A949F8562DCAABE00064DCA0 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8432DCAABE00064DCA0 /* ExportView.swift */; };
-		A949F8592DCAAD670064DCA0 /* NearFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */; };
 		A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F85D2DCABB420064DCA0 /* Buttons.swift */; };
 		A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */; };
 		A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */; };
@@ -45,13 +46,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = A979F6012D270AF00094C0B3;
 			remoteInfo = NearFutureWidgetsExtension;
-		};
-		A980FC3B2D93FB2B006A778F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A920C27C2D24011300E4F9B1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = A920C2832D24011300E4F9B1;
-			remoteInfo = NearFuture;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -71,6 +65,11 @@
 
 /* Begin PBXFileReference section */
 		A90D491F2DDE08E400781124 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A90D49262DDE0FA400781124 /* MacNearFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacNearFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A90D49322DDE0FAF00781124 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A90D49332DDE0FAF00781124 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A90D49342DDE0FAF00781124 /* MacNearFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacNearFuture.entitlements; sourceTree = "<group>"; };
+		A90D49352DDE0FAF00781124 /* MacNearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacNearFutureApp.swift; sourceTree = "<group>"; };
 		A90FDE222DC0D4310012790C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A914FA4A2DD26C0F00856265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A914FA4C2DD2768900856265 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhatsNewView.swift; path = NearFuture/Views/Settings/WhatsNewView.swift; sourceTree = SOURCE_ROOT; };
@@ -95,17 +94,22 @@
 		A949F8452DCAABE00064DCA0 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
 		A949F8462DCAABE00064DCA0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A949F8482DCAABE00064DCA0 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
-		A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureTests.swift; sourceTree = "<group>"; };
 		A949F85D2DCABB420064DCA0 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NearFutureWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
 		A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
 		A979F60F2D270AF80094C0B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A980FC372D93FB2B006A778F /* NearFutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NearFutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A90D49232DDE0FA400781124 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A920C2812D24011300E4F9B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,13 +119,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A979F5FF2D270AF00094C0B3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A980FC342D93FB2B006A778F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -139,6 +136,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		A90D49362DDE0FAF00781124 /* MacNearFuture */ = {
+			isa = PBXGroup;
+			children = (
+				A90D49322DDE0FAF00781124 /* Assets.xcassets */,
+				A90D49332DDE0FAF00781124 /* ContentView.swift */,
+				A90D49342DDE0FAF00781124 /* MacNearFuture.entitlements */,
+				A90D49352DDE0FAF00781124 /* MacNearFutureApp.swift */,
+			);
+			path = MacNearFuture;
+			sourceTree = "<group>";
+		};
 		A920C27B2D24011300E4F9B1 = {
 			isa = PBXGroup;
 			children = (
@@ -146,7 +154,7 @@
 				A90FDE222DC0D4310012790C /* Config.xcconfig */,
 				A920C2862D24011400E4F9B1 /* NearFuture */,
 				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
-				A949F8582DCAAD670064DCA0 /* NearFutureTests */,
+				A90D49362DDE0FAF00781124 /* MacNearFuture */,
 				A920C2852D24011400E4F9B1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -156,7 +164,7 @@
 			children = (
 				A920C2842D24011400E4F9B1 /* NearFuture.app */,
 				A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */,
-				A980FC372D93FB2B006A778F /* NearFutureTests.xctest */,
+				A90D49262DDE0FA400781124 /* MacNearFuture.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -254,14 +262,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A949F8582DCAAD670064DCA0 /* NearFutureTests */ = {
-			isa = PBXGroup;
-			children = (
-				A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */,
-			);
-			path = NearFutureTests;
-			sourceTree = "<group>";
-		};
 		A949F85E2DCABB420064DCA0 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -285,6 +285,25 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A90D49252DDE0FA400781124 /* MacNearFuture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A90D492F2DDE0FA600781124 /* Build configuration list for PBXNativeTarget "MacNearFuture" */;
+			buildPhases = (
+				A90D49222DDE0FA400781124 /* Sources */,
+				A90D49232DDE0FA400781124 /* Frameworks */,
+				A90D49242DDE0FA400781124 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MacNearFuture;
+			packageProductDependencies = (
+			);
+			productName = MacNearFuture;
+			productReference = A90D49262DDE0FA400781124 /* MacNearFuture.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A920C2832D24011300E4F9B1 /* NearFuture */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A920C2AB2D24011B00E4F9B1 /* Build configuration list for PBXNativeTarget "NearFuture" */;
@@ -324,26 +343,6 @@
 			productReference = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		A980FC362D93FB2B006A778F /* NearFutureTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A980FC3D2D93FB2B006A778F /* Build configuration list for PBXNativeTarget "NearFutureTests" */;
-			buildPhases = (
-				A980FC332D93FB2B006A778F /* Sources */,
-				A980FC342D93FB2B006A778F /* Frameworks */,
-				A980FC352D93FB2B006A778F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A980FC3C2D93FB2B006A778F /* PBXTargetDependency */,
-			);
-			name = NearFutureTests;
-			packageProductDependencies = (
-			);
-			productName = NearFutureTests;
-			productReference = A980FC372D93FB2B006A778F /* NearFutureTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -351,18 +350,17 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					A90D49252DDE0FA400781124 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					A920C2832D24011300E4F9B1 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 					A979F6012D270AF00094C0B3 = {
 						CreatedOnToolsVersion = 15.4;
-					};
-					A980FC362D93FB2B006A778F = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = A920C2832D24011300E4F9B1;
 					};
 				};
 			};
@@ -383,13 +381,21 @@
 			projectRoot = "";
 			targets = (
 				A920C2832D24011300E4F9B1 /* NearFuture */,
+				A90D49252DDE0FA400781124 /* MacNearFuture */,
 				A979F6012D270AF00094C0B3 /* NearFutureWidgetsExtension */,
-				A980FC362D93FB2B006A778F /* NearFutureTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A90D49242DDE0FA400781124 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A90D49372DDE0FAF00781124 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A920C2822D24011300E4F9B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -408,16 +414,18 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A980FC352D93FB2B006A778F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A90D49222DDE0FA400781124 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A90D49382DDE0FAF00781124 /* ContentView.swift in Sources */,
+				A90D49392DDE0FAF00781124 /* MacNearFutureApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A920C2802D24011300E4F9B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -453,15 +461,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A980FC332D93FB2B006A778F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A949F8592DCAAD670064DCA0 /* NearFutureTests.swift in Sources */,
-				A949F8562DCAABE00064DCA0 /* ExportView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -471,14 +470,69 @@
 			target = A979F6012D270AF00094C0B3 /* NearFutureWidgetsExtension */;
 			targetProxy = A979F6122D270AF90094C0B3 /* PBXContainerItemProxy */;
 		};
-		A980FC3C2D93FB2B006A778F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = A920C2832D24011300E4F9B1 /* NearFuture */;
-			targetProxy = A980FC3B2D93FB2B006A778F /* PBXContainerItemProxy */;
-		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A90D49302DDE0FA600781124 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A90FDE222DC0D4310012790C /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacNearFuture/MacNearFuture.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8JGND254B7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A90D49312DDE0FA600781124 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A90FDE222DC0D4310012790C /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacNearFuture/MacNearFuture.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8JGND254B7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		A920C2A92D24011B00E4F9B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -652,8 +706,8 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -701,8 +755,8 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -787,61 +841,18 @@
 			};
 			name = Release;
 		};
-		A980FC3E2D93FB2B006A778F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A90FDE222DC0D4310012790C /* Config.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
-				MACOSX_DEPLOYMENT_TARGET = 13;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFutureTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NearFuture.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NearFuture";
-				XROS_DEPLOYMENT_TARGET = 1;
-			};
-			name = Debug;
-		};
-		A980FC3F2D93FB2B006A778F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A90FDE222DC0D4310012790C /* Config.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
-				MACOSX_DEPLOYMENT_TARGET = 13;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFutureTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NearFuture.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NearFuture";
-				XROS_DEPLOYMENT_TARGET = 1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A90D492F2DDE0FA600781124 /* Build configuration list for PBXNativeTarget "MacNearFuture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A90D49302DDE0FA600781124 /* Debug */,
+				A90D49312DDE0FA600781124 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A920C27F2D24011300E4F9B1 /* Build configuration list for PBXProject "NearFuture" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -865,15 +876,6 @@
 			buildConfigurations = (
 				A979F6162D270AF90094C0B3 /* Debug */,
 				A979F6172D270AF90094C0B3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		A980FC3D2D93FB2B006A778F /* Build configuration list for PBXNativeTarget "NearFutureTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A980FC3E2D93FB2B006A778F /* Debug */,
-				A980FC3F2D93FB2B006A778F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
