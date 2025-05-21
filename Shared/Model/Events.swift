@@ -120,146 +120,15 @@ func daysUntilEvent(_ eventDate: Date) -> (long: String, short: String) {
 	if days < 0 {
 		//past
 		return (
-			"\(-days) day\(plu(days)) ago",
+			"\(-days)\nday\(plu(days)) ago",
 			"\(days)d"
 		)
 	} else {
 		//future
 		return (
-			"\(days) day\(plu(days))",
+			"\(days)\nday\(plu(days))",
 			"\(days)d"
 		)
-	}
-}
-
-struct NFSettings: Codable, Equatable {
-	var showCompletedInHome: Bool
-	var tint: ColorCodable
-	var showWhatsNew: Bool
-	var prevAppVersion: String
-}
-
-class AccentIcon {
-	#if canImport(UIKit)
-	var icon: UIImage
-	#elseif canImport(AppKit)
-	var icon: NSImage
-	#endif
-	var color: Color
-	var name: String
-	
-	init(_ colorName: String) {
-		#if canImport(UIKit)
-		self.icon = UIImage(named: "AppIcon")!
-		self.color = Color(uiColor: UIColor(named: "uiColors/\(colorName)")!)
-		#elseif canImport(AppKit)
-		self.icon = NSImage(imageLiteralResourceName: "AppIcon")
-		self.color = Color(nsColor: NSColor(named: "uiColors/\(colorName)")!)
-		#endif
-		
-		self.name = colorName
-		
-		if colorName != "orange" {
-			setSelfIcon(to: colorName)
-		}
-	}
-	
-	func setSelfIcon(to name: String) {
-		#if canImport(UIKit)
-		self.icon = UIImage(named: name)!
-		#elseif canImport(AppKit)
-		self.icon = NSImage(imageLiteralResourceName: name)
-		#endif
-	}
-}
-
-class SettingsViewModel: ObservableObject {
-#if canImport(UIKit)
-	@Published var settings: Settings = Settings(
-		showCompletedInHome: false,
-		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!),
-		showWhatsNew: true,
-		prevAppVersion: getVersion()+getBuildID()
-	)
-#elseif canImport(AppKit)
-	@Published var settings: NFSettings = NFSettings(
-		showCompletedInHome: false,
-		tint: ColorCodable(nsColor: NSColor(named: "AccentColor")!),
-		showWhatsNew: true,
-		prevAppVersion: getVersion()+getBuildID()
-	)
-#endif
-	
-	@Published var notifsGranted: Bool = false
-	
-	@Published var colorChoices: [AccentIcon] = []
-	
-	let accentChoices: [String] = [
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"blue",
-		"bloo",
-		"purple",
-		"pink"
-	]
-	
-	@Published var device: (sf: String, label: String)
-	
-	init(load: Bool = true) {
-		self.device = getDevice()
-		if load {
-			loadSettings()
-			Task {
-				let requestResult = await requestNotifs()
-				await MainActor.run {
-					self.notifsGranted = requestResult
-				}
-			}
-		}
-	}
-	
-	func changeTint(to: String) {
-#if canImport(UIKit)
-		if let uicolor = UIColor(named: "uiColors/\(to)") {
-			self.settings.tint = ColorCodable(uiColor: uicolor)
-			saveSettings()
-		}
-#elseif canImport(AppKit)
-		if let nscolor = NSColor(named: "uiColors/\(to)") {
-			self.settings.tint = ColorCodable(nsColor: nscolor)
-		}
-#endif
-	}
-	
-	let appGroupSettingsStore = UserDefaults(suiteName: "group.NearFuture") ?? UserDefaults.standard
-	let icSettStore = NSUbiquitousKeyValueStore.default
-	
-	func loadSettings() {
-		let decoder = JSONDecoder()
-		if let icSettings = icSettStore.data(forKey: "settings") {
-			if let decodedSetts = try? decoder.decode(NFSettings.self, from: icSettings) {
-				self.settings = decodedSetts
-			}
-		} else if let savedData = appGroupSettingsStore.data(forKey: "settings") {
-			if let decodedSetts = try? decoder.decode(NFSettings.self, from: savedData) {
-				self.settings = decodedSetts
-			}
-		}
-		if self.settings.prevAppVersion != getVersion()+getBuildID() {
-			self.settings.showWhatsNew = true
-		}
-	}
-	
-	func saveSettings() {
-		let encoder = JSONEncoder()
-		if let encoded = try? encoder.encode(settings) {
-			appGroupSettingsStore.set(encoded, forKey: "settings")
-			icSettStore.set(encoded, forKey: "settings")
-			icSettStore.synchronize()
-			loadSettings()
-		}
 	}
 }
 

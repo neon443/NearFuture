@@ -69,6 +69,7 @@ struct EventListView: View {
 				Spacer()
 				VStack {
 					Text("\(daysUntilEvent(event.date).long)")
+						.multilineTextAlignment(.trailing)
 						.foregroundStyle(event.date.timeIntervalSinceNow < 0 ? .red : .one)
 				}
 				Button() {
@@ -110,7 +111,7 @@ struct EventListView: View {
 				.scaleEffect(largeTick ? 1.5 : 1)
 				.frame(maxWidth: 20)
 				.shadow(radius: 5)
-				.padding(.trailing, 5)
+				.padding(.trailing, 15)
 				.animation(
 					.spring(response: 0.2, dampingFraction: 0.75, blendDuration: 2),
 					value: largeTick
