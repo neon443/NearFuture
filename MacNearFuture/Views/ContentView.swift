@@ -17,6 +17,8 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+			Text(getVersion())
+				.foregroundStyle(Color("uiColors/bloo"))
         }
         .padding()
     }
