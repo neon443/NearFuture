@@ -3,6 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>NSExtension</key>
-	<array/>
+	<dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.widgetkit-extension</string>
+	</dict>
 </dict>
 </plist>

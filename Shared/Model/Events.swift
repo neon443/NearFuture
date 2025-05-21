@@ -11,6 +11,7 @@ import SwiftUI
 import WidgetKit
 import UserNotifications
 import AppIntents
+import AudioToolbox
 #if canImport(AppKit)
 import AppKit
 import IOKit
@@ -168,6 +169,7 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 		if load {
 			loadEvents()
 		}
+//		AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
 	}
 	
 	//appgroup or regular userdefaults

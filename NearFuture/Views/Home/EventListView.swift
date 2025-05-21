@@ -76,6 +76,7 @@ struct EventListView: View {
 						Text("\(daysUntilEvent(event.date).long)")
 							.font(.subheadline)
 							.foregroundStyle(event.date.timeIntervalSinceNow < 0 ? .red : .one)
+							.multilineTextAlignment(.trailing)
 					}
 					Button() {
 						withAnimation {

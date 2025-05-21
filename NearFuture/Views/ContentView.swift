@@ -25,6 +25,9 @@ struct ContentView: View {
 	@State var selection: Tab = .home
 	
 	var body: some View {
+		if #available(iOS 17.5, *) {
+			YouAsked()
+		}
 		TabView(selection: $selection) {
 			HomeView(viewModel: viewModel, settingsModel: settingsModel)
 			.tabItem {
