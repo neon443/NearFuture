@@ -30,8 +30,6 @@
 		A949F8562DCAABE00064DCA0 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8432DCAABE00064DCA0 /* ExportView.swift */; };
 		A949F8592DCAAD670064DCA0 /* NearFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */; };
 		A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F85D2DCABB420064DCA0 /* Buttons.swift */; };
-		A979F6052D270AF00094C0B3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6042D270AF00094C0B3 /* WidgetKit.framework */; };
-		A979F6072D270AF00094C0B3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6062D270AF00094C0B3 /* SwiftUI.framework */; };
 		A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */; };
 		A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */; };
 		A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A979F60F2D270AF80094C0B3 /* Assets.xcassets */; };
@@ -81,7 +79,6 @@
 		A920C2872D24011400E4F9B1 /* NearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureApp.swift; sourceTree = "<group>"; };
 		A920C28B2D24011400E4F9B1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		A920C28D2D24011A00E4F9B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A920C28F2D24011A00E4F9B1 /* NearFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFuture.entitlements; sourceTree = "<group>"; };
 		A920C2912D24011A00E4F9B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A949F82E2DCAAA640064DCA0 /* NearFutureIcon.pxd */ = {isa = PBXFileReference; lastKnownFileType = file; path = NearFutureIcon.pxd; sourceTree = "<group>"; };
 		A949F82F2DCAAA640064DCA0 /* NearFutureIconDark.pxd */ = {isa = PBXFileReference; lastKnownFileType = file; path = NearFutureIconDark.pxd; sourceTree = "<group>"; };
@@ -100,22 +97,11 @@
 		A949F8482DCAABE00064DCA0 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureTests.swift; sourceTree = "<group>"; };
 		A949F85D2DCABB420064DCA0 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		A979F58B2D2700680094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
-		A979F58D2D2700680094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
-		A979F58F2D2700680094C0B3 /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
-		A979F5912D2700680094C0B3 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
-		A979F5932D27006D0094C0B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A979F5952D27006D0094C0B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NearFutureWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		A979F6042D270AF00094C0B3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		A979F6062D270AF00094C0B3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
 		A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
 		A979F60F2D270AF80094C0B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A979F6112D270AF90094C0B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A980FC302D920097006A778F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A980FC372D93FB2B006A778F /* NearFutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NearFutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9C05E412D2805D7007DC497 /* NearFutureWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFutureWidgetsExtension.entitlements; sourceTree = "<group>"; };
 		A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,8 +118,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A979F6072D270AF00094C0B3 /* SwiftUI.framework in Frameworks */,
-				A979F6052D270AF00094C0B3 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +147,6 @@
 				A920C2862D24011400E4F9B1 /* NearFuture */,
 				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
 				A949F8582DCAAD670064DCA0 /* NearFutureTests */,
-				A979F6032D270AF00094C0B3 /* Frameworks */,
 				A920C2852D24011400E4F9B1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -182,10 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
-				A90D49202DDE0A3B00781124 /* Model */,
 				A949F84A2DCAABE00064DCA0 /* Views */,
-				A980FC302D920097006A778F /* Info.plist */,
-				A920C28F2D24011A00E4F9B1 /* NearFuture.entitlements */,
+				A90D49202DDE0A3B00781124 /* Model */,
 				A949F8002DCAA0340064DCA0 /* Resources */,
 				A920C2902D24011A00E4F9B1 /* Preview Content */,
 			);
@@ -195,7 +176,6 @@
 		A920C2902D24011A00E4F9B1 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				A979F58A2D2700680094C0B3 /* NearFutureWidgets */,
 				A920C2912D24011A00E4F9B1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -291,28 +271,6 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
-		A979F58A2D2700680094C0B3 /* NearFutureWidgets */ = {
-			isa = PBXGroup;
-			children = (
-				A979F58B2D2700680094C0B3 /* NearFutureWidgetsBundle.swift */,
-				A979F58D2D2700680094C0B3 /* NearFutureWidgetsLiveActivity.swift */,
-				A979F58F2D2700680094C0B3 /* NearFutureWidgets.swift */,
-				A979F5912D2700680094C0B3 /* AppIntent.swift */,
-				A979F5932D27006D0094C0B3 /* Assets.xcassets */,
-				A979F5952D27006D0094C0B3 /* Info.plist */,
-			);
-			path = NearFutureWidgets;
-			sourceTree = "<group>";
-		};
-		A979F6032D270AF00094C0B3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A979F6042D270AF00094C0B3 /* WidgetKit.framework */,
-				A979F6062D270AF00094C0B3 /* SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A979F6082D270AF00094C0B3 /* NearFutureWidgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -320,8 +278,6 @@
 				A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */,
 				A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */,
 				A979F60F2D270AF80094C0B3 /* Assets.xcassets */,
-				A979F6112D270AF90094C0B3 /* Info.plist */,
-				A9C05E412D2805D7007DC497 /* NearFutureWidgetsExtension.entitlements */,
 			);
 			path = NearFutureWidgets;
 			sourceTree = "<group>";
@@ -670,7 +626,6 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NearFuture/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(NAME)";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -723,7 +678,6 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NearFuture/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "$(NAME)";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -768,7 +722,6 @@
 				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = "$(TEAM_ID)";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NearFutureWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NearFutureWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
@@ -809,7 +762,6 @@
 				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = "$(TEAM_ID)";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NearFutureWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NearFutureWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
