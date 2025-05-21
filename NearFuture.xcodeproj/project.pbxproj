@@ -91,6 +91,7 @@
 		A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MacNearFutureApp.swift; path = MacNearFuture/MacNearFutureApp.swift; sourceTree = SOURCE_ROOT; };
 		A90D495D2DDE3C7400781124 /* NFCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCommands.swift; sourceTree = "<group>"; };
 		A90D49602DDE626300781124 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A90D49652DDE658100781124 /* NearFutureWidgetsExtension-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "NearFutureWidgetsExtension-Info.plist"; sourceTree = "<group>"; };
 		A90FDE222DC0D4310012790C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A914FA4A2DD26C0F00856265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A914FA4C2DD2768900856265 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhatsNewView.swift; path = NearFuture/Views/Settings/WhatsNewView.swift; sourceTree = SOURCE_ROOT; };
@@ -329,6 +330,7 @@
 				A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */,
 				A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */,
 				A979F60F2D270AF80094C0B3 /* Assets.xcassets */,
+				A90D49652DDE658100781124 /* NearFutureWidgetsExtension-Info.plist */,
 			);
 			path = NearFutureWidgets;
 			sourceTree = "<group>";
@@ -754,7 +756,7 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "Near Future";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -806,7 +808,7 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "Near Future";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -850,6 +852,7 @@
 				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = "$(TEAM_ID)";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NearFutureWidgetsExtension-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = NearFutureWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
@@ -890,6 +893,7 @@
 				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = "$(TEAM_ID)";
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "NearFutureWidgetsExtension-Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = NearFutureWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
