@@ -201,7 +201,7 @@ class SettingsViewModel: ObservableObject {
 	}
 }
 
-class EventViewModel: ObservableObject {
+class EventViewModel: ObservableObject, @unchecked Sendable {
 	@Published var events: [Event] = []
 	@Published var icloudData: [Event] = []
 	
@@ -451,7 +451,7 @@ class EventViewModel: ObservableObject {
 	}
 }
 
-class dummyEventViewModel: EventViewModel {
+class dummyEventViewModel: EventViewModel, @unchecked Sendable{
 	var template2: Event
 	override init(load: Bool = false) {
 		self.template2 = Event(
@@ -630,8 +630,7 @@ struct CompleteEvent: AppIntent {
 	
 	func perform() async throws -> some IntentResult {
 		print("s")
-		var viewModel = EventViewModel()
-		var eventss = viewModel.events
+		let viewModel = EventViewModel()
 		print("hip")
 		guard let eventUUID = UUID(uuidString: eventID) else {
 			print(":sdklfajk")
