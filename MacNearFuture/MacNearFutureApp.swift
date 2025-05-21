@@ -18,7 +18,8 @@ struct NearFutureApp: App {
 				settingsModel: settingsModel
 			)
 			.tint(settingsModel.settings.tint.color)
+			.frame(minWidth: 350, minHeight: 450)
 		}
-		.windowIdealSize(.fitToContent)
+		.defaultSize(width: 450, height: 550)
 	}
 }

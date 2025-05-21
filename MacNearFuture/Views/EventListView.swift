@@ -10,11 +10,12 @@ import SwiftUI
 struct EventListView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@State var event: Event
-	@State private var sheetpresented: Bool = false
+	
+	@State var largeTick: Bool = false
 	
 	var body: some View {
-		
 		ZStack {
+			Color.two
 			HStack {
 				RoundedRectangle(cornerRadius: 5)
 					.frame(width: 7)
@@ -36,14 +37,13 @@ struct EventListView: View {
 								)
 							)
 						Text("\(event.name)")
-							.font(.headline)
+							.bold()
 							.foregroundStyle(.one)
 							.strikethrough(event.complete)
 							.multilineTextAlignment(.leading)
 					}
 					if !event.notes.isEmpty {
 						Text(event.notes)
-							.font(.subheadline)
 							.foregroundStyle(.one.opacity(0.8))
 							.multilineTextAlignment(.leading)
 					}
@@ -53,7 +53,6 @@ struct EventListView: View {
 							time: .shortened
 						)
 					)
-					.font(.subheadline)
 					.foregroundStyle(
 						.one.opacity(
 							event.complete ? 0.5 : 1
@@ -69,7 +68,6 @@ struct EventListView: View {
 				Spacer()
 				VStack {
 					Text("\(daysUntilEvent(event.date).long)")
-						.font(.subheadline)
 						.foregroundStyle(event.date.timeIntervalSinceNow < 0 ? .red : .one)
 				}
 				Button() {
@@ -102,10 +100,20 @@ struct EventListView: View {
 							.foregroundStyle(event.color.color)
 					}
 				}
+				.onHover() { hovering in
+					withAnimation {
+						largeTick.toggle()
+					}
+				}
 				.buttonStyle(.borderless)
-				.frame(maxWidth: 25, maxHeight: 25)
+				.scaleEffect(largeTick ? 1.5 : 1)
+				.frame(maxWidth: 20)
 				.shadow(radius: 5)
 				.padding(.trailing, 5)
+				.animation(
+					.spring(response: 0.2, dampingFraction: 0.75, blendDuration: 2),
+					value: largeTick
+				)
 				.apply {
 					if #available(iOS 17, *) {
 						$0.sensoryFeedback(.success, trigger: event.complete)
@@ -115,9 +123,6 @@ struct EventListView: View {
 			.transition(.opacity)
 			.padding(.vertical, 5)
 			.background(.ultraThinMaterial)
-			.clipShape(
-				RoundedRectangle(cornerRadius: 10)
-			)
 			.fixedSize(horizontal: false, vertical: true)
 		}
 		.contextMenu() {
@@ -132,12 +137,6 @@ struct EventListView: View {
 			} label: {
 				Label("Delete", systemImage: "trash")
 			}
-		}
-		.sheet(isPresented: $sheetpresented) {
-			EditEventView(
-				viewModel: viewModel,
-				event: $event
-			)
 		}
 	}
 }
