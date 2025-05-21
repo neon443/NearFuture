@@ -54,7 +54,7 @@ class AccentIcon {
 
 class SettingsViewModel: ObservableObject {
 #if canImport(UIKit)
-	@Published var settings: Settings = Settings(
+	@Published var settings: NFSettings = NFSettings(
 		showCompletedInHome: false,
 		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!),
 		showWhatsNew: true,
