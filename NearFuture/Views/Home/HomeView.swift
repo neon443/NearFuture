@@ -10,15 +10,15 @@ import SwiftUI;import AppIntents
 struct HomeView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@ObservedObject var settingsModel: SettingsViewModel
-	@State private var eventName = ""
-	@State private var eventComplete = false
-	@State private var eventCompleteDesc = ""
-	@State private var eventSymbol = "star"
+	@State private var eventName: String = ""
+	@State private var eventComplete: Bool = false
+	@State private var eventCompleteDesc: String = ""
+	@State private var eventSymbol: String = "star"
 	@State private var eventColor: Color = randomColor()
-	@State private var eventNotes = ""
+	@State private var eventNotes: String = ""
 	@State private var eventDate = Date()
 	@State private var eventRecurrence: Event.RecurrenceType = .none
-	@State private var showingAddEventView = false
+	@State private var showingAddEventView: Bool = false
 	@State private var searchInput: String = ""
 	@Environment(\.colorScheme) var appearance
 	var darkMode: Bool {

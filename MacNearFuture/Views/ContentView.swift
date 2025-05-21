@@ -12,15 +12,11 @@ struct ContentView: View {
 	@ObservedObject var settingsModel: SettingsViewModel
 	
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-			Text(getVersion())
-				.foregroundStyle(Color("uiColors/bloo"))
-        }
-        .padding()
+		ScrollView {
+			ForEach(viewModel.events) { event in
+				EventListView(viewModel: viewModel, event: event)
+			}
+		}
     }
 }
 

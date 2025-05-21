@@ -16,7 +16,7 @@ struct WhatsNewView: View {
 		var title: String
 		var subtitle: String
 	}
-	@State var bye = false
+	@State var bye: Bool = false
 	var whatsNewChunks: [WhatsNewChunk] {
 		return [
 			WhatsNewChunk(

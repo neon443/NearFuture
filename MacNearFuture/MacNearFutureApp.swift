@@ -1,23 +1,24 @@
 //
-//  NearFutureApp.swift
-//  NearFuture
+//  MacNearFutureApp.swift
+//  MacNearFuture
 //
-//  Created by neon443 on 24/12/2024.
+//  Created by neon443 on 21/05/2025.
 //
 
+import Foundation
 import SwiftUI
-import SwiftData
 
 @main
 struct NearFutureApp: App {
 	@StateObject var settingsModel: SettingsViewModel = SettingsViewModel()
-    var body: some Scene {
-        WindowGroup {
+	var body: some Scene {
+		WindowGroup {
 			ContentView(
 				viewModel: EventViewModel(),
 				settingsModel: settingsModel
 			)
 			.tint(settingsModel.settings.tint.color)
-        }
-    }
+		}
+		.windowIdealSize(.fitToContent)
+	}
 }

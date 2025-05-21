@@ -10,11 +10,20 @@
 		A90D49382DDE0FAF00781124 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49332DDE0FAF00781124 /* ContentView.swift */; };
 		A90D493D2DDE10B200781124 /* NearFutureIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A949F8312DCAAA8A0064DCA0 /* NearFutureIcon.png */; };
 		A90D493E2DDE10CF00781124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
-		A90D49402DDE111400781124 /* NearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2872D24011400E4F9B1 /* NearFutureApp.swift */; };
 		A90D49422DDE114100781124 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Event.swift */; };
 		A90D49442DDE1C7600781124 /* Tints.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90D49432DDE1C1100781124 /* Tints.xcassets */; };
 		A90D49452DDE1C7600781124 /* Tints.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90D49432DDE1C1100781124 /* Tints.xcassets */; };
 		A90D49462DDE1C7A00781124 /* Tints.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90D49432DDE1C1100781124 /* Tints.xcassets */; };
+		A90D494B2DDE2C2900781124 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83C2DCAABE00064DCA0 /* AddEventView.swift */; };
+		A90D494F2DDE2C8500781124 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D494E2DDE2C8500781124 /* EditEventView.swift */; };
+		A90D49502DDE2C8500781124 /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D494E2DDE2C8500781124 /* EditEventView.swift */; };
+		A90D49522DDE2D0000781124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49512DDE2D0000781124 /* Extensions.swift */; };
+		A90D49532DDE2D0000781124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49512DDE2D0000781124 /* Extensions.swift */; };
+		A90D49562DDE2D5800781124 /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = A90D49552DDE2D5800781124 /* SFSymbolsPicker */; };
+		A90D49582DDE2DBD00781124 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49572DDE2DBD00781124 /* EventListView.swift */; };
+		A90D49592DDE2DBD00781124 /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49572DDE2DBD00781124 /* EventListView.swift */; };
+		A90D495B2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */; };
+		A90D495C2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */; };
 		A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4A2DD26C0F00856265 /* HomeView.swift */; };
 		A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
 		A914FA4F2DD276D200856265 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4E2DD276D200856265 /* AboutView.swift */; };
@@ -70,10 +79,14 @@
 
 /* Begin PBXFileReference section */
 		A90D491F2DDE08E400781124 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A90D49262DDE0FA400781124 /* MacNearFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacNearFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A90D49262DDE0FA400781124 /* Near Future.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Near Future.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90D49332DDE0FAF00781124 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A90D49342DDE0FAF00781124 /* MacNearFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacNearFuture.entitlements; sourceTree = "<group>"; };
 		A90D49432DDE1C1100781124 /* Tints.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Tints.xcassets; sourceTree = "<group>"; };
+		A90D494E2DDE2C8500781124 /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EditEventView.swift; path = MacNearFuture/Views/EditEventView.swift; sourceTree = SOURCE_ROOT; };
+		A90D49512DDE2D0000781124 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A90D49572DDE2DBD00781124 /* EventListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListView.swift; sourceTree = "<group>"; };
+		A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MacNearFutureApp.swift; path = MacNearFuture/MacNearFutureApp.swift; sourceTree = SOURCE_ROOT; };
 		A90FDE222DC0D4310012790C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A914FA4A2DD26C0F00856265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A914FA4C2DD2768900856265 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhatsNewView.swift; path = NearFuture/Views/Settings/WhatsNewView.swift; sourceTree = SOURCE_ROOT; };
@@ -111,6 +124,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90D49562DDE2D5800781124 /* SFSymbolsPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +157,7 @@
 		A90D49362DDE0FAF00781124 /* MacNearFuture */ = {
 			isa = PBXGroup;
 			children = (
+				A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */,
 				A90D493F2DDE10EC00781124 /* Views */,
 				A90D49342DDE0FAF00781124 /* MacNearFuture.entitlements */,
 			);
@@ -153,6 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				A90D49332DDE0FAF00781124 /* ContentView.swift */,
+				A90D49572DDE2DBD00781124 /* EventListView.swift */,
+				A90D494E2DDE2C8500781124 /* EditEventView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,9 +178,17 @@
 			isa = PBXGroup;
 			children = (
 				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
+				A90D49512DDE2D0000781124 /* Extensions.swift */,
 				A90D49202DDE0A3B00781124 /* Model */,
 			);
 			path = Shared;
+			sourceTree = "<group>";
+		};
+		A90D49542DDE2D5800781124 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		A920C27B2D24011300E4F9B1 = {
@@ -176,6 +201,7 @@
 				A90D49362DDE0FAF00781124 /* MacNearFuture */,
 				A949F8002DCAA0340064DCA0 /* Resources */,
 				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
+				A90D49542DDE2D5800781124 /* Frameworks */,
 				A920C2852D24011400E4F9B1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -185,7 +211,7 @@
 			children = (
 				A920C2842D24011400E4F9B1 /* NearFuture.app */,
 				A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */,
-				A90D49262DDE0FA400781124 /* MacNearFuture.app */,
+				A90D49262DDE0FA400781124 /* Near Future.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -240,9 +266,9 @@
 		A949F8422DCAABE00064DCA0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				A914FA4A2DD26C0F00856265 /* HomeView.swift */,
 				A949F8402DCAABE00064DCA0 /* EventListView.swift */,
 				A949F8412DCAABE00064DCA0 /* HelpView.swift */,
-				A914FA4A2DD26C0F00856265 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -315,12 +341,14 @@
 			buildRules = (
 			);
 			dependencies = (
+				A90D494D2DDE2C6000781124 /* PBXTargetDependency */,
 			);
 			name = MacNearFuture;
 			packageProductDependencies = (
+				A90D49552DDE2D5800781124 /* SFSymbolsPicker */,
 			);
 			productName = MacNearFuture;
-			productReference = A90D49262DDE0FA400781124 /* MacNearFuture.app */;
+			productReference = A90D49262DDE0FA400781124 /* Near Future.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A920C2832D24011300E4F9B1 /* NearFuture */ = {
@@ -444,9 +472,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A90D49402DDE111400781124 /* NearFutureApp.swift in Sources */,
+				A90D494B2DDE2C2900781124 /* AddEventView.swift in Sources */,
+				A90D495B2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */,
+				A90D49522DDE2D0000781124 /* Extensions.swift in Sources */,
 				A90D49422DDE114100781124 /* Event.swift in Sources */,
 				A90D49382DDE0FAF00781124 /* ContentView.swift in Sources */,
+				A90D494F2DDE2C8500781124 /* EditEventView.swift in Sources */,
+				A90D49582DDE2DBD00781124 /* EventListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,14 +491,18 @@
 				A914FA4F2DD276D200856265 /* AboutView.swift in Sources */,
 				A949F84C2DCAABE00064DCA0 /* AddEventView.swift in Sources */,
 				A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */,
+				A90D49502DDE2C8500781124 /* EditEventView.swift in Sources */,
 				A949F84D2DCAABE00064DCA0 /* EditEventView.swift in Sources */,
 				A949F84E2DCAABE00064DCA0 /* ContentView.swift in Sources */,
+				A90D495C2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */,
 				A949F84F2DCAABE00064DCA0 /* EventListView.swift in Sources */,
 				A949F8502DCAABE00064DCA0 /* HelpView.swift in Sources */,
 				A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */,
 				A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */,
 				A949F8512DCAABE00064DCA0 /* ExportView.swift in Sources */,
+				A90D49532DDE2D0000781124 /* Extensions.swift in Sources */,
 				A949F8522DCAABE00064DCA0 /* iCloudSettingsView.swift in Sources */,
+				A90D49592DDE2DBD00781124 /* EventListView.swift in Sources */,
 				A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */,
 				A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */,
 				A949F8552DCAABE00064DCA0 /* StatsView.swift in Sources */,
@@ -488,6 +524,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A90D494D2DDE2C6000781124 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = A90D494C2DDE2C6000781124 /* SFSymbolsPicker */;
+		};
 		A979F6132D270AF90094C0B3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			platformFilter = ios;
@@ -520,7 +560,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = "$(VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Near Future";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -551,7 +591,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = "$(VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Near Future";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -920,6 +960,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		A90D494C2DDE2C6000781124 /* SFSymbolsPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A920C2BC2D24021900E4F9B1 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */;
+			productName = SFSymbolsPicker;
+		};
+		A90D49552DDE2D5800781124 /* SFSymbolsPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A920C2BC2D24021900E4F9B1 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */;
+			productName = SFSymbolsPicker;
+		};
 		A920C2BD2D24021A00E4F9B1 /* SFSymbolsPicker */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = A920C2BC2D24021900E4F9B1 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */;

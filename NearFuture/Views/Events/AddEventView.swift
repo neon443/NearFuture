@@ -22,7 +22,7 @@ struct AddEventView: View {
 	
 	@State var adding: Bool
 	@State var showNeedsNameAlert: Bool = false
-	@State var isSymbolPickerPresented = false
+	@State var isSymbolPickerPresented: Bool = false
 	
 	@State private var bye: Bool = false
 	
@@ -84,7 +84,7 @@ struct AddEventView: View {
 									.onSubmit {
 										focusedField = .Notes
 									}
-								MagicClearButton(text: $eventName)
+//								MagicClearButton(text: $eventName)
 							}
 						}
 						
@@ -99,7 +99,7 @@ struct AddEventView: View {
 								.onSubmit {
 									focusedField = nil
 								}
-							MagicClearButton(text: $eventNotes)
+//							MagicClearButton(text: $eventNotes)
 						}
 						
 						
@@ -107,7 +107,7 @@ struct AddEventView: View {
 						HStack {
 							Spacer()
 							DatePicker("", selection: $eventDate, displayedComponents: .date)
-								.datePickerStyle(WheelDatePickerStyle())
+//								.datePickerStyle(datepickersty)
 							Spacer()
 							Button() {
 								eventDate = Date()
@@ -143,9 +143,9 @@ struct AddEventView: View {
 				}
 				.scrollContentBackground(.hidden)
 				.navigationTitle("\(adding ? "Add Event" : "")")
-				.navigationBarTitleDisplayMode(.inline)
+//				.navigationBarTitleDisplayMode(.inline)
 				.toolbar {
-					ToolbarItem(placement: .topBarLeading) {
+					ToolbarItem(/*placement: .topBarLeading*/) {
 						if adding {
 							Button() {
 								resetAddEventView()
@@ -159,7 +159,7 @@ struct AddEventView: View {
 							}
 						}
 					}
-					ToolbarItem(placement: .topBarTrailing) {
+					ToolbarItem/*(placement: .topBarTrailing)*/ {
 						if adding {
 							Button {
 								viewModel.addEvent(
