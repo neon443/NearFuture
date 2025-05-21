@@ -11,6 +11,10 @@ import SwiftUI
 import WidgetKit
 import UserNotifications
 import AppIntents
+#if canImport(AppKit)
+import AppKit
+import IOKit
+#endif
 
 //@Model
 //final class Item {
@@ -39,21 +43,44 @@ struct Event: Identifiable, Codable, Equatable, Animatable {
 
 struct ColorCodable: Codable, Equatable {
 	init(_ color: Color) {
-		let uiColor = UIColor(color)
-		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1.0
-		uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
+		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1
 		
-		self.red = Double(r)
-		self.green = Double(g)
-		self.blue = Double(b)
+#if canImport(UIKit)
+		let uiColor = UIColor(color)
+		uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
+#elseif canImport(AppKit)
+		let nscolor = NSColor(color).usingColorSpace(.deviceRGB)
+		nscolor!.getRed(&r, green: &g, blue: &b, alpha: &a)
+#endif
+		
+		self = ColorCodable(
+			red: r,
+			green: g,
+			blue: b
+		)
 	}
+#if canImport(UIKit)
 	init(uiColor: UIColor) {
 		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1.0
 		uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
-		self.red = Double(r)
-		self.green = Double(g)
-		self.blue = Double(b)
+		self = ColorCodable(
+			red: r,
+			green: g,
+			blue: b
+		)
 	}
+#elseif canImport(AppKit)
+	init(nsColor: NSColor) {
+		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1.0
+		let nsColor = nsColor.usingColorSpace(.deviceRGB)
+		nsColor!.getRed(&r, green: &g, blue: &b, alpha: &a)
+		self = ColorCodable(
+			red: r,
+			green: g,
+			blue: b
+		)
+	}
+#endif
 	init(red: Double, green: Double, blue: Double) {
 		self.red = red
 		self.green = green
@@ -112,28 +139,57 @@ struct Settings: Codable, Equatable {
 	var prevAppVersion: String
 }
 
-struct AccentIcon {
+class AccentIcon {
+	#if canImport(UIKit)
 	var icon: UIImage
+	#elseif canImport(AppKit)
+	var icon: NSImage
+	#endif
 	var color: Color
 	var name: String
+	
 	init(_ colorName: String) {
-		if colorName == "orange" {
-			self.icon = UIImage(named: "AppIcon")!
-		} else {
-			self.icon = UIImage(named: colorName)!
-		}
+		#if canImport(UIKit)
+		self.icon = UIImage(named: "AppIcon")!
 		self.color = Color(uiColor: UIColor(named: "uiColors/\(colorName)")!)
+		#elseif canImport(AppKit)
+		self.icon = NSImage(imageLiteralResourceName: "AppIcon")
+		self.color = Color(nsColor: NSColor(named: "uiColors/\(colorName)")!)
+		#endif
+		
 		self.name = colorName
+		
+		if colorName != "orange" {
+			setSelfIcon(to: colorName)
+		}
+	}
+	
+	func setSelfIcon(to name: String) {
+		#if canImport(UIKit)
+		self.icon = UIImage(named: name)!
+		#elseif canImport(AppKit)
+		self.icon = NSImage(imageLiteralResourceName: name)
+		#endif
 	}
 }
 
 class SettingsViewModel: ObservableObject {
+#if canImport(UIKit)
 	@Published var settings: Settings = Settings(
 		showCompletedInHome: false,
 		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!),
 		showWhatsNew: true,
 		prevAppVersion: getVersion()+getBuildID()
 	)
+#elseif canImport(AppKit)
+	@Published var settings: Settings = Settings(
+		showCompletedInHome: false,
+		tint: ColorCodable(nsColor: NSColor(named: "AccentColor")!),
+		showWhatsNew: true,
+		prevAppVersion: getVersion()+getBuildID()
+	)
+#endif
+	
 	@Published var notifsGranted: Bool = false
 	
 	@Published var colorChoices: [AccentIcon] = []
@@ -165,10 +221,16 @@ class SettingsViewModel: ObservableObject {
 	}
 	
 	func changeTint(to: String) {
+#if canImport(UIKit)
 		if let uicolor = UIColor(named: "uiColors/\(to)") {
 			self.settings.tint = ColorCodable(uiColor: uicolor)
 			saveSettings()
 		}
+#elseif canImport(AppKit)
+		if let nscolor = NSColor(named: "uiColors/\(to)") {
+			self.settings.tint = ColorCodable(nsColor: nscolor)
+		}
+#endif
 	}
 	
 	let appGroupSettingsStore = UserDefaults(suiteName: "group.NearFuture") ?? UserDefaults.standard
@@ -580,6 +642,7 @@ func getBuildID() -> String {
 }
 
 func getDevice() -> (sf: String, label: String) {
+	#if canImport(UIKit)
 	let asi = ProcessInfo().isiOSAppOnMac
 	let model = UIDevice().model
 	if asi {
@@ -590,6 +653,10 @@ func getDevice() -> (sf: String, label: String) {
 		return (sf: model.lowercased(), label: model)
 	}
 	return (sf: "iphone", label: "iPhone")
+	#elseif canImport(AppKit)
+	
+	return (sf: "", label: "")
+	#endif
 }
 
 extension Event: AppEntity {
