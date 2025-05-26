@@ -14,13 +14,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build
+      - name: Build for iOS Simulator
         env:
           scheme: ${{ 'default' }}
           platform: ${{ 'iOS Simulator' }}
         run: |
           xcodebuild \
-            -workspace NearFuture.xcodeproj
+            -project NearFuture.xcodeproj
             -scheme NearFuture \
             -sdk iphonesimulator \
             -destination 'platform=iOS Simulator,name=iPhone 14 Pro,OS=18.5' \
