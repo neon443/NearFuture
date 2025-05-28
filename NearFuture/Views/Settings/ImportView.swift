@@ -19,6 +19,29 @@ struct ImportView: View {
 	
 	@State private var replaceCurrentEvents: Bool = false
 	
+	fileprivate func importEvents() {
+		do throws {
+			try viewModel.importEvents(importStr, replace: replaceCurrentEvents)
+			withAnimation {
+				image = "checkmark.circle.fill"
+				text = "Complete"
+				fgColor = .green
+			}
+		} catch importError.invalidB64 {
+			withAnimation {
+				image = "xmark.app.fill"
+				text = "Invalid base64 input."
+				fgColor = .red
+			}
+		} catch {
+			withAnimation {
+				image = "xmark.app.fill"
+				text = error.localizedDescription
+				fgColor = .red
+			}
+		}
+	}
+	
 	var body: some View {
 		ZStack(alignment: .center) {
 			List {
@@ -69,36 +92,34 @@ struct ImportView: View {
 						Toggle("Replace Events", isOn: $replaceCurrentEvents)
 							.foregroundStyle(.two)
 						Spacer()
-						Button() {
-							withAnimation {
-								showAlert.toggle()
+						HStack {
+							Button() {
+								withAnimation {
+									showAlert.toggle()
+								}
+								importEvents()
+							} label: {
+								Text("cancel")
+									.font(.title2)
+									.bold()
 							}
-							do throws {
-								try viewModel.importEvents(importStr, replace: replaceCurrentEvents)
+							.buttonStyle(BorderedProminentButtonStyle())
+							
+							Spacer()
+							
+							Button() {
 								withAnimation {
-									image = "checkmark.circle.fill"
-									text = "Complete"
-									fgColor = .green
+									showAlert.toggle()
 								}
-							} catch importError.invalidB64 {
-								withAnimation {
-									image = "xmark.app.fill"
-									text = "Invalid base64 input."
-									fgColor = .red
-								}
-							} catch {
-								withAnimation {
-									image = "xmark.app.fill"
-									text = error.localizedDescription
-									fgColor = .red
-								}
+								importEvents()
+							} label: {
+								Text("yes")
+									.font(.title2)
+									.bold()
 							}
-						} label: {
-							Text("yes")
-								.font(.title2)
-								.bold()
+							.buttonStyle(BorderedProminentButtonStyle())
 						}
-						.buttonStyle(BorderedProminentButtonStyle())
+						.padding()
 					}
 					.padding()
 				}
