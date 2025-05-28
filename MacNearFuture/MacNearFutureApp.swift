@@ -43,11 +43,6 @@ struct NearFutureApp: App {
 		.defaultSize(width: 550, height: 650)
 		.commands {
 			NearFutureCommands()
-			Menu("hi") {
-				Button("hi") {
-					
-				}
-			}
 		}
 		
 		Window("About Near Future", id: "about") {

@@ -12,10 +12,10 @@ import AppKit
 #endif
 
 struct NFSettings: Codable, Equatable {
-	var showCompletedInHome: Bool
-	var tint: ColorCodable
-	var showWhatsNew: Bool
-	var prevAppVersion: String
+	var showCompletedInHome: Bool = false
+	var tint: ColorCodable = ColorCodable(.accentColor)
+	var showWhatsNew: Bool = true
+	var prevAppVersion: String = getVersion()+getBuildID()
 }
 
 class AccentIcon {
@@ -53,21 +53,7 @@ class AccentIcon {
 }
 
 class SettingsViewModel: ObservableObject {
-#if canImport(UIKit)
-	@Published var settings: NFSettings = NFSettings(
-		showCompletedInHome: false,
-		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!),
-		showWhatsNew: true,
-		prevAppVersion: getVersion()+getBuildID()
-	)
-#elseif canImport(AppKit)
-	@Published var settings: NFSettings = NFSettings(
-		showCompletedInHome: false,
-		tint: ColorCodable(nsColor: NSColor(named: "AccentColor")!),
-		showWhatsNew: true,
-		prevAppVersion: getVersion()+getBuildID()
-	)
-#endif
+	@Published var settings: NFSettings = NFSettings()
 	
 	@Published var notifsGranted: Bool = false
 	

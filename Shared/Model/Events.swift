@@ -526,7 +526,7 @@ func getDevice() -> (sf: String, label: String) {
 	return (sf: "iphone", label: "iPhone")
 	#elseif canImport(AppKit)
 	
-	return (sf: "", label: "")
+	return (sf: "desktopcomputer", label: "Mac")
 	#endif
 }
 
