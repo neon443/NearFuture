@@ -10,35 +10,15 @@ import SwiftUI
 
 @main
 struct NearFutureApp: App {
+	@StateObject var viewModel: EventViewModel = EventViewModel()
 	@StateObject var settingsModel: SettingsViewModel = SettingsViewModel()
 	
 	var body: some Scene {
 		WindowGroup {
-			NavigationSplitView {
-				List {
-					NavigationLink {
-						
-					} label: {
-						Image(systemName: "house")
-						Text("Home")
-					}
-					NavigationLink {
-						
-					} label: {
-						Image(systemName: "tray.full")
-						Text("Archive")
-					}
-				}
-			} detail: {
-				ContentView(
-					viewModel: EventViewModel(),
-					settingsModel: settingsModel
-				)
-
-			}
-			.tint(settingsModel.settings.tint.color)
-			.frame(minWidth: 450, minHeight: 550)
-			.containerBackground(.ultraThinMaterial, for: .window)
+			ContentView(
+				viewModel: viewModel,
+				settingsModel: settingsModel
+			)
 		}
 		.defaultSize(width: 550, height: 650)
 		.commands {
