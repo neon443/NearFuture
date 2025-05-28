@@ -54,11 +54,20 @@
 		A98C20CC2DE730740008D61C /* EditEventViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20C92DE730740008D61C /* EditEventViewMac.swift */; };
 		A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CD2DE7308E0008D61C /* ArchiveView.swift */; };
 		A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CF2DE731BD0008D61C /* HomeView.swift */; };
+		A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20D32DE7339E0008D61C /* AboutView.swift */; };
+		A98C20D52DE7339E0008D61C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20D32DE7339E0008D61C /* AboutView.swift */; };
 		A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		A979F6122D270AF90094C0B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A920C27C2D24011300E4F9B1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A979F6012D270AF00094C0B3;
+			remoteInfo = NearFutureWidgetsExtension;
+		};
+		A98C20D12DE732B10008D61C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A920C27C2D24011300E4F9B1 /* Project object */;
 			proxyType = 1;
@@ -125,6 +134,7 @@
 		A98C20CA2DE730740008D61C /* EventListViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewMac.swift; sourceTree = "<group>"; };
 		A98C20CD2DE7308E0008D61C /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 		A98C20CF2DE731BD0008D61C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A98C20D32DE7339E0008D61C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -168,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */,
+				A98C20D32DE7339E0008D61C /* AboutView.swift */,
 				A90D495D2DDE3C7400781124 /* NFCommands.swift */,
 				A90D493F2DDE10EC00781124 /* Views */,
 				A90D49342DDE0FAF00781124 /* MacNearFuture.entitlements */,
@@ -363,6 +374,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				A98C20D22DE732B10008D61C /* PBXTargetDependency */,
 				A90D494D2DDE2C6000781124 /* PBXTargetDependency */,
 			);
 			name = MacNearFuture;
@@ -498,6 +510,7 @@
 				A98C20CC2DE730740008D61C /* EditEventViewMac.swift in Sources */,
 				A90D494B2DDE2C2900781124 /* AddEventView.swift in Sources */,
 				A90D495E2DDE3C7400781124 /* NFCommands.swift in Sources */,
+				A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */,
 				A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */,
 				A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */,
 				A90D495B2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */,
@@ -513,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A920C28C2D24011400E4F9B1 /* Events.swift in Sources */,
+				A98C20D52DE7339E0008D61C /* AboutView.swift in Sources */,
 				A949F84B2DCAABE00064DCA0 /* ArchiveView.swift in Sources */,
 				A914FA4F2DD276D200856265 /* AboutView.swift in Sources */,
 				A949F84C2DCAABE00064DCA0 /* AddEventView.swift in Sources */,
@@ -560,6 +574,11 @@
 			target = A979F6012D270AF00094C0B3 /* NearFutureWidgetsExtension */;
 			targetProxy = A979F6122D270AF90094C0B3 /* PBXContainerItemProxy */;
 		};
+		A98C20D22DE732B10008D61C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A979F6012D270AF00094C0B3 /* NearFutureWidgetsExtension */;
+			targetProxy = A98C20D12DE732B10008D61C /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -583,7 +602,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MACOSX_DEPLOYMENT_TARGET = 15;
 				MARKETING_VERSION = "$(VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
 				PRODUCT_NAME = "Near Future";
@@ -614,7 +633,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MACOSX_DEPLOYMENT_TARGET = 15;
 				MARKETING_VERSION = "$(VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
 				PRODUCT_NAME = "Near Future";
@@ -888,8 +907,9 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -925,8 +945,9 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

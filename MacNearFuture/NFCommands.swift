@@ -10,6 +10,8 @@ import SwiftUI
 
 struct NearFutureCommands: Commands {
 	var body: some Commands {
-		
+		CommandGroup(after: CommandGroupPlacement.appInfo) {
+			Text("hi")
+		}
 	}
 }

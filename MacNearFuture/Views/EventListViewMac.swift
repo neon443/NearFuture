@@ -14,6 +14,8 @@ struct EventListView: View {
 	@State var largeTick: Bool = false
 	@State var hovering: Bool = false
 	
+	@Environment(\.openWindow) var openWindow
+	
 	var body: some View {
 		ZStack {
 			Color.black.opacity(hovering ? 0.5 : 0.0)
@@ -129,6 +131,9 @@ struct EventListView: View {
 			withAnimation {
 				hovering.toggle()
 			}
+		}
+		.onTapGesture {
+			openWindow(value: event.id)
 		}
 		.contextMenu() {
 			Button(role: .destructive) {

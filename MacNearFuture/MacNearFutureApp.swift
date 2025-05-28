@@ -10,6 +10,7 @@ import SwiftUI
 
 @main
 struct NearFutureApp: App {
+	@Environment(\.openWindow) var openWindow
 	@StateObject var viewModel: EventViewModel = EventViewModel()
 	@StateObject var settingsModel: SettingsViewModel = SettingsViewModel()
 	
@@ -22,12 +23,40 @@ struct NearFutureApp: App {
 		}
 		.defaultSize(width: 550, height: 650)
 		.commands {
+			CommandGroup(replacing: CommandGroupPlacement.appInfo) {
+					Button("about nf") {
+						openWindow(id: "about")
+					}
+				}
 			NearFutureCommands()
 		}
 		
-		Window("About Near Future", id: "about") {
-			
+		WindowGroup("edit Event", for: Event.ID.self) { $eventID in
+			EditEventView(
+				viewModel: viewModel,
+				event: Binding(
+					get: {
+						viewModel.events.first(where: {$0.id == eventID})!
+					},
+					set: { newValue in
+						if let eventIndex = viewModel.events.firstIndex(where: {
+							$0.id == eventID
+						}) {
+							viewModel.events[eventIndex] = newValue
+						}
+						viewModel.saveEvents()
+					}
+				)
+			)
 		}
+		
+		Window("About Near Future", id: "about") {
+			AboutView()
+		}
+		.windowBackgroundDragBehavior(.enabled)
+		.windowResizability(.contentSize)
+		.restorationBehavior(.disabled)
+		.defaultPosition(UnitPoint.center)
 		
 		Settings {
 			Text("wip")
