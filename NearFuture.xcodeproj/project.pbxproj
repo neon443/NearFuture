@@ -26,7 +26,6 @@
 		A90D49612DDE626300781124 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49602DDE626300781124 /* Settings.swift */; };
 		A90D49622DDE626300781124 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49602DDE626300781124 /* Settings.swift */; };
 		A90D49632DDE626300781124 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49602DDE626300781124 /* Settings.swift */; };
-		A90D49672DDE6FAF00781124 /* YouAsked.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49662DDE6FAF00781124 /* YouAsked.swift */; };
 		A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4A2DD26C0F00856265 /* HomeView.swift */; };
 		A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
 		A914FA4F2DD276D200856265 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4E2DD276D200856265 /* AboutView.swift */; };
@@ -93,7 +92,6 @@
 		A90D495D2DDE3C7400781124 /* NFCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCommands.swift; sourceTree = "<group>"; };
 		A90D49602DDE626300781124 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		A90D49652DDE658100781124 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A90D49662DDE6FAF00781124 /* YouAsked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouAsked.swift; sourceTree = "<group>"; };
 		A90FDE222DC0D4310012790C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A914FA4A2DD26C0F00856265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A914FA4C2DD2768900856265 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhatsNewView.swift; path = NearFuture/Views/Settings/WhatsNewView.swift; sourceTree = SOURCE_ROOT; };
@@ -306,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				A949F83F2DCAABE00064DCA0 /* ContentView.swift */,
-				A90D49662DDE6FAF00781124 /* YouAsked.swift */,
 				A949F8422DCAABE00064DCA0 /* Home */,
 				A949F83E2DCAABE00064DCA0 /* Events */,
 				A949F83B2DCAABE00064DCA0 /* Archive */,
@@ -515,7 +512,6 @@
 				A949F8512DCAABE00064DCA0 /* ExportView.swift in Sources */,
 				A90D49532DDE2D0000781124 /* Extensions.swift in Sources */,
 				A949F8522DCAABE00064DCA0 /* iCloudSettingsView.swift in Sources */,
-				A90D49672DDE6FAF00781124 /* YouAsked.swift in Sources */,
 				A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */,
 				A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */,
 				A949F8552DCAABE00064DCA0 /* StatsView.swift in Sources */,
