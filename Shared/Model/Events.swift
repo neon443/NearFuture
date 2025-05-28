@@ -325,14 +325,18 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 		return ""
 	}
 	
-	func importEvents(_ imported: String) throws {
+	func importEvents(_ imported: String, replace: Bool) throws {
 		guard let data = Data(base64Encoded: imported) else {
 			throw importError.invalidB64
 		}
 		let decoder = JSONDecoder()
 		do {
 			let decoded = try decoder.decode([Event].self, from: data)
-			self.events = decoded
+			if replace {
+				self.events = decoded
+			} else {
+				self.events = self.events + decoded
+			}
 			saveEvents()
 		} catch {
 			throw error
