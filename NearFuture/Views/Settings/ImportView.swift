@@ -70,13 +70,13 @@ struct ImportView: View {
 			Group {
 				Rectangle()
 					.frame(maxWidth: .infinity, maxHeight: .infinity)
-					.foregroundStyle(replaceCurrentEvents ? .red.opacity(0.3) : .black.opacity(0.2))
+					.foregroundStyle(replaceCurrentEvents ? .red.opacity(0.25) : .black.opacity(0.2))
 					.animation(.default, value: replaceCurrentEvents)
 					.ignoresSafeArea()
 				ZStack {
-					RoundedRectangle(cornerRadius: 30)
-						.foregroundStyle(.one.opacity(0.8))
-						.blur(radius: 1)
+					Rectangle()
+						.background(.ultraThinMaterial)
+						.clipShape(RoundedRectangle(cornerRadius: 25))
 					VStack(alignment: .center) {
 						Text("Are you sure?")
 							.font(.largeTitle)
