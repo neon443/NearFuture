@@ -95,8 +95,11 @@ struct SettingsView: View {
 						List {
 							if !settingsModel.notifsGranted {
 								Button("Request Notifications") {
-									Task {
-										settingsModel.notifsGranted = await requestNotifs()
+									Task.detached {
+										let requestNotifsResult = await requestNotifs()
+										await MainActor.run {
+											settingsModel.notifsGranted = requestNotifsResult
+										}
 									}
 								}
 								Text("\(Image(systemName: "xmark")) Notifications disabled for Near Future")

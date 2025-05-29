@@ -27,10 +27,10 @@ struct ContentView: View {
 	var body: some View {
 		TabView(selection: $selection) {
 			HomeView(viewModel: viewModel, settingsModel: settingsModel)
-			.tabItem {
-				Label("Home", systemImage: "house")
-			}
-			.tag(Tab.home)
+				.tabItem {
+					Label("Home", systemImage: "house")
+				}
+				.tag(Tab.home)
 			ArchiveView(viewModel: viewModel)
 				.tabItem() {
 					Label("Archive", systemImage: "tray.full")

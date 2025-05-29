@@ -11,13 +11,13 @@ import SwiftData
 @main
 struct NearFutureApp: App {
 	@StateObject var settingsModel: SettingsViewModel = SettingsViewModel()
-    var body: some Scene {
-        WindowGroup {
+	var body: some Scene {
+		WindowGroup {
 			ContentView(
 				viewModel: EventViewModel(),
 				settingsModel: settingsModel
 			)
 			.tint(settingsModel.settings.tint.color)
-        }
-    }
+		}
+	}
 }

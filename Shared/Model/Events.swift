@@ -248,8 +248,8 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 			
 			updateSyncStatus()
 			loadEvents()
-			Task {
-				await checkPendingNotifs(getNotifs())
+			Task.detached {
+				await self.checkPendingNotifs(self.getNotifs())
 			}
 			WidgetCenter.shared.reloadAllTimelines()//reload all widgets when saving events
 			objectWillChange.send()

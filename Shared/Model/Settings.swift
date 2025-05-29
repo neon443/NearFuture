@@ -76,7 +76,7 @@ class SettingsViewModel: ObservableObject {
 		self.device = getDevice()
 		if load {
 			loadSettings()
-			Task {
+			Task.detached {
 				let requestResult = await requestNotifs()
 				await MainActor.run {
 					self.notifsGranted = requestResult
