@@ -1,6 +1,24 @@
-# NearFuture
-
-[App Store](https://apps.apple.com/us/app/near-future-event-tracker/id6744963429)
+<div align="center">
+    <br/>
+    <p>
+        <img src="https://github.com/neon443/NearFuture/blob/main/Resources/Assets.xcassets/AppIcon.appiconset/NearFutureIcon.png?raw=true" title="dockphobia" alt="dockphobia icon" width="200" />
+    </p>
+      <h3>Near Future</h3>
+	    <p>
+        <a href="https://apps.apple.com/us/app/near-future-event-tracker/id6744963429">
+            download
+            <img alt="GitHub Release" src="https://img.shields.io/itunes/v/6744963429">
+        </a>
+    </p>
+    <p>
+        make your Dock scared of the mouse
+        <br/>
+        <a href="https://neon443.github.io">
+            made by neon443
+        </a>
+    </p>
+    <br/>
+</div>
 
 **Near Future** is a SwiftUI App to help people track upcoming events - Holidays, Trips, Birthdays, Weddings, Anniversaries.
 
