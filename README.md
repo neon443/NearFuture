@@ -1,7 +1,7 @@
 <div align="center">
     <br/>
     <p>
-        <img src="https://github.com/neon443/NearFuture/blob/main/Resources/Assets.xcassets/AppIcon.appiconset/NearFutureIcon.png?raw=true" title="dockphobia" alt="dockphobia icon" width="200" />
+        <img src="https://github.com/neon443/NearFuture/blob/main/Resources/Assets.xcassets/AppIcon.appiconset/NearFutureIcon.png?raw=true" title="dockphobia" alt="dockphobia icon" width="100" />
     </p>
       <h3>Near Future</h3>
 	    <p>
