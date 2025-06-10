@@ -36,7 +36,7 @@ struct NearFutureApp: App {
 				viewModel: viewModel,
 				event: Binding(
 					get: {
-						viewModel.events.first(where: {$0.id == eventID})!
+						viewModel.events.first(where: {$0.id == eventID}) ?? viewModel.template
 					},
 					set: { newValue in
 						if let eventIndex = viewModel.events.firstIndex(where: {
@@ -49,6 +49,7 @@ struct NearFutureApp: App {
 				)
 			)
 		}
+		.restorationBehavior(.disabled)
 		
 		Window("About Near Future", id: "about") {
 			AboutView()

@@ -40,125 +40,142 @@ struct AddEventView: View {
 			}
 			NavigationStack {
 				Form {
-					Section(
-						header:
-							Text("Event Details")
-							.font(.headline)
-							.foregroundColor(.accentColor)
-					) {
-						// name & symbol
-						HStack(spacing: 5) {
-							Button() {
-								isSymbolPickerPresented.toggle()
-							} label: {
-								Image(systemName: eventSymbol)
-									.resizable()
-									.scaledToFit()
-									.frame(width: 20, height: 20)
-									.foregroundStyle(eventColor)
-							}
-							.frame(width: 20)
-							.buttonStyle(.borderless)
-							.sheet(isPresented: $isSymbolPickerPresented) {
-								SymbolsPicker(
-									selection: $eventSymbol,
-									title: "Choose a Symbol",
-									searchLabel: "Search...",
-									autoDismiss: true)
-								.presentationDetents([.medium])
-								.apply {
-									if #available(iOS 16.4, *) {
-										$0.presentationBackground(.ultraThinMaterial)
+					LazyVStack {
+						Section(
+							header:
+								Text("Event Details")
+								.font(.headline)
+								.foregroundColor(.accentColor)
+						) {
+							// name & symbol
+							HStack(spacing: 5) {
+								Button() {
+									isSymbolPickerPresented.toggle()
+								} label: {
+									Image(systemName: eventSymbol)
+										.resizable()
+										.scaledToFit()
+										.frame(width: 20, height: 20)
+										.foregroundStyle(eventColor)
+								}
+								.frame(width: 20)
+								.buttonStyle(.borderless)
+								.sheet(isPresented: $isSymbolPickerPresented) {
+									SymbolsPicker(
+										selection: $eventSymbol,
+										title: "Choose a Symbol",
+										searchLabel: "Search...",
+										autoDismiss: true)
+									.presentationDetents([.medium])
+									.apply {
+										if #available(iOS 16.4, *) {
+											$0.presentationBackground(.ultraThinMaterial)
+										}
 									}
 								}
+								ColorPicker("", selection: $eventColor, supportsOpacity: false)
+									.fixedSize()
+								ZStack {
+									TextField("Event Name", text: $eventName)
+										.textFieldStyle(RoundedBorderTextFieldStyle())
+										.padding(.trailing, eventName.isEmpty ? 0 : 30)
+										.animation(.spring, value: eventName)
+										.focused($focusedField, equals: Field.Name)
+										.submitLabel(.next)
+										.onSubmit {
+											focusedField = .Notes
+										}
+									//								MagicClearButton(text: $eventName)
+								}
 							}
-							ColorPicker("", selection: $eventColor, supportsOpacity: false)
-								.fixedSize()
+							
+							// dscription
 							ZStack {
-								TextField("Event Name", text: $eventName)
+								TextField("Event Notes", text: $eventNotes)
 									.textFieldStyle(RoundedBorderTextFieldStyle())
-									.padding(.trailing, eventName.isEmpty ? 0 : 30)
-									.animation(.spring, value: eventName)
-									.focused($focusedField, equals: Field.Name)
-									.submitLabel(.next)
+									.padding(.trailing, eventNotes.isEmpty ? 0 : 30)
+									.animation(.spring, value: eventNotes)
+									.focused($focusedField, equals: Field.Notes)
+									.submitLabel(.done)
 									.onSubmit {
-										focusedField = .Notes
+										focusedField = nil
 									}
-//								MagicClearButton(text: $eventName)
+								//							MagicClearButton(text: $eventNotes)
 							}
-						}
-						
-						// dscription
-						ZStack {
-							TextField("Event Notes", text: $eventNotes)
-								.textFieldStyle(RoundedBorderTextFieldStyle())
-								.padding(.trailing, eventNotes.isEmpty ? 0 : 30)
-								.animation(.spring, value: eventNotes)
-								.focused($focusedField, equals: Field.Notes)
-								.submitLabel(.done)
-								.onSubmit {
-									focusedField = nil
+							
+							
+							// date picker
+							HStack {
+								Spacer()
+								DatePicker("", selection: $eventDate, displayedComponents: .date)
+								//								.datePickerStyle(datepickersty)
+								Spacer()
+								Button() {
+									eventDate = Date()
+								} label: {
+									Image(systemName: "arrow.uturn.left")
+										.resizable()
+										.scaledToFit()
 								}
-//							MagicClearButton(text: $eventNotes)
-						}
-						
-						
-						// date picker
-						HStack {
-							Spacer()
-							DatePicker("", selection: $eventDate, displayedComponents: .date)
-//								.datePickerStyle(datepickersty)
-							Spacer()
-							Button() {
-								eventDate = Date()
-							} label: {
-								Image(systemName: "arrow.uturn.left")
-									.resizable()
-									.scaledToFit()
+								.buttonStyle(BorderlessButtonStyle())
+								.frame(width: 20)
 							}
-							.buttonStyle(BorderlessButtonStyle())
-							.frame(width: 20)
-						}
-						
-						DatePicker(
-							"",
-							selection: $eventDate,
-							displayedComponents: .hourAndMinute
-						)
-						
-						// re-ocurrence Picker
-						Picker("Recurrence", selection: $eventRecurrence) {
-							ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
-								Text(recurrence.rawValue.capitalized)
-							}
-						}
-						.pickerStyle(SegmentedPickerStyle())
-						Text(
-							describeOccurrence(
-								date: eventDate,
-								recurrence: eventRecurrence
+							
+							DatePicker(
+								"",
+								selection: $eventDate,
+								displayedComponents: .hourAndMinute
 							)
-						)
+							
+							// re-ocurrence Picker
+							Picker("Recurrence", selection: $eventRecurrence) {
+								ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
+									Text(recurrence.rawValue.capitalized)
+								}
+							}
+							.pickerStyle(SegmentedPickerStyle())
+							Text(
+								describeOccurrence(
+									date: eventDate,
+									recurrence: eventRecurrence
+								)
+							)
+						}
 					}
 				}
 				.scrollContentBackground(.hidden)
 				.navigationTitle("\(adding ? "Add Event" : "")")
-//				.navigationBarTitleDisplayMode(.inline)
+				//				.navigationBarTitleDisplayMode(.inline)
 				.toolbar {
-					ToolbarItem(/*placement: .topBarLeading*/) {
+#if canImport(UIKit)
+					ToolbarItem(placement: .topBarLeading) {
 						if adding {
 							Button() {
 								resetAddEventView()
 								dismiss()
 							} label: {
 								Image(systemName: "xmark")
-									.symbolRenderingMode(.hierarchical)
 									.resizable()
 									.scaledToFit()
 									.frame(width: 30)
 							}
 						}
 					}
+#else
+					ToolbarItem() {
+						if adding {
+							Button() {
+								resetAddEventView()
+								dismiss()
+							} label: {
+								Image(systemName: "xmark")
+									.resizable()
+									.scaledToFit()
+									.frame(width: 30)
+							}
+						}
+					}
+#endif
 					ToolbarItem/*(placement: .topBarTrailing)*/ {
 						if adding {
 							Button {
