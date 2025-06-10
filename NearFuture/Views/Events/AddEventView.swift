@@ -151,7 +151,7 @@ struct AddEventView: View {
 								resetAddEventView()
 								dismiss()
 							} label: {
-								Image(systemName: "xmark.circle.fill")
+								Image(systemName: "xmark")
 									.symbolRenderingMode(.hierarchical)
 									.resizable()
 									.scaledToFit()
@@ -182,6 +182,7 @@ struct AddEventView: View {
 									.cornerRadius(10)
 									.buttonStyle(BorderedProminentButtonStyle())
 							}
+							.tint(.accent)
 							.apply {
 								if #available(iOS 17, *) {
 									$0.sensoryFeedback(.success, trigger: bye)

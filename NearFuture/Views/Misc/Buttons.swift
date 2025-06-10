@@ -34,17 +34,12 @@ struct AddEventButton: View {
 		Button() {
 			showingAddEventView.toggle()
 		} label: {
-			ZStack {
-				Circle()
-					.frame(width: 33)
-					.foregroundStyle(.one)
-				Image(systemName: "plus")
-					.resizable()
-					.scaledToFit()
-					.frame(width: 15)
-					.bold()
-					.foregroundStyle(.two)
-			}
+			Image(systemName: "plus")
+				.resizable()
+				.scaledToFit()
+				.frame(width: 15)
+				.bold()
+				.foregroundStyle(.two)
 		}
 	}
 }
