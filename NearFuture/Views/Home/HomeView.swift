@@ -5,19 +5,14 @@
 //  Created by neon443 on 12/05/2025.
 //
 
-import SwiftUI;import AppIntents
+import SwiftUI
+import AppIntents
 
 struct HomeView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@ObservedObject var settingsModel: SettingsViewModel
-	@State private var eventName: String = ""
-	@State private var eventComplete: Bool = false
-	@State private var eventCompleteDesc: String = ""
-	@State private var eventSymbol: String = "star"
-	@State private var eventColor: Color = randomColor()
-	@State private var eventNotes: String = ""
-	@State private var eventDate = Date()
-	@State private var eventRecurrence: Event.RecurrenceType = .none
+	
+	@State private var event: Event = dummyEventViewModel().template
 	@State private var showingAddEventView: Bool = false
 	@State private var searchInput: String = ""
 	@Environment(\.colorScheme) var appearance
@@ -47,36 +42,18 @@ struct HomeView: View {
 			ZStack {
 				backgroundGradient
 				VStack {
-					ZStack {
-						TextField(
-							"\(Image(systemName: "magnifyingglass")) Search",
-							text: $searchInput
-						)
-						.padding(.trailing, searchInput.isEmpty ? 0 : 30)
-						.animation(.spring, value: searchInput)
-						.textFieldStyle(RoundedBorderTextFieldStyle())
-						.submitLabel(.done)
-						.focused($focusedField, equals: Field.Search)
-						.onSubmit {
-							focusedField = nil
-						}
-						MagicClearButton(text: $searchInput)
-							.onTapGesture {
-								focusedField = nil
-							}
-					}
-					.padding(.horizontal)
-					
 					if filteredEvents.isEmpty && !searchInput.isEmpty {
 						HelpView(searchInput: $searchInput, focusedField: focusedField)
 					} else {
 						ScrollView {
-							ForEach(filteredEvents) { event in
-								EventListView(viewModel: viewModel, event: event)
-									.transition(.moveAndFade)
-									.id(event.complete)
-							}
-							.padding(.horizontal)
+//							LazyVStack {
+								ForEach(filteredEvents) { event in
+									EventListView(viewModel: viewModel, event: event)
+										.transition(.moveAndFade)
+										.id(event.complete)
+								}
+								.padding(.horizontal)
+//							}
 							if filteredEvents.isEmpty {
 								HelpView(
 									searchInput: $searchInput,
@@ -88,6 +65,7 @@ struct HomeView: View {
 						.animation(.default, value: filteredEvents)
 					}
 				}
+				.searchable(text: $searchInput)
 				.navigationTitle("Near Future")
 				.apply {
 					if #available(iOS 17, *) {
@@ -99,14 +77,7 @@ struct HomeView: View {
 				.sheet(isPresented: $showingAddEventView) {
 					AddEventView(
 						viewModel: viewModel,
-						eventName: $eventName,
-						eventComplete: $eventComplete,
-						eventCompleteDesc: $eventCompleteDesc,
-						eventSymbol: $eventSymbol,
-						eventColor: $eventColor,
-						eventNotes: $eventNotes,
-						eventDate: $eventDate,
-						eventRecurrence: $eventRecurrence,
+						event: $event,
 						adding: true //adding event
 					)
 				}

@@ -120,7 +120,6 @@ struct EventListView: View {
 				}
 				.transition(.opacity)
 				.padding(.vertical, 5)
-				.background(.ultraThinMaterial)
 				.overlay(
 					RoundedRectangle(cornerRadius: 10)
 						.stroke(

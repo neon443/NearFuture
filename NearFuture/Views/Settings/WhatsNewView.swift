@@ -92,11 +92,6 @@ struct WhatsNewView: View {
 		}
 		.scrollContentBackground(.hidden)
 		.presentationDragIndicator(.visible)
-		.apply {
-			if #available(iOS 16.4, *) {
-				$0.presentationBackground(.ultraThinMaterial)
-			}
-		}
 		.onDisappear {
 			settingsModel.settings.prevAppVersion = getVersion()+getBuildID()
 			settingsModel.saveSettings()

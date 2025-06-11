@@ -15,14 +15,7 @@ struct EditEventView: View {
 	var body: some View {
 		AddEventView(
 			viewModel: viewModel,
-			eventName: $event.name,
-			eventComplete: $event.complete,
-			eventCompleteDesc: $event.completeDesc,
-			eventSymbol: $event.symbol,
-			eventColor: $event.color.colorBind,
-			eventNotes: $event.notes,
-			eventDate: $event.date,
-			eventRecurrence: $event.recurrence,
+			event: $event,
 			adding: false //bc we editing existing event
 		)
 		.navigationTitle("Edit Event")

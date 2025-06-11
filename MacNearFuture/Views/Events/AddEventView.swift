@@ -1,8 +1,8 @@
 //
 //  AddEventView.swift
-//  NearFuture
+//  MacNearFuture
 //
-//  Created by neon443 on 25/12/2024.
+//  Created by neon443 on 11/06/2025.
 //
 
 import SwiftUI
@@ -79,7 +79,6 @@ struct AddEventView: View {
 						HStack {
 							Spacer()
 							DatePicker("", selection: $event.date, displayedComponents: .date)
-								.datePickerStyle(.wheel)
 							Spacer()
 							Button() {
 								event.date = Date()
@@ -97,7 +96,6 @@ struct AddEventView: View {
 							selection: $event.date,
 							displayedComponents: .hourAndMinute
 						)
-						.datePickerStyle(.wheel)
 						
 						// re-ocurrence Picker
 						Picker("Recurrence", selection: $event.recurrence) {
@@ -116,9 +114,8 @@ struct AddEventView: View {
 				}
 				.scrollContentBackground(.hidden)
 				.navigationTitle("\(adding ? "Add Event" : "")")
-				.navigationBarTitleDisplayMode(.inline)
 				.toolbar {
-					ToolbarItem(placement: .topBarLeading) {
+					ToolbarItem() {
 						if adding {
 							Button() {
 								resetAddEventView()
@@ -131,7 +128,7 @@ struct AddEventView: View {
 							}
 						}
 					}
-					ToolbarItem(placement: .topBarTrailing) {
+					ToolbarItem/*(placement: .topBarTrailing)*/ {
 						if adding {
 							Button {
 								viewModel.addEvent(

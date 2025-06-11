@@ -75,7 +75,6 @@ struct ImportView: View {
 					.ignoresSafeArea()
 				ZStack {
 					Rectangle()
-						.background(.ultraThinMaterial)
 						.clipShape(RoundedRectangle(cornerRadius: 25))
 					VStack(alignment: .center) {
 						Text("Are you sure?")

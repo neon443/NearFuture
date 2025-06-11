@@ -49,14 +49,7 @@ struct ArchiveView: View {
 		.sheet(isPresented: $showAddEvent) {
 			AddEventView(
 				viewModel: viewModel,
-				eventName: $viewModel.editableTemplate.name,
-				eventComplete: $viewModel.editableTemplate.complete,
-				eventCompleteDesc: $viewModel.editableTemplate.completeDesc,
-				eventSymbol: $viewModel.editableTemplate.symbol,
-				eventColor: $viewModel.editableTemplate.color.colorBind,
-				eventNotes: $viewModel.editableTemplate.notes,
-				eventDate: $viewModel.editableTemplate.date,
-				eventRecurrence: $viewModel.editableTemplate.recurrence,
+				event: $viewModel.editableTemplate,
 				adding: true
 			)
 		}

@@ -39,7 +39,7 @@ struct AddEventButton: View {
 				.scaledToFit()
 				.frame(width: 15)
 				.bold()
-				.foregroundStyle(.two)
+				.foregroundStyle(.one)
 		}
 	}
 }
