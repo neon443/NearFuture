@@ -59,60 +59,60 @@ struct AddEventView: View {
 								autoDismiss: true)
 							.presentationDetents([.medium])
 						}
-						
-						// dscription
-						ZStack {
-							TextField("Event Notes", text: $event.notes)
-								.textFieldStyle(RoundedBorderTextFieldStyle())
-								.padding(.trailing, event.notes.isEmpty ? 0 : 30)
-								.animation(.spring, value: event.notes)
-								.focused($focusedField, equals: Field.Notes)
-								.submitLabel(.done)
-								.onSubmit {
-									focusedField = nil
-								}
-							//							MagicClearButton(text: $eventNotes)
-						}
-						
-						
-						// date picker
-						HStack {
-							Spacer()
-							DatePicker("", selection: $event.date, displayedComponents: .date)
-								.datePickerStyle(.wheel)
-							Spacer()
-							Button() {
-								event.date = Date()
-							} label: {
-								Image(systemName: "arrow.uturn.left")
-									.resizable()
-									.scaledToFit()
-							}
-							.buttonStyle(BorderlessButtonStyle())
-							.frame(width: 20)
-						}
-						
-						DatePicker(
-							"",
-							selection: $event.date,
-							displayedComponents: .hourAndMinute
-						)
-						.datePickerStyle(.wheel)
-						
-						// re-ocurrence Picker
-						Picker("Recurrence", selection: $event.recurrence) {
-							ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
-								Text(recurrence.rawValue.capitalized)
-							}
-						}
-						.pickerStyle(SegmentedPickerStyle())
-						Text(
-							describeOccurrence(
-								date: event.date,
-								recurrence: event.recurrence
-							)
-						)
 					}
+					
+					// dscription
+					ZStack {
+						TextField("Event Notes", text: $event.notes)
+							.textFieldStyle(RoundedBorderTextFieldStyle())
+							.padding(.trailing, event.notes.isEmpty ? 0 : 30)
+							.animation(.spring, value: event.notes)
+							.focused($focusedField, equals: Field.Notes)
+							.submitLabel(.done)
+							.onSubmit {
+								focusedField = nil
+							}
+						//							MagicClearButton(text: $eventNotes)
+					}
+					
+					
+					// date picker
+					HStack {
+						Spacer()
+						DatePicker("", selection: $event.date, displayedComponents: .date)
+							.datePickerStyle(.wheel)
+						Spacer()
+						Button() {
+							event.date = Date()
+						} label: {
+							Image(systemName: "arrow.uturn.left")
+								.resizable()
+								.scaledToFit()
+						}
+						.buttonStyle(BorderlessButtonStyle())
+						.frame(width: 20)
+					}
+					
+					DatePicker(
+						"",
+						selection: $event.date,
+						displayedComponents: .hourAndMinute
+					)
+					.datePickerStyle(.wheel)
+					
+					// re-ocurrence Picker
+					Picker("Recurrence", selection: $event.recurrence) {
+						ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
+							Text(recurrence.rawValue.capitalized)
+						}
+					}
+					.pickerStyle(SegmentedPickerStyle())
+					Text(
+						describeOccurrence(
+							date: event.date,
+							recurrence: event.recurrence
+						)
+					)
 				}
 				.scrollContentBackground(.hidden)
 				.navigationTitle("\(adding ? "Add Event" : "")")

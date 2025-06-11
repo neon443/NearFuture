@@ -50,7 +50,7 @@
 		A979F6142D270AF90094C0B3 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A979F6182D2714310094C0B3 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Events.swift */; };
 		A98C20CB2DE730740008D61C /* EventListViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CA2DE730740008D61C /* EventListViewMac.swift */; };
-		A98C20CC2DE730740008D61C /* EditEventViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20C92DE730740008D61C /* EditEventViewMac.swift */; };
+		A98C20CC2DE730740008D61C /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20C92DE730740008D61C /* EditEventView.swift */; };
 		A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CD2DE7308E0008D61C /* ArchiveView.swift */; };
 		A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CF2DE731BD0008D61C /* HomeView.swift */; };
 		A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20D32DE7339E0008D61C /* AboutView.swift */; };
@@ -129,7 +129,7 @@
 		A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
 		A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
 		A979F60F2D270AF80094C0B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A98C20C92DE730740008D61C /* EditEventViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewMac.swift; sourceTree = "<group>"; };
+		A98C20C92DE730740008D61C /* EditEventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventView.swift; sourceTree = "<group>"; };
 		A98C20CA2DE730740008D61C /* EventListViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewMac.swift; sourceTree = "<group>"; };
 		A98C20CD2DE7308E0008D61C /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 		A98C20CF2DE731BD0008D61C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -356,7 +356,7 @@
 			isa = PBXGroup;
 			children = (
 				A9B78B932DF9F3CF00647399 /* AddEventView.swift */,
-				A98C20C92DE730740008D61C /* EditEventViewMac.swift */,
+				A98C20C92DE730740008D61C /* EditEventView.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -508,7 +508,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A98C20CB2DE730740008D61C /* EventListViewMac.swift in Sources */,
-				A98C20CC2DE730740008D61C /* EditEventViewMac.swift in Sources */,
+				A98C20CC2DE730740008D61C /* EditEventView.swift in Sources */,
 				A90D495E2DDE3C7400781124 /* NFCommands.swift in Sources */,
 				A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */,
 				A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */,
