@@ -10,37 +10,11 @@ import SwiftUI
 struct SettingsView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@ObservedObject var settingsModel: SettingsViewModel
-	
-	@State private var hasUbiquitous: Bool = false
-	@State private var lastSyncWasSuccessful: Bool = false
-	@State private var lastSyncWasNormalAgo: Bool = false
-	@State private var localCountEqualToiCloud: Bool = false
-	@State private var icloudCountEqualToLocal: Bool = false
+
 	@State private var importStr: String = ""
 	
-	func updateStatus() {
-		let vm = viewModel
-		hasUbiquitous = vm.hasUbiquitousKeyValueStore()
-		lastSyncWasSuccessful = vm.syncStatus.contains("Success")
-		lastSyncWasNormalAgo = vm.lastSync?.timeIntervalSinceNow.isNormal ?? false
-		localCountEqualToiCloud = vm.localEventCount == vm.icloudEventCount
-		icloudCountEqualToLocal = vm.icloudEventCount == vm.localEventCount
-	}
-	
-	var iCloudStatusColor: Color {
-		let allTrue = hasUbiquitous && lastSyncWasSuccessful && lastSyncWasNormalAgo && localCountEqualToiCloud && icloudCountEqualToLocal
-		let someTrue = hasUbiquitous || lastSyncWasSuccessful || lastSyncWasNormalAgo || localCountEqualToiCloud || icloudCountEqualToLocal
-		
-		if allTrue {
-			return .green
-		} else if someTrue {
-			return .orange
-		} else {
-			return .red
-		}
-	}
-	
 	func changeIcon(to: String) {
+		#if canImport(UIKit)
 		guard UIApplication.shared.supportsAlternateIcons else {
 			print("doesnt tsupport alternate icons")
 			return
@@ -54,6 +28,7 @@ struct SettingsView: View {
 		UIApplication.shared.setAlternateIconName(to) { error in
 			print(error as Any)
 		}
+		#endif
 	}
 	
 	var body: some View {
@@ -64,7 +39,11 @@ struct SettingsView: View {
 					ScrollView(.horizontal) {
 						HStack {
 							ForEach(settingsModel.accentChoices, id: \.self) { choice in
+								#if canImport(UIKit)
 								let color = Color(uiColor: UIColor(named: "uiColors/\(choice)")!)
+								#else
+								let color = Color(nsColor: NSColor(named: "uiColors/\(choice)")!)
+								#endif
 								ZStack {
 									Button() {
 										settingsModel.changeTint(to: choice)
@@ -94,6 +73,8 @@ struct SettingsView: View {
 					NavigationLink() {
 						List {
 							if !settingsModel.notifsGranted {
+								Text("\(Image(systemName: "xmark")) Notifications disabled for Near Future")
+									.foregroundStyle(.red)
 								Button("Request Notifications") {
 									Task.detached {
 										let requestNotifsResult = await requestNotifs()
@@ -102,8 +83,6 @@ struct SettingsView: View {
 										}
 									}
 								}
-								Text("\(Image(systemName: "xmark")) Notifications disabled for Near Future")
-									.foregroundStyle(.red)
 							} else {
 								Text("\(Image(systemName: "checkmark")) Notifications enabled for Near Future")
 									.foregroundStyle(.green)
@@ -116,13 +95,7 @@ struct SettingsView: View {
 					NavigationLink() {
 						iCloudSettingsView(
 							viewModel: viewModel,
-							settingsModel: settingsModel,
-							hasUbiquitous: $hasUbiquitous,
-							lastSyncWasSuccessful: $lastSyncWasSuccessful,
-							lastSyncWasNormalAgo: $lastSyncWasNormalAgo,
-							localCountEqualToiCloud: $localCountEqualToiCloud,
-							icloudCountEqualToLocal: $icloudCountEqualToLocal,
-							updateStatus: updateStatus
+							settingsModel: settingsModel
 						)
 					} label: {
 						HStack {
@@ -131,12 +104,12 @@ struct SettingsView: View {
 							Spacer()
 							Circle()
 								.frame(width: 20, height: 20)
-								.foregroundStyle(iCloudStatusColor)
+								.foregroundStyle(viewModel.iCloudStatusColor)
 						}
 					}
 					.onAppear {
 						viewModel.sync()
-						updateStatus()
+						viewModel.updateiCStatus()
 					}
 					NavigationLink() {
 						ImportView(viewModel: viewModel, importStr: $importStr)
@@ -183,11 +156,13 @@ struct SettingsView: View {
 			.scrollContentBackground(.hidden)
 			.navigationTitle("Settings")
 			.apply {
+				#if canImport(UIKit)
 				if #available(iOS 17, *) {
 					$0.toolbarTitleDisplayMode(.inlineLarge)
 				} else {
 					$0.navigationBarTitleDisplayMode(.inline)
 				}
+				#endif
 			}
 		}
 	}

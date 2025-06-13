@@ -18,40 +18,6 @@ struct NFSettings: Codable, Equatable {
 	var prevAppVersion: String = getVersion()+getBuildID()
 }
 
-class AccentIcon {
-#if canImport(UIKit)
-	var icon: UIImage
-#elseif canImport(AppKit)
-	var icon: NSImage
-#endif
-	var color: Color
-	var name: String
-	
-	init(_ colorName: String) {
-#if canImport(UIKit)
-		self.icon = UIImage(named: "AppIcon")!
-		self.color = Color(uiColor: UIColor(named: "uiColors/\(colorName)")!)
-#elseif canImport(AppKit)
-		self.icon = NSImage(imageLiteralResourceName: "AppIcon")
-		self.color = Color(nsColor: NSColor(named: "uiColors/\(colorName)")!)
-#endif
-		
-		self.name = colorName
-		
-		if colorName != "orange" {
-			setSelfIcon(to: colorName)
-		}
-	}
-	
-	func setSelfIcon(to name: String) {
-#if canImport(UIKit)
-		self.icon = UIImage(named: name)!
-#elseif canImport(AppKit)
-		self.icon = NSImage(imageLiteralResourceName: name)
-#endif
-	}
-}
-
 class SettingsViewModel: ObservableObject {
 	@Published var settings: NFSettings = NFSettings()
 	

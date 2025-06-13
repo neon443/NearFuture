@@ -31,90 +31,92 @@ struct AddEventView: View {
 			if !adding {
 				backgroundGradient
 			}
-			List {
-				Section(
-					header:
-						Text("Event Details")
-						.font(.headline)
-						.foregroundColor(.accentColor)
-				) {
-					// name & symbol
-					HStack(spacing: 5) {
-						Button() {
-							isSymbolPickerPresented.toggle()
-						} label: {
-							Image(systemName: event.symbol)
-								.resizable()
-								.scaledToFit()
-								.frame(width: 20, height: 20)
-								.foregroundStyle(event.color.color)
-						}
-						.frame(width: 20)
-						.buttonStyle(.borderless)
-						.sheet(isPresented: $isSymbolPickerPresented) {
-							SymbolsPicker(
-								selection: $event.symbol,
-								title: "Choose a Symbol",
-								searchLabel: "Search...",
-								autoDismiss: true)
-							.presentationDetents([.medium])
-						}
-					}
-					
-					// dscription
-					ZStack {
-						TextField("Event Notes", text: $event.notes)
-							.textFieldStyle(RoundedBorderTextFieldStyle())
-							.padding(.trailing, event.notes.isEmpty ? 0 : 30)
-							.animation(.spring, value: event.notes)
-							.focused($focusedField, equals: Field.Notes)
-							.submitLabel(.done)
-							.onSubmit {
-								focusedField = nil
+			NavigationStack {
+				List {
+					Section(
+						header:
+							Text("Event Details")
+							.font(.headline)
+							.foregroundColor(.accentColor)
+					) {
+						// name & symbol
+						HStack(spacing: 5) {
+							Button() {
+								isSymbolPickerPresented.toggle()
+							} label: {
+								Image(systemName: event.symbol)
+									.resizable()
+									.scaledToFit()
+									.frame(width: 20, height: 20)
+									.foregroundStyle(event.color.color)
 							}
-						//							MagicClearButton(text: $eventNotes)
-					}
-					
-					
-					// date picker
-					HStack {
-						Spacer()
-						DatePicker("", selection: $event.date, displayedComponents: .date)
-							.datePickerStyle(.wheel)
-						Spacer()
-						Button() {
-							event.date = Date()
-						} label: {
-							Image(systemName: "arrow.uturn.left")
-								.resizable()
-								.scaledToFit()
+							.frame(width: 20)
+							.buttonStyle(.borderless)
+							.sheet(isPresented: $isSymbolPickerPresented) {
+								SymbolsPicker(
+									selection: $event.symbol,
+									title: "Choose a Symbol",
+									searchLabel: "Search...",
+									autoDismiss: true)
+								.presentationDetents([.medium])
+							}
+							TextField("Event Name", text: $event.name)
+								.textFieldStyle(.roundedBorder)
 						}
-						.buttonStyle(BorderlessButtonStyle())
-						.frame(width: 20)
-					}
-					
-					DatePicker(
-						"",
-						selection: $event.date,
-						displayedComponents: .hourAndMinute
-					)
-					.datePickerStyle(.wheel)
-					
-					// re-ocurrence Picker
-					Picker("Recurrence", selection: $event.recurrence) {
-						ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
-							Text(recurrence.rawValue.capitalized)
+						
+						// dscription
+						ZStack {
+							TextField("Event Notes", text: $event.notes)
+								.textFieldStyle(RoundedBorderTextFieldStyle())
+								.padding(.trailing, event.notes.isEmpty ? 0 : 30)
+								.animation(.spring, value: event.notes)
+								.focused($focusedField, equals: Field.Notes)
+								.submitLabel(.done)
+								.onSubmit {
+									focusedField = nil
+								}
+							//							MagicClearButton(text: $eventNotes)
 						}
-					}
-					.pickerStyle(SegmentedPickerStyle())
-					Text(
-						describeOccurrence(
-							date: event.date,
-							recurrence: event.recurrence
+						
+						
+						// date picker
+						HStack {
+							Spacer()
+							DatePicker("", selection: $event.date, displayedComponents: .date)
+								.datePickerStyle(.wheel)
+							Spacer()
+							Button() {
+								event.date = Date()
+							} label: {
+								Image(systemName: "arrow.uturn.left")
+									.resizable()
+									.scaledToFit()
+							}
+							.buttonStyle(BorderlessButtonStyle())
+							.frame(width: 20)
+						}
+						
+						DatePicker(
+							"",
+							selection: $event.date,
+							displayedComponents: .hourAndMinute
 						)
-					)
+						
+						// re-ocurrence Picker
+						Picker("Recurrence", selection: $event.recurrence) {
+							ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
+								Text(recurrence.rawValue.capitalized)
+							}
+						}
+						.pickerStyle(SegmentedPickerStyle())
+						Text(
+							describeOccurrence(
+								date: event.date,
+								recurrence: event.recurrence
+							)
+						)
+					}
 				}
-				.scrollContentBackground(.hidden)
 				.navigationTitle("\(adding ? "Add Event" : "")")
 				.navigationBarTitleDisplayMode(.inline)
 				.toolbar {
@@ -128,10 +130,11 @@ struct AddEventView: View {
 									.resizable()
 									.scaledToFit()
 									.frame(width: 30)
+									.tint(.one)
 							}
 						}
 					}
-					ToolbarItem(placement: .topBarTrailing) {
+					ToolbarItem() {
 						if adding {
 							Button {
 								viewModel.addEvent(
@@ -165,17 +168,11 @@ struct AddEventView: View {
 							} message: {
 								Text("Give your Event a name before saving.")
 							}
-							if event.name.isEmpty {
-								HStack {
-									Image(systemName: "exclamationmark")
-										.foregroundStyle(.red)
-									Text("Give your event a name.")
-								}
-							}
 						}
 					}
 				}
 			}
+			.scrollContentBackground(.hidden)
 			.scrollContentBackground(.hidden)
 			.presentationDragIndicator(.visible)
 		}

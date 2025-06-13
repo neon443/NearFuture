@@ -32,6 +32,15 @@ struct ContentView: View {
 					Image(systemName: "tray.full")
 					Text("Archive")
 				}
+				NavigationLink {
+					SettingsView(
+						viewModel: viewModel,
+						settingsModel: settingsModel
+					)
+				} label: {
+					Image(systemName: "gear")
+					Text("Settings")
+				}
 			}
 		} detail: {
 			

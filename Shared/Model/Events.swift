@@ -11,10 +11,8 @@ import SwiftUI
 import WidgetKit
 import UserNotifications
 import AppIntents
-import AudioToolbox
 #if canImport(AppKit)
 import AppKit
-import IOKit
 #endif
 
 //@Model
@@ -163,6 +161,25 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 	@Published var icloudEventCount: Int = 0
 	@Published var localEventCount: Int = 0
 	@Published var syncStatus: String = "Not Synced"
+	
+	@Published var hasUbiquitous: Bool = false
+	@Published var lastSyncWasSuccessful: Bool = false
+	@Published var lastSyncWasNormalAgo: Bool = false
+	@Published var localCountEqualToiCloud: Bool = false
+	@Published var icloudCountEqualToLocal: Bool = false
+	
+	var iCloudStatusColor: Color {
+		let allTrue = hasUbiquitous && lastSyncWasSuccessful && lastSyncWasNormalAgo && localCountEqualToiCloud && icloudCountEqualToLocal
+		let someTrue = hasUbiquitous || lastSyncWasSuccessful || lastSyncWasNormalAgo || localCountEqualToiCloud || icloudCountEqualToLocal
+		
+		if allTrue {
+			return .green
+		} else if someTrue {
+			return .orange
+		} else {
+			return .red
+		}
+	}
 	
 	init(load: Bool = true) {
 		self.editableTemplate = template
@@ -341,6 +358,14 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 		} catch {
 			throw error
 		}
+	}
+	
+	func updateiCStatus() {
+		hasUbiquitous = hasUbiquitousKeyValueStore()
+		lastSyncWasSuccessful = syncStatus.contains("Success")
+		lastSyncWasNormalAgo = lastSync?.timeIntervalSinceNow.isNormal ?? false
+		localCountEqualToiCloud = localEventCount == icloudEventCount
+		icloudCountEqualToLocal = icloudEventCount == localEventCount
 	}
 	
 	//MARK: Danger Zone

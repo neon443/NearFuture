@@ -13,13 +13,13 @@ struct iCloudSettingsView: View {
 	@State var showPushAlert: Bool = false
 	@State var showPullAlert: Bool = false
 	
-	@Binding var hasUbiquitous: Bool
-	@Binding var lastSyncWasSuccessful: Bool
-	@Binding var lastSyncWasNormalAgo: Bool
-	@Binding var localCountEqualToiCloud: Bool
-	@Binding var icloudCountEqualToLocal: Bool
-	
-	var updateStatus: () -> Void
+//	@Binding var hasUbiquitous: Bool
+//	@Binding var lastSyncWasSuccessful: Bool
+//	@Binding var lastSyncWasNormalAgo: Bool
+//	@Binding var localCountEqualToiCloud: Bool
+//	@Binding var icloudCountEqualToLocal: Bool
+//	
+//	var updateStatus: () -> Void
 	
 	var body: some View {
 		ZStack {
@@ -55,7 +55,7 @@ struct iCloudSettingsView: View {
 									Button("OK", role: .destructive) {
 										viewModel.replaceiCloudWithLocalData()
 										viewModel.sync()
-										updateStatus()
+										viewModel.updateiCStatus()
 									}
 									Button("Cancel", role: .cancel) {}
 								} message: {
@@ -64,7 +64,7 @@ struct iCloudSettingsView: View {
 								
 								Button() {
 									viewModel.sync()
-									updateStatus()
+									viewModel.updateiCStatus()
 								} label: {
 									Image(systemName: "arrow.triangle.2.circlepath")
 										.resizable()
@@ -87,7 +87,7 @@ struct iCloudSettingsView: View {
 									Button("OK", role: .destructive) {
 										viewModel.replaceLocalWithiCloudData()
 										viewModel.sync()
-										updateStatus()
+										viewModel.updateiCStatus()
 									}
 									Button("Cancel", role: .cancel) {}
 								} message: {
@@ -112,23 +112,23 @@ struct iCloudSettingsView: View {
 					.listRowSeparator(.hidden)
 					.onAppear {
 						viewModel.sync()
-						updateStatus()
+						viewModel.updateiCStatus()
 					}
 					
 					HStack {
 						Circle()
 							.frame(width: 20, height: 20)
-							.foregroundStyle(hasUbiquitous ? .green : .red)
+							.foregroundStyle(viewModel.hasUbiquitous ? .green : .red)
 						Text("iCloud")
 						Spacer()
-						Text("\(hasUbiquitous ? "" : "Not ")Working")
+						Text("\(viewModel.hasUbiquitous ? "" : "Not ")Working")
 							.bold()
 					}
 					
 					HStack {
 						Circle()
 							.frame(width: 20, height: 20)
-							.foregroundStyle(lastSyncWasSuccessful ? .green : .red)
+							.foregroundStyle(viewModel.lastSyncWasSuccessful ? .green : .red)
 						Text("Sync Status")
 						Spacer()
 						Text("\(viewModel.syncStatus)")
@@ -138,7 +138,7 @@ struct iCloudSettingsView: View {
 					HStack {
 						Circle()
 							.frame(width: 20, height: 20)
-							.foregroundStyle(lastSyncWasNormalAgo ? .green : .red)
+							.foregroundStyle(viewModel.lastSyncWasNormalAgo ? .green : .red)
 						Text("Last Sync")
 						Spacer()
 						Text("\(viewModel.lastSync?.formatted(date: .long, time: .standard) ?? "Never")")
@@ -148,7 +148,7 @@ struct iCloudSettingsView: View {
 					HStack {
 						Circle()
 							.frame(width: 20, height: 20)
-							.foregroundStyle(localCountEqualToiCloud ? .green : .red)
+							.foregroundStyle(viewModel.localCountEqualToiCloud ? .green : .red)
 						Text("Local Events")
 						Spacer()
 						Text("\(viewModel.localEventCount)")
@@ -158,7 +158,7 @@ struct iCloudSettingsView: View {
 					HStack {
 						Circle()
 							.frame(width: 20, height: 20)
-							.foregroundStyle(icloudCountEqualToLocal ? .green : .red)
+							.foregroundStyle(viewModel.icloudCountEqualToLocal ? .green : .red)
 						Text("Events in iCloud")
 						Spacer()
 						Text("\(viewModel.icloudEventCount)")
@@ -172,11 +172,10 @@ struct iCloudSettingsView: View {
 			}
 			.refreshable {
 				viewModel.sync()
-				updateStatus()
+				viewModel.updateiCStatus()
 			}
 			.scrollContentBackground(.hidden)
 			.navigationTitle("iCloud")
-			.navigationBarTitleDisplayMode(.inline)
 		}
 	}
 }
@@ -184,12 +183,6 @@ struct iCloudSettingsView: View {
 #Preview("iCloudSettingsView") {
 	iCloudSettingsView(
 		viewModel: dummyEventViewModel(),
-		settingsModel: dummySettingsViewModel(),
-		hasUbiquitous: .constant(true),
-		lastSyncWasSuccessful: .constant(true),
-		lastSyncWasNormalAgo: .constant(true),
-		localCountEqualToiCloud: .constant(true),
-		icloudCountEqualToLocal: .constant(true),
-		updateStatus: {}
+		settingsModel: dummySettingsViewModel()
 	)
 }

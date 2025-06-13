@@ -44,6 +44,13 @@
 		A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8462DCAABE00064DCA0 /* SettingsView.swift */; };
 		A949F8552DCAABE00064DCA0 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8482DCAABE00064DCA0 /* StatsView.swift */; };
 		A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F85D2DCABB420064DCA0 /* Buttons.swift */; };
+		A95E9ED32DFC703200ED655F /* iCloudSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8442DCAABE00064DCA0 /* iCloudSettingsView.swift */; };
+		A95E9ED82DFC742B00ED655F /* AccentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E9ED72DFC742B00ED655F /* AccentIcon.swift */; };
+		A95E9ED92DFC742B00ED655F /* AccentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E9ED72DFC742B00ED655F /* AccentIcon.swift */; };
+		A95E9EDA2DFC742B00ED655F /* AccentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E9ED72DFC742B00ED655F /* AccentIcon.swift */; };
+		A95E9EE32DFC775300ED655F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8462DCAABE00064DCA0 /* SettingsView.swift */; };
+		A95E9EE42DFC77D400ED655F /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8452DCAABE00064DCA0 /* ImportView.swift */; };
+		A95E9EE52DFC77E200ED655F /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8432DCAABE00064DCA0 /* ExportView.swift */; };
 		A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */; };
 		A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */; };
 		A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A979F60F2D270AF80094C0B3 /* Assets.xcassets */; };
@@ -125,6 +132,7 @@
 		A949F8462DCAABE00064DCA0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A949F8482DCAABE00064DCA0 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		A949F85D2DCABB420064DCA0 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		A95E9ED72DFC742B00ED655F /* AccentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentIcon.swift; sourceTree = "<group>"; };
 		A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NearFutureWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
 		A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
@@ -170,6 +178,7 @@
 			children = (
 				A920C28B2D24011400E4F9B1 /* Events.swift */,
 				A90D49602DDE626300781124 /* Settings.swift */,
+				A95E9ED72DFC742B00ED655F /* AccentIcon.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -507,9 +516,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A95E9EE32DFC775300ED655F /* SettingsView.swift in Sources */,
+				A95E9EE42DFC77D400ED655F /* ImportView.swift in Sources */,
 				A98C20CB2DE730740008D61C /* EventListViewMac.swift in Sources */,
+				A95E9ED92DFC742B00ED655F /* AccentIcon.swift in Sources */,
 				A98C20CC2DE730740008D61C /* EditEventView.swift in Sources */,
 				A90D495E2DDE3C7400781124 /* NFCommands.swift in Sources */,
+				A95E9EE52DFC77E200ED655F /* ExportView.swift in Sources */,
 				A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */,
 				A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */,
 				A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */,
@@ -519,6 +532,7 @@
 				A90D49422DDE114100781124 /* Events.swift in Sources */,
 				A90D49382DDE0FAF00781124 /* ContentViewMac.swift in Sources */,
 				A90D49622DDE626300781124 /* Settings.swift in Sources */,
+				A95E9ED32DFC703200ED655F /* iCloudSettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -540,6 +554,7 @@
 				A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */,
 				A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */,
 				A949F8512DCAABE00064DCA0 /* ExportView.swift in Sources */,
+				A95E9ED82DFC742B00ED655F /* AccentIcon.swift in Sources */,
 				A90D49532DDE2D0000781124 /* Extensions.swift in Sources */,
 				A949F8522DCAABE00064DCA0 /* iCloudSettingsView.swift in Sources */,
 				A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */,
@@ -555,6 +570,7 @@
 			files = (
 				A979F6182D2714310094C0B3 /* Events.swift in Sources */,
 				A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */,
+				A95E9EDA2DFC742B00ED655F /* AccentIcon.swift in Sources */,
 				A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */,
 				A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */,
 				A90D49632DDE626300781124 /* Settings.swift in Sources */,

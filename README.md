@@ -11,17 +11,18 @@
 - [x] Event colors
 - [x] Recurrence
 - [x] Search
-- [ ] Notifications
+- [x] Notifications
+- [ ] Mac App
 - [ ] Apple Watch App
 - [x] Home Screen Widgets
 - [ ] Lock Screen Widgets
 - [ ] Later Box
 - [ ] Sort by
 - [ ] Reorder Events
-- [ ] Archive
+- [x] Archive
 - [ ] Collaboration
 - [ ] Autocomplete tasks
-- [ ] Settings
+- [x] Settings
 
 ## Features
 - **Event Creation**: Create events with a name, description, date, recurrence, and an icon

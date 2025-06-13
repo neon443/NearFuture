@@ -11,7 +11,8 @@ struct ArchiveView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@State var showAddEvent: Bool = false
 	var filteredEvents: [Event] {
-		return viewModel.events.filter() {$0.complete}
+		let filteredEvents = viewModel.events.filter({$0.complete})
+		return filteredEvents.reversed()
 	}
 	var body: some View {
 		NavigationStack {
