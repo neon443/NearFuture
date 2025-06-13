@@ -25,6 +25,17 @@ struct hapticHeavy: ViewModifier {
 	}
 }
 
+struct glassButton: ViewModifier {
+	func body(content: Content) -> some View {
+		if #available(iOS 19, macOS 16, *) {
+			content.buttonStyle(.glass)
+		} else {
+			content.buttonStyle(.borderedProminent)
+				.clipShape(RoundedRectangle(cornerRadius: 15))
+		}
+	}
+}
+
 struct hapticSuccess: ViewModifier {
 	var trigger: any Equatable
 	

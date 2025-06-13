@@ -32,6 +32,8 @@
 		A91EF80B2DFC910000B8463D /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80A2DFC910000B8463D /* ViewModifiers.swift */; };
 		A91EF80C2DFC910000B8463D /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80A2DFC910000B8463D /* ViewModifiers.swift */; };
 		A91EF80D2DFC910000B8463D /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80A2DFC910000B8463D /* ViewModifiers.swift */; };
+		A91EF80E2DFC9A0C00B8463D /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
+		A91EF8102DFCB66C00B8463D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80F2DFCB66C00B8463D /* SettingsView.swift */; };
 		A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2872D24011400E4F9B1 /* NearFutureApp.swift */; };
 		A920C28C2D24011400E4F9B1 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Events.swift */; };
 		A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
@@ -54,7 +56,6 @@
 		A95E9ED82DFC742B00ED655F /* AccentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E9ED72DFC742B00ED655F /* AccentIcon.swift */; };
 		A95E9ED92DFC742B00ED655F /* AccentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E9ED72DFC742B00ED655F /* AccentIcon.swift */; };
 		A95E9EDA2DFC742B00ED655F /* AccentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E9ED72DFC742B00ED655F /* AccentIcon.swift */; };
-		A95E9EE32DFC775300ED655F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8462DCAABE00064DCA0 /* SettingsView.swift */; };
 		A95E9EE42DFC77D400ED655F /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8452DCAABE00064DCA0 /* ImportView.swift */; };
 		A95E9EE52DFC77E200ED655F /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8432DCAABE00064DCA0 /* ExportView.swift */; };
 		A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */; };
@@ -119,6 +120,7 @@
 		A914FA4E2DD276D200856265 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutView.swift; path = NearFuture/Views/Misc/AboutView.swift; sourceTree = SOURCE_ROOT; };
 		A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCodable.swift; sourceTree = "<group>"; };
 		A91EF80A2DFC910000B8463D /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
+		A91EF80F2DFCB66C00B8463D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A920C2842D24011400E4F9B1 /* NearFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A920C2872D24011400E4F9B1 /* NearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureApp.swift; sourceTree = "<group>"; };
 		A920C28B2D24011400E4F9B1 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				A98C20CA2DE730740008D61C /* EventListViewMac.swift */,
 				A98C20CD2DE7308E0008D61C /* ArchiveView.swift */,
 				A98C20C82DE730420008D61C /* Events */,
+				A91EF80F2DFCB66C00B8463D /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -526,11 +529,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A95E9EE32DFC775300ED655F /* SettingsView.swift in Sources */,
+				A91EF80E2DFC9A0C00B8463D /* WhatsNewView.swift in Sources */,
 				A95E9EE42DFC77D400ED655F /* ImportView.swift in Sources */,
 				A98C20CB2DE730740008D61C /* EventListViewMac.swift in Sources */,
 				A91EF80C2DFC910000B8463D /* ViewModifiers.swift in Sources */,
 				A95E9ED92DFC742B00ED655F /* AccentIcon.swift in Sources */,
+				A91EF8102DFCB66C00B8463D /* SettingsView.swift in Sources */,
 				A98C20CC2DE730740008D61C /* EditEventView.swift in Sources */,
 				A90D495E2DDE3C7400781124 /* NFCommands.swift in Sources */,
 				A95E9EE52DFC77E200ED655F /* ExportView.swift in Sources */,

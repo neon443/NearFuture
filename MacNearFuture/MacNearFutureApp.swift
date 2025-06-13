@@ -24,7 +24,7 @@ struct NearFutureApp: App {
 		.defaultSize(width: 550, height: 650)
 		.commands {
 			CommandGroup(replacing: CommandGroupPlacement.appInfo) {
-					Button("about nf") {
+					Button("About Near Future") {
 						openWindow(id: "about")
 					}
 				}
@@ -60,7 +60,10 @@ struct NearFutureApp: App {
 		.defaultPosition(UnitPoint.center)
 		
 		Settings {
-			Text("wip")
+			SettingsView(
+				viewModel: viewModel,
+				settingsModel: settingsModel
+			)
 		}
 	}
 }

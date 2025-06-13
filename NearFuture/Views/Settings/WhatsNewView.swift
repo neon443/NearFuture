@@ -20,6 +20,11 @@ struct WhatsNewView: View {
 	var whatsNewChunks: [WhatsNewChunk] {
 		return [
 			WhatsNewChunk(
+				symbol: "desktopcomputer",
+				title: "Mac Native App",
+				subtitle: "New Mac native app (Intel too!)"
+			),
+			WhatsNewChunk(
 				symbol: "iphone.radiowaves.left.and.right",
 				title: "Haptic Feedback",
 				subtitle: "Lovely haptic feedback when completing and adding events, and selecting tabs"
@@ -53,23 +58,22 @@ struct WhatsNewView: View {
 	}
 	var body: some View {
 		NavigationStack {
-			List {
-				VStack {
-					Text("What's New")
-						.font(.largeTitle)
-						.bold()
-					AboutView()
-					Divider()
-					VStack(alignment: .leading) {
-						ForEach(whatsNewChunks) { new in
-							WhatsNewChunkView(
-								symbol: new.symbol,
-								title: new.title,
-								subtitle: new.subtitle
-							)
-						}
+			ScrollView {
+				Text("What's New")
+					.font(.largeTitle)
+					.bold()
+					.padding(.vertical)
+				VStack(alignment: .leading) {
+					ForEach(whatsNewChunks) { new in
+						WhatsNewChunkView(
+							symbol: new.symbol,
+							title: new.title,
+							subtitle: new.subtitle
+						)
 					}
+					Spacer()
 				}
+				.padding(.horizontal, 10)
 			}
 			Button() {
 				bye.toggle()
@@ -79,11 +83,10 @@ struct WhatsNewView: View {
 					.font(.headline)
 					.frame(height: 40)
 					.bold()
-					.frame(maxWidth: .infinity)
+//					.frame(maxWidth: .infinity)
 			}
-			.buttonStyle(BorderedProminentButtonStyle())
-			.clipShape(RoundedRectangle(cornerRadius: 15))
-			.padding().padding()
+			.foregroundStyle(.orange)
+			.modifier(glassButton())
 			.modifier(hapticHeavy(trigger: bye))
 		}
 		.scrollContentBackground(.hidden)
@@ -113,7 +116,7 @@ struct WhatsNewChunkView: View {
 				.resizable()
 				.scaledToFit()
 				.frame(width: 30, height: 30)
-				.foregroundStyle(Color.accentColor)
+				.foregroundStyle(Color.orange)
 				.padding(.trailing, 15)
 			VStack(alignment: .leading) {
 				Text(title)

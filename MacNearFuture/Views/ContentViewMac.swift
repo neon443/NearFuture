@@ -12,7 +12,7 @@ struct ContentView: View {
 	@StateObject var settingsModel: SettingsViewModel
 	
     var body: some View {
-		NavigationSplitView(preferredCompactColumn: .constant(.sidebar)) {
+		NavigationSplitView {
 			List {
 				NavigationLink {
 					HomeView(
@@ -43,11 +43,15 @@ struct ContentView: View {
 				}
 			}
 		} detail: {
-			
+			Text("Welcome to Near Future")
 		}
 		.tint(settingsModel.settings.tint.color)
 		.frame(minWidth: 450, minHeight: 550)
-		.containerBackground(.ultraThinMaterial, for: .window)
+		.containerBackground(.regularMaterial, for: .window)
+		.sheet(isPresented: $settingsModel.settings.showWhatsNew) {
+			WhatsNewView(settingsModel: settingsModel)
+				.presentationSizing(.form)
+		}
     }
 }
 

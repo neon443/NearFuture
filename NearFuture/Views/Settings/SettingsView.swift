@@ -14,7 +14,6 @@ struct SettingsView: View {
 	@State private var importStr: String = ""
 	
 	func changeIcon(to toIcon: String) {
-		#if canImport(UIKit)
 		guard UIApplication.shared.supportsAlternateIcons else {
 			print("doesnt tsupport alternate icons")
 			return
@@ -28,31 +27,17 @@ struct SettingsView: View {
 		UIApplication.shared.setAlternateIconName(toIcon) { error in
 			print(error as Any)
 		}
-		#else
-		if let nsimage = NSImage(named: toIcon) {
-			let nsImageView = NSImageView(image: nsimage)
-			nsImageView.frame = NSRect(x: 0, y: 0, width: 128, height: 128)
-			NSApplication.shared.dockTile.contentView = nsImageView
-			NSApplication.shared.dockTile.display()
-		}
-		#endif
 	}
 	
 	var body: some View {
 		NavigationStack {
 			ZStack {
-				#if os(iOS)
 				backgroundGradient
-				#endif
 				List {
 					ScrollView(.horizontal) {
 						HStack {
 							ForEach(settingsModel.accentChoices, id: \.self) { choice in
-								#if canImport(UIKit)
 								let color = Color(uiColor: UIColor(named: "uiColors/\(choice)")!)
-								#else
-								let color = Color(nsColor: NSColor(named: "uiColors/\(choice)")!)
-								#endif
 								ZStack {
 									Button() {
 										settingsModel.changeTint(to: choice)
@@ -62,6 +47,7 @@ struct SettingsView: View {
 											.foregroundStyle(color)
 											.frame(width: 30)
 									}
+									.buttonStyle(.plain)
 									if ColorCodable(color) == settingsModel.settings.tint {
 										let needContrast: Bool = ColorCodable(color) == settingsModel.settings.tint
 										Circle()
