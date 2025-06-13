@@ -13,20 +13,27 @@ struct SettingsView: View {
 
 	@State private var importStr: String = ""
 	
-	func changeIcon(to: String) {
+	func changeIcon(to toIcon: String) {
 		#if canImport(UIKit)
 		guard UIApplication.shared.supportsAlternateIcons else {
 			print("doesnt tsupport alternate icons")
 			return
 		}
-		guard to != "orange" else {
+		guard toIcon != "orange" else {
 			UIApplication.shared.setAlternateIconName(nil) { error in
 				print(error as Any)
 			}
 			return
 		}
-		UIApplication.shared.setAlternateIconName(to) { error in
+		UIApplication.shared.setAlternateIconName(toIcon) { error in
 			print(error as Any)
+		}
+		#else
+		if let nsimage = NSImage(named: toIcon) {
+			let nsImageView = NSImageView(image: nsimage)
+			nsImageView.frame = NSRect(x: 0, y: 0, width: 128, height: 128)
+			NSApplication.shared.dockTile.contentView = nsImageView
+			NSApplication.shared.dockTile.display()
 		}
 		#endif
 	}
@@ -34,7 +41,9 @@ struct SettingsView: View {
 	var body: some View {
 		NavigationStack {
 			ZStack {
+				#if os(iOS)
 				backgroundGradient
+				#endif
 				List {
 					ScrollView(.horizontal) {
 						HStack {
@@ -153,17 +162,9 @@ struct SettingsView: View {
 					}
 				}
 			}
-			.scrollContentBackground(.hidden)
 			.navigationTitle("Settings")
-			.apply {
-				#if canImport(UIKit)
-				if #available(iOS 17, *) {
-					$0.toolbarTitleDisplayMode(.inlineLarge)
-				} else {
-					$0.navigationBarTitleDisplayMode(.inline)
-				}
-				#endif
-			}
+			.modifier(navigationInlineLarge())
+			.scrollContentBackground(.hidden)
 		}
 	}
 }

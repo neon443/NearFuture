@@ -118,11 +118,6 @@ struct EventListView: View {
 					.spring(response: 0.2, dampingFraction: 0.75, blendDuration: 2),
 					value: largeTick
 				)
-				.apply {
-					if #available(iOS 17, *) {
-						$0.sensoryFeedback(.success, trigger: event.complete)
-					}
-				}
 			}
 			.transition(.opacity)
 			.fixedSize(horizontal: false, vertical: true)

@@ -39,13 +39,7 @@ struct ArchiveView: View {
 				}
 			}
 			.navigationTitle("Archive")
-			.apply {
-				if #available(iOS 17, *) {
-					$0.toolbarTitleDisplayMode(.inlineLarge)
-				} else {
-					$0.navigationBarTitleDisplayMode(.inline)
-				}
-			}
+			.modifier(navigationInlineLarge())
 		}
 		.sheet(isPresented: $showAddEvent) {
 			AddEventView(

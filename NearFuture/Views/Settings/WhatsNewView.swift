@@ -84,11 +84,7 @@ struct WhatsNewView: View {
 			.buttonStyle(BorderedProminentButtonStyle())
 			.clipShape(RoundedRectangle(cornerRadius: 15))
 			.padding().padding()
-			.apply {
-				if #available(iOS 17, *) {
-					$0.sensoryFeedback(.impact(weight: .heavy, intensity: 1), trigger: bye)
-				}
-			}
+			.modifier(hapticHeavy(trigger: bye))
 		}
 		.scrollContentBackground(.hidden)
 		.presentationDragIndicator(.visible)

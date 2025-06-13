@@ -67,13 +67,7 @@ struct HomeView: View {
 				}
 				.searchable(text: $searchInput)
 				.navigationTitle("Near Future")
-				.apply {
-					if #available(iOS 17, *) {
-						$0.toolbarTitleDisplayMode(.inlineLarge)
-					} else {
-						$0.navigationBarTitleDisplayMode(.inline)
-					}
-				}
+				.modifier(navigationInlineLarge())
 				.sheet(isPresented: $showingAddEventView) {
 					AddEventView(
 						viewModel: viewModel,

@@ -22,10 +22,10 @@ enum Tab {
 struct ContentView: View {
 	@StateObject var viewModel: EventViewModel
 	@StateObject var settingsModel: SettingsViewModel
-	@State var selection: Tab = .home
+	@State var tabSelection: Tab = .home
 	
 	var body: some View {
-		TabView(selection: $selection) {
+		TabView(selection: $tabSelection) {
 			HomeView(viewModel: viewModel, settingsModel: settingsModel)
 				.tabItem {
 					Label("Home", systemImage: "house")
@@ -47,11 +47,7 @@ struct ContentView: View {
 				}
 				.tag(Tab.settings)
 		}
-		.apply {
-			if #available(iOS 17, *) {
-				$0.sensoryFeedback(.impact(weight: .heavy, intensity: 1), trigger: selection)
-			}
-		}
+		.modifier(hapticHeavy(trigger: tabSelection))
 		.sheet(isPresented: $settingsModel.settings.showWhatsNew) {
 			WhatsNewView(settingsModel: settingsModel)
 		}

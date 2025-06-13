@@ -149,11 +149,7 @@ struct AddEventView: View {
 									.buttonStyle(BorderedProminentButtonStyle())
 							}
 							.tint(.accent)
-							.apply {
-								if #available(iOS 17, *) {
-									$0.sensoryFeedback(.success, trigger: bye)
-								}
-							}
+							.modifier(hapticSuccess(trigger: bye))
 							.disabled(event.name.isEmpty)
 							.onTapGesture {
 								if event.name.isEmpty {

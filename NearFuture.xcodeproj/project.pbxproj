@@ -26,6 +26,12 @@
 		A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4A2DD26C0F00856265 /* HomeView.swift */; };
 		A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
 		A914FA4F2DD276D200856265 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4E2DD276D200856265 /* AboutView.swift */; };
+		A91EF8072DFC8B8B00B8463D /* ColorCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */; };
+		A91EF8082DFC8B8B00B8463D /* ColorCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */; };
+		A91EF8092DFC8B8B00B8463D /* ColorCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */; };
+		A91EF80B2DFC910000B8463D /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80A2DFC910000B8463D /* ViewModifiers.swift */; };
+		A91EF80C2DFC910000B8463D /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80A2DFC910000B8463D /* ViewModifiers.swift */; };
+		A91EF80D2DFC910000B8463D /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80A2DFC910000B8463D /* ViewModifiers.swift */; };
 		A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2872D24011400E4F9B1 /* NearFutureApp.swift */; };
 		A920C28C2D24011400E4F9B1 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Events.swift */; };
 		A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
@@ -111,6 +117,8 @@
 		A914FA4A2DD26C0F00856265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A914FA4C2DD2768900856265 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhatsNewView.swift; path = NearFuture/Views/Settings/WhatsNewView.swift; sourceTree = SOURCE_ROOT; };
 		A914FA4E2DD276D200856265 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutView.swift; path = NearFuture/Views/Misc/AboutView.swift; sourceTree = SOURCE_ROOT; };
+		A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCodable.swift; sourceTree = "<group>"; };
+		A91EF80A2DFC910000B8463D /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		A920C2842D24011400E4F9B1 /* NearFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A920C2872D24011400E4F9B1 /* NearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureApp.swift; sourceTree = "<group>"; };
 		A920C28B2D24011400E4F9B1 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
@@ -178,6 +186,7 @@
 			children = (
 				A920C28B2D24011400E4F9B1 /* Events.swift */,
 				A90D49602DDE626300781124 /* Settings.swift */,
+				A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */,
 				A95E9ED72DFC742B00ED655F /* AccentIcon.swift */,
 			);
 			path = Model;
@@ -213,6 +222,7 @@
 				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
 				A90D49512DDE2D0000781124 /* Extensions.swift */,
 				A90D49202DDE0A3B00781124 /* Model */,
+				A91EF80A2DFC910000B8463D /* ViewModifiers.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -519,6 +529,7 @@
 				A95E9EE32DFC775300ED655F /* SettingsView.swift in Sources */,
 				A95E9EE42DFC77D400ED655F /* ImportView.swift in Sources */,
 				A98C20CB2DE730740008D61C /* EventListViewMac.swift in Sources */,
+				A91EF80C2DFC910000B8463D /* ViewModifiers.swift in Sources */,
 				A95E9ED92DFC742B00ED655F /* AccentIcon.swift in Sources */,
 				A98C20CC2DE730740008D61C /* EditEventView.swift in Sources */,
 				A90D495E2DDE3C7400781124 /* NFCommands.swift in Sources */,
@@ -528,6 +539,7 @@
 				A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */,
 				A90D495B2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */,
 				A9B78B942DF9F3CF00647399 /* AddEventView.swift in Sources */,
+				A91EF8082DFC8B8B00B8463D /* ColorCodable.swift in Sources */,
 				A90D49522DDE2D0000781124 /* Extensions.swift in Sources */,
 				A90D49422DDE114100781124 /* Events.swift in Sources */,
 				A90D49382DDE0FAF00781124 /* ContentViewMac.swift in Sources */,
@@ -550,9 +562,11 @@
 				A90D49612DDE626300781124 /* Settings.swift in Sources */,
 				A90D495F2DDE3C7400781124 /* NFCommands.swift in Sources */,
 				A949F84F2DCAABE00064DCA0 /* EventListView.swift in Sources */,
+				A91EF8092DFC8B8B00B8463D /* ColorCodable.swift in Sources */,
 				A949F8502DCAABE00064DCA0 /* HelpView.swift in Sources */,
 				A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */,
 				A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */,
+				A91EF80B2DFC910000B8463D /* ViewModifiers.swift in Sources */,
 				A949F8512DCAABE00064DCA0 /* ExportView.swift in Sources */,
 				A95E9ED82DFC742B00ED655F /* AccentIcon.swift in Sources */,
 				A90D49532DDE2D0000781124 /* Extensions.swift in Sources */,
@@ -571,6 +585,8 @@
 				A979F6182D2714310094C0B3 /* Events.swift in Sources */,
 				A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */,
 				A95E9EDA2DFC742B00ED655F /* AccentIcon.swift in Sources */,
+				A91EF80D2DFC910000B8463D /* ViewModifiers.swift in Sources */,
+				A91EF8072DFC8B8B00B8463D /* ColorCodable.swift in Sources */,
 				A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */,
 				A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */,
 				A90D49632DDE626300781124 /* Settings.swift in Sources */,
