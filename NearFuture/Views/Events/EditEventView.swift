@@ -33,7 +33,7 @@ struct EditEventView: View {
 		)
 		.navigationTitle("Edit Event")
 		.toolbar {
-			ToolbarItem(placement: .topBarTrailing) {
+			ToolbarItem(/*placement: .topBarTrailing*/) {
 				Button() {
 					saveEdits()
 				} label: {

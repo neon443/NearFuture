@@ -75,7 +75,6 @@ struct AddEventView: View {
 								.onSubmit {
 									focusedField = nil
 								}
-							//							MagicClearButton(text: $eventNotes)
 						}
 						
 						
@@ -83,7 +82,9 @@ struct AddEventView: View {
 						HStack {
 							Spacer()
 							DatePicker("", selection: $event.date, displayedComponents: .date)
+							#if os(iOS)
 								.datePickerStyle(.wheel)
+							#endif
 							Spacer()
 							Button() {
 								event.date = Date()
@@ -118,9 +119,9 @@ struct AddEventView: View {
 					}
 				}
 				.navigationTitle("\(adding ? "Add Event" : "")")
-				.navigationBarTitleDisplayMode(.inline)
+				.modifier(navigationInlineLarge())
 				.toolbar {
-					ToolbarItem(placement: .topBarLeading) {
+					ToolbarItem(/*placement: .topBarLeading*/) {
 						if adding {
 							Button() {
 								resetAddEventView()

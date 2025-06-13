@@ -11,6 +11,8 @@ struct ContentView: View {
 	@StateObject var viewModel: EventViewModel
 	@StateObject var settingsModel: SettingsViewModel
 	
+	@State private var showAddEventView: Bool = false
+	
     var body: some View {
 		NavigationSplitView {
 			List {
@@ -51,6 +53,22 @@ struct ContentView: View {
 		.sheet(isPresented: $settingsModel.settings.showWhatsNew) {
 			WhatsNewView(settingsModel: settingsModel)
 				.presentationSizing(.form)
+		}
+		.sheet(isPresented: $showAddEventView) {
+			AddEventView(
+				viewModel: viewModel,
+				event: $viewModel.editableTemplate,
+				adding: true
+			)
+			.presentationSizing(.page)
+		}
+		.toolbar {
+			Button() {
+				showAddEventView.toggle()
+			} label: {
+				Image(systemName: "plus")
+				Text("New")
+			}
 		}
     }
 }
