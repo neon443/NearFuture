@@ -13,15 +13,15 @@ struct SymbolsPicker: View {
 	
 	@FocusState var searchfocuesd: Bool
 	
-	@State var searchInput: String = "skldlkdsklsddkls"
+	@State var searchInput: String = ""
 	
 	var symbols: [String] {
 		return symbolsLoader.getSymbols(searchInput)
 	}
 	
 	private func gridLayout(forWidth geoSizeWidth: CGFloat) -> [GridItem] {
-		let gridItem = GridItem(.fixed(40), spacing: 20, alignment: .center)
-		let columns = Int(geoSizeWidth/60.rounded(.up))
+		let gridItem = GridItem(.fixed(80), spacing: 20, alignment: .center)
+		let columns = Int(geoSizeWidth/100.rounded(.up))
 		return Array(repeating: gridItem, count: columns)
 	}
 	
@@ -45,13 +45,18 @@ struct SymbolsPicker: View {
 						Button() {
 							selection = symbol
 						} label: {
-							Image(systemName: symbol)
-								.resizable()
-								.scaledToFit()
-								.frame(maxWidth: 40, maxHeight: 40)
-								.symbolRenderingMode(.palette)
-								.foregroundStyle(.blue, .gray, .black)
+							VStack {
+								Image(systemName: symbol)
+									.resizable()
+									.scaledToFit()
+									.symbolRenderingMode(.palette)
+									.foregroundStyle(.blue, .gray, .black)
+								Text(symbol)
+									.truncationMode(.middle)
+									.font(.footnote)
+							}
 						}
+						.frame(maxWidth: 80, maxHeight: 80)
 						.buttonStyle(.plain)
 					}
 				}

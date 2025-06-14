@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SFSymbolsPicker
 
 struct AddEventView: View {
 	@ObservedObject var viewModel: EventViewModel

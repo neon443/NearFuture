@@ -11,7 +11,6 @@ import SwiftUI
 enum HelpType {
 	case Search
 	case Archive
-	case SymbolsSearch
 }
 
 enum Field {
@@ -34,16 +33,6 @@ struct HelpView: View {
 		self.helpType = .Archive
 		_searchInput = .constant("")
 		self.focusedField = nil
-	}
-	
-	/// initialises a symbolspciker helpview
-	/// - Parameters:
-	///   - searchInput: biding string
-	///   - searchFocused: a field
-	init(symbolsSearchInput: Binding<String>, focusedField: Field?) {
-		_searchInput = symbolsSearchInput
-		self.helpType = .SymbolsSearch
-		_showAddEvent = .constant(false)
 	}
 	
 	@Binding var searchInput: String
@@ -83,17 +72,6 @@ struct HelpView: View {
 				},
 				buttonSymbol: "plus",
 				buttonText: "Create an event"
-			)
-		case .SymbolsSearch:
-			return (
-				symbol: "magnifyingglass",
-				title: "You look lost",
-				body: "The symbol picker search only works with exact matches, try a different search term.",
-				buttonAction: {
-					searchInput = ""
-				},
-				buttonSymbol: "xmark",
-				buttonText: "Clear Search bar"
 			)
 		}
 	}

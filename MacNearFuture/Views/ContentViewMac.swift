@@ -12,6 +12,7 @@ struct ContentView: View {
 	@StateObject var settingsModel: SettingsViewModel
 	
 	@State private var showAddEventView: Bool = false
+	@State private var symbolSearchInput: String = ""
 	
     var body: some View {
 		NavigationSplitView {
@@ -35,17 +36,17 @@ struct ContentView: View {
 					Text("Archive")
 				}
 				NavigationLink {
+					SymbolsPicker(
+						selection: $symbolSearchInput
+					)
+				} label: {
+					Image(systemName: "star.circle")
+					Text("Symbols")
+				}
+				NavigationLink {
 					SettingsView(
 						viewModel: viewModel,
 						settingsModel: settingsModel
-					)
-				} label: {
-					Image(systemName: "gear")
-					Text("Settings")
-				}
-				NavigationLink {
-					SymbolsPicker(
-						selection: .constant("")
 					)
 				} label: {
 					Image(systemName: "gear")
