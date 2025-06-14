@@ -9,9 +9,6 @@ import SwiftUI
 import UserNotifications
 import SwiftData
 
-enum Field {
-	case Search
-}
 enum Tab {
 	case home
 	case archive

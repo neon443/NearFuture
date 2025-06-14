@@ -11,7 +11,13 @@ struct SymbolsPicker: View {
 	@StateObject private var symbolsLoader = SymbolsLoader()
 	@Binding var selection: String
 	
-	@State var searchInput: String = ""
+	@FocusState var searchfocuesd: Bool
+	
+	@State var searchInput: String = "skldlkdsklsddkls"
+	
+	var symbols: [String] {
+		return symbolsLoader.getSymbols(searchInput)
+	}
 	
 	private func gridLayout(forWidth geoSizeWidth: CGFloat) -> [GridItem] {
 		let gridItem = GridItem(.fixed(40), spacing: 20, alignment: .center)
@@ -22,8 +28,20 @@ struct SymbolsPicker: View {
 	var body: some View {
 		GeometryReader { geo in
 			ScrollView {
+				if symbols.isEmpty {
+					HStack {
+						Image(systemName: "magnifyingglass")
+							.resizable().scaledToFit()
+							.frame(width: 30)
+						Text("You look lost")
+							.font(.title)
+							.bold()
+					}
+					.padding()
+					Text("The symbol picker search only works with exact matches, try a different search term.")
+				}
 				LazyVGrid(columns: gridLayout(forWidth: geo.size.width)) {
-					ForEach(symbolsLoader.getSymbols(searchInput), id: \.self) { symbol in
+					ForEach(symbols, id: \.self) { symbol in
 						Button() {
 							selection = symbol
 						} label: {
