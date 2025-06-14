@@ -25,6 +25,16 @@ struct AddEventView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
+	var isMac: Bool {
+		if #available(iOS 1, *) {
+			return false
+		} else if #available(macOS 10, *) {
+			return true
+		} else {
+			return false
+		}
+	}
+	
 	var body: some View {
 		ZStack {
 			if !adding {
@@ -75,6 +85,7 @@ struct AddEventView: View {
 								}
 						}
 						
+						ColorPicker("Event Color", selection: $event.color.colorBind)
 						
 						// date picker
 						HStack {
@@ -165,8 +176,9 @@ struct AddEventView: View {
 						}
 					}
 				}
+				.navigationTitle("Editing \(event.name) - Ne")
 			}
-			.scrollContentBackground(.hidden)
+			.scrollContentBackground(isMac ? .automatic : .hidden)
 			.presentationDragIndicator(.visible)
 		}
 	}

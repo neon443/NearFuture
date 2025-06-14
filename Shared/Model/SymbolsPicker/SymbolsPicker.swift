@@ -14,6 +14,7 @@ struct SymbolsPicker: View {
 	@FocusState var searchfocuesd: Bool
 	
 	@State var searchInput: String = ""
+	@Environment(\.dismiss) var dismiss
 	
 	var symbols: [String] {
 		return symbolsLoader.getSymbols(searchInput)
@@ -45,6 +46,8 @@ struct SymbolsPicker: View {
 						ForEach(symbols, id: \.self) { symbol in
 							Button() {
 								selection = symbol
+								searchInput = ""
+								dismiss()
 							} label: {
 								VStack {
 									Image(systemName: symbol)
@@ -62,7 +65,15 @@ struct SymbolsPicker: View {
 						}
 					}
 				}
-				.searchable(text: $searchInput)
+			}
+			.searchable(text: $searchInput)
+			.toolbar {
+				ToolbarItem(placement: .cancellationAction) {
+					Button("Cancel") {
+						searchInput = ""
+						dismiss()
+					}
+				}
 			}
 		}
 	}

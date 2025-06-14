@@ -49,6 +49,7 @@ struct NearFutureApp: App {
 				)
 			)
 		}
+		.windowIdealSize(.fitToContent)
 		.restorationBehavior(.disabled)
 		
 		Window("About Near Future", id: "about") {

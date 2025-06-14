@@ -14,8 +14,31 @@ struct EventListView: View {
 	@State var largeTick: Bool = false
 	@State var hovering: Bool = false
 	
+	@State var completeInProgress: Bool = false
+	@State var completeStartTime: Date = .now
+	@State var progress: Double = 0
+	@State var timer: Timer?
+	private let completeDuration: TimeInterval = 3.0
 	@Environment(\.openWindow) var openWindow
 	
+	func startCompleting() {
+		NSHapticFeedbackManager.defaultPerformer.perform(.generic, performanceTime: .now)
+		completeInProgress = true
+		progress = 0
+		completeStartTime = .now
+		
+		timer = Timer(timeInterval: 0.05, repeats: true) { timer in
+			let elapsed = Date().timeIntervalSince(completeStartTime)
+			progress = min(elapsed, 1.0)
+			
+			if progress >= 1.0 {
+				timer.invalidate()
+				viewModel.completeEvent(&event)
+				completeInProgress = false
+			}
+		}
+		RunLoop.main.add(timer!, forMode: .common)
+	}
 	var body: some View {
 		ZStack {
 			Color.black.opacity(hovering ? 0.5 : 0.0)
@@ -75,33 +98,20 @@ struct EventListView: View {
 						.foregroundStyle(event.date.timeIntervalSinceNow < 0 ? .red : .one)
 				}
 				Button() {
-					withAnimation {
-						event.complete.toggle()
-					}
-					let eventToModify = viewModel.events.firstIndex() { currEvent in
-						currEvent.id == event.id
-					}
-					if let eventToModify = eventToModify {
-						viewModel.events[eventToModify] = event
-						viewModel.saveEvents()
-					}
+					startCompleting()
 				} label: {
-					if event.complete {
+					if completeInProgress {
 						ZStack {
-							Circle()
-								.foregroundStyle(.green)
-							Image(systemName: "checkmark")
-								.resizable()
-								.foregroundStyle(.white)
-								.scaledToFit()
+							ProgressView(value: progress)
+								.progressViewStyle(.circular)
+							Image(systemName: "xmark")
 								.bold()
-								.frame(width: 15)
 						}
 					} else {
-						Image(systemName: "circle")
-							.resizable()
-							.scaledToFit()
-							.foregroundStyle(event.color.color)
+						Image(systemName: event.complete ? "checkmark.circle.fill" : "circle")
+							.resizable().scaledToFit()
+							.foregroundStyle(event.complete ? .green : event.color.color)
+							.bold()
 					}
 				}
 				.onHover() { hovering in
@@ -110,7 +120,10 @@ struct EventListView: View {
 					}
 				}
 				.buttonStyle(.borderless)
-				.scaleEffect(largeTick ? 1.5 : 1)
+				.scaleEffect(
+					completeInProgress ? 1 :
+					largeTick ? 1.5 : 1
+				)
 				.frame(maxWidth: 20)
 				.shadow(radius: 5)
 				.padding(.trailing, 15)

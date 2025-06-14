@@ -222,6 +222,17 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 		saveEvents() //sync with icloud
 	}
 	
+	func completeEvent(_ event: inout Event) {
+		withAnimation { event.complete.toggle() }
+		let eventToModify = self.events.firstIndex() { currEvent in
+			currEvent.id == event.id
+		}
+		if let eventToModify = eventToModify {
+			self.events[eventToModify] = event
+			self.saveEvents()
+		}
+	}
+	
 	func removeEvent(at index: IndexSet) {
 		events.remove(atOffsets: index)
 		saveEvents() //sync local and icl

@@ -70,10 +70,10 @@
 		A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A979F60F2D270AF80094C0B3 /* Assets.xcassets */; };
 		A979F6142D270AF90094C0B3 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A979F6182D2714310094C0B3 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Events.swift */; };
-		A98C20CB2DE730740008D61C /* EventListViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CA2DE730740008D61C /* EventListViewMac.swift */; };
 		A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CD2DE7308E0008D61C /* ArchiveView.swift */; };
 		A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CF2DE731BD0008D61C /* HomeView.swift */; };
 		A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20D32DE7339E0008D61C /* AboutView.swift */; };
+		A9D1C34D2DFE10FA00703C2D /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8402DCAABE00064DCA0 /* EventListView.swift */; };
 		A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */; };
 /* End PBXBuildFile section */
 
@@ -531,7 +531,6 @@
 				A91EF80E2DFC9A0C00B8463D /* WhatsNewView.swift in Sources */,
 				A91EF8192DFD77BF00B8463D /* SymbolsLoader.swift in Sources */,
 				A95E9EE42DFC77D400ED655F /* ImportView.swift in Sources */,
-				A98C20CB2DE730740008D61C /* EventListViewMac.swift in Sources */,
 				A91EF80C2DFC910000B8463D /* ViewModifiers.swift in Sources */,
 				A95E9ED92DFC742B00ED655F /* AccentIcon.swift in Sources */,
 				A91EF8102DFCB66C00B8463D /* SettingsView.swift in Sources */,
@@ -539,6 +538,7 @@
 				A95E9EE52DFC77E200ED655F /* ExportView.swift in Sources */,
 				A91EF8132DFCC87D00B8463D /* EditEventView.swift in Sources */,
 				A91EF8142DFCC87D00B8463D /* AddEventView.swift in Sources */,
+				A9D1C34D2DFE10FA00703C2D /* EventListView.swift in Sources */,
 				A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */,
 				A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */,
 				A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */,
