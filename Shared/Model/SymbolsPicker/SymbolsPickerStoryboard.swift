@@ -27,6 +27,12 @@ class ViewController: UIViewController {
 			)
 		}
 	}
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		collectionView.delegate = self
+		collectionView.dataSource = self
+	}
 }
 
 extension ViewController: UICollectionViewDataSource {
@@ -38,14 +44,14 @@ extension ViewController: UICollectionViewDataSource {
 		_ collectionView: UICollectionView,
 		numberOfItemsInSection section: Int
 	) -> Int {
-		10
+		section
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! SymbolCell
+		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "symbolCell", for: indexPath) as! SymbolCell
 		
 		let imageView = cell.imageView
-		imageView?.image = UIImage(systemName: symbolLoader.allSymbols[indexPath.item])
+		imageView?.image = UIImage(systemName: symbolLoader.allSymbols[indexPath.item])!
 		cell.textLabel?.text = "hi\(indexPath.row)"
 		return cell
 	}
@@ -53,7 +59,7 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		print(indexPath.item + 1)
+		print(indexPath.item)
 	}
 }
 
@@ -64,9 +70,18 @@ class SymbolCell: UICollectionViewCell {
 }
 
 struct SymbolsPickerStoryboardUIViewRepresentable: UIViewRepresentable {
+	class Coordinator {
+		var viewController: ViewController?
+	}
+	
+	func makeCoordinator() -> Coordinator {
+		Coordinator()
+	}
+	
 	func makeUIView(context: Context) -> some UIView {
 		let storyboard = UIStoryboard(name: "SymbolsPicker", bundle: nil)
-		let viewController = storyboard.instantiateViewController(withIdentifier: "SymbolsPicker") as! ViewController
+		let viewController = storyboard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+		context.coordinator.viewController = viewController
 		return viewController.view
 	}
 	
