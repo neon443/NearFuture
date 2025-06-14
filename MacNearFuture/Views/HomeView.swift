@@ -11,20 +11,33 @@ struct HomeView: View {
 	@StateObject var viewModel: EventViewModel
 	@StateObject var settingsModel: SettingsViewModel
 	
+	@State private var searchInput: String = ""
+	
 	var filteredEvents: [Event] {
-		switch settingsModel.settings.showCompletedInHome {
-		case true:
-			return viewModel.events
-		case false:
-			return viewModel.events.filter { !$0.complete }
-		}
-	}
-    var body: some View {
-		ScrollView {
-			ForEach(filteredEvents) { event in
-				EventListView(viewModel: viewModel, event: event)
+		if searchInput.isEmpty {
+			if settingsModel.settings.showCompletedInHome {
+				return viewModel.events
+			} else {
+				return viewModel.events.filter() { !$0.complete }
+			}
+		} else {
+			return viewModel.events.filter {
+				$0.name.localizedCaseInsensitiveContains(searchInput) ||
+				$0.notes.localizedCaseInsensitiveContains(searchInput)
 			}
 		}
+	}
+	
+    var body: some View {
+		ScrollView {
+			ForEach(viewModel.events) { event in
+				if filteredEvents.contains(event) {
+					EventListView(viewModel: viewModel, event: event)
+						.id(event)
+				}
+			}
+		}
+		.searchable(text: $searchInput)
 		.scrollContentBackground(.hidden)
     }
 }

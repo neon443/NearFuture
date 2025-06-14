@@ -24,7 +24,7 @@ import AppKit
 //    }
 //}
 
-struct Event: Identifiable, Codable, Equatable, Animatable {
+struct Event: Identifiable, Codable, Equatable, Animatable, Hashable {
 	var id = UUID()
 	var name: String
 	var complete: Bool

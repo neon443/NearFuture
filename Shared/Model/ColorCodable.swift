@@ -13,7 +13,7 @@ import UIKit
 import AppKit
 #endif
 
-struct ColorCodable: Codable, Equatable {
+struct ColorCodable: Codable, Equatable, Hashable {
 	init(_ color: Color) {
 		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1
 		

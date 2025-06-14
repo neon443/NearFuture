@@ -31,7 +31,7 @@ struct NearFutureApp: App {
 			NearFutureCommands()
 		}
 		
-		WindowGroup("edit Event", for: Event.ID.self) { $eventID in
+		WindowGroup("Edit Event", for: Event.ID.self) { $eventID in
 			EditEventView(
 				viewModel: viewModel,
 				event: Binding(

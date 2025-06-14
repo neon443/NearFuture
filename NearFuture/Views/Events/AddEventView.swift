@@ -59,6 +59,7 @@ struct AddEventView: View {
 									searchLabel: "Search...",
 									autoDismiss: true)
 								.presentationDetents([.medium])
+								.presentationSizing(.form)
 							}
 							TextField("Event Name", text: $event.name)
 								.textFieldStyle(.roundedBorder)
