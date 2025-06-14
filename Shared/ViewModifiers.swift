@@ -63,3 +63,13 @@ struct navigationInlineLarge: ViewModifier {
 #endif
 	}
 }
+
+struct presentationSizeForm: ViewModifier {
+	func body(content: Content) -> some View {
+		if #available(iOS 18, macOS 15, *) {
+			content.presentationSizing(.form)
+		} else {
+			content
+		}
+	}
+}

@@ -57,7 +57,7 @@ struct AddEventView: View {
 									selection: $event.symbol
 								)
 								.presentationDetents([.medium])
-								.presentationSizing(.form)
+								.modifier(presentationSizeForm())
 							}
 							TextField("Event Name", text: $event.name)
 								.textFieldStyle(.roundedBorder)
