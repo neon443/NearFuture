@@ -36,6 +36,12 @@
 		A91EF8102DFCB66C00B8463D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80F2DFCB66C00B8463D /* SettingsView.swift */; };
 		A91EF8132DFCC87D00B8463D /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83D2DCAABE00064DCA0 /* EditEventView.swift */; };
 		A91EF8142DFCC87D00B8463D /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83C2DCAABE00064DCA0 /* AddEventView.swift */; };
+		A91EF8182DFD77BF00B8463D /* SymbolsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8172DFD77BF00B8463D /* SymbolsLoader.swift */; };
+		A91EF8192DFD77BF00B8463D /* SymbolsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8172DFD77BF00B8463D /* SymbolsLoader.swift */; };
+		A91EF81A2DFD77BF00B8463D /* SymbolsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8172DFD77BF00B8463D /* SymbolsLoader.swift */; };
+		A91EF81C2DFD796600B8463D /* SymbolsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF81B2DFD796600B8463D /* SymbolsPicker.swift */; };
+		A91EF81D2DFD796600B8463D /* SymbolsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF81B2DFD796600B8463D /* SymbolsPicker.swift */; };
+		A91EF81E2DFD796600B8463D /* SymbolsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF81B2DFD796600B8463D /* SymbolsPicker.swift */; };
 		A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2872D24011400E4F9B1 /* NearFutureApp.swift */; };
 		A920C28C2D24011400E4F9B1 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Events.swift */; };
 		A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
@@ -121,6 +127,8 @@
 		A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCodable.swift; sourceTree = "<group>"; };
 		A91EF80A2DFC910000B8463D /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		A91EF80F2DFCB66C00B8463D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A91EF8172DFD77BF00B8463D /* SymbolsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsLoader.swift; sourceTree = "<group>"; };
+		A91EF81B2DFD796600B8463D /* SymbolsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsPicker.swift; sourceTree = "<group>"; };
 		A920C2842D24011400E4F9B1 /* NearFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A920C2872D24011400E4F9B1 /* NearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureApp.swift; sourceTree = "<group>"; };
 		A920C28B2D24011400E4F9B1 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
@@ -188,6 +196,7 @@
 				A90D49602DDE626300781124 /* Settings.swift */,
 				A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */,
 				A95E9ED72DFC742B00ED655F /* AccentIcon.swift */,
+				A91EF8162DFD77A500B8463D /* SymbolsPicker */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -232,6 +241,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A91EF8162DFD77A500B8463D /* SymbolsPicker */ = {
+			isa = PBXGroup;
+			children = (
+				A91EF8172DFD77BF00B8463D /* SymbolsLoader.swift */,
+				A91EF81B2DFD796600B8463D /* SymbolsPicker.swift */,
+			);
+			path = SymbolsPicker;
 			sourceTree = "<group>";
 		};
 		A920C27B2D24011300E4F9B1 = {
@@ -518,6 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A91EF80E2DFC9A0C00B8463D /* WhatsNewView.swift in Sources */,
+				A91EF8192DFD77BF00B8463D /* SymbolsLoader.swift in Sources */,
 				A95E9EE42DFC77D400ED655F /* ImportView.swift in Sources */,
 				A98C20CB2DE730740008D61C /* EventListViewMac.swift in Sources */,
 				A91EF80C2DFC910000B8463D /* ViewModifiers.swift in Sources */,
@@ -533,6 +552,7 @@
 				A90D495B2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */,
 				A91EF8082DFC8B8B00B8463D /* ColorCodable.swift in Sources */,
 				A90D49522DDE2D0000781124 /* Extensions.swift in Sources */,
+				A91EF81D2DFD796600B8463D /* SymbolsPicker.swift in Sources */,
 				A90D49422DDE114100781124 /* Events.swift in Sources */,
 				A90D49382DDE0FAF00781124 /* ContentViewMac.swift in Sources */,
 				A90D49622DDE626300781124 /* Settings.swift in Sources */,
@@ -565,7 +585,9 @@
 				A949F8522DCAABE00064DCA0 /* iCloudSettingsView.swift in Sources */,
 				A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */,
 				A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */,
+				A91EF81E2DFD796600B8463D /* SymbolsPicker.swift in Sources */,
 				A949F8552DCAABE00064DCA0 /* StatsView.swift in Sources */,
+				A91EF81A2DFD77BF00B8463D /* SymbolsLoader.swift in Sources */,
 				A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -575,9 +597,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A979F6182D2714310094C0B3 /* Events.swift in Sources */,
+				A91EF81C2DFD796600B8463D /* SymbolsPicker.swift in Sources */,
 				A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */,
 				A95E9EDA2DFC742B00ED655F /* AccentIcon.swift in Sources */,
 				A91EF80D2DFC910000B8463D /* ViewModifiers.swift in Sources */,
+				A91EF8182DFD77BF00B8463D /* SymbolsLoader.swift in Sources */,
 				A91EF8072DFC8B8B00B8463D /* ColorCodable.swift in Sources */,
 				A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */,
 				A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */,

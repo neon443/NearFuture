@@ -43,6 +43,14 @@ struct ContentView: View {
 					Image(systemName: "gear")
 					Text("Settings")
 				}
+				NavigationLink {
+					SymbolsPicker(
+						selection: .constant("")
+					)
+				} label: {
+					Image(systemName: "gear")
+					Text("Settings")
+				}
 			}
 		} detail: {
 			Text("Welcome to Near Future")

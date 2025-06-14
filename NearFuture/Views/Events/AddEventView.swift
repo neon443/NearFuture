@@ -54,10 +54,8 @@ struct AddEventView: View {
 							.buttonStyle(.borderless)
 							.sheet(isPresented: $isSymbolPickerPresented) {
 								SymbolsPicker(
-									selection: $event.symbol,
-									title: "Choose a Symbol",
-									searchLabel: "Search...",
-									autoDismiss: true)
+									selection: $event.symbol
+								)
 								.presentationDetents([.medium])
 								.presentationSizing(.form)
 							}
