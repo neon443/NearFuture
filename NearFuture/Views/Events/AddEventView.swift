@@ -119,7 +119,7 @@ struct AddEventView: View {
 				.navigationTitle("\(adding ? "Add Event" : "")")
 				.modifier(navigationInlineLarge())
 				.toolbar {
-					ToolbarItem(/*placement: .topBarLeading*/) {
+					ToolbarItem(placement: .cancellationAction) {
 						if adding {
 							Button() {
 								resetAddEventView()
@@ -128,7 +128,6 @@ struct AddEventView: View {
 								Image(systemName: "xmark")
 									.resizable()
 									.scaledToFit()
-									.frame(width: 30)
 									.tint(.one)
 							}
 						}
@@ -167,7 +166,6 @@ struct AddEventView: View {
 					}
 				}
 			}
-			.scrollContentBackground(.hidden)
 			.scrollContentBackground(.hidden)
 			.presentationDragIndicator(.visible)
 		}

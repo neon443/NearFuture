@@ -74,7 +74,6 @@
 		A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CD2DE7308E0008D61C /* ArchiveView.swift */; };
 		A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CF2DE731BD0008D61C /* HomeView.swift */; };
 		A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20D32DE7339E0008D61C /* AboutView.swift */; };
-		A9C769A12DFDD1FC00082FFF /* SymbolsPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9C769A02DFDD1FC00082FFF /* SymbolsPicker.storyboard */; };
 		A9C769A22DFDD1FC00082FFF /* SymbolsPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9C769A02DFDD1FC00082FFF /* SymbolsPicker.storyboard */; };
 		A9C769A32DFDD1FC00082FFF /* SymbolsPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9C769A02DFDD1FC00082FFF /* SymbolsPicker.storyboard */; };
 		A9C769A52DFDD27500082FFF /* SymbolsPickerStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C769A42DFDD27500082FFF /* SymbolsPickerStoryboard.swift */; };
@@ -507,7 +506,6 @@
 			files = (
 				A90D49452DDE1C7600781124 /* Tints.xcassets in Resources */,
 				A90D493E2DDE10CF00781124 /* Assets.xcassets in Resources */,
-				A9C769A12DFDD1FC00082FFF /* SymbolsPicker.storyboard in Resources */,
 				A90D493D2DDE10B200781124 /* NearFutureIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

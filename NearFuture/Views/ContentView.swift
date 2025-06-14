@@ -33,8 +33,8 @@ struct ContentView: View {
 					Label("Archive", systemImage: "tray.full")
 				}
 				.tag(Tab.archive)
-//			StatsView(viewModel: viewModel)
-			SymbolsPickerStoryboardUIViewRepresentable()
+			StatsView(viewModel: viewModel)
+//			SymbolsPickerStoryboardUIViewRepresentable()
 				.tabItem {
 					Label("Statistics", systemImage: "chart.pie")
 				}

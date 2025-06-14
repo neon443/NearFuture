@@ -26,42 +26,44 @@ struct SymbolsPicker: View {
 	}
 	
 	var body: some View {
-		GeometryReader { geo in
-			ScrollView {
-				if symbols.isEmpty {
-					HStack {
-						Image(systemName: "magnifyingglass")
-							.resizable().scaledToFit()
-							.frame(width: 30)
-						Text("You look lost")
-							.font(.title)
-							.bold()
-					}
-					.padding()
-					Text("The symbol picker search only works with exact matches, try a different search term.")
-				}
-				LazyVGrid(columns: gridLayout(forWidth: geo.size.width)) {
-					ForEach(symbols, id: \.self) { symbol in
-						Button() {
-							selection = symbol
-						} label: {
-							VStack {
-								Image(systemName: symbol)
-									.resizable()
-									.scaledToFit()
-									.symbolRenderingMode(.palette)
-									.foregroundStyle(.blue, .gray, .black)
-								Text(symbol)
-									.truncationMode(.middle)
-									.font(.footnote)
-							}
+		NavigationStack {
+			GeometryReader { geo in
+				ScrollView {
+					if symbols.isEmpty {
+						HStack {
+							Image(systemName: "magnifyingglass")
+								.resizable().scaledToFit()
+								.frame(width: 30)
+							Text("You look lost")
+								.font(.title)
+								.bold()
 						}
-						.frame(maxWidth: 80, maxHeight: 80)
-						.buttonStyle(.plain)
+						.padding()
+						Text("The symbol picker search only works with exact matches, try a different search term.")
+					}
+					LazyVGrid(columns: gridLayout(forWidth: geo.size.width)) {
+						ForEach(symbols, id: \.self) { symbol in
+							Button() {
+								selection = symbol
+							} label: {
+								VStack {
+									Image(systemName: symbol)
+										.resizable()
+										.scaledToFit()
+										.symbolRenderingMode(.palette)
+										.foregroundStyle(.blue, .gray, .black)
+									Text(symbol)
+										.truncationMode(.middle)
+										.font(.footnote)
+								}
+							}
+							.frame(maxWidth: 80, maxHeight: 80)
+							.buttonStyle(.plain)
+						}
 					}
 				}
+				.searchable(text: $searchInput)
 			}
-			.searchable(text: $searchInput)
 		}
 	}
 }

@@ -32,6 +32,7 @@ struct glassButton: ViewModifier {
 		} else {
 			content.buttonStyle(.borderedProminent)
 				.clipShape(RoundedRectangle(cornerRadius: 15))
+				.tint(.two)
 		}
 	}
 }
