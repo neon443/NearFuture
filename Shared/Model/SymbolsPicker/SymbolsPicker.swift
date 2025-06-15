@@ -14,6 +14,7 @@ struct SymbolsPicker: View {
 	@FocusState var searchfocuesd: Bool
 	
 	@State var searchInput: String = ""
+	@State var browsing: Bool = false
 	@Environment(\.dismiss) var dismiss
 	
 	var symbols: [String] {
@@ -69,9 +70,13 @@ struct SymbolsPicker: View {
 			.searchable(text: $searchInput)
 			.toolbar {
 				ToolbarItem(placement: .cancellationAction) {
-					Button("Cancel") {
-						searchInput = ""
-						dismiss()
+					if !browsing {
+						Button() {
+							searchInput = ""
+							dismiss()
+						} label: {
+							Label("Cancel", systemImage: "xmark")
+						}
 					}
 				}
 			}

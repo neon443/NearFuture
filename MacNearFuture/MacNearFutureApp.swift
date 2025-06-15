@@ -44,12 +44,7 @@ struct NearFutureApp: App {
 							viewModel.events.first(where: {$0.id == eventID}) ?? viewModel.template
 						},
 						set: { newValue in
-							if let eventIndex = viewModel.events.firstIndex(where: {
-								$0.id == eventID
-							}) {
-								viewModel.events[eventIndex] = newValue
-							}
-							viewModel.saveEvents()
+							viewModel.editEvent(newValue)
 						}
 					)
 				)

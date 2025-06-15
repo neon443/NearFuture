@@ -48,12 +48,20 @@ struct HomeView: View {
 //							LazyVStack {
 								ForEach(filteredEvents) { event in
 									NavigationLink() {
-										
+										EditEventView(
+											viewModel: viewModel,
+											event: Binding(
+												get: { event },
+												set: { newValue in
+													viewModel.editEvent(newValue)
+												}
+											)
+										)
 									} label: {
 										EventListView(viewModel: viewModel, event: event)
-											.transition(.moveAndFade)
 											.id(event.complete)
 									}
+									.transition(.moveAndFade)
 								}
 								.padding(.horizontal)
 //							}
@@ -77,7 +85,7 @@ struct HomeView: View {
 					)
 				}
 				.toolbar {
-					ToolbarItem(placement: .topBarTrailing) {
+					ToolbarItem(placement: .primaryAction) {
 						AddEventButton(showingAddEventView: $showingAddEventView)
 					}
 				}

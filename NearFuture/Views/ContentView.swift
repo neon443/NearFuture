@@ -35,7 +35,8 @@ struct ContentView: View {
 				}
 				.tag(Tab.archive)
 			SymbolsPicker(
-				selection: .constant("")
+				selection: .constant(""),
+				browsing: true
 			)
 			.tabItem {
 				Label("Symbols", systemImage: "star.circle")

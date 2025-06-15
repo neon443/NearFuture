@@ -37,7 +37,8 @@ struct ContentView: View {
 				}
 				NavigationLink {
 					SymbolsPicker(
-						selection: $symbolSearchInput
+						selection: .constant(""),
+						browsing: true
 					)
 				} label: {
 					Image(systemName: "star.circle")

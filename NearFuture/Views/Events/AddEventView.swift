@@ -155,10 +155,7 @@ struct AddEventView: View {
 								bye.toggle()
 								resetAddEventView()
 							} label: {
-								Text("Save")
-									.font(.headline)
-									.cornerRadius(10)
-									.buttonStyle(BorderedProminentButtonStyle())
+								Label("Save", systemImage: "checkmark")
 							}
 							.tint(.accent)
 							.modifier(hapticSuccess(trigger: bye))
@@ -184,9 +181,7 @@ struct AddEventView: View {
 								viewModel.editEvent(event)
 								dismiss()
 							} label: {
-								Text("Done")
-									.bold()
-									.foregroundStyle(.blue)
+								Label("Done", systemImage: "checkmark")
 							}
 							.disabled(event.name == "")
 						}

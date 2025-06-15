@@ -23,18 +23,31 @@ struct ArchiveView: View {
 				} else {
 					ScrollView {
 						ForEach(filteredEvents) { event in
-							EventListView(viewModel: viewModel, event: event)
-								.transition(.moveAndFadeReversed)
-								.id(event.complete)
+							NavigationLink() {
+								EditEventView(
+									viewModel: viewModel,
+									event: Binding(
+										get: { event },
+										set: { newValue in
+											viewModel.editEvent(newValue)
+										}
+									)
+								)
+							} label: {
+								EventListView(viewModel: viewModel, event: event)
+									.id(event.complete)
+							}
+							.transition(.moveAndFadeReversed)
 						}
 						.padding(.horizontal)
 					}
 					.animation(.default, value: filteredEvents)
 				}
 			}
+			.transition(.opacity)
 			.scrollContentBackground(.hidden)
 			.toolbar {
-				ToolbarItem(placement: .topBarTrailing) {
+				ToolbarItem(placement: .primaryAction) {
 					AddEventButton(showingAddEventView: $showAddEvent)
 				}
 			}

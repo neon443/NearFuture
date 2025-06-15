@@ -40,11 +40,11 @@ struct CompleteEventButton: View {
 			let elapsed = Date().timeIntervalSince(completeStartTime)
 			progress = min(1, elapsed)
 			
-			if progress > 1 {
-				timer.invalidate()
-				progress = 0
+			if progress >= 1 {
 				withAnimation { completeInProgress = false }
 				viewModel.completeEvent(&event)
+				timer.invalidate()
+				progress = 0
 			}
 		}
 		RunLoop.main.add(timer!, forMode: .common)

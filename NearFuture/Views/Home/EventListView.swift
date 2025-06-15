@@ -80,7 +80,6 @@ struct EventListView: View {
 					event: $event
 				)
 			}
-			.transition(.opacity)
 			.fixedSize(horizontal: false, vertical: true)
 		}
 		.onHover { isHovering in
@@ -170,7 +169,6 @@ struct EventListView: View {
 				event: $event
 			)
 		}
-		.transition(.opacity)
 		.padding(.vertical, 5)
 		.overlay(
 			RoundedRectangle(cornerRadius: 15)
