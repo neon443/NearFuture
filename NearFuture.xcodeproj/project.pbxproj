@@ -73,6 +73,8 @@
 		A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CD2DE7308E0008D61C /* ArchiveView.swift */; };
 		A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CF2DE731BD0008D61C /* HomeView.swift */; };
 		A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20D32DE7339E0008D61C /* AboutView.swift */; };
+		A9BAC6882DFF242300EC8E44 /* CompleteEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BAC6872DFF238100EC8E44 /* CompleteEventButton.swift */; };
+		A9BAC6892DFF242300EC8E44 /* CompleteEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BAC6872DFF238100EC8E44 /* CompleteEventButton.swift */; };
 		A9D1C34D2DFE10FA00703C2D /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8402DCAABE00064DCA0 /* EventListView.swift */; };
 		A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */; };
 /* End PBXBuildFile section */
@@ -157,6 +159,7 @@
 		A98C20CD2DE7308E0008D61C /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 		A98C20CF2DE731BD0008D61C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A98C20D32DE7339E0008D61C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		A9BAC6872DFF238100EC8E44 /* CompleteEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteEventButton.swift; sourceTree = "<group>"; };
 		A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -227,6 +230,7 @@
 				A90D49512DDE2D0000781124 /* Extensions.swift */,
 				A90D49202DDE0A3B00781124 /* Model */,
 				A91EF80A2DFC910000B8463D /* ViewModifiers.swift */,
+				A9BAC6872DFF238100EC8E44 /* CompleteEventButton.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -529,6 +533,7 @@
 				A91EF80E2DFC9A0C00B8463D /* WhatsNewView.swift in Sources */,
 				A91EF8192DFD77BF00B8463D /* SymbolsLoader.swift in Sources */,
 				A95E9EE42DFC77D400ED655F /* ImportView.swift in Sources */,
+				A9BAC6892DFF242300EC8E44 /* CompleteEventButton.swift in Sources */,
 				A91EF80C2DFC910000B8463D /* ViewModifiers.swift in Sources */,
 				A95E9ED92DFC742B00ED655F /* AccentIcon.swift in Sources */,
 				A91EF8102DFCB66C00B8463D /* SettingsView.swift in Sources */,
@@ -575,6 +580,7 @@
 				A95E9ED82DFC742B00ED655F /* AccentIcon.swift in Sources */,
 				A90D49532DDE2D0000781124 /* Extensions.swift in Sources */,
 				A949F8522DCAABE00064DCA0 /* iCloudSettingsView.swift in Sources */,
+				A9BAC6882DFF242300EC8E44 /* CompleteEventButton.swift in Sources */,
 				A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */,
 				A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */,
 				A91EF81E2DFD796600B8463D /* SymbolsPicker.swift in Sources */,

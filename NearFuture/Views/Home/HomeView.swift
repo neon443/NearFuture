@@ -47,9 +47,13 @@ struct HomeView: View {
 						ScrollView {
 //							LazyVStack {
 								ForEach(filteredEvents) { event in
-									EventListView(viewModel: viewModel, event: event)
-										.transition(.moveAndFade)
-										.id(event.complete)
+									NavigationLink() {
+										
+									} label: {
+										EventListView(viewModel: viewModel, event: event)
+											.transition(.moveAndFade)
+											.id(event.complete)
+									}
 								}
 								.padding(.horizontal)
 //							}
