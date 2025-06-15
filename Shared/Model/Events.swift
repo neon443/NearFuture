@@ -222,6 +222,13 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 		saveEvents() //sync with icloud
 	}
 	
+	func editEvent(_ editedEvent: Event) {
+		if let index = events.firstIndex(where: { editedEvent.id == $0.id }) {
+			self.events[index] = editedEvent
+			saveEvents()
+		}
+	}
+	
 	func completeEvent(_ event: inout Event) {
 		withAnimation { event.complete.toggle() }
 		let eventToModify = self.events.firstIndex() { currEvent in

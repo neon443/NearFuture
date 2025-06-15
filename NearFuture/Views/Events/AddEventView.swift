@@ -28,10 +28,8 @@ struct AddEventView: View {
 	var isMac: Bool {
 		if #available(iOS 1, *) {
 			return false
-		} else if #available(macOS 10, *) {
-			return true
 		} else {
-			return false
+			return true
 		}
 	}
 	
@@ -178,6 +176,19 @@ struct AddEventView: View {
 							} message: {
 								Text("Give your Event a name before saving.")
 							}
+						}
+					}
+					ToolbarItem(placement: .confirmationAction) {
+						if !adding {
+							Button() {
+								viewModel.editEvent(event)
+								dismiss()
+							} label: {
+								Text("Done")
+									.bold()
+									.foregroundStyle(.blue)
+							}
+							.disabled(event.name == "")
 						}
 					}
 				}

@@ -12,19 +12,6 @@ struct EditEventView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@Binding var event: Event
 	
-	fileprivate func saveEdits() {		
-		//if there is an event in vM.events with the id of the event we r editing,
-		//firstindex - loops through the arr and finds first element where that events id matches editing event's id
-		if let index = viewModel.events.firstIndex(where: { xEvent in
-			xEvent.id == event.id
-		}) {
-			viewModel.events[index] = event
-		}
-		viewModel.saveEvents()
-		
-		dismiss()
-	}
-	
 	var body: some View {
 		AddEventView(
 			viewModel: viewModel,
@@ -32,18 +19,6 @@ struct EditEventView: View {
 			adding: false //bc we editing existing event
 		)
 		.navigationTitle("Edit Event")
-		.toolbar {
-			ToolbarItem(placement: .confirmationAction) {
-				Button() {
-					saveEdits()
-				} label: {
-					Text("Done")
-						.bold()
-						.foregroundStyle(.blue)
-				}
-				.disabled(event.name == "")
-			}
-		}
 	}
 }
 
