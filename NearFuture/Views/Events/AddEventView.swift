@@ -6,23 +6,15 @@
 //
 
 import SwiftUI
-import SFSymbolsPicker
 
 struct AddEventView: View {
 	@ObservedObject var viewModel: EventViewModel
 	
-	@Binding var eventName: String
-	@Binding var eventComplete: Bool
-	@Binding var eventCompleteDesc: String
-	@Binding var eventSymbol: String
-	@Binding var eventColor: Color
-	@Binding var eventNotes: String
-	@Binding var eventDate: Date
-	@Binding var eventRecurrence: Event.RecurrenceType
+	@State var event: Event = dummyEventViewModel().template
 	
-	@State var adding: Bool
+	@State var adding: Bool = true
 	@State var showNeedsNameAlert: Bool = false
-	@State var isSymbolPickerPresented = false
+	@State var isSymbolPickerPresented: Bool = false
 	
 	@State private var bye: Bool = false
 	
@@ -33,13 +25,21 @@ struct AddEventView: View {
 	
 	@Environment(\.dismiss) var dismiss
 	
+	var isMac: Bool {
+		if #available(iOS 1, *) {
+			return false
+		} else {
+			return true
+		}
+	}
+	
 	var body: some View {
 		ZStack {
 			if !adding {
 				backgroundGradient
 			}
 			NavigationStack {
-				Form {
+				List {
 					Section(
 						header:
 							Text("Event Details")
@@ -51,66 +51,52 @@ struct AddEventView: View {
 							Button() {
 								isSymbolPickerPresented.toggle()
 							} label: {
-								Image(systemName: eventSymbol)
+								Image(systemName: event.symbol)
 									.resizable()
 									.scaledToFit()
 									.frame(width: 20, height: 20)
-									.foregroundStyle(eventColor)
+									.foregroundStyle(event.color.color)
 							}
 							.frame(width: 20)
 							.buttonStyle(.borderless)
 							.sheet(isPresented: $isSymbolPickerPresented) {
 								SymbolsPicker(
-									selection: $eventSymbol,
-									title: "Choose a Symbol",
-									searchLabel: "Search...",
-									autoDismiss: true)
+									selection: $event.symbol
+								)
 								.presentationDetents([.medium])
-								.apply {
-									if #available(iOS 16.4, *) {
-										$0.presentationBackground(.ultraThinMaterial)
-									}
-								}
+								.modifier(presentationSizeForm())
 							}
-							ColorPicker("", selection: $eventColor, supportsOpacity: false)
-								.fixedSize()
-							ZStack {
-								TextField("Event Name", text: $eventName)
-									.textFieldStyle(RoundedBorderTextFieldStyle())
-									.padding(.trailing, eventName.isEmpty ? 0 : 30)
-									.animation(.spring, value: eventName)
-									.focused($focusedField, equals: Field.Name)
-									.submitLabel(.next)
-									.onSubmit {
-										focusedField = .Notes
-									}
-								MagicClearButton(text: $eventName)
-							}
+							TextField("Event Name", text: $event.name)
+								.textFieldStyle(.roundedBorder)
 						}
 						
 						// dscription
 						ZStack {
-							TextField("Event Notes", text: $eventNotes)
+							TextField("Event Notes", text: $event.notes)
 								.textFieldStyle(RoundedBorderTextFieldStyle())
-								.padding(.trailing, eventNotes.isEmpty ? 0 : 30)
-								.animation(.spring, value: eventNotes)
+								.padding(.trailing, event.notes.isEmpty ? 0 : 30)
+								.animation(.spring, value: event.notes)
 								.focused($focusedField, equals: Field.Notes)
 								.submitLabel(.done)
 								.onSubmit {
 									focusedField = nil
 								}
-							MagicClearButton(text: $eventNotes)
 						}
 						
+						ColorPicker("Event Color", selection: $event.color.colorBind)
 						
 						// date picker
 						HStack {
 							Spacer()
-							DatePicker("", selection: $eventDate, displayedComponents: .date)
-								.datePickerStyle(WheelDatePickerStyle())
+							DatePicker("", selection: $event.date, displayedComponents: .date)
+							#if os(iOS)
+								.datePickerStyle(.wheel)
+							#else
+								.datePickerStyle(.graphical)
+							#endif
 							Spacer()
 							Button() {
-								eventDate = Date()
+								event.date = Date()
 							} label: {
 								Image(systemName: "arrow.uturn.left")
 									.resizable()
@@ -122,12 +108,15 @@ struct AddEventView: View {
 						
 						DatePicker(
 							"",
-							selection: $eventDate,
+							selection: $event.date,
 							displayedComponents: .hourAndMinute
 						)
+						#if os(macOS)
+						.datePickerStyle(.stepperField)
+						#endif
 						
 						// re-ocurrence Picker
-						Picker("Recurrence", selection: $eventRecurrence) {
+						Picker("Recurrence", selection: $event.recurrence) {
 							ForEach(Event.RecurrenceType.allCases, id: \.self) { recurrence in
 								Text(recurrence.rawValue.capitalized)
 							}
@@ -135,61 +124,44 @@ struct AddEventView: View {
 						.pickerStyle(SegmentedPickerStyle())
 						Text(
 							describeOccurrence(
-								date: eventDate,
-								recurrence: eventRecurrence
+								date: event.date,
+								recurrence: event.recurrence
 							)
 						)
 					}
 				}
-				.scrollContentBackground(.hidden)
 				.navigationTitle("\(adding ? "Add Event" : "")")
-				.navigationBarTitleDisplayMode(.inline)
+				.modifier(navigationInlineLarge())
 				.toolbar {
-					ToolbarItem(placement: .topBarLeading) {
+					ToolbarItem(placement: .cancellationAction) {
 						if adding {
 							Button() {
 								resetAddEventView()
 								dismiss()
 							} label: {
-								Image(systemName: "xmark.circle.fill")
-									.symbolRenderingMode(.hierarchical)
+								Image(systemName: "xmark")
 									.resizable()
 									.scaledToFit()
-									.frame(width: 30)
+									.tint(.one)
 							}
 						}
 					}
-					ToolbarItem(placement: .topBarTrailing) {
+					ToolbarItem() {
 						if adding {
 							Button {
 								viewModel.addEvent(
-									newEvent: Event(
-										name: eventName,
-										complete: eventComplete,
-										completeDesc: eventCompleteDesc,
-										symbol: eventSymbol,
-										color: ColorCodable(eventColor),
-										notes: eventNotes,
-										date: eventDate,
-										recurrence: eventRecurrence
-									)
+									newEvent: event
 								)
 								bye.toggle()
 								resetAddEventView()
 							} label: {
-								Text("Save")
-									.font(.headline)
-									.cornerRadius(10)
-									.buttonStyle(BorderedProminentButtonStyle())
+								Label("Save", systemImage: "checkmark")
 							}
-							.apply {
-								if #available(iOS 17, *) {
-									$0.sensoryFeedback(.success, trigger: bye)
-								}
-							}
-							.disabled(eventName.isEmpty)
+							.tint(.accent)
+							.modifier(hapticSuccess(trigger: bye))
+							.disabled(event.name.isEmpty)
 							.onTapGesture {
-								if eventName.isEmpty {
+								if event.name.isEmpty {
 									showNeedsNameAlert.toggle()
 								}
 							}
@@ -201,36 +173,29 @@ struct AddEventView: View {
 							} message: {
 								Text("Give your Event a name before saving.")
 							}
-							if eventName.isEmpty {
-								HStack {
-									Image(systemName: "exclamationmark")
-										.foregroundStyle(.red)
-									Text("Give your event a name.")
-								}
+						}
+					}
+					ToolbarItem(placement: .confirmationAction) {
+						if !adding {
+							Button() {
+								viewModel.editEvent(event)
+								dismiss()
+							} label: {
+								Label("Done", systemImage: "checkmark")
 							}
+							.disabled(event.name == "")
 						}
 					}
 				}
+				.navigationTitle("Editing \(event.name) - Ne")
 			}
+			.scrollContentBackground(isMac ? .automatic : .hidden)
 			.presentationDragIndicator(.visible)
-			.scrollContentBackground(.hidden)
-		}
-		.apply {
-			if #available(iOS 16.4, *) {
-				$0.presentationBackground(.ultraThinMaterial)
-			}
 		}
 	}
 	func resetAddEventView() {
 		//reset addeventView
-		eventName = viewModel.template.name
-		eventComplete = viewModel.template.complete
-		eventCompleteDesc = viewModel.template.completeDesc
-		eventSymbol = viewModel.template.symbol
-		eventColor = randomColor()
-		eventNotes = viewModel.template.notes
-		eventDate = viewModel.template.date
-		eventRecurrence = viewModel.template.recurrence
+		event = viewModel.template
 		dismiss()
 	}
 	
@@ -243,14 +208,6 @@ struct AddEventView: View {
 		.sheet(isPresented: .constant(true)) {
 			AddEventView(
 				viewModel: vm,
-				eventName: .constant(vm.template.notes),
-				eventComplete: .constant(vm.template.complete),
-				eventCompleteDesc: .constant(vm.template.completeDesc),
-				eventSymbol: .constant(vm.template.symbol),
-				eventColor: .constant(vm.template.color.color),
-				eventNotes: .constant(vm.template.notes),
-				eventDate: .constant(vm.template.date),
-				eventRecurrence: .constant(vm.template.recurrence),
 				adding: true
 			)
 		}

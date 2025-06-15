@@ -11,6 +11,9 @@ import SwiftUI
 import WidgetKit
 import UserNotifications
 import AppIntents
+#if canImport(AppKit)
+import AppKit
+#endif
 
 //@Model
 //final class Item {
@@ -21,7 +24,7 @@ import AppIntents
 //    }
 //}
 
-struct Event: Identifiable, Codable, Equatable, Animatable {
+struct Event: Identifiable, Codable, Equatable, Animatable, Hashable {
 	var id = UUID()
 	var name: String
 	var complete: Bool
@@ -37,52 +40,6 @@ struct Event: Identifiable, Codable, Equatable, Animatable {
 	}
 }
 
-struct ColorCodable: Codable, Equatable {
-	init(_ color: Color) {
-		let uiColor = UIColor(color)
-		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1.0
-		uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
-		
-		self.red = Double(r)
-		self.green = Double(g)
-		self.blue = Double(b)
-	}
-	init(uiColor: UIColor) {
-		var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 1.0
-		uiColor.getRed(&r, green: &g, blue: &b, alpha: &a)
-		self.red = Double(r)
-		self.green = Double(g)
-		self.blue = Double(b)
-	}
-	init(red: Double, green: Double, blue: Double) {
-		self.red = red
-		self.green = green
-		self.blue = blue
-	}
-	
-	var red: Double
-	var green: Double
-	var blue: Double
-	
-	var color: Color {
-		Color(red: red, green: green, blue: blue)
-	}
-	var colorBind: Color {
-		get {
-			return Color(
-				red: red,
-				green: green,
-				blue: blue
-			)
-		} set {
-			let cc = ColorCodable(newValue)
-			self.red = cc.red
-			self.green = cc.green
-			self.blue = cc.blue
-		}
-	}
-}
-
 func daysUntilEvent(_ eventDate: Date) -> (long: String, short: String) {
 	let calendar = Calendar.current
 	let startOfDayNow = calendar.startOfDay(for: Date())
@@ -93,115 +50,19 @@ func daysUntilEvent(_ eventDate: Date) -> (long: String, short: String) {
 	if days < 0 {
 		//past
 		return (
-			"\(-days) day\(plu(days)) ago",
+			"\(-days)\nday\(plu(days)) ago",
 			"\(days)d"
 		)
 	} else {
 		//future
 		return (
-			"\(days) day\(plu(days))",
+			"\(days)\nday\(plu(days))",
 			"\(days)d"
 		)
 	}
 }
 
-struct Settings: Codable, Equatable {
-	var showCompletedInHome: Bool
-	var tint: ColorCodable
-	var showWhatsNew: Bool
-	var prevAppVersion: String
-}
-
-struct AccentIcon {
-	var icon: UIImage
-	var color: Color
-	var name: String
-	init(_ colorName: String) {
-		if colorName == "orange" {
-			self.icon = UIImage(named: "AppIcon")!
-		} else {
-			self.icon = UIImage(named: colorName)!
-		}
-		self.color = Color(uiColor: UIColor(named: "uiColors/\(colorName)")!)
-		self.name = colorName
-	}
-}
-
-class SettingsViewModel: ObservableObject {
-	@Published var settings: Settings = Settings(
-		showCompletedInHome: false,
-		tint: ColorCodable(uiColor: UIColor(named: "AccentColor")!),
-		showWhatsNew: true,
-		prevAppVersion: getVersion()+getBuildID()
-	)
-	@Published var notifsGranted: Bool = false
-	
-	@Published var colorChoices: [AccentIcon] = []
-	
-	let accentChoices: [String] = [
-		"red",
-		"orange",
-		"yellow",
-		"green",
-		"blue",
-		"bloo",
-		"purple",
-		"pink"
-	]
-	
-	@Published var device: (sf: String, label: String)
-	
-	init(load: Bool = true) {
-		self.device = getDevice()
-		if load {
-			loadSettings()
-			Task {
-				let requestResult = await requestNotifs()
-				await MainActor.run {
-					self.notifsGranted = requestResult
-				}
-			}
-		}
-	}
-	
-	func changeTint(to: String) {
-		if let uicolor = UIColor(named: "uiColors/\(to)") {
-			self.settings.tint = ColorCodable(uiColor: uicolor)
-			saveSettings()
-		}
-	}
-	
-	let appGroupSettingsStore = UserDefaults(suiteName: "group.NearFuture") ?? UserDefaults.standard
-	let icSettStore = NSUbiquitousKeyValueStore.default
-	
-	func loadSettings() {
-		let decoder = JSONDecoder()
-		if let icSettings = icSettStore.data(forKey: "settings") {
-			if let decodedSetts = try? decoder.decode(Settings.self, from: icSettings) {
-				self.settings = decodedSetts
-			}
-		} else if let savedData = appGroupSettingsStore.data(forKey: "settings") {
-			if let decodedSetts = try? decoder.decode(Settings.self, from: savedData) {
-				self.settings = decodedSetts
-			}
-		}
-		if self.settings.prevAppVersion != getVersion()+getBuildID() {
-			self.settings.showWhatsNew = true
-		}
-	}
-	
-	func saveSettings() {
-		let encoder = JSONEncoder()
-		if let encoded = try? encoder.encode(settings) {
-			appGroupSettingsStore.set(encoded, forKey: "settings")
-			icSettStore.set(encoded, forKey: "settings")
-			icSettStore.synchronize()
-			loadSettings()
-		}
-	}
-}
-
-class EventViewModel: ObservableObject {
+class EventViewModel: ObservableObject, @unchecked Sendable {
 	@Published var events: [Event] = []
 	@Published var icloudData: [Event] = []
 	
@@ -232,11 +93,31 @@ class EventViewModel: ObservableObject {
 	@Published var localEventCount: Int = 0
 	@Published var syncStatus: String = "Not Synced"
 	
+	@Published var hasUbiquitous: Bool = false
+	@Published var lastSyncWasSuccessful: Bool = false
+	@Published var lastSyncWasNormalAgo: Bool = false
+	@Published var localCountEqualToiCloud: Bool = false
+	@Published var icloudCountEqualToLocal: Bool = false
+	
+	var iCloudStatusColor: Color {
+		let allTrue = hasUbiquitous && lastSyncWasSuccessful && lastSyncWasNormalAgo && localCountEqualToiCloud && icloudCountEqualToLocal
+		let someTrue = hasUbiquitous || lastSyncWasSuccessful || lastSyncWasNormalAgo || localCountEqualToiCloud || icloudCountEqualToLocal
+		
+		if allTrue {
+			return .green
+		} else if someTrue {
+			return .orange
+		} else {
+			return .red
+		}
+	}
+	
 	init(load: Bool = true) {
 		self.editableTemplate = template
 		if load {
 			loadEvents()
 		}
+//		AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
 	}
 	
 	//appgroup or regular userdefaults
@@ -315,8 +196,8 @@ class EventViewModel: ObservableObject {
 			
 			updateSyncStatus()
 			loadEvents()
-			Task {
-				await checkPendingNotifs(getNotifs())
+			Task.detached {
+				await self.checkPendingNotifs(self.getNotifs())
 			}
 			WidgetCenter.shared.reloadAllTimelines()//reload all widgets when saving events
 			objectWillChange.send()
@@ -339,6 +220,24 @@ class EventViewModel: ObservableObject {
 		events.append(newEvent)
 		scheduleEventNotif(newEvent)
 		saveEvents() //sync with icloud
+	}
+	
+	func editEvent(_ editedEvent: Event) {
+		if let index = events.firstIndex(where: { editedEvent.id == $0.id }) {
+			self.events[index] = editedEvent
+			saveEvents()
+		}
+	}
+	
+	func completeEvent(_ event: inout Event) {
+		withAnimation { event.complete.toggle() }
+		let eventToModify = self.events.firstIndex() { currEvent in
+			currEvent.id == event.id
+		}
+		if let eventToModify = eventToModify {
+			self.events[eventToModify] = event
+			self.saveEvents()
+		}
 	}
 	
 	func removeEvent(at index: IndexSet) {
@@ -392,18 +291,30 @@ class EventViewModel: ObservableObject {
 		return ""
 	}
 	
-	func importEvents(_ imported: String) throws {
+	func importEvents(_ imported: String, replace: Bool) throws {
 		guard let data = Data(base64Encoded: imported) else {
 			throw importError.invalidB64
 		}
 		let decoder = JSONDecoder()
 		do {
 			let decoded = try decoder.decode([Event].self, from: data)
-			self.events = decoded
+			if replace {
+				self.events = decoded
+			} else {
+				self.events = self.events + decoded
+			}
 			saveEvents()
 		} catch {
 			throw error
 		}
+	}
+	
+	func updateiCStatus() {
+		hasUbiquitous = hasUbiquitousKeyValueStore()
+		lastSyncWasSuccessful = syncStatus.contains("Success")
+		lastSyncWasNormalAgo = lastSync?.timeIntervalSinceNow.isNormal ?? false
+		localCountEqualToiCloud = localEventCount == icloudEventCount
+		icloudCountEqualToLocal = icloudEventCount == localEventCount
 	}
 	
 	//MARK: Danger Zone
@@ -451,7 +362,7 @@ class EventViewModel: ObservableObject {
 	}
 }
 
-class dummyEventViewModel: EventViewModel {
+class dummyEventViewModel: EventViewModel, @unchecked Sendable{
 	var template2: Event
 	override init(load: Bool = false) {
 		self.template2 = Event(
@@ -580,6 +491,7 @@ func getBuildID() -> String {
 }
 
 func getDevice() -> (sf: String, label: String) {
+	#if canImport(UIKit)
 	let asi = ProcessInfo().isiOSAppOnMac
 	let model = UIDevice().model
 	if asi {
@@ -590,6 +502,10 @@ func getDevice() -> (sf: String, label: String) {
 		return (sf: model.lowercased(), label: model)
 	}
 	return (sf: "iphone", label: "iPhone")
+	#elseif canImport(AppKit)
+	
+	return (sf: "desktopcomputer", label: "Mac")
+	#endif
 }
 
 extension Event: AppEntity {
@@ -630,8 +546,7 @@ struct CompleteEvent: AppIntent {
 	
 	func perform() async throws -> some IntentResult {
 		print("s")
-		var viewModel = EventViewModel()
-		var eventss = viewModel.events
+		let viewModel = EventViewModel()
 		print("hip")
 		guard let eventUUID = UUID(uuidString: eventID) else {
 			print(":sdklfajk")

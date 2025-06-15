@@ -12,7 +12,11 @@ struct ExportView: View {
 	var body: some View {
 		List {
 			Button() {
+				#if canImport(UIKit)
 				UIPasteboard.general.string = viewModel.exportEvents()
+				#else
+				NSPasteboard.general.setString(viewModel.exportEvents(), forType: .string)
+				#endif
 			} label: {
 				Label("Copy Events", systemImage: "document.on.clipboard")
 			}

@@ -16,9 +16,14 @@ struct WhatsNewView: View {
 		var title: String
 		var subtitle: String
 	}
-	@State var bye = false
+	@State var bye: Bool = false
 	var whatsNewChunks: [WhatsNewChunk] {
 		return [
+			WhatsNewChunk(
+				symbol: "desktopcomputer",
+				title: "Mac Native App",
+				subtitle: "New Mac native app (Intel too!)"
+			),
 			WhatsNewChunk(
 				symbol: "iphone.radiowaves.left.and.right",
 				title: "Haptic Feedback",
@@ -53,23 +58,22 @@ struct WhatsNewView: View {
 	}
 	var body: some View {
 		NavigationStack {
-			List {
-				VStack {
-					Text("What's New")
-						.font(.largeTitle)
-						.bold()
-					AboutView()
-					Divider()
-					VStack(alignment: .leading) {
-						ForEach(whatsNewChunks) { new in
-							WhatsNewChunkView(
-								symbol: new.symbol,
-								title: new.title,
-								subtitle: new.subtitle
-							)
-						}
+			ScrollView {
+				Text("What's New")
+					.font(.largeTitle)
+					.bold()
+					.padding(.vertical)
+				VStack(alignment: .leading) {
+					ForEach(whatsNewChunks) { new in
+						WhatsNewChunkView(
+							symbol: new.symbol,
+							title: new.title,
+							subtitle: new.subtitle
+						)
 					}
+					Spacer()
 				}
+				.padding(.horizontal, 10)
 			}
 			Button() {
 				bye.toggle()
@@ -79,24 +83,14 @@ struct WhatsNewView: View {
 					.font(.headline)
 					.frame(height: 40)
 					.bold()
-					.frame(maxWidth: .infinity)
+//					.frame(maxWidth: .infinity)
 			}
-			.buttonStyle(BorderedProminentButtonStyle())
-			.clipShape(RoundedRectangle(cornerRadius: 15))
-			.padding().padding()
-			.apply {
-				if #available(iOS 17, *) {
-					$0.sensoryFeedback(.impact(weight: .heavy, intensity: 1), trigger: bye)
-				}
-			}
+			.foregroundStyle(.orange)
+			.modifier(glassButton())
+			.modifier(hapticHeavy(trigger: bye))
 		}
 		.scrollContentBackground(.hidden)
 		.presentationDragIndicator(.visible)
-		.apply {
-			if #available(iOS 16.4, *) {
-				$0.presentationBackground(.ultraThinMaterial)
-			}
-		}
 		.onDisappear {
 			settingsModel.settings.prevAppVersion = getVersion()+getBuildID()
 			settingsModel.saveSettings()
@@ -122,7 +116,7 @@ struct WhatsNewChunkView: View {
 				.resizable()
 				.scaledToFit()
 				.frame(width: 30, height: 30)
-				.foregroundStyle(Color.accentColor)
+				.foregroundStyle(Color.orange)
 				.padding(.trailing, 15)
 			VStack(alignment: .leading) {
 				Text(title)

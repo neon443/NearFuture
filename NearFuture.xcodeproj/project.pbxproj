@@ -7,14 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A90D49382DDE0FAF00781124 /* ContentViewMac.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49332DDE0FAF00781124 /* ContentViewMac.swift */; };
+		A90D493D2DDE10B200781124 /* NearFutureIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A949F8312DCAAA8A0064DCA0 /* NearFutureIcon.png */; };
+		A90D493E2DDE10CF00781124 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
+		A90D49422DDE114100781124 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Events.swift */; };
+		A90D49442DDE1C7600781124 /* Tints.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90D49432DDE1C1100781124 /* Tints.xcassets */; };
+		A90D49452DDE1C7600781124 /* Tints.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90D49432DDE1C1100781124 /* Tints.xcassets */; };
+		A90D49462DDE1C7A00781124 /* Tints.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90D49432DDE1C1100781124 /* Tints.xcassets */; };
+		A90D49522DDE2D0000781124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49512DDE2D0000781124 /* Extensions.swift */; };
+		A90D49532DDE2D0000781124 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49512DDE2D0000781124 /* Extensions.swift */; };
+		A90D495B2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */; };
+		A90D495E2DDE3C7400781124 /* NFCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D495D2DDE3C7400781124 /* NFCommands.swift */; };
+		A90D495F2DDE3C7400781124 /* NFCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D495D2DDE3C7400781124 /* NFCommands.swift */; };
+		A90D49612DDE626300781124 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49602DDE626300781124 /* Settings.swift */; };
+		A90D49622DDE626300781124 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49602DDE626300781124 /* Settings.swift */; };
+		A90D49632DDE626300781124 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90D49602DDE626300781124 /* Settings.swift */; };
 		A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4A2DD26C0F00856265 /* HomeView.swift */; };
 		A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
 		A914FA4F2DD276D200856265 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4E2DD276D200856265 /* AboutView.swift */; };
+		A91EF8072DFC8B8B00B8463D /* ColorCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */; };
+		A91EF8082DFC8B8B00B8463D /* ColorCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */; };
+		A91EF8092DFC8B8B00B8463D /* ColorCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */; };
+		A91EF80B2DFC910000B8463D /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80A2DFC910000B8463D /* ViewModifiers.swift */; };
+		A91EF80C2DFC910000B8463D /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80A2DFC910000B8463D /* ViewModifiers.swift */; };
+		A91EF80D2DFC910000B8463D /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80A2DFC910000B8463D /* ViewModifiers.swift */; };
+		A91EF80E2DFC9A0C00B8463D /* WhatsNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A914FA4C2DD2768900856265 /* WhatsNewView.swift */; };
+		A91EF8102DFCB66C00B8463D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF80F2DFCB66C00B8463D /* SettingsView.swift */; };
+		A91EF8132DFCC87D00B8463D /* EditEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83D2DCAABE00064DCA0 /* EditEventView.swift */; };
+		A91EF8142DFCC87D00B8463D /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83C2DCAABE00064DCA0 /* AddEventView.swift */; };
+		A91EF8182DFD77BF00B8463D /* SymbolsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8172DFD77BF00B8463D /* SymbolsLoader.swift */; };
+		A91EF8192DFD77BF00B8463D /* SymbolsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8172DFD77BF00B8463D /* SymbolsLoader.swift */; };
+		A91EF81A2DFD77BF00B8463D /* SymbolsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF8172DFD77BF00B8463D /* SymbolsLoader.swift */; };
+		A91EF81C2DFD796600B8463D /* SymbolsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF81B2DFD796600B8463D /* SymbolsPicker.swift */; };
+		A91EF81D2DFD796600B8463D /* SymbolsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF81B2DFD796600B8463D /* SymbolsPicker.swift */; };
+		A91EF81E2DFD796600B8463D /* SymbolsPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91EF81B2DFD796600B8463D /* SymbolsPicker.swift */; };
 		A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C2872D24011400E4F9B1 /* NearFutureApp.swift */; };
-		A920C28C2D24011400E4F9B1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
+		A920C28C2D24011400E4F9B1 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Events.swift */; };
 		A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C28D2D24011A00E4F9B1 /* Assets.xcassets */; };
 		A920C2922D24011A00E4F9B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A920C2912D24011A00E4F9B1 /* Preview Assets.xcassets */; };
-		A920C2BE2D24021A00E4F9B1 /* SFSymbolsPicker in Frameworks */ = {isa = PBXBuildFile; productRef = A920C2BD2D24021A00E4F9B1 /* SFSymbolsPicker */; };
 		A949F8322DCAAA8A0064DCA0 /* NearFutureIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = A949F8312DCAAA8A0064DCA0 /* NearFutureIcon.png */; };
 		A949F84B2DCAABE00064DCA0 /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83A2DCAABE00064DCA0 /* ArchiveView.swift */; };
 		A949F84C2DCAABE00064DCA0 /* AddEventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F83C2DCAABE00064DCA0 /* AddEventView.swift */; };
@@ -27,16 +57,25 @@
 		A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8452DCAABE00064DCA0 /* ImportView.swift */; };
 		A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8462DCAABE00064DCA0 /* SettingsView.swift */; };
 		A949F8552DCAABE00064DCA0 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8482DCAABE00064DCA0 /* StatsView.swift */; };
-		A949F8562DCAABE00064DCA0 /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8432DCAABE00064DCA0 /* ExportView.swift */; };
-		A949F8592DCAAD670064DCA0 /* NearFutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */; };
 		A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F85D2DCABB420064DCA0 /* Buttons.swift */; };
-		A979F6052D270AF00094C0B3 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6042D270AF00094C0B3 /* WidgetKit.framework */; };
-		A979F6072D270AF00094C0B3 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A979F6062D270AF00094C0B3 /* SwiftUI.framework */; };
+		A95E9ED32DFC703200ED655F /* iCloudSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8442DCAABE00064DCA0 /* iCloudSettingsView.swift */; };
+		A95E9ED82DFC742B00ED655F /* AccentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E9ED72DFC742B00ED655F /* AccentIcon.swift */; };
+		A95E9ED92DFC742B00ED655F /* AccentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E9ED72DFC742B00ED655F /* AccentIcon.swift */; };
+		A95E9EDA2DFC742B00ED655F /* AccentIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A95E9ED72DFC742B00ED655F /* AccentIcon.swift */; };
+		A95E9EE42DFC77D400ED655F /* ImportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8452DCAABE00064DCA0 /* ImportView.swift */; };
+		A95E9EE52DFC77E200ED655F /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8432DCAABE00064DCA0 /* ExportView.swift */; };
+		A96609E72DFD800000DBFA78 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8412DCAABE00064DCA0 /* HelpView.swift */; };
 		A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */; };
 		A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */; };
 		A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A979F60F2D270AF80094C0B3 /* Assets.xcassets */; };
 		A979F6142D270AF90094C0B3 /* NearFutureWidgetsExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */; platformFilter = ios; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		A979F6182D2714310094C0B3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Item.swift */; };
+		A979F6182D2714310094C0B3 /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = A920C28B2D24011400E4F9B1 /* Events.swift */; };
+		A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CD2DE7308E0008D61C /* ArchiveView.swift */; };
+		A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20CF2DE731BD0008D61C /* HomeView.swift */; };
+		A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98C20D32DE7339E0008D61C /* AboutView.swift */; };
+		A9BAC6882DFF242300EC8E44 /* CompleteEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BAC6872DFF238100EC8E44 /* CompleteEventButton.swift */; };
+		A9BAC6892DFF242300EC8E44 /* CompleteEventButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BAC6872DFF238100EC8E44 /* CompleteEventButton.swift */; };
+		A9D1C34D2DFE10FA00703C2D /* EventListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A949F8402DCAABE00064DCA0 /* EventListView.swift */; };
 		A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */; };
 /* End PBXBuildFile section */
 
@@ -48,12 +87,12 @@
 			remoteGlobalIDString = A979F6012D270AF00094C0B3;
 			remoteInfo = NearFutureWidgetsExtension;
 		};
-		A980FC3B2D93FB2B006A778F /* PBXContainerItemProxy */ = {
+		A98C20D12DE732B10008D61C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A920C27C2D24011300E4F9B1 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A920C2832D24011300E4F9B1;
-			remoteInfo = NearFuture;
+			remoteGlobalIDString = A979F6012D270AF00094C0B3;
+			remoteInfo = NearFutureWidgetsExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -72,15 +111,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A90D491F2DDE08E400781124 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A90D49262DDE0FA400781124 /* Near Future.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Near Future.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A90D49332DDE0FAF00781124 /* ContentViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewMac.swift; sourceTree = "<group>"; };
+		A90D49342DDE0FAF00781124 /* MacNearFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacNearFuture.entitlements; sourceTree = "<group>"; };
+		A90D49432DDE1C1100781124 /* Tints.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Tints.xcassets; sourceTree = "<group>"; };
+		A90D49512DDE2D0000781124 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MacNearFutureApp.swift; path = MacNearFuture/MacNearFutureApp.swift; sourceTree = SOURCE_ROOT; };
+		A90D495D2DDE3C7400781124 /* NFCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFCommands.swift; sourceTree = "<group>"; };
+		A90D49602DDE626300781124 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A90D49652DDE658100781124 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A90FDE222DC0D4310012790C /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		A914FA4A2DD26C0F00856265 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A914FA4C2DD2768900856265 /* WhatsNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WhatsNewView.swift; path = NearFuture/Views/Settings/WhatsNewView.swift; sourceTree = SOURCE_ROOT; };
 		A914FA4E2DD276D200856265 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutView.swift; path = NearFuture/Views/Misc/AboutView.swift; sourceTree = SOURCE_ROOT; };
+		A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCodable.swift; sourceTree = "<group>"; };
+		A91EF80A2DFC910000B8463D /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
+		A91EF80F2DFCB66C00B8463D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A91EF8172DFD77BF00B8463D /* SymbolsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsLoader.swift; sourceTree = "<group>"; };
+		A91EF81B2DFD796600B8463D /* SymbolsPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsPicker.swift; sourceTree = "<group>"; };
 		A920C2842D24011400E4F9B1 /* NearFuture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NearFuture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A920C2872D24011400E4F9B1 /* NearFutureApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureApp.swift; sourceTree = "<group>"; };
-		A920C28B2D24011400E4F9B1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		A920C28B2D24011400E4F9B1 /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
 		A920C28D2D24011A00E4F9B1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A920C28F2D24011A00E4F9B1 /* NearFuture.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFuture.entitlements; sourceTree = "<group>"; };
 		A920C2912D24011A00E4F9B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A949F82E2DCAAA640064DCA0 /* NearFutureIcon.pxd */ = {isa = PBXFileReference; lastKnownFileType = file; path = NearFutureIcon.pxd; sourceTree = "<group>"; };
 		A949F82F2DCAAA640064DCA0 /* NearFutureIconDark.pxd */ = {isa = PBXFileReference; lastKnownFileType = file; path = NearFutureIconDark.pxd; sourceTree = "<group>"; };
@@ -97,46 +150,35 @@
 		A949F8452DCAABE00064DCA0 /* ImportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportView.swift; sourceTree = "<group>"; };
 		A949F8462DCAABE00064DCA0 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A949F8482DCAABE00064DCA0 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
-		A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureTests.swift; sourceTree = "<group>"; };
 		A949F85D2DCABB420064DCA0 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		A979F58B2D2700680094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
-		A979F58D2D2700680094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
-		A979F58F2D2700680094C0B3 /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
-		A979F5912D2700680094C0B3 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
-		A979F5932D27006D0094C0B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A979F5952D27006D0094C0B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A95E9ED72DFC742B00ED655F /* AccentIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccentIcon.swift; sourceTree = "<group>"; };
 		A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NearFutureWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		A979F6042D270AF00094C0B3 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		A979F6062D270AF00094C0B3 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
 		A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
 		A979F60F2D270AF80094C0B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A979F6112D270AF90094C0B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A980FC302D920097006A778F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A980FC372D93FB2B006A778F /* NearFutureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NearFutureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9C05E412D2805D7007DC497 /* NearFutureWidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NearFutureWidgetsExtension.entitlements; sourceTree = "<group>"; };
+		A98C20CD2DE7308E0008D61C /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
+		A98C20CF2DE731BD0008D61C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A98C20D32DE7339E0008D61C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		A9BAC6872DFF238100EC8E44 /* CompleteEventButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteEventButton.swift; sourceTree = "<group>"; };
 		A9FC7EE92D28238A0020D75B /* NearFutureWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A90D49232DDE0FA400781124 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A920C2812D24011300E4F9B1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A920C2BE2D24021A00E4F9B1 /* SFSymbolsPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A979F5FF2D270AF00094C0B3 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A979F6072D270AF00094C0B3 /* SwiftUI.framework in Frameworks */,
-				A979F6052D270AF00094C0B3 /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A980FC342D93FB2B006A778F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -146,15 +188,80 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A90D49202DDE0A3B00781124 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A920C28B2D24011400E4F9B1 /* Events.swift */,
+				A90D49602DDE626300781124 /* Settings.swift */,
+				A91EF8062DFC8B8B00B8463D /* ColorCodable.swift */,
+				A95E9ED72DFC742B00ED655F /* AccentIcon.swift */,
+				A91EF8162DFD77A500B8463D /* SymbolsPicker */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A90D49362DDE0FAF00781124 /* MacNearFuture */ = {
+			isa = PBXGroup;
+			children = (
+				A90D495A2DDE2EDB00781124 /* MacNearFutureApp.swift */,
+				A98C20D32DE7339E0008D61C /* AboutView.swift */,
+				A90D495D2DDE3C7400781124 /* NFCommands.swift */,
+				A90D493F2DDE10EC00781124 /* Views */,
+				A90D49342DDE0FAF00781124 /* MacNearFuture.entitlements */,
+			);
+			path = MacNearFuture;
+			sourceTree = "<group>";
+		};
+		A90D493F2DDE10EC00781124 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A90D49332DDE0FAF00781124 /* ContentViewMac.swift */,
+				A98C20CF2DE731BD0008D61C /* HomeView.swift */,
+				A98C20CD2DE7308E0008D61C /* ArchiveView.swift */,
+				A91EF80F2DFCB66C00B8463D /* SettingsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A90D49412DDE112700781124 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
+				A90D49512DDE2D0000781124 /* Extensions.swift */,
+				A90D49202DDE0A3B00781124 /* Model */,
+				A91EF80A2DFC910000B8463D /* ViewModifiers.swift */,
+				A9BAC6872DFF238100EC8E44 /* CompleteEventButton.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		A90D49542DDE2D5800781124 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A91EF8162DFD77A500B8463D /* SymbolsPicker */ = {
+			isa = PBXGroup;
+			children = (
+				A91EF8172DFD77BF00B8463D /* SymbolsLoader.swift */,
+				A91EF81B2DFD796600B8463D /* SymbolsPicker.swift */,
+			);
+			path = SymbolsPicker;
+			sourceTree = "<group>";
+		};
 		A920C27B2D24011300E4F9B1 = {
 			isa = PBXGroup;
 			children = (
+				A90D491F2DDE08E400781124 /* README.md */,
 				A90FDE222DC0D4310012790C /* Config.xcconfig */,
-				A949F8002DCAA0340064DCA0 /* Resources */,
+				A90D49412DDE112700781124 /* Shared */,
 				A920C2862D24011400E4F9B1 /* NearFuture */,
+				A90D49362DDE0FAF00781124 /* MacNearFuture */,
+				A949F8002DCAA0340064DCA0 /* Resources */,
 				A979F6082D270AF00094C0B3 /* NearFutureWidgets */,
-				A949F8582DCAAD670064DCA0 /* NearFutureTests */,
-				A979F6032D270AF00094C0B3 /* Frameworks */,
+				A90D49542DDE2D5800781124 /* Frameworks */,
 				A920C2852D24011400E4F9B1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -164,7 +271,7 @@
 			children = (
 				A920C2842D24011400E4F9B1 /* NearFuture.app */,
 				A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */,
-				A980FC372D93FB2B006A778F /* NearFutureTests.xctest */,
+				A90D49262DDE0FA400781124 /* Near Future.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,11 +279,7 @@
 		A920C2862D24011400E4F9B1 /* NearFuture */ = {
 			isa = PBXGroup;
 			children = (
-				A920C2872D24011400E4F9B1 /* NearFutureApp.swift */,
-				A920C28B2D24011400E4F9B1 /* Item.swift */,
 				A949F84A2DCAABE00064DCA0 /* Views */,
-				A980FC302D920097006A778F /* Info.plist */,
-				A920C28F2D24011A00E4F9B1 /* NearFuture.entitlements */,
 				A920C2902D24011A00E4F9B1 /* Preview Content */,
 			);
 			path = NearFuture;
@@ -185,7 +288,6 @@
 		A920C2902D24011A00E4F9B1 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				A979F58A2D2700680094C0B3 /* NearFutureWidgets */,
 				A920C2912D24011A00E4F9B1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -196,6 +298,7 @@
 			children = (
 				A949F8312DCAAA8A0064DCA0 /* NearFutureIcon.png */,
 				A920C28D2D24011A00E4F9B1 /* Assets.xcassets */,
+				A90D49432DDE1C1100781124 /* Tints.xcassets */,
 				A949F82E2DCAAA640064DCA0 /* NearFutureIcon.pxd */,
 				A949F82F2DCAAA640064DCA0 /* NearFutureIconDark.pxd */,
 				A949F8302DCAAA640064DCA0 /* NearFutureIconTint.pxd */,
@@ -223,10 +326,9 @@
 		A949F8422DCAABE00064DCA0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				A949F83F2DCAABE00064DCA0 /* ContentView.swift */,
+				A914FA4A2DD26C0F00856265 /* HomeView.swift */,
 				A949F8402DCAABE00064DCA0 /* EventListView.swift */,
 				A949F8412DCAABE00064DCA0 /* HelpView.swift */,
-				A914FA4A2DD26C0F00856265 /* HomeView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -254,6 +356,7 @@
 		A949F84A2DCAABE00064DCA0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A949F83F2DCAABE00064DCA0 /* ContentView.swift */,
 				A949F8422DCAABE00064DCA0 /* Home */,
 				A949F83E2DCAABE00064DCA0 /* Events */,
 				A949F83B2DCAABE00064DCA0 /* Archive */,
@@ -262,14 +365,6 @@
 				A949F8472DCAABE00064DCA0 /* Settings */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		A949F8582DCAAD670064DCA0 /* NearFutureTests */ = {
-			isa = PBXGroup;
-			children = (
-				A949F8572DCAAD670064DCA0 /* NearFutureTests.swift */,
-			);
-			path = NearFutureTests;
 			sourceTree = "<group>";
 		};
 		A949F85E2DCABB420064DCA0 /* Misc */ = {
@@ -281,28 +376,6 @@
 			path = Misc;
 			sourceTree = "<group>";
 		};
-		A979F58A2D2700680094C0B3 /* NearFutureWidgets */ = {
-			isa = PBXGroup;
-			children = (
-				A979F58B2D2700680094C0B3 /* NearFutureWidgetsBundle.swift */,
-				A979F58D2D2700680094C0B3 /* NearFutureWidgetsLiveActivity.swift */,
-				A979F58F2D2700680094C0B3 /* NearFutureWidgets.swift */,
-				A979F5912D2700680094C0B3 /* AppIntent.swift */,
-				A979F5932D27006D0094C0B3 /* Assets.xcassets */,
-				A979F5952D27006D0094C0B3 /* Info.plist */,
-			);
-			path = NearFutureWidgets;
-			sourceTree = "<group>";
-		};
-		A979F6032D270AF00094C0B3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				A979F6042D270AF00094C0B3 /* WidgetKit.framework */,
-				A979F6062D270AF00094C0B3 /* SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		A979F6082D270AF00094C0B3 /* NearFutureWidgets */ = {
 			isa = PBXGroup;
 			children = (
@@ -310,8 +383,7 @@
 				A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */,
 				A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */,
 				A979F60F2D270AF80094C0B3 /* Assets.xcassets */,
-				A979F6112D270AF90094C0B3 /* Info.plist */,
-				A9C05E412D2805D7007DC497 /* NearFutureWidgetsExtension.entitlements */,
+				A90D49652DDE658100781124 /* Info.plist */,
 			);
 			path = NearFutureWidgets;
 			sourceTree = "<group>";
@@ -319,6 +391,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A90D49252DDE0FA400781124 /* MacNearFuture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A90D492F2DDE0FA600781124 /* Build configuration list for PBXNativeTarget "MacNearFuture" */;
+			buildPhases = (
+				A90D49222DDE0FA400781124 /* Sources */,
+				A90D49232DDE0FA400781124 /* Frameworks */,
+				A90D49242DDE0FA400781124 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A98C20D22DE732B10008D61C /* PBXTargetDependency */,
+			);
+			name = MacNearFuture;
+			packageProductDependencies = (
+			);
+			productName = MacNearFuture;
+			productReference = A90D49262DDE0FA400781124 /* Near Future.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A920C2832D24011300E4F9B1 /* NearFuture */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A920C2AB2D24011B00E4F9B1 /* Build configuration list for PBXNativeTarget "NearFuture" */;
@@ -335,7 +427,6 @@
 			);
 			name = NearFuture;
 			packageProductDependencies = (
-				A920C2BD2D24021A00E4F9B1 /* SFSymbolsPicker */,
 			);
 			productName = NearFuture;
 			productReference = A920C2842D24011400E4F9B1 /* NearFuture.app */;
@@ -358,26 +449,6 @@
 			productReference = A979F6022D270AF00094C0B3 /* NearFutureWidgetsExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		A980FC362D93FB2B006A778F /* NearFutureTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = A980FC3D2D93FB2B006A778F /* Build configuration list for PBXNativeTarget "NearFutureTests" */;
-			buildPhases = (
-				A980FC332D93FB2B006A778F /* Sources */,
-				A980FC342D93FB2B006A778F /* Frameworks */,
-				A980FC352D93FB2B006A778F /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				A980FC3C2D93FB2B006A778F /* PBXTargetDependency */,
-			);
-			name = NearFutureTests;
-			packageProductDependencies = (
-			);
-			productName = NearFutureTests;
-			productReference = A980FC372D93FB2B006A778F /* NearFutureTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -385,18 +456,17 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1630;
 				TargetAttributes = {
+					A90D49252DDE0FA400781124 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					A920C2832D24011300E4F9B1 = {
 						CreatedOnToolsVersion = 15.4;
 					};
 					A979F6012D270AF00094C0B3 = {
 						CreatedOnToolsVersion = 15.4;
-					};
-					A980FC362D93FB2B006A778F = {
-						CreatedOnToolsVersion = 16.2;
-						TestTargetID = A920C2832D24011300E4F9B1;
 					};
 				};
 			};
@@ -410,24 +480,34 @@
 			);
 			mainGroup = A920C27B2D24011300E4F9B1;
 			packageReferences = (
-				A920C2BC2D24021900E4F9B1 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */,
 			);
 			productRefGroup = A920C2852D24011400E4F9B1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				A920C2832D24011300E4F9B1 /* NearFuture */,
+				A90D49252DDE0FA400781124 /* MacNearFuture */,
 				A979F6012D270AF00094C0B3 /* NearFutureWidgetsExtension */,
-				A980FC362D93FB2B006A778F /* NearFutureTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A90D49242DDE0FA400781124 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A90D49452DDE1C7600781124 /* Tints.xcassets in Resources */,
+				A90D493E2DDE10CF00781124 /* Assets.xcassets in Resources */,
+				A90D493D2DDE10B200781124 /* NearFutureIcon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A920C2822D24011300E4F9B1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90D49442DDE1C7600781124 /* Tints.xcassets in Resources */,
 				A920C2922D24011A00E4F9B1 /* Preview Assets.xcassets in Resources */,
 				A949F8322DCAAA8A0064DCA0 /* NearFutureIcon.png in Resources */,
 				A920C28E2D24011A00E4F9B1 /* Assets.xcassets in Resources */,
@@ -438,40 +518,74 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A90D49462DDE1C7A00781124 /* Tints.xcassets in Resources */,
 				A979F6102D270AF90094C0B3 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A980FC352D93FB2B006A778F /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A90D49222DDE0FA400781124 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A91EF80E2DFC9A0C00B8463D /* WhatsNewView.swift in Sources */,
+				A91EF8192DFD77BF00B8463D /* SymbolsLoader.swift in Sources */,
+				A95E9EE42DFC77D400ED655F /* ImportView.swift in Sources */,
+				A9BAC6892DFF242300EC8E44 /* CompleteEventButton.swift in Sources */,
+				A91EF80C2DFC910000B8463D /* ViewModifiers.swift in Sources */,
+				A95E9ED92DFC742B00ED655F /* AccentIcon.swift in Sources */,
+				A91EF8102DFCB66C00B8463D /* SettingsView.swift in Sources */,
+				A90D495E2DDE3C7400781124 /* NFCommands.swift in Sources */,
+				A95E9EE52DFC77E200ED655F /* ExportView.swift in Sources */,
+				A91EF8132DFCC87D00B8463D /* EditEventView.swift in Sources */,
+				A91EF8142DFCC87D00B8463D /* AddEventView.swift in Sources */,
+				A9D1C34D2DFE10FA00703C2D /* EventListView.swift in Sources */,
+				A98C20D42DE7339E0008D61C /* AboutView.swift in Sources */,
+				A98C20CE2DE7308E0008D61C /* ArchiveView.swift in Sources */,
+				A98C20D02DE731BD0008D61C /* HomeView.swift in Sources */,
+				A90D495B2DDE2EDB00781124 /* MacNearFutureApp.swift in Sources */,
+				A91EF8082DFC8B8B00B8463D /* ColorCodable.swift in Sources */,
+				A90D49522DDE2D0000781124 /* Extensions.swift in Sources */,
+				A91EF81D2DFD796600B8463D /* SymbolsPicker.swift in Sources */,
+				A90D49422DDE114100781124 /* Events.swift in Sources */,
+				A90D49382DDE0FAF00781124 /* ContentViewMac.swift in Sources */,
+				A90D49622DDE626300781124 /* Settings.swift in Sources */,
+				A95E9ED32DFC703200ED655F /* iCloudSettingsView.swift in Sources */,
+				A96609E72DFD800000DBFA78 /* HelpView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A920C2802D24011300E4F9B1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A920C28C2D24011400E4F9B1 /* Item.swift in Sources */,
+				A920C28C2D24011400E4F9B1 /* Events.swift in Sources */,
 				A949F84B2DCAABE00064DCA0 /* ArchiveView.swift in Sources */,
 				A914FA4F2DD276D200856265 /* AboutView.swift in Sources */,
 				A949F84C2DCAABE00064DCA0 /* AddEventView.swift in Sources */,
 				A914FA4B2DD26C6800856265 /* HomeView.swift in Sources */,
 				A949F84D2DCAABE00064DCA0 /* EditEventView.swift in Sources */,
 				A949F84E2DCAABE00064DCA0 /* ContentView.swift in Sources */,
+				A90D49612DDE626300781124 /* Settings.swift in Sources */,
+				A90D495F2DDE3C7400781124 /* NFCommands.swift in Sources */,
 				A949F84F2DCAABE00064DCA0 /* EventListView.swift in Sources */,
+				A91EF8092DFC8B8B00B8463D /* ColorCodable.swift in Sources */,
 				A949F8502DCAABE00064DCA0 /* HelpView.swift in Sources */,
 				A949F85F2DCABB420064DCA0 /* Buttons.swift in Sources */,
 				A914FA4D2DD2768900856265 /* WhatsNewView.swift in Sources */,
+				A91EF80B2DFC910000B8463D /* ViewModifiers.swift in Sources */,
 				A949F8512DCAABE00064DCA0 /* ExportView.swift in Sources */,
+				A95E9ED82DFC742B00ED655F /* AccentIcon.swift in Sources */,
+				A90D49532DDE2D0000781124 /* Extensions.swift in Sources */,
 				A949F8522DCAABE00064DCA0 /* iCloudSettingsView.swift in Sources */,
+				A9BAC6882DFF242300EC8E44 /* CompleteEventButton.swift in Sources */,
 				A949F8532DCAABE00064DCA0 /* ImportView.swift in Sources */,
 				A949F8542DCAABE00064DCA0 /* SettingsView.swift in Sources */,
+				A91EF81E2DFD796600B8463D /* SymbolsPicker.swift in Sources */,
 				A949F8552DCAABE00064DCA0 /* StatsView.swift in Sources */,
+				A91EF81A2DFD77BF00B8463D /* SymbolsLoader.swift in Sources */,
 				A920C2882D24011400E4F9B1 /* NearFutureApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,19 +594,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A979F6182D2714310094C0B3 /* Item.swift in Sources */,
+				A979F6182D2714310094C0B3 /* Events.swift in Sources */,
+				A91EF81C2DFD796600B8463D /* SymbolsPicker.swift in Sources */,
 				A979F60A2D270AF00094C0B3 /* NearFutureWidgetsBundle.swift in Sources */,
+				A95E9EDA2DFC742B00ED655F /* AccentIcon.swift in Sources */,
+				A91EF80D2DFC910000B8463D /* ViewModifiers.swift in Sources */,
+				A91EF8182DFD77BF00B8463D /* SymbolsLoader.swift in Sources */,
+				A91EF8072DFC8B8B00B8463D /* ColorCodable.swift in Sources */,
 				A9FC7EEA2D2823920020D75B /* NearFutureWidgets.swift in Sources */,
 				A979F60C2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A980FC332D93FB2B006A778F /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A949F8592DCAAD670064DCA0 /* NearFutureTests.swift in Sources */,
-				A949F8562DCAABE00064DCA0 /* ExportView.swift in Sources */,
+				A90D49632DDE626300781124 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,14 +616,76 @@
 			target = A979F6012D270AF00094C0B3 /* NearFutureWidgetsExtension */;
 			targetProxy = A979F6122D270AF90094C0B3 /* PBXContainerItemProxy */;
 		};
-		A980FC3C2D93FB2B006A778F /* PBXTargetDependency */ = {
+		A98C20D22DE732B10008D61C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A920C2832D24011300E4F9B1 /* NearFuture */;
-			targetProxy = A980FC3B2D93FB2B006A778F /* PBXContainerItemProxy */;
+			target = A979F6012D270AF00094C0B3 /* NearFutureWidgetsExtension */;
+			targetProxy = A98C20D12DE732B10008D61C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A90D49302DDE0FA600781124 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A90FDE222DC0D4310012790C /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "bloo blue green pink purple red yellow";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacNearFuture/MacNearFuture.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = 8JGND254B7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15;
+				MARKETING_VERSION = "$(VERSION)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
+				PRODUCT_NAME = "Near Future";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A90D49312DDE0FA600781124 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A90FDE222DC0D4310012790C /* Config.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "bloo blue green pink purple red yellow";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MacNearFuture/MacNearFuture.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
+				DEVELOPMENT_TEAM = 8JGND254B7;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15;
+				MARKETING_VERSION = "$(VERSION)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neon443.NearFuture;
+				PRODUCT_NAME = "Near Future";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		A920C2A92D24011B00E4F9B1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -660,8 +833,7 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NearFuture/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "Near Future";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -687,8 +859,8 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -713,8 +885,7 @@
 				ENABLE_HARDENED_RUNTIME = NO;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NearFuture/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "Near Future";
 				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -737,8 +908,8 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -758,7 +929,7 @@
 				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = "$(TEAM_ID)";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NearFutureWidgets/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NearFutureWidgets/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = NearFutureWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
@@ -778,8 +949,9 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -799,7 +971,7 @@
 				CURRENT_PROJECT_VERSION = "$(BUILD_NUMBER)";
 				DEVELOPMENT_TEAM = "$(TEAM_ID)";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NearFutureWidgets/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/NearFutureWidgets/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = NearFutureWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17;
@@ -815,8 +987,9 @@
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -825,61 +998,18 @@
 			};
 			name = Release;
 		};
-		A980FC3E2D93FB2B006A778F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A90FDE222DC0D4310012790C /* Config.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
-				MACOSX_DEPLOYMENT_TARGET = 13;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFutureTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NearFuture.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NearFuture";
-				XROS_DEPLOYMENT_TARGET = 1;
-			};
-			name = Debug;
-		};
-		A980FC3F2D93FB2B006A778F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = A90FDE222DC0D4310012790C /* Config.xcconfig */;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16;
-				MACOSX_DEPLOYMENT_TARGET = 13;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.neon443.NearFutureTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NearFuture.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NearFuture";
-				XROS_DEPLOYMENT_TARGET = 1;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A90D492F2DDE0FA600781124 /* Build configuration list for PBXNativeTarget "MacNearFuture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A90D49302DDE0FA600781124 /* Debug */,
+				A90D49312DDE0FA600781124 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A920C27F2D24011300E4F9B1 /* Build configuration list for PBXProject "NearFuture" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -907,35 +1037,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A980FC3D2D93FB2B006A778F /* Build configuration list for PBXNativeTarget "NearFutureTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				A980FC3E2D93FB2B006A778F /* Debug */,
-				A980FC3F2D93FB2B006A778F /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A920C2BC2D24021900E4F9B1 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alessiorubicini/SFSymbolsPicker";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.6;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A920C2BD2D24021A00E4F9B1 /* SFSymbolsPicker */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A920C2BC2D24021900E4F9B1 /* XCRemoteSwiftPackageReference "SFSymbolsPicker" */;
-			productName = SFSymbolsPicker;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A920C27C2D24011300E4F9B1 /* Project object */;
 }

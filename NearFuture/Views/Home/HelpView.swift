@@ -13,6 +13,10 @@ enum HelpType {
 	case Archive
 }
 
+enum Field {
+	case Search
+}
+
 struct HelpView: View {
 	/// initialises a Search HelpView
 	/// 
@@ -74,7 +78,7 @@ struct HelpView: View {
 	var body: some View {
 		List {
 			ZStack {
-				Color(.tintColor)
+				Color(.accent)
 					.opacity(0.4)
 					.padding(.horizontal, -15)
 					.blur(radius: 5)

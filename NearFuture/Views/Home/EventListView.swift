@@ -12,141 +12,185 @@ struct EventListView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@State var event: Event
 	
+	@Environment(\.openWindow) var openWindow
+	
+	@State var hovering: Bool = false
+	
+#if canImport(AppKit)
 	var body: some View {
-		NavigationLink() {
-			EditEventView(
-				viewModel: viewModel,
-				event: $event
-			)
-		} label: {
-			ZStack {
-				HStack {
-					RoundedRectangle(cornerRadius: 5)
-						.frame(width: 7)
-						.foregroundStyle(
-							event.color.color.opacity(
-								event.complete ? 0.5 : 1
-							)
+		ZStack {
+			Color.black.opacity(hovering ? 0.5 : 0.0)
+			HStack {
+				RoundedRectangle(cornerRadius: 5)
+					.frame(width: 7)
+					.foregroundStyle(
+						event.color.color.opacity(
+							event.complete ? 0.5 : 1
 						)
-					VStack(alignment: .leading) {
-						HStack {
-							Image(systemName: event.symbol)
-								.resizable()
-								.scaledToFit()
-								.frame(width: 20, height: 20)
-								.shadow(radius: 5)
-								.foregroundStyle(
-									.one.opacity(
-										event.complete ? 0.5 : 1
-									)
+					)
+				VStack(alignment: .leading) {
+					HStack {
+						Image(systemName: event.symbol)
+							.resizable()
+							.scaledToFit()
+							.frame(width: 20, height: 20)
+							.shadow(radius: 5)
+							.foregroundStyle(
+								.one.opacity(
+									event.complete ? 0.5 : 1
 								)
-							Text("\(event.name)")
-								.font(.headline)
-								.foregroundStyle(.one)
-								.strikethrough(event.complete)
-								.multilineTextAlignment(.leading)
-						}
-						if !event.notes.isEmpty {
-							Text(event.notes)
-								.font(.subheadline)
-								.foregroundStyle(.one.opacity(0.8))
-								.multilineTextAlignment(.leading)
-						}
-						Text(
-							event.date.formatted(
-								date: .long,
-								time: .shortened
 							)
+						Text("\(event.name)")
+							.bold()
+							.foregroundStyle(.one)
+							.strikethrough(event.complete)
+							.multilineTextAlignment(.leading)
+					}
+					if !event.notes.isEmpty {
+						Text(event.notes)
+							.foregroundStyle(.one.opacity(0.8))
+							.multilineTextAlignment(.leading)
+					}
+					Text(
+						event.date.formatted(
+							date: .long,
+							time: .shortened
 						)
-						.font(.subheadline)
+					)
+					.foregroundStyle(
+						.one.opacity(
+							event.complete ? 0.5 : 1
+						)
+					)
+					if event.recurrence != .none {
+						Text("Occurs \(event.recurrence.rawValue)")
+							.font(.subheadline)
+							.foregroundStyle(
+								.one.opacity(event.complete ? 0.5 : 1))
+					}
+				}
+				Spacer()
+				VStack {
+					Text("\(daysUntilEvent(event.date).long)")
+						.multilineTextAlignment(.trailing)
+						.foregroundStyle(event.date.timeIntervalSinceNow < 0 ? .red : .one)
+				}
+				CompleteEventButton(
+					viewModel: viewModel,
+					event: $event
+				)
+			}
+			.fixedSize(horizontal: false, vertical: true)
+		}
+		.onHover { isHovering in
+			withAnimation {
+				hovering.toggle()
+			}
+		}
+		.onTapGesture {
+			openWindow(value: event.id)
+		}
+		.contextMenu() {
+			Button(role: .destructive) {
+				let eventToModify = viewModel.events.firstIndex() { currEvent in
+					currEvent.id == event.id
+				}
+				if let eventToModify = eventToModify {
+					viewModel.events.remove(at: eventToModify)
+					viewModel.saveEvents()
+				}
+			} label: {
+				Label("Delete", systemImage: "trash")
+			}
+		}
+	}
+#else
+	var body: some View {
+		HStack {
+			RoundedRectangle(cornerRadius: 5)
+				.frame(width: 7)
+				.foregroundStyle(
+					event.color.color.opacity(
+						event.complete ? 0.5 : 1
+					)
+				)
+			VStack(alignment: .leading) {
+				HStack {
+					Image(systemName: event.symbol)
+						.resizable()
+						.scaledToFit()
+						.frame(width: 20, height: 20)
+						.shadow(radius: 5)
 						.foregroundStyle(
 							.one.opacity(
 								event.complete ? 0.5 : 1
 							)
 						)
-						if event.recurrence != .none {
-							Text("Occurs \(event.recurrence.rawValue)")
-								.font(.subheadline)
-								.foregroundStyle(
-									.one.opacity(event.complete ? 0.5 : 1))
-						}
-					}
-					Spacer()
-					VStack {
-						Text("\(daysUntilEvent(event.date).long)")
-							.font(.subheadline)
-							.foregroundStyle(event.date.timeIntervalSinceNow < 0 ? .red : .one)
-					}
-					Button() {
-						withAnimation {
-							event.complete.toggle()
-						}
-						let eventToModify = viewModel.events.firstIndex() { currEvent in
-							currEvent.id == event.id
-						}
-						if let eventToModify = eventToModify {
-							viewModel.events[eventToModify] = event
-							viewModel.saveEvents()
-						}
-					} label: {
-						if event.complete {
-							ZStack {
-								Circle()
-									.foregroundStyle(.green)
-								Image(systemName: "checkmark")
-									.resizable()
-									.foregroundStyle(.white)
-									.scaledToFit()
-									.bold()
-									.frame(width: 15)
-							}
-						} else {
-							Image(systemName: "circle")
-								.resizable()
-								.scaledToFit()
-								.foregroundStyle(event.color.color)
-						}
-					}
-					.buttonStyle(.borderless)
-					.frame(maxWidth: 25, maxHeight: 25)
-					.shadow(radius: 5)
-					.padding(.trailing, 5)
-					.apply {
-						if #available(iOS 17, *) {
-							$0.sensoryFeedback(.success, trigger: event.complete)
-						}
-					}
+					Text("\(event.name)")
+						.font(.headline)
+						.foregroundStyle(.one)
+						.strikethrough(event.complete)
+						.multilineTextAlignment(.leading)
 				}
-				.transition(.opacity)
-				.padding(.vertical, 5)
-				.background(.ultraThinMaterial)
-				.overlay(
-					RoundedRectangle(cornerRadius: 10)
-						.stroke(
-							.one.opacity(0.5),
-							lineWidth: 1
-						)
+				if !event.notes.isEmpty {
+					Text(event.notes)
+						.font(.subheadline)
+						.foregroundStyle(.one.opacity(0.8))
+						.multilineTextAlignment(.leading)
+				}
+				Text(
+					event.date.formatted(
+						date: .long,
+						time: .shortened
+					)
 				)
-				.clipShape(
-					RoundedRectangle(cornerRadius: 10)
+				.font(.subheadline)
+				.foregroundStyle(
+					.one.opacity(
+						event.complete ? 0.5 : 1
+					)
 				)
-				.fixedSize(horizontal: false, vertical: true)
+				if event.recurrence != .none {
+					Text("Occurs \(event.recurrence.rawValue)")
+						.font(.subheadline)
+						.foregroundStyle(
+							.one.opacity(event.complete ? 0.5 : 1))
+				}
 			}
-			.contextMenu() {
-				Button(role: .destructive) {
-					let eventToModify = viewModel.events.firstIndex() { currEvent in
-						currEvent.id == event.id
-					}
-					if let eventToModify = eventToModify {
-						viewModel.events.remove(at: eventToModify)
-						viewModel.saveEvents()
-					}
-				} label: {
-					Label("Delete", systemImage: "trash")
+			Spacer()
+			VStack {
+				Text("\(daysUntilEvent(event.date).long)")
+					.font(.subheadline)
+					.foregroundStyle(event.date.timeIntervalSinceNow < 0 ? .red : .one)
+					.multilineTextAlignment(.trailing)
+			}
+			CompleteEventButton(
+				viewModel: viewModel,
+				event: $event
+			)
+		}
+		.padding(.vertical, 5)
+		.overlay(
+			RoundedRectangle(cornerRadius: 15)
+				.stroke(.one.opacity(0.5), lineWidth: 1)
+		)
+		.clipShape(RoundedRectangle(cornerRadius: 15))
+		.fixedSize(horizontal: false, vertical: true)
+		.contextMenu() {
+			Button(role: .destructive) {
+				let eventToModify = viewModel.events.firstIndex() { currEvent in
+					currEvent.id == event.id
 				}
+				if let eventToModify = eventToModify {
+					viewModel.events.remove(at: eventToModify)
+					viewModel.saveEvents()
+				}
+			} label: {
+				Label("Delete", systemImage: "trash")
 			}
 		}
 	}
+#endif
 }
 
 #Preview("EventListView") {

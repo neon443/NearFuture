@@ -9,12 +9,10 @@ import SwiftUI
 import UserNotifications
 import SwiftData
 
-enum Field {
-	case Search
-}
 enum Tab {
 	case home
 	case archive
+	case symbols
 	case stats
 	case settings
 }
@@ -22,21 +20,30 @@ enum Tab {
 struct ContentView: View {
 	@StateObject var viewModel: EventViewModel
 	@StateObject var settingsModel: SettingsViewModel
-	@State var selection: Tab = .home
+	@State var tabSelection: Tab = .home
 	
 	var body: some View {
-		TabView(selection: $selection) {
+		TabView(selection: $tabSelection) {
 			HomeView(viewModel: viewModel, settingsModel: settingsModel)
-			.tabItem {
-				Label("Home", systemImage: "house")
-			}
-			.tag(Tab.home)
+				.tabItem {
+					Label("Home", systemImage: "house")
+				}
+				.tag(Tab.home)
 			ArchiveView(viewModel: viewModel)
 				.tabItem() {
 					Label("Archive", systemImage: "tray.full")
 				}
 				.tag(Tab.archive)
+			SymbolsPicker(
+				selection: .constant(""),
+				browsing: true
+			)
+			.tabItem {
+				Label("Symbols", systemImage: "star.circle")
+			}
+			.tag(Tab.symbols)
 			StatsView(viewModel: viewModel)
+//			SymbolsPickerStoryboardUIViewRepresentable()
 				.tabItem {
 					Label("Statistics", systemImage: "chart.pie")
 				}
@@ -47,11 +54,7 @@ struct ContentView: View {
 				}
 				.tag(Tab.settings)
 		}
-		.apply {
-			if #available(iOS 17, *) {
-				$0.sensoryFeedback(.impact(weight: .heavy, intensity: 1), trigger: selection)
-			}
-		}
+		.modifier(hapticHeavy(trigger: tabSelection))
 		.sheet(isPresented: $settingsModel.settings.showWhatsNew) {
 			WhatsNewView(settingsModel: settingsModel)
 		}
@@ -63,34 +66,4 @@ struct ContentView: View {
 		viewModel: dummyEventViewModel(),
 		settingsModel: dummySettingsViewModel()
 	)
-}
-
-extension View {
-	var backgroundGradient: some View {
-		return LinearGradient(
-			gradient: Gradient(colors: [.bgTop, .two]),
-			startPoint: .top,
-			endPoint: .bottom
-		)
-		.ignoresSafeArea(.all)
-	}
-	
-	func apply<V: View>(@ViewBuilder _ block: (Self) -> V) -> V { block(self) }
-}
-
-extension AnyTransition {
-	static var moveAndFade: AnyTransition {
-		.asymmetric(
-			insertion: .move(edge: .leading),
-			removal: .move(edge: .trailing)
-		)
-		.combined(with: .opacity)
-	}
-	static var moveAndFadeReversed: AnyTransition {
-		.asymmetric(
-			insertion: .move(edge: .trailing),
-			removal: .move(edge: .leading)
-		)
-		.combined(with: .opacity)
-	}
 }

@@ -10,48 +10,21 @@ import SwiftUI
 struct SettingsView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@ObservedObject var settingsModel: SettingsViewModel
-	
-	@State private var hasUbiquitous: Bool = false
-	@State private var lastSyncWasSuccessful: Bool = false
-	@State private var lastSyncWasNormalAgo: Bool = false
-	@State private var localCountEqualToiCloud: Bool = false
-	@State private var icloudCountEqualToLocal: Bool = false
+
 	@State private var importStr: String = ""
 	
-	func updateStatus() {
-		let vm = viewModel
-		hasUbiquitous = vm.hasUbiquitousKeyValueStore()
-		lastSyncWasSuccessful = vm.syncStatus.contains("Success")
-		lastSyncWasNormalAgo = vm.lastSync?.timeIntervalSinceNow.isNormal ?? false
-		localCountEqualToiCloud = vm.localEventCount == vm.icloudEventCount
-		icloudCountEqualToLocal = vm.icloudEventCount == vm.localEventCount
-	}
-	
-	var iCloudStatusColor: Color {
-		let allTrue = hasUbiquitous && lastSyncWasSuccessful && lastSyncWasNormalAgo && localCountEqualToiCloud && icloudCountEqualToLocal
-		let someTrue = hasUbiquitous || lastSyncWasSuccessful || lastSyncWasNormalAgo || localCountEqualToiCloud || icloudCountEqualToLocal
-		
-		if allTrue {
-			return .green
-		} else if someTrue {
-			return .orange
-		} else {
-			return .red
-		}
-	}
-	
-	func changeIcon(to: String) {
+	func changeIcon(to toIcon: String) {
 		guard UIApplication.shared.supportsAlternateIcons else {
 			print("doesnt tsupport alternate icons")
 			return
 		}
-		guard to != "orange" else {
+		guard toIcon != "orange" else {
 			UIApplication.shared.setAlternateIconName(nil) { error in
 				print(error as Any)
 			}
 			return
 		}
-		UIApplication.shared.setAlternateIconName(to) { error in
+		UIApplication.shared.setAlternateIconName(toIcon) { error in
 			print(error as Any)
 		}
 	}
@@ -74,6 +47,7 @@ struct SettingsView: View {
 											.foregroundStyle(color)
 											.frame(width: 30)
 									}
+									.buttonStyle(.plain)
 									if ColorCodable(color) == settingsModel.settings.tint {
 										let needContrast: Bool = ColorCodable(color) == settingsModel.settings.tint
 										Circle()
@@ -94,13 +68,16 @@ struct SettingsView: View {
 					NavigationLink() {
 						List {
 							if !settingsModel.notifsGranted {
-								Button("Request Notifications") {
-									Task {
-										settingsModel.notifsGranted = await requestNotifs()
-									}
-								}
 								Text("\(Image(systemName: "xmark")) Notifications disabled for Near Future")
 									.foregroundStyle(.red)
+								Button("Request Notifications") {
+									Task.detached {
+										let requestNotifsResult = await requestNotifs()
+										await MainActor.run {
+											settingsModel.notifsGranted = requestNotifsResult
+										}
+									}
+								}
 							} else {
 								Text("\(Image(systemName: "checkmark")) Notifications enabled for Near Future")
 									.foregroundStyle(.green)
@@ -113,13 +90,7 @@ struct SettingsView: View {
 					NavigationLink() {
 						iCloudSettingsView(
 							viewModel: viewModel,
-							settingsModel: settingsModel,
-							hasUbiquitous: $hasUbiquitous,
-							lastSyncWasSuccessful: $lastSyncWasSuccessful,
-							lastSyncWasNormalAgo: $lastSyncWasNormalAgo,
-							localCountEqualToiCloud: $localCountEqualToiCloud,
-							icloudCountEqualToLocal: $icloudCountEqualToLocal,
-							updateStatus: updateStatus
+							settingsModel: settingsModel
 						)
 					} label: {
 						HStack {
@@ -128,12 +99,12 @@ struct SettingsView: View {
 							Spacer()
 							Circle()
 								.frame(width: 20, height: 20)
-								.foregroundStyle(iCloudStatusColor)
+								.foregroundStyle(viewModel.iCloudStatusColor)
 						}
 					}
 					.onAppear {
 						viewModel.sync()
-						updateStatus()
+						viewModel.updateiCStatus()
 					}
 					NavigationLink() {
 						ImportView(viewModel: viewModel, importStr: $importStr)
@@ -177,15 +148,9 @@ struct SettingsView: View {
 					}
 				}
 			}
-			.scrollContentBackground(.hidden)
 			.navigationTitle("Settings")
-			.apply {
-				if #available(iOS 17, *) {
-					$0.toolbarTitleDisplayMode(.inlineLarge)
-				} else {
-					$0.navigationBarTitleDisplayMode(.inline)
-				}
-			}
+			.modifier(navigationInlineLarge())
+			.scrollContentBackground(.hidden)
 		}
 	}
 }

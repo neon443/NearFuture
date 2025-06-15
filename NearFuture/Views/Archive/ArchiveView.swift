@@ -11,7 +11,8 @@ struct ArchiveView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@State var showAddEvent: Bool = false
 	var filteredEvents: [Event] {
-		return viewModel.events.filter() {$0.complete}
+		let filteredEvents = viewModel.events.filter({$0.complete})
+		return filteredEvents.reversed()
 	}
 	var body: some View {
 		NavigationStack {
@@ -22,42 +23,40 @@ struct ArchiveView: View {
 				} else {
 					ScrollView {
 						ForEach(filteredEvents) { event in
-							EventListView(viewModel: viewModel, event: event)
-								.transition(.moveAndFadeReversed)
-								.id(event.complete)
+							NavigationLink() {
+								EditEventView(
+									viewModel: viewModel,
+									event: Binding(
+										get: { event },
+										set: { newValue in
+											viewModel.editEvent(newValue)
+										}
+									)
+								)
+							} label: {
+								EventListView(viewModel: viewModel, event: event)
+									.id(event.complete)
+							}
+							.transition(.moveAndFadeReversed)
 						}
 						.padding(.horizontal)
 					}
 					.animation(.default, value: filteredEvents)
 				}
 			}
+			.transition(.opacity)
 			.scrollContentBackground(.hidden)
 			.toolbar {
-				ToolbarItem(placement: .topBarTrailing) {
+				ToolbarItem(placement: .primaryAction) {
 					AddEventButton(showingAddEventView: $showAddEvent)
 				}
 			}
 			.navigationTitle("Archive")
-			.apply {
-				if #available(iOS 17, *) {
-					$0.toolbarTitleDisplayMode(.inlineLarge)
-				} else {
-					$0.navigationBarTitleDisplayMode(.inline)
-				}
-			}
+			.modifier(navigationInlineLarge())
 		}
 		.sheet(isPresented: $showAddEvent) {
 			AddEventView(
-				viewModel: viewModel,
-				eventName: $viewModel.editableTemplate.name,
-				eventComplete: $viewModel.editableTemplate.complete,
-				eventCompleteDesc: $viewModel.editableTemplate.completeDesc,
-				eventSymbol: $viewModel.editableTemplate.symbol,
-				eventColor: $viewModel.editableTemplate.color.colorBind,
-				eventNotes: $viewModel.editableTemplate.notes,
-				eventDate: $viewModel.editableTemplate.date,
-				eventRecurrence: $viewModel.editableTemplate.recurrence,
-				adding: true
+				viewModel: viewModel
 			)
 		}
 	}
