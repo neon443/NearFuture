@@ -12,6 +12,7 @@ import SwiftData
 enum Tab {
 	case home
 	case archive
+	case symbols
 	case stats
 	case settings
 }
@@ -33,6 +34,13 @@ struct ContentView: View {
 					Label("Archive", systemImage: "tray.full")
 				}
 				.tag(Tab.archive)
+			SymbolsPicker(
+				selection: .constant("")
+			)
+			.tabItem {
+				Label("Symbols", systemImage: "star.circle")
+			}
+			.tag(Tab.symbols)
 			StatsView(viewModel: viewModel)
 //			SymbolsPickerStoryboardUIViewRepresentable()
 				.tabItem {

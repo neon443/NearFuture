@@ -10,9 +10,9 @@ import SwiftUI
 struct AddEventView: View {
 	@ObservedObject var viewModel: EventViewModel
 	
-	@Binding var event: Event
+	@State var event: Event = dummyEventViewModel().template
 	
-	@State var adding: Bool
+	@State var adding: Bool = true
 	@State var showNeedsNameAlert: Bool = false
 	@State var isSymbolPickerPresented: Bool = false
 	
@@ -93,6 +93,8 @@ struct AddEventView: View {
 							DatePicker("", selection: $event.date, displayedComponents: .date)
 							#if os(iOS)
 								.datePickerStyle(.wheel)
+							#else
+								.datePickerStyle(.graphical)
 							#endif
 							Spacer()
 							Button() {
@@ -111,6 +113,9 @@ struct AddEventView: View {
 							selection: $event.date,
 							displayedComponents: .hourAndMinute
 						)
+						#if os(macOS)
+						.datePickerStyle(.stepperField)
+						#endif
 						
 						// re-ocurrence Picker
 						Picker("Recurrence", selection: $event.recurrence) {
@@ -197,7 +202,6 @@ struct AddEventView: View {
 		.sheet(isPresented: .constant(true)) {
 			AddEventView(
 				viewModel: vm,
-				event: .constant(vm.template),
 				adding: true
 			)
 		}

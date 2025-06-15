@@ -43,9 +43,7 @@ struct ArchiveView: View {
 		}
 		.sheet(isPresented: $showAddEvent) {
 			AddEventView(
-				viewModel: viewModel,
-				event: $viewModel.editableTemplate,
-				adding: true
+				viewModel: viewModel
 			)
 		}
 	}

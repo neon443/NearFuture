@@ -28,17 +28,18 @@ struct EditEventView: View {
 	var body: some View {
 		AddEventView(
 			viewModel: viewModel,
-			event: $event,
+			event: event,
 			adding: false //bc we editing existing event
 		)
 		.navigationTitle("Edit Event")
 		.toolbar {
-			ToolbarItem(/*placement: .topBarTrailing*/) {
+			ToolbarItem(placement: .confirmationAction) {
 				Button() {
 					saveEdits()
 				} label: {
 					Text("Done")
 						.bold()
+						.foregroundStyle(.blue)
 				}
 				.disabled(event.name == "")
 			}

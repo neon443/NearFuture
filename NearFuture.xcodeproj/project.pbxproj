@@ -154,7 +154,6 @@
 		A979F6092D270AF00094C0B3 /* NearFutureWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsBundle.swift; sourceTree = "<group>"; };
 		A979F60B2D270AF00094C0B3 /* NearFutureWidgetsLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearFutureWidgetsLiveActivity.swift; sourceTree = "<group>"; };
 		A979F60F2D270AF80094C0B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A98C20CA2DE730740008D61C /* EventListViewMac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventListViewMac.swift; sourceTree = "<group>"; };
 		A98C20CD2DE7308E0008D61C /* ArchiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveView.swift; sourceTree = "<group>"; };
 		A98C20CF2DE731BD0008D61C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A98C20D32DE7339E0008D61C /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
@@ -215,7 +214,6 @@
 			children = (
 				A90D49332DDE0FAF00781124 /* ContentViewMac.swift */,
 				A98C20CF2DE731BD0008D61C /* HomeView.swift */,
-				A98C20CA2DE730740008D61C /* EventListViewMac.swift */,
 				A98C20CD2DE7308E0008D61C /* ArchiveView.swift */,
 				A91EF80F2DFCB66C00B8463D /* SettingsView.swift */,
 			);

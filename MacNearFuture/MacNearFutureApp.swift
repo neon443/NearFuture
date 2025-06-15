@@ -32,23 +32,30 @@ struct NearFutureApp: App {
 		}
 		
 		WindowGroup("Edit Event", for: Event.ID.self) { $eventID in
-			EditEventView(
-				viewModel: viewModel,
-				event: Binding(
-					get: {
-						viewModel.events.first(where: {$0.id == eventID}) ?? viewModel.template
-					},
-					set: { newValue in
-						if let eventIndex = viewModel.events.firstIndex(where: {
-							$0.id == eventID
-						}) {
-							viewModel.events[eventIndex] = newValue
-						}
-						viewModel.saveEvents()
-					}
+			if viewModel.events.first(where: {$0.id == eventID}) == nil {
+				AddEventView(
+					viewModel: viewModel
 				)
-			)
+			} else {
+				EditEventView(
+					viewModel: viewModel,
+					event: Binding(
+						get: {
+							viewModel.events.first(where: {$0.id == eventID}) ?? viewModel.template
+						},
+						set: { newValue in
+							if let eventIndex = viewModel.events.firstIndex(where: {
+								$0.id == eventID
+							}) {
+								viewModel.events[eventIndex] = newValue
+							}
+							viewModel.saveEvents()
+						}
+					)
+				)
+			}
 		}
+		.defaultSize(width: 480, height: 550)
 		.windowIdealSize(.fitToContent)
 		.restorationBehavior(.disabled)
 		

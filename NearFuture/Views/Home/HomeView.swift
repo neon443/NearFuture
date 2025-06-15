@@ -12,7 +12,6 @@ struct HomeView: View {
 	@ObservedObject var viewModel: EventViewModel
 	@ObservedObject var settingsModel: SettingsViewModel
 	
-	@State private var event: Event = dummyEventViewModel().template
 	@State private var showingAddEventView: Bool = false
 	@State private var searchInput: String = ""
 	@Environment(\.colorScheme) var appearance
@@ -70,9 +69,7 @@ struct HomeView: View {
 				.modifier(navigationInlineLarge())
 				.sheet(isPresented: $showingAddEventView) {
 					AddEventView(
-						viewModel: viewModel,
-						event: $event,
-						adding: true //adding event
+						viewModel: viewModel
 					)
 				}
 				.toolbar {

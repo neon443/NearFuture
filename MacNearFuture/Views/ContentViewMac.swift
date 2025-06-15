@@ -65,9 +65,7 @@ struct ContentView: View {
 		}
 		.sheet(isPresented: $showAddEventView) {
 			AddEventView(
-				viewModel: viewModel,
-				event: $viewModel.editableTemplate,
-				adding: true
+				viewModel: viewModel
 			)
 			.presentationSizing(.page)
 		}
@@ -75,8 +73,7 @@ struct ContentView: View {
 			Button() {
 				showAddEventView.toggle()
 			} label: {
-				Image(systemName: "plus")
-				Text("New")
+				Label("New", systemImage: "plus")
 			}
 		}
     }

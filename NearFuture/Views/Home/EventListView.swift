@@ -138,7 +138,7 @@ struct EventListView: View {
 					}
 				}
 				.frame(maxWidth: 20)
-				.shadow(radius: 5)
+				.shadow(color: .one.opacity(0.2), radius: 2.5)
 				.padding(.trailing, 15)
 				.animation(
 					.spring(response: 0.2, dampingFraction: 0.75, blendDuration: 2),
