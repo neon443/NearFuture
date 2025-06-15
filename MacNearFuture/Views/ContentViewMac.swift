@@ -14,7 +14,7 @@ struct ContentView: View {
 	@State private var showAddEventView: Bool = false
 	@State private var symbolSearchInput: String = ""
 	
-    var body: some View {
+	var body: some View {
 		NavigationSplitView {
 			List {
 				NavigationLink {
@@ -77,7 +77,7 @@ struct ContentView: View {
 				Label("New", systemImage: "plus")
 			}
 		}
-    }
+	}
 }
 
 #Preview {

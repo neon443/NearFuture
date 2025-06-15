@@ -43,6 +43,9 @@ struct CompleteEventButton: View {
 			if progress >= 1 {
 				withAnimation { completeInProgress = false }
 				viewModel.completeEvent(&event)
+#if canImport(UIKit)
+				UINotificationFeedbackGenerator().notificationOccurred(.success)
+#endif
 				timer.invalidate()
 				progress = 0
 			}
@@ -50,7 +53,7 @@ struct CompleteEventButton: View {
 		RunLoop.main.add(timer!, forMode: .common)
 	}
 	
-    var body: some View {
+	var body: some View {
 		Group {
 			if completeInProgress {
 				ZStack {
@@ -86,7 +89,7 @@ struct CompleteEventButton: View {
 			.spring(response: 0.2, dampingFraction: 0.75, blendDuration: 2),
 			value: largeTick
 		)
-    }
+	}
 }
 
 struct CircularProgressView: View {
@@ -103,10 +106,10 @@ struct CircularProgressView: View {
 				.stroke(
 					.one,
 					lineWidth: 5
-//					style: StrokeStyle(
-//						lineWidth: 5,
-//						lineCap: .round
-//					)
+					//					style: StrokeStyle(
+					//						lineWidth: 5,
+					//						lineCap: .round
+					//					)
 				)
 				.rotationEffect(.degrees(-90))
 		}
