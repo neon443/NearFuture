@@ -34,17 +34,22 @@ struct CompleteEventButton: View {
 		completeStartTime = .now
 		progress = 0
 		
-		timer = Timer(timeInterval: 0.01, repeats: true) { timer in
+		timer = Timer(timeInterval: 0.02, repeats: true) { timer in
 			guard completeInProgress else { return }
 			guard timer.isValid else { return }
 			let elapsed = Date().timeIntervalSince(completeStartTime)
 			progress = min(1, elapsed)
+			#if canImport(UIKit)
+			UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			#endif
 			
 			if progress >= 1 {
 				withAnimation { completeInProgress = false }
 				viewModel.completeEvent(&event)
 #if canImport(UIKit)
-				UINotificationFeedbackGenerator().notificationOccurred(.success)
+				DispatchQueue.main.asyncAfter(deadline: .now()+0.02) {
+					UINotificationFeedbackGenerator().notificationOccurred(.success)
+				}
 #endif
 				timer.invalidate()
 				progress = 0

@@ -15,7 +15,7 @@ struct ImportView: View {
 	@State private var text: String = "Ready..."
 	@State private var fgColor: Color = .yellow
 	
-	@State private var showAlert: Bool = false
+	@State private var showAlert: Bool = true
 	
 	@State private var replaceCurrentEvents: Bool = false
 	
@@ -67,64 +67,18 @@ struct ImportView: View {
 				}
 			}
 			.blur(radius: showAlert ? 2 : 0)
-			Group {
-				Rectangle()
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
-					.foregroundStyle(replaceCurrentEvents ? .red.opacity(0.25) : .black.opacity(0.2))
-					.animation(.default, value: replaceCurrentEvents)
-					.ignoresSafeArea()
-				ZStack {
-					Rectangle()
-						.clipShape(RoundedRectangle(cornerRadius: 25))
-					VStack(alignment: .center) {
-						Text("Are you sure?")
-							.font(.largeTitle)
-							.bold()
-							.foregroundStyle(replaceCurrentEvents ? .red : .two)
-							.animation(.default, value: replaceCurrentEvents)
-						Text("This will replace your current events!")
-							.lineLimit(nil)
-							.multilineTextAlignment(.center)
-							.opacity(replaceCurrentEvents ? 1 : 0)
-							.animation(.default, value: replaceCurrentEvents)
-							.foregroundStyle(.two)
-						Toggle("Replace Events", isOn: $replaceCurrentEvents)
-							.foregroundStyle(.two)
-						Spacer()
-						HStack {
-							Button() {
-								withAnimation {
-									showAlert.toggle()
-								}
-								importEvents()
-							} label: {
-								Text("cancel")
-									.font(.title2)
-									.bold()
-							}
-							.buttonStyle(BorderedProminentButtonStyle())
-							
-							Spacer()
-							
-							Button() {
-								withAnimation {
-									showAlert.toggle()
-								}
-								importEvents()
-							} label: {
-								Text("yes")
-									.font(.title2)
-									.bold()
-							}
-							.buttonStyle(BorderedProminentButtonStyle())
-						}
-						.padding()
-					}
-					.padding()
+			.alert("Are you sure?", isPresented: $showAlert) {
+				Button(role: .destructive) {
+					importEvents()
+				} label: {
+					Text("Replace Events")
 				}
-				.frame(maxWidth: 250, maxHeight: 250)
+				Button(role: .cancel) {
+					importEvents()
+				} label: {
+					Text("Add to Events")
+				}
 			}
-			.opacity(showAlert ? 1 : 0)
 		}
 	}
 }
