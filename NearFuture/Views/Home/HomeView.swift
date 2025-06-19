@@ -59,9 +59,17 @@ struct HomeView: View {
 										)
 									} label: {
 										EventListView(viewModel: viewModel, event: event)
-											.id(event.complete)
+											.id(event)
 									}
 									.transition(.moveAndFade)
+									.contextMenu() {
+										Button(role: .destructive) {
+											viewModel.removeEvent(event)
+										} label: {
+											Label("Delete", systemImage: "trash")
+												.tint(.red)
+										}
+									}
 								}
 								.padding(.horizontal)
 //							}

@@ -8,7 +8,7 @@
 import Foundation
 
 class SymbolsLoader: ObservableObject {
-	@Published var allSymbols: [String] = []
+	private var allSymbols: [String] = []
 	
 	init() {
 		self.allSymbols = getAllSymbols()
@@ -16,7 +16,7 @@ class SymbolsLoader: ObservableObject {
 	
 	func getSymbols(_ searched: String) -> [String] {
 		if searched.isEmpty {
-			return allSymbols
+			return []
 		} else {
 			return allSymbols.filter() { $0.localizedCaseInsensitiveContains(searched) }
 		}

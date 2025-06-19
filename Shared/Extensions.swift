@@ -22,14 +22,14 @@ extension View {
 extension AnyTransition {
 	static var moveAndFade: AnyTransition {
 		.asymmetric(
-			insertion: .move(edge: .leading),
+			insertion: .opacity,
 			removal: .move(edge: .trailing)
 		)
 		.combined(with: .opacity)
 	}
 	static var moveAndFadeReversed: AnyTransition {
 		.asymmetric(
-			insertion: .move(edge: .trailing),
+			insertion: .opacity,
 			removal: .move(edge: .leading)
 		)
 		.combined(with: .opacity)

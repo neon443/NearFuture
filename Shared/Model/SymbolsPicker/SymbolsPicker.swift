@@ -31,7 +31,17 @@ struct SymbolsPicker: View {
 		NavigationStack {
 			GeometryReader { geo in
 				ScrollView {
-					if symbols.isEmpty {
+					if searchInput.isEmpty {
+						HStack {
+							Image(systemName: "magnifyingglass")
+								.resizable().scaledToFit()
+								.frame(width: 30)
+							Text("Start a Search")
+								.font(.title)
+								.bold()
+						}
+						.padding()
+					} else if symbols.isEmpty {
 						HStack {
 							Image(systemName: "magnifyingglass")
 								.resizable().scaledToFit()

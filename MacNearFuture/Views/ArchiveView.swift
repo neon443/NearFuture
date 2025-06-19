@@ -19,6 +19,14 @@ struct ArchiveView: View {
 		ScrollView {
 			ForEach(filteredEvents) { event in
 				EventListView(viewModel: viewModel, event: event)
+					.contextMenu() {
+						Button(role: .destructive) {
+							viewModel.removeEvent(event)
+						} label: {
+							Label("Delete", systemImage: "trash")
+								.tint(.red )
+						}
+					}
 			}
 		}
 		.scrollContentBackground(.hidden)

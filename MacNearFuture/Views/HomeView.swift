@@ -34,6 +34,14 @@ struct HomeView: View {
 				if filteredEvents.contains(event) {
 					EventListView(viewModel: viewModel, event: event)
 						.id(event)
+						.contextMenu() {
+							Button(role: .destructive) {
+								viewModel.removeEvent(event)
+							} label: {
+								Label("Delete", systemImage: "trash")
+									.tint(.red)
+							}
+						}
 				}
 			}
 		}

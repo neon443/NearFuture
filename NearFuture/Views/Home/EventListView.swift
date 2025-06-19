@@ -90,19 +90,6 @@ struct EventListView: View {
 		.onTapGesture {
 			openWindow(value: event.id)
 		}
-		.contextMenu() {
-			Button(role: .destructive) {
-				let eventToModify = viewModel.events.firstIndex() { currEvent in
-					currEvent.id == event.id
-				}
-				if let eventToModify = eventToModify {
-					viewModel.events.remove(at: eventToModify)
-					viewModel.saveEvents()
-				}
-			} label: {
-				Label("Delete", systemImage: "trash")
-			}
-		}
 	}
 #else
 	var body: some View {
@@ -176,13 +163,6 @@ struct EventListView: View {
 		)
 		.clipShape(RoundedRectangle(cornerRadius: 15))
 		.fixedSize(horizontal: false, vertical: true)
-		.contextMenu() {
-			Button(role: .destructive) {
-				viewModel.removeEvent(event)
-			} label: {
-				Label("Delete", systemImage: "trash")
-			}
-		}
 		.swipeActions(edge: .trailing, allowsFullSwipe: true) {
 			Button(role: .destructive) {
 				viewModel.removeEvent(event)
