@@ -87,7 +87,7 @@ struct WhatsNewView: View {
 			}
 			.foregroundStyle(.orange)
 			.modifier(glassButton())
-			.modifier(hapticHeavy(trigger: bye))
+			.hapticHeavy(trigger: bye)
 		}
 		.scrollContentBackground(.hidden)
 		.presentationDragIndicator(.visible)

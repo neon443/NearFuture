@@ -54,7 +54,7 @@ struct ContentView: View {
 				}
 				.tag(Tab.settings)
 		}
-		.modifier(hapticHeavy(trigger: tabSelection))
+		.hapticHeavy(trigger: tabSelection)
 		.sheet(isPresented: $settingsModel.settings.showWhatsNew) {
 			WhatsNewView(settingsModel: settingsModel)
 		}

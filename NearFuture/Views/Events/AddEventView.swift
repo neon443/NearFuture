@@ -16,8 +16,6 @@ struct AddEventView: View {
 	@State var showNeedsNameAlert: Bool = false
 	@State var isSymbolPickerPresented: Bool = false
 	
-	@State private var bye: Bool = false
-	
 	@FocusState private var focusedField: Field?
 	private enum Field {
 		case Name, Notes
@@ -152,13 +150,14 @@ struct AddEventView: View {
 								viewModel.addEvent(
 									newEvent: event
 								)
-								bye.toggle()
 								resetAddEventView()
+								#if canImport(UIKit)
+								UINotificationFeedbackGenerator().notificationOccurred(.success)
+								#endif
 							} label: {
 								Label("Save", systemImage: "checkmark")
 							}
 							.tint(.accent)
-							.modifier(hapticSuccess(trigger: bye))
 							.disabled(event.name.isEmpty)
 							.onTapGesture {
 								if event.name.isEmpty {
@@ -180,6 +179,9 @@ struct AddEventView: View {
 							Button() {
 								viewModel.editEvent(event)
 								dismiss()
+								#if canImport(UIKit)
+								UINotificationFeedbackGenerator().notificationOccurred(.success)
+								#endif
 							} label: {
 								Label("Done", systemImage: "checkmark")
 							}
