@@ -70,15 +70,15 @@ struct AddEventView: View {
 						
 						// dscription
 						ZStack {
-							TextField("Event Notes", text: $event.notes)
-								.textFieldStyle(RoundedBorderTextFieldStyle())
-								.padding(.trailing, event.notes.isEmpty ? 0 : 30)
-								.animation(.spring, value: event.notes)
-								.focused($focusedField, equals: Field.Notes)
-								.lineLimit(5)
-								.onSubmit {
-									focusedField = nil
+							if event.notes.isEmpty {
+								HStack {
+									Text("Event Notes")
+										.opacity(0.5)
+									Spacer()
 								}
+							}
+							TextEditor(text: $event.notes)
+								.lineLimit(10)
 						}
 						
 						ColorPicker("Event Color", selection: $event.color.colorBind)
