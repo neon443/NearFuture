@@ -178,13 +178,14 @@ struct EventListView: View {
 		.fixedSize(horizontal: false, vertical: true)
 		.contextMenu() {
 			Button(role: .destructive) {
-				let eventToModify = viewModel.events.firstIndex() { currEvent in
-					currEvent.id == event.id
-				}
-				if let eventToModify = eventToModify {
-					viewModel.events.remove(at: eventToModify)
-					viewModel.saveEvents()
-				}
+				viewModel.removeEvent(event)
+			} label: {
+				Label("Delete", systemImage: "trash")
+			}
+		}
+		.swipeActions(edge: .trailing, allowsFullSwipe: true) {
+			Button(role: .destructive) {
+				viewModel.removeEvent(event)
 			} label: {
 				Label("Delete", systemImage: "trash")
 			}
@@ -196,16 +197,6 @@ struct EventListView: View {
 #Preview("EventListView") {
 	let vm = dummyEventViewModel()
 	ZStack {
-		Color.black
-		VStack {
-			ForEach(0..<50) { _ in
-				Rectangle()
-					.foregroundStyle(randomColor().opacity(0.5))
-					.padding(-10)
-			}
-			.ignoresSafeArea(.all)
-			.blur(radius: 5)
-		}
 		VStack {
 			ForEach(vm.events) { event in
 				EventListView(

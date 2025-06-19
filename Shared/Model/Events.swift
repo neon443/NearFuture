@@ -240,8 +240,14 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 		}
 	}
 	
-	func removeEvent(at index: IndexSet) {
-		events.remove(atOffsets: index)
+	func removeEvent(_ eventToRemove: Event) {
+		let eventToModify = self.events.firstIndex() { currEvent in
+			currEvent.id == eventToRemove.id
+		}
+		if let eventToModify = eventToModify {
+			self.events.remove(at: eventToModify)
+			self.saveEvents()
+		}
 		saveEvents() //sync local and icl
 	}
 	
