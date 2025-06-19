@@ -15,7 +15,7 @@ struct ImportView: View {
 	@State private var text: String = "Ready..."
 	@State private var fgColor: Color = .yellow
 	
-	@State private var showAlert: Bool = true
+	@State private var showAlert: Bool = false
 	
 	@State private var replaceCurrentEvents: Bool = false
 	
@@ -66,17 +66,17 @@ struct ImportView: View {
 					fgColor = .yellow
 				}
 			}
-			.blur(radius: showAlert ? 2 : 0)
 			.alert("Are you sure?", isPresented: $showAlert) {
 				Button(role: .destructive) {
 					importEvents()
 				} label: {
 					Text("Replace Events")
 				}
-				Button(role: .cancel) {
+				Button() {
 					importEvents()
 				} label: {
 					Text("Add to Events")
+						.foregroundStyle(.one)
 				}
 			}
 		}
