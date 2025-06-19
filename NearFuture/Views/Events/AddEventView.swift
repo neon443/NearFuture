@@ -75,7 +75,7 @@ struct AddEventView: View {
 								.padding(.trailing, event.notes.isEmpty ? 0 : 30)
 								.animation(.spring, value: event.notes)
 								.focused($focusedField, equals: Field.Notes)
-								.submitLabel(.done)
+								.lineLimit(5)
 								.onSubmit {
 									focusedField = nil
 								}

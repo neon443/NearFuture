@@ -8,17 +8,37 @@
 import Foundation
 import SwiftUI
 
-extension View {
-	func hapticHeavy(trigger: any Equatable) -> some View {
-		#if canImport(UIKit)
-		if #available(iOS 17, *) {
-			self.modifier(sensoryFeedback(.impact(weight: .heavy, intensity: 1), trigger: trigger)) as! Self
-		} else {
-			self
-		}
-		#else
-		self
-		#endif
+struct hapticHeavy<T: Equatable>: ViewModifier {
+	var trigger: T
+	
+	init(trigger: T) {
+		self.trigger = trigger
+	}
+	
+	func body(content: Content) -> some View {
+		content
+			.onChange(of: trigger) { _ in
+				#if canImport(UIKit)
+				UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+				#endif
+			}
+	}
+}
+
+struct hapticSuccess<T: Equatable>: ViewModifier {
+	var trigger: T
+	
+	init(trigger: T) {
+		self.trigger = trigger
+	}
+	
+	func body(content: Content) -> some View {
+		content
+			.onChange(of: trigger) { _ in
+				#if canImport(UIKit)
+				UINotificationFeedbackGenerator().notificationOccurred(.success)
+				#endif
+			}
 	}
 }
 
@@ -34,19 +54,6 @@ struct glassButton: ViewModifier {
 	}
 }
 
-extension View {
-	func hapticSucess(trigger: any Equatable) -> some View {
-#if canImport(UIKit)
-		if #available(iOS 17, *) {
-			self.modifier(sensoryFeedback(.success, trigger: trigger)) as! Self
-		} else {
-			self
-		}
-#else
-		self
-#endif
-	}
-}
 struct navigationInlineLarge: ViewModifier {
 	func body(content: Content) -> some View {
 #if os(macOS)
