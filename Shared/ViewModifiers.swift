@@ -8,51 +8,37 @@
 import Foundation
 import SwiftUI
 
-struct hapticHeavy: ViewModifier {
-	var trigger: any Equatable
-	
-	init(trigger: any Equatable) {
-		self.trigger = trigger
-	}
-	
-	func body(content: Content) -> some View {
+extension View {
+	func hapticHeavy(trigger: any Equatable) -> some View {
 		if #available(iOS 17, *) {
-			content
-				.sensoryFeedback(.impact(weight: .heavy, intensity: 1), trigger: trigger)
+			self.modifier(sensoryFeedback(.impact(weight: .heavy, intensity: 1), trigger: trigger)) as! Self
 		} else {
-			content
+			self
 		}
 	}
 }
 
 struct glassButton: ViewModifier {
 	func body(content: Content) -> some View {
-		if #available(iOS 19, macOS 16, *) {
-			content.buttonStyle(.glass)
-		} else {
-			content.buttonStyle(.borderedProminent)
-				.clipShape(RoundedRectangle(cornerRadius: 15))
-				.tint(.two)
-		}
+#if swift(>=6.2)
+		content.buttonStyle(.glass)
+#else
+		content.buttonStyle(.borderedProminent)
+			.clipShape(RoundedRectangle(cornerRadius: 15))
+			.tint(.two)
+#endif
 	}
 }
 
-struct hapticSuccess: ViewModifier {
-	var trigger: any Equatable
-	
-	init(trigger: any Equatable) {
-		self.trigger = trigger
-	}
-	
-	func body(content: Content) -> some View {
+extension View {
+	func hapticSucess(trigger: any Equatable) -> some View {
 		if #available(iOS 17, *) {
-			content.sensoryFeedback(.success, trigger: trigger)
+			self.modifier(sensoryFeedback(.success, trigger: trigger)) as! Self
 		} else {
-			content
+			self
 		}
 	}
 }
-
 struct navigationInlineLarge: ViewModifier {
 	func body(content: Content) -> some View {
 #if os(macOS)
