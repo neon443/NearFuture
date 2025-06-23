@@ -11,7 +11,7 @@ struct CompleteEventButton: View {
 	@ObservedObject var viewModel: EventViewModel
 	@Binding var event: Event
 	
-	@State var timer: Timer?
+	@MainActor @State var timer: Timer?
 	@State var largeTick: Bool = false
 	@State var completeInProgress: Bool = false
 	@State var completeStartTime: Date = .now
@@ -35,24 +35,27 @@ struct CompleteEventButton: View {
 		progress = 0
 		
 		timer = Timer(timeInterval: 0.02, repeats: true) { timer in
-			guard completeInProgress else { return }
-			guard timer.isValid else { return }
-			let elapsed = Date().timeIntervalSince(completeStartTime)
-			progress = min(1, elapsed)
-			#if canImport(UIKit)
-			UIImpactFeedbackGenerator(style: .light).impactOccurred()
-			#endif
-			
-			if progress >= 1 {
-				withAnimation { completeInProgress = false }
-				viewModel.completeEvent(&event)
+			DispatchQueue.main.sync {
+				guard completeInProgress else { return }
+				guard let timer = self.timer else { return }
+				guard timer.isValid else { return }
+				let elapsed = Date().timeIntervalSince(completeStartTime)
+				progress = min(1, elapsed)
 #if canImport(UIKit)
-				DispatchQueue.main.asyncAfter(deadline: .now()+0.02) {
-					UINotificationFeedbackGenerator().notificationOccurred(.success)
-				}
+				UIImpactFeedbackGenerator(style: .light).impactOccurred()
 #endif
-				timer.invalidate()
-				progress = 0
+				
+				if progress >= 1 {
+					withAnimation { completeInProgress = false }
+					viewModel.completeEvent(&event)
+#if canImport(UIKit)
+					DispatchQueue.main.asyncAfter(deadline: .now()+0.02) {
+						UINotificationFeedbackGenerator().notificationOccurred(.success)
+					}
+#endif
+					timer.invalidate()
+					progress = 0
+				}
 			}
 		}
 		RunLoop.main.add(timer!, forMode: .common)

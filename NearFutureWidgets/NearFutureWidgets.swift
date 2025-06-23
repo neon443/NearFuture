@@ -154,25 +154,25 @@ struct EventWidgetView: View {
 								.foregroundColor(event.date < Date() ? .red : .primary)
 								.padding(.trailing, -12)
 						} else {
-							Button(
-								intent: CompleteEvent(
-									eventID: IntentParameter(
-										title: LocalizedStringResource(
-											stringLiteral: event.id.uuidString
-										)
-									)
-								)
-							) {
-								if event.complete {
-									Circle()
-										.frame(width: 10)
-										.foregroundStyle(.green)
-								} else {
-									Circle()
-										.frame(width: 10)
-										.foregroundStyle(.gray)
-								}
-							}
+//							Button(
+//								intent: CompleteEvent(
+//									eventID: IntentParameter(
+//										title: LocalizedStringResource(
+//											stringLiteral: event.id.uuidString
+//										)
+//									)
+//								)
+//							) {
+//								if event.complete {
+//									Circle()
+//										.frame(width: 10)
+//										.foregroundStyle(.green)
+//								} else {
+//									Circle()
+//										.frame(width: 10)
+//										.foregroundStyle(.gray)
+//								}
+//							}
 							Text(daysUntilEvent(event.date).long)
 								.font(.caption)
 								.multilineTextAlignment(.trailing)

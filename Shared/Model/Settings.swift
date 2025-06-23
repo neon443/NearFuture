@@ -18,6 +18,7 @@ struct NFSettings: Codable, Equatable {
 	var prevAppVersion: String = getVersion()+getBuildID()
 }
 
+@MainActor
 class SettingsViewModel: ObservableObject {
 	@Published var settings: NFSettings = NFSettings()
 	
@@ -36,7 +37,7 @@ class SettingsViewModel: ObservableObject {
 		"pink"
 	]
 	
-	@Published var device: (sf: String, label: String)
+	@Published var device: (sf: String, label: String) = ("", "")
 	
 	init(load: Bool = true) {
 		self.device = getDevice()

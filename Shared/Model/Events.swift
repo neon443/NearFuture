@@ -496,6 +496,7 @@ func getBuildID() -> String {
 	return "\(build)"
 }
 
+@MainActor
 func getDevice() -> (sf: String, label: String) {
 	#if canImport(UIKit)
 	let asi = ProcessInfo().isiOSAppOnMac
