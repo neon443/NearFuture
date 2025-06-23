@@ -38,7 +38,6 @@ class SettingsViewModel: ObservableObject {
 	
 	@Published var device: (sf: String, label: String)
 	
-	@MainActor
 	init(load: Bool = true) {
 		self.device = getDevice()
 		if load {
