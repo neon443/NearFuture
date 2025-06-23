@@ -496,6 +496,7 @@ func getBuildID() -> String {
 	return "\(build)"
 }
 
+@MainActor
 func getDevice() -> (sf: String, label: String) {
 	#if canImport(UIKit)
 	let asi = ProcessInfo().isiOSAppOnMac
@@ -512,58 +513,4 @@ func getDevice() -> (sf: String, label: String) {
 	
 	return (sf: "desktopcomputer", label: "Mac")
 	#endif
-}
-
-extension Event: AppEntity {
-	static let defaultQuery = EventQuery()
-	
-	static var typeDisplayRepresentation: TypeDisplayRepresentation {
-		TypeDisplayRepresentation("skdfj")
-	}
-	
-	var displayRepresentation: DisplayRepresentation {
-		DisplayRepresentation("eventsss")
-	}
-}
-
-struct EventQuery: EntityQuery, DynamicOptionsProvider {
-	typealias Entity = Event
-	@Dependency var vm: EventViewModel
-	func results() async throws -> some ResultsCollection {
-		return vm.events
-	}
-	//	func defaultResult() async -> DefaultValue? {
-	//		return vm.events[0]
-	//	}
-	func entities(for identifiers: [Entity.ID]) async throws -> [Entity] {
-		return vm.events
-	}
-	func suggestedEntities() async throws -> some ResultsCollection {
-		return vm.events //lol cba
-	}
-}
-
-struct CompleteEvent: AppIntent {
-	static var title: LocalizedStringResource = "Complete An Event"
-	static var description = IntentDescription("Mark an Event as complete.")
-	
-	@Parameter(title: "Event ID")
-	var eventID: String
-	
-	func perform() async throws -> some IntentResult {
-		print("s")
-		let viewModel = EventViewModel()
-		print("hip")
-		guard let eventUUID = UUID(uuidString: eventID) else {
-			print(":sdklfajk")
-			return .result()
-		}
-		print("hii")
-		if let eventToModify = viewModel.events.firstIndex(where: { $0.id == eventUUID }) {
-			print("hiii")
-			viewModel.events[eventToModify].complete = true
-			viewModel.saveEvents()
-		}
-		return .result()
-	}
 }
