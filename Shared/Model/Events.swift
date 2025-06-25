@@ -160,20 +160,24 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 					eventUUIDs.remove(at: remove)
 				}
 				let components = getDateComponents(events[index].date)
+				
 				//check the notif matches event details
 				if req.content.title == events[index].name,
 				   req.content.subtitle == events[index].notes,
 				   req.trigger == UNCalendarNotificationTrigger(dateMatching: components, repeats: false) {
-					//if it does, make sure the notif delets if u complete the veent
-					if events[index].complete {
+					//if it does, make sure the notif delets if u complete the veent or in the past
+					if events[index].complete || events[index].date > .now {
 						cancelNotif(req.identifier)
+					} else {
+						//dont cancel the notif
 					}
 				} else {
+					//reschedult it because the event details have changed
 					cancelNotif(req.identifier)
 					scheduleEventNotif(events[index])
 				}
 			} else {
-				//cancel if the event is deleted
+				//cancel notif if the event is deleted (doesnt exist/cannot be matched)
 				cancelNotif(req.identifier)
 			}
 		}
@@ -182,6 +186,14 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 				scheduleEventNotif(event)
 			}
 		}
+		Task {
+			try? await UNUserNotificationCenter.current().setBadgeCount(await getNotifs().count)
+		}
+		print(eventUUIDs.count)
+		print(events.count(where: {!$0.complete && $0.date < .now}))
+		print(events.count(where: {!$0.complete && $0.date > .now}))
+		print(events.count(where: {!$0.complete}))
+		print(events.count(where: {$0.complete}))
 	}
 	
 	// save to local and icloud
@@ -246,7 +258,6 @@ class EventViewModel: ObservableObject, @unchecked Sendable {
 		}
 		if let eventToModify = eventToModify {
 			self.events.remove(at: eventToModify)
-			self.saveEvents()
 		}
 		saveEvents() //sync local and icl
 	}

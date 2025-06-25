@@ -35,7 +35,7 @@ struct CompleteEventButton: View {
 		progress = 0
 		
 		timer = Timer(timeInterval: 0.02, repeats: true) { timer in
-			DispatchQueue.main.sync {
+			DispatchQueue.main.async {
 				guard completeInProgress else { return }
 				guard let timer = self.timer else { return }
 				guard timer.isValid else { return }
