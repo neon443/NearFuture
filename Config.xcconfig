@@ -8,9 +8,9 @@
 // Configuration settings file format documentation can be found at:
 // https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
 
-TEAM_ID = 8JGND254B7
-BUNDLE_ID = com.neon443.NearFuture
-BUNDLE_ID_WIDGETS = com.neon443.NearFuture.widgets
+TEAM_ID = 4UMKR5C7LL
+BUNDLE_ID = com.aarti.NearFuture
+BUNDLE_ID_WIDGETS = com.aarti.NearFuture.widgets
 GROUP_ID  = group.NearFuture
 VERSION = 5.0.1
 NAME = Near Future

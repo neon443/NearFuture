@@ -44,13 +44,13 @@ struct hapticSuccess<T: Equatable>: ViewModifier {
 
 struct glassButton: ViewModifier {
 	func body(content: Content) -> some View {
-#if swift(>=6.2)
-		content.buttonStyle(.glass)
-#else
-		content.buttonStyle(.borderedProminent)
-			.clipShape(RoundedRectangle(cornerRadius: 15))
-			.tint(.two)
-#endif
+		if #available(iOS 19, *) {
+			content.buttonStyle(.glass)
+		} else {
+			content.buttonStyle(.borderedProminent)
+				.clipShape(RoundedRectangle(cornerRadius: 15))
+				.tint(.two)
+		}
 	}
 }
 
